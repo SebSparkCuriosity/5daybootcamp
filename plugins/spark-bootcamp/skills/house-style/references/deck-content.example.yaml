@@ -1,0 +1,31 @@
+# Example deck content for build_deck.py.
+# Copy this, fill it in, then run:
+#   python3 scripts/build_deck.py --content this.yaml --brand .spark/brand/brand.json --out 04-gtm/sales-deck
+#
+# Rules that keep it on Spark voice:
+#   - Open every slide with the point. Lead with the number where there is one.
+#   - One recommendation per slide, not a menu.
+#   - No em dashes. British spelling.
+
+title: Acme, idea into system
+subtitle: A fixed-price pilot, live in five weeks
+
+slides:
+  - heading: The problem
+    bullets:
+      - Trust admins rekey the same client data into four systems
+      - Every rekey is a fresh audit risk, and it is slow
+      - Nobody owns the fix, so it never gets fixed
+    notes: Lead with the cost of the status quo, not the tech.
+
+  - heading: What we built
+    body: One intake form that writes to all four systems, with every change logged. A person signs off before anything is filed.
+
+  - heading: The number
+    bullets:
+      - Rekeying time cut from 40 minutes to under 5 per client
+      - Zero unlogged changes across the pilot
+      - Live in 5 weeks, fixed price from 2,000 pounds
+
+  - heading: Next step
+    body: A two-week paid pilot on one workflow you choose. If the number does not move, you do not pay the balance.

@@ -1,0 +1,23 @@
+# The Variance Matrix
+
+One table. One row per day. Three columns, one per business path. Each cell states what "done" means that day for that path. This is the single source of truth. Build and ship skills read the cell for the current day and the founder's `business_type`; they do not re-decide it here or anywhere else.
+
+The shared spine across all three paths: by Day 5 the founder has **a live page a real prospect can act on**. The paths differ only in what sits behind that page. Day 5 names the exact page for each.
+
+## Definition of done, by day and path
+
+| Day | software | hardware | services |
+|-----|----------|----------|----------|
+| **1. Discovery** | Idea brief written, riskiest assumption named, `business_type` set to software. Interview target: people who would use the software daily, plus the person who pays for it if different. | Idea brief written, riskiest assumption named, `business_type` set to hardware. Interview target: people who would handle or buy the physical thing, plus whoever signs off spend. | Idea brief written, riskiest assumption named, `business_type` set to services. Interview target: people who currently do the painful task by hand, plus whoever owns the budget for it. |
+| **2. Market** | Market map done: at least 5 named competing tools or manual workarounds, with pricing where public, and one gap stated as a number (e.g. "none serve firms under 20 staff"). Every figure sourced or flagged as an assumption. | Market map done: at least 5 named comparable products or the manual method they replace, unit price and lead time where public, one gap stated as a number. Every figure sourced or flagged. | Market map done: at least 5 named providers or the in-house/DIY status quo, day-rate or fee where public, one gap stated as a number. Every figure sourced or flagged. |
+| **3. Product** | A deployed working slice on a public URL. Default stack Next.js + Supabase + Vercel. Done when one core action works end to end for a stranger, no login walkthrough needed, and the URL loads in under 3 seconds. | A demonstrable prototype: a CAD render or a physical mock a prospect can see and react to. Done when one person outside the founder looks at it and correctly describes what it does without being told. | A productised service package with exactly one sample deliverable produced in full. Done when the sample is a real finished output (not a description of one) that a prospect could judge on sight. |
+| **4. Go to market** | Offer and price fixed, from £2,000, with a numeric target the buyer can observe. Outreach list of 10+ named, screened prospects drafted. Nothing sent until the founder signs off. | Offer and price fixed (pre-order price or deposit amount stated). Outreach list of 10+ named, screened prospects drafted. Nothing sent until the founder signs off. | Offer and price fixed, from £2,000, package scope written so a buyer knows exactly what they get. Outreach list of 10+ named, screened prospects drafted. Nothing sent until the founder signs off. |
+| **5. Sale** | **Live page a real prospect can act on: the deployed slice on its public URL with a clear call to action and a way to pay or commit.** Done when at least one real prospect has been asked to act and the ask is logged. | **Live page a real prospect can act on: a pre-order or waitlist page carrying the prototype render, taking real payment intent (deposit or card capture).** Done when at least one real prospect has been asked to act and the ask is logged. | **Live page a real prospect can act on: a bookable intake page showing the sample deliverable and taking a real booking or paid intake.** Done when at least one real prospect has been asked to act and the ask is logged. |
+
+## Notes for skills reading this
+
+The Day 5 "done" condition is deliberately observable, not "money in the bank". A founder can do everything right and still not close in five days. The measurable target is the ask made and logged, with a live page behind it. The paying customer is the goal; the logged ask on a live page is the done-condition.
+
+Money and outreach both need explicit founder sign-off before they happen. That is a hard rule across all three paths, not a per-path variation, so it lives in the day skills, not in this table.
+
+Where a founder's business straddles two paths (a hardware product sold as a service, say), pick the path that carries the payment on Day 5 and note the decision in DECISIONS.md. Do not run two paths at once in one week.

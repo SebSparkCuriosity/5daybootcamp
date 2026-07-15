@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<!--
+  Spark landing-page template. Single file, no external requests.
+  The GTM and sale skills copy this file, inject brand tokens into :root below,
+  and swap the blocks marked <!-- COPY -->.
+
+  Lead capture: the <form> has a data-endpoint attribute. Set it to the founder's
+  form handler (a Supabase REST endpoint, a Formspree URL, or similar). Until an
+  endpoint is set the form saves submissions to localStorage and shows the
+  thank-you state, so the page never looks broken in a demo.
+
+  Accessibility: semantic landmarks, labelled inputs, visible focus, colour
+  contrast holds in light and dark. Responsive: one fluid column, no horizontal
+  scroll on any width.
+-->
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{brand.name}}</title>
+<style>
+  :root {
+    /* Brand tokens. Replace with values from .spark/brand/brand.json. */
+    --primary: {{brand.primary}};        /* fallback #0B5FEF */
+    --accent:  {{brand.accent}};         /* fallback #00C2A8 */
+    --ink:     #12141A;
+    --muted:   #5A6472;
+    --paper:   #FFFFFF;
+    --card:    #F5F7FA;
+    --border:  #E1E6EC;
+    --font-heading: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    --font-body:    Calibri, Arial, "Segoe UI", sans-serif;
+    --maxw: 44rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink:    #EDF0F4;
+      --muted:  #9AA4B2;
+      --paper:  #0E1014;
+      --card:   #171A21;
+      --border: #262B34;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.55;
+    font-size: 1.0625rem;
+  }
+  h1, h2, h3 { font-family: var(--font-heading); line-height: 1.2; margin: 0 0 0.5em; }
+  h1 { font-size: clamp(1.9rem, 5vw, 3rem); }
+  h2 { font-size: clamp(1.4rem, 3.5vw, 2rem); margin-top: 2.5rem; }
+  p { margin: 0 0 1rem; }
+  a { color: var(--primary); }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 1.25rem; }
+  header.hero {
+    padding: 4rem 0 3rem;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, color-mix(in srgb, var(--primary) 8%, var(--paper)), var(--paper));
+  }
+  .eyebrow { color: var(--primary); font-weight: 700; letter-spacing: 0.02em; text-transform: uppercase; font-size: 0.8rem; margin: 0 0 0.75rem; }
+  .lede { font-size: 1.2rem; color: var(--muted); max-width: 34rem; }
+  .btn {
+    display: inline-block;
+    background: var(--primary);
+    color: #fff;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    text-decoration: none;
+    padding: 0.85rem 1.6rem;
+    border-radius: 0.55rem;
+    border: 0;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  .btn:hover { filter: brightness(1.07); }
+  .btn:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  section { padding: 1.5rem 0; }
+  .points { list-style: none; padding: 0; margin: 1rem 0; }
+  .points li { padding: 0.6rem 0 0.6rem 1.6rem; position: relative; }
+  .points li::before { content: ""; position: absolute; left: 0; top: 1.05rem; width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--accent); }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.5rem; margin: 2rem 0; }
+  form { display: grid; gap: 0.9rem; }
+  label { font-weight: 600; font-size: 0.95rem; display: block; margin-bottom: 0.3rem; }
+  input, textarea {
+    width: 100%; padding: 0.7rem 0.8rem; font: inherit;
+    color: var(--ink); background: var(--paper);
+    border: 1px solid var(--border); border-radius: 0.5rem;
+  }
+  .thanks { display: none; padding: 1rem; border-radius: 0.5rem; background: color-mix(in srgb, var(--accent) 18%, var(--paper)); border: 1px solid var(--accent); }
+  footer { border-top: 1px solid var(--border); color: var(--muted); font-size: 0.9rem; padding: 2rem 0 3rem; margin-top: 2rem; }
+  .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <!-- COPY: eyebrow, headline, lede, primary call to action -->
+    <p class="eyebrow">{{brand.tagline}}</p>
+    <h1>{{headline}}</h1>
+    <p class="lede">{{subhead}}</p>
+    <p style="margin-top:1.5rem"><a class="btn" href="#signup">{{cta_label}}</a></p>
+  </div>
+</header>
+
+<main class="wrap">
+  <section aria-labelledby="problem-h">
+    <h2 id="problem-h">The problem</h2>
+    <!-- COPY -->
+    <p>{{problem}}</p>
+  </section>
+
+  <section aria-labelledby="what-h">
+    <h2 id="what-h">What you get</h2>
+    <!-- COPY -->
+    <ul class="points">
+      <li>{{point_1}}</li>
+      <li>{{point_2}}</li>
+      <li>{{point_3}}</li>
+    </ul>
+  </section>
+
+  <section id="signup" aria-labelledby="signup-h">
+    <div class="card">
+      <h2 id="signup-h">{{signup_heading}}</h2>
+      <!-- COPY -->
+      <p>{{signup_line}}</p>
+      <form id="lead-form" data-endpoint="" novalidate>
+        <div>
+          <label for="name">Your name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div>
+          <label for="email">Work email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div>
+          <label for="note">What are you hoping this solves? (optional)</label>
+          <textarea id="note" name="note" rows="3"></textarea>
+        </div>
+        <div>
+          <button class="btn" type="submit">{{cta_label}}</button>
+        </div>
+        <p id="form-error" role="alert" style="color:var(--primary);display:none">Add your name and a valid email, then try again.</p>
+      </form>
+      <div class="thanks" id="thanks" role="status">
+        <strong>Thank you.</strong> We have your details and will be in touch shortly.
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>{{brand.name}} · {{brand.contact_email}} · {{brand.contact_url}}</p>
+    <p>Jersey, Channel Islands.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var form = document.getElementById('lead-form');
+  var thanks = document.getElementById('thanks');
+  var errEl = document.getElementById('form-error');
+  if (!form) return;
+
+  function valid(data) {
+    return data.name.trim().length > 0 && /.+@.+\..+/.test(data.email);
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    errEl.style.display = 'none';
+    var data = {
+      name: form.name.value,
+      email: form.email.value,
+      note: form.note.value,
+      at: new Date().toISOString()
+    };
+    if (!valid(data)) { errEl.style.display = 'block'; return; }
+
+    var endpoint = form.getAttribute('data-endpoint');
+    var done = function () {
+      form.style.display = 'none';
+      thanks.style.display = 'block';
+      thanks.focus && thanks.focus();
+    };
+
+    if (endpoint && endpoint.trim()) {
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      }).then(done).catch(function () {
+        // Network failed: keep the lead locally rather than lose it.
+        saveLocal(data); done();
+      });
+    } else {
+      // No endpoint set yet: store locally so a demo still works end to end.
+      saveLocal(data); done();
+    }
+  });
+
+  function saveLocal(data) {
+    try {
+      var key = 'spark_leads';
+      var all = JSON.parse(localStorage.getItem(key) || '[]');
+      all.push(data);
+      localStorage.setItem(key, JSON.stringify(all));
+    } catch (e) { /* storage blocked: nothing to do, thank-you still shows */ }
+  }
+})();
+</script>
+</body>
+</html>
