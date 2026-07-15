@@ -9,13 +9,14 @@ argument-hint: [optional-issue-number]
 
 **What this does.** Builds your thin slice for real, one issue at a time, and puts something live that a prospect can click, book or pay on today.
 **Why it matters.** Day 3 is the day the idea stops being a document and becomes a thing. You do not build the whole product. You build the smallest slice that lets one real person take one real action, and you get it onto a public URL. A live page beats a perfect plan every time.
-**You are ready for this when.** `03-product/PRD.md`, `03-product/blueprint.md` and `03-product/tech-stack.md` all exist, and your build issues are listed (in the repo, or in `03-product/blueprint.md`).
+**You are ready for this when.** `03-product/docs/PRD.md`, `03-product/docs/blueprint.md` and `03-product/docs/tech-stack.md` all exist, and your build issues are listed (in the GitHub repo, or in `03-product/github.md`).
 
 ## Before you start
 Read these, in this order:
-- `03-product/PRD.md`: the one action a prospect must be able to take.
-- `03-product/blueprint.md`: the slice and its issue list.
-- `03-product/tech-stack.md`: what you chose to build on.
+- `03-product/docs/PRD.md`: the one action a prospect must be able to take.
+- `03-product/docs/blueprint.md`: the slice.
+- `03-product/github.md`: the issue list (written by d3-github-setup).
+- `03-product/docs/tech-stack.md`: what you chose to build on.
 - `.spark/brand/brand.json`: colours, name, logo, so the live thing looks like you.
 - `.spark/state.json`: read `business_type`. It decides everything below.
 
@@ -24,7 +25,7 @@ One rule for today, and it is not optional. **You pause for sign-off before you 
 Set a hard stop: **17:00 Wednesday**. If the functional slice is not live by then, you switch to the minimum-shippable fallback at the bottom of this skill. Nobody ends Day 3 having failed.
 
 ## Steps
-1. Open the issue list from the blueprint. Order it so the very first issue produces something visible on screen, even if it is ugly. Visible progress keeps you honest.
+1. Open the issue list from the GitHub repo (and `03-product/github.md`). Order it so the very first issue produces something visible on screen, even if it is ugly. Visible progress keeps you honest.
 2. Take ONE issue. Tell Claude what it is, in one sentence, and let it write the code. Small commits, one per issue.
 3. After each issue: run it locally, look at it with your own eyes, then commit with the issue number in the message (`git commit -m "closes #3: capture email on landing page"`).
 4. Log the issue in `03-product/BUILD-LOG.md` (one line: time, issue, what now works, commit hash). Use the template in `references/build-log-template.md`.
@@ -74,13 +75,12 @@ There is something live on a public URL that a real prospect can act on, the smo
 Append one line to `CHANGELOG.md`:
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py --skill d3-mvp-build \
-  --path 03-product/BUILD-LOG.md --result "live: <url>, N issues closed"
+  --artefact 03-product/BUILD-LOG.md --result "live: <url>, N issues closed"
 ```
 Then update state:
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py \
-  --day 3 --outcome "live: <url>" --complete true \
-  --artefact d3-mvp-build:03-product/BUILD-LOG.md:"live: <url>, N issues closed"
+  --patch '{"days":{"3":{"outcome":"live: <url>","complete":true}}}'
 ```
 
 ## If it goes wrong

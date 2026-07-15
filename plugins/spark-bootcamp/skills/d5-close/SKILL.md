@@ -8,13 +8,13 @@ when_to_use: Day 5, the final step. Straight after the Friday meeting, once the 
 
 **What this does.** Turns the conversation into a committed yes, then records the win at whichever tier lands: cash in full, a paid deposit, a signed paid pilot, or a signed letter of intent with a date and an amount.
 **Why it matters.** A week of work is worth nothing until someone commits. Founders lose deals in the last ten minutes by never actually asking, or by leaving with a warm "let me think about it". This skill makes you ask clearly, take the highest commitment on offer, and get it in writing before the buyer's attention moves on.
-**You are ready for this when.** `05-sale/friday-meeting.md`, `PROPOSAL.md` and the files in `05-sale/paperwork/` exist, and you have just spoken to the prospect (or are about to).
+**You are ready for this when.** `04-gtm/friday-meeting.md`, `PROPOSAL.md` and the files in `05-sale/paperwork/` exist, and you have just spoken to the prospect (or are about to).
 
 ## Before you start
 
 Read these first:
 
-- `05-sale/friday-meeting.md`: what was said, and any objection you still need to answer.
+- `04-gtm/friday-meeting.md`: what was said, and any objection you still need to answer.
 - `PROPOSAL.md`: the package name and the exact price. You will restate both when you ask.
 - `05-sale/paperwork/`: your engagement letter and invoice drafts, ready to fill and send.
 - `.spark/state.json`: `founder`, `business_type` and `headline_target` for the week.
@@ -23,7 +23,7 @@ Two guardrails. First, human-in-the-loop: do not send the engagement letter, sen
 
 ## Steps
 
-1. **Answer the last objection, once.** Look at `friday-meeting.md`. If one thing is still in the way, address it in a sentence, then stop talking. Do not re-pitch the whole thing.
+1. **Answer the last objection, once.** Look at `04-gtm/friday-meeting.md`. If one thing is still in the way, address it in a sentence, then stop talking. Do not re-pitch the whole thing.
 
 2. **Ask for the sale, out loud, with the number.** Restate the package and the price from `PROPOSAL.md`, then ask for the highest tier: "The package is £X. I'll send the invoice now and we start Monday. Card or transfer?" Then go quiet. Silence after the ask is the founder's friend. Let the buyer fill it.
 
@@ -76,7 +76,7 @@ Append one line to `CHANGELOG.md` via the logbook helper, with the numeric resul
 
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py \
-  --skill d5-close --path 05-sale/WON-DEAL.md \
+  --skill d5-close --artefact 05-sale/WON-DEAL.md \
   --result "Won: deposit, GBP 2000, kickoff 2026-07-21"
 ```
 
@@ -84,14 +84,14 @@ Then update `.spark/state.json` via the journey-state helper: set `days.5.outcom
 
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py \
-  --set-day 5 --outcome "Won: deposit, GBP 2000" --complete true
+  --patch '{"days":{"5":{"outcome":"Won: deposit, GBP 2000","complete":true}}}'
 ```
 
 If the win clears the `headline_target`, say so plainly to the founder. That is the number the week was for. Record the reasoning behind the tier you accepted in `DECISIONS.md` (for example, why a pilot rather than cash).
 
 ## If it goes wrong
 
-**No yes today.** If the buyer will not commit to any tier, do not force it and do not log a fake win. Book a specific follow-up date, note the exact blocker in `05-sale/friday-meeting.md`, and move to the next-best prospect from Day 4. One warm maybe is not the week's target; a real commitment from someone else may be closer than you think.
+**No yes today.** If the buyer will not commit to any tier, do not force it and do not log a fake win. Book a specific follow-up date, note the exact blocker in `04-gtm/friday-meeting.md`, and move to the next-best prospect from Day 4. One warm maybe is not the week's target; a real commitment from someone else may be closer than you think.
 
 **They say yes but the money cannot move.** Drop to a signed letter of intent with a named amount and start date. That still counts. Send the LOI for signature the same day while the intent is fresh.
 

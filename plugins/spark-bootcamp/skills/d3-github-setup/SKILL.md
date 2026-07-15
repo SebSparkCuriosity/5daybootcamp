@@ -1,19 +1,19 @@
 ---
 name: Set Up GitHub
 description: Creates a versioned home for the build: a GitHub repo, a five-line README, and one open issue per Must from your MoSCoW list. Use on Day 3, before you write code.
-when_to_use: Day 3 product build, after d3-requirements (MoSCoW) and d3-tech-stack, before the first line of code ships.
+when_to_use: Day 3 product build, after d3-moscow and d3-tech-stack, before the first line of code ships.
 ---
 
 # Set Up GitHub
 
 **What this does.** Creates a live GitHub repository, adds a five-line README, and opens one issue per Must from your MoSCoW list, so every promise you made has a tracked home.
 **Why it matters.** A repo is where the build lives and where the audit trail starts. Regulators, investors and future you all ask the same question: what did you decide, and when? GitHub answers it for free. Even if you are building hardware or a service, your docs, drawings and sample deliverables belong somewhere versioned, not in a folder called Final_v3_ACTUAL.
-**You are ready for this when.** `03-product/requirements-moscow.md` and `03-product/tech-stack.md` both exist.
+**You are ready for this when.** `03-product/requirements-moscow.md` and `03-product/docs/tech-stack.md` both exist.
 
 ## Before you start
 Read these three files:
 - `03-product/requirements-moscow.md`, for the Must list. Each Must becomes one issue.
-- `03-product/tech-stack.md`, for the one-line description of what you are building.
+- `03-product/docs/tech-stack.md`, for the one-line description of what you are building.
 - `.spark/state.json`, for `founder`, `idea` and `business_type`.
 
 Guardrail: creating a repo is free and spends no money, so no sign-off is needed. But do not make the repo public if your idea brief or interviews contain a client's confidential information. Default to private. You can flip it to public later in one click.
@@ -64,14 +64,13 @@ Append to CHANGELOG.md via the logbook helper, with the numeric result (issue co
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py \
   --skill d3-github-setup \
-  --path 03-product/github.md \
+  --artefact 03-product/github.md \
   --result "repo live, <N> Must issues open"
 ```
-Update state via the journey-state helper (records the artefact and Day 3 progress):
+Update state via the journey-state helper (records Day 3 progress):
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py \
-  --add-artefact d3-github-setup 03-product/github.md "repo live, <N> issues" \
-  --set-day-outcome 3 "GitHub repo live with <N> Must issues"
+  --patch '{"days":{"3":{"outcome":"GitHub repo live with <N> Must issues"}}}'
 ```
 
 ## If it goes wrong

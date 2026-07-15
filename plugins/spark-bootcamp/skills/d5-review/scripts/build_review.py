@@ -90,7 +90,7 @@ DEAL = {
     "key": "deal",
     "label": "The deal: the ask made and the outcome",
     "candidates": [
-        "05-sale/sale.md",
+        "05-sale/WON-DEAL.md",
         "05-sale/PROPOSAL.md",
         "05-sale/outreach-log.md",
         "05-sale/RATE-CARD.md",
@@ -349,7 +349,7 @@ def build_launch_package(root, state, items, deal):
     out.append("## The deal\n")
     out.append("%s\n" % (link_cell(deal) if deal["path"] else
                          "ABSENT. No deal artefact found. If a real prospect was asked "
-                         "to act, log it in `05-sale/sale.md` and rebuild."))
+                         "to act, log it in `05-sale/WON-DEAL.md` and rebuild."))
     out.append("## Every headline number\n")
     out.append(headline_numbers(state))
     out.append("")

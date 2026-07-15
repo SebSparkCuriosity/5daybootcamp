@@ -12,7 +12,7 @@ no external libraries, and a missing moscow file is a warning, not a crash.
 
 Usage:
   python3 check-brief.py 03-product/docs/PRD.md
-  python3 check-brief.py 03-product/docs/PRD.md --moscow 03-product/moscow.md
+  python3 check-brief.py 03-product/docs/PRD.md --moscow 03-product/requirements-moscow.md
 """
 
 import argparse

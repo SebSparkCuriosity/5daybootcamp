@@ -54,11 +54,11 @@ Append one line to `CHANGELOG.md` via the logbook helper: date, `d4-intake-proce
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py \
   --skill d4-intake-process \
-  --path 04-gtm/ops/intake-process.md \
+  --artefact 04-gtm/ops/intake-process.md \
   --result "4-stage intake process, 4 signable templates"
 
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py \
-  --add-artefact d4-intake-process 04-gtm/ops/intake-process.md "4 stages, owner and SLA each"
+  --patch '{"days":{"4":{"outcome":"4-stage intake process, 4 signable templates","complete":true}}}'
 ```
 
 ## If it goes wrong

@@ -51,11 +51,11 @@ python3 "${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py" \
   --result "target: <N> interviews"
 ```
 
-Then update the journey state via the helper, recording the artefact and Day 1 progress:
+The log.py call above already registers the artefact in `.spark/state.json`, so no separate state update is needed for it. To record Day 1 progress, use the journey-state helper with a merge patch:
 
 ```
 python3 "${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py" \
-  --add-artefact d1-define-interviewees 01-discovery/interview-target-spec.md "target: <N> interviews"
+  --patch '{"days":{"1":{"target":"define interviewees","outcome":"target: <N> interviews","complete":true}}}'
 ```
 
 Never edit `.spark/state.json` by hand. Always go through the helper so a skill running alongside this one cannot clobber the file.

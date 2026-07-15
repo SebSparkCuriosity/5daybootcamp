@@ -1,7 +1,7 @@
 ---
 name: Plan Next Steps
 description: Turn the messy end of Day 3 into an honest, ranked launch checklist that names your top 3 blockers. Use after the build slice and landing page exist.
-when_to_use: Day 3, at the end of build, after d3-build and the landing page are up. The last thing you do before Day 4 go-to-market.
+when_to_use: Day 3, at the end of build, after d3-mvp-build and the landing page are up. The last thing you do before Day 4 go-to-market.
 ---
 
 # Plan Next Steps

@@ -15,7 +15,7 @@ Read these, in this order:
 
 - `05-sale/PROPOSAL.md`: the offer, the scope, the price. This is what you are selling.
 - `02-market/messaging.md`: the words that already land with this buyer.
-- `04-gtm/icp-messaging.md` (or wherever d4-icp-messaging wrote its objections): the objections you already flagged.
+- `04-gtm/messaging.md` (or wherever d4-icp-messaging wrote its objections): the objections you already flagged.
 - `.spark/state.json`: `business_type`, so you rehearse the right ask (a subscription, a pre-order, a booked engagement).
 
 Guardrail: this is rehearsal only. Do not contact a real prospect from inside this skill. The live call is the next step, after you sign off that you are ready.
@@ -27,7 +27,7 @@ Guardrail: this is rehearsal only. Do not contact a real prospect from inside th
 
    ```
    python3 ${CLAUDE_SKILL_DIR}/scripts/build-objections.py \
-     --day4 04-gtm/icp-messaging.md \
+     --day4 04-gtm/messaging.md \
      --out 05-sale/OBJECTIONS.md
    ```
 
@@ -79,11 +79,9 @@ Then update state via the journey-state helper (Day 5 progress, and add both art
 
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py \
-  --day 5 --outcome "Sale rehearsed: 12 objections, ask under 8s" \
-  --add-artefact d5-rehearse:05-sale/SALE-SCRIPT.md:"1 role-play, 12 objections"
+  --patch '{"days":{"5":{"target":"Sale rehearsed","outcome":"12 objections, ask under 8s","complete":true}}}' \
+  --append-artefact '{"skill":"d5-rehearse","path":"05-sale/OBJECTIONS.md","result":"12 objections answered"}'
 ```
-
-Use the real flags the helper exposes; the above shows intent.
 
 ## If it goes wrong
 If the role-play keeps collapsing at the price, the problem is upstream, not here. Go back to `PROPOSAL.md` and check the value is quantified: a number the buyer keeps or earns that is visibly bigger than the fee. Rehearsing confidence into a weak offer does not work. Fix the offer, then come back and drill the ask again.

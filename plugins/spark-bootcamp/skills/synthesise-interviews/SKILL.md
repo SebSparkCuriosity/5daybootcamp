@@ -9,13 +9,13 @@ argument-hint: [discovery|product-test]
 
 **What this does.** Reads every interview record in a folder and turns them into findings backed by counts, not vibes: each riskiest assumption marked validated, killed or unclear against a tally of records, the jobs, pains and gains ranked by how often they came up, a sharpened segment, and the prospects who showed real buying signal tagged so their names carry into Day 4.
 **Why it matters.** The interviews are worthless until you synthesise them, and most founders synthesise by memory, which means they remember the flattering bits and forget the ones that killed the idea. Counting fixes that. If seven of nine people described the same pain unprompted, that is a pattern you can build on. If one warm conversation is doing all the work, you need to know before you bet the week on it. Count the evidence, cite it by name, say no more than the records support.
-**You are ready for this when.** `01-discovery/interviews/` holds at least one record (discovery mode), or `03-product/test-sessions/` holds product-test sessions (product-test mode).
+**You are ready for this when.** `01-discovery/interviews/` holds at least one record (discovery mode), or `04-gtm/tests/sessions/` holds product-test sessions (product-test mode).
 
 ## Before you start
 This skill runs in one of two modes. The argument sets it:
 
 - **discovery** (Day 1, the default): reads `01-discovery/interviews/*.md`, writes `01-discovery/discovery-findings.md`.
-- **product-test** (Day 4): reads `03-product/test-sessions/*.md` (or `01-discovery/interviews/` if the founder saved tests there), writes `04-gtm/product-test-findings.md` to feed `d4-prioritise`.
+- **product-test** (Day 4): reads `04-gtm/tests/sessions/*.md` (or `01-discovery/interviews/` if the founder saved tests there), writes `04-gtm/product-test-findings.md` to feed `d4-prioritise`.
 
 If no mode is given, assume discovery.
 
@@ -29,7 +29,7 @@ Guardrail: synthesis is a read-and-report job. Do not message any interviewee, d
    ```
    python3 ${CLAUDE_SKILL_DIR}/scripts/scan-interviews.py 01-discovery/interviews
    ```
-   (In product-test mode, point it at `03-product/test-sessions`.) It prints the number of records, a confidence band, and an index you cite by filename. 8 or more is strong. 5 to 7 is usable, flag the thinner base. 1 to 4 is weak, patterns are tentative. 0 means stop and go interview people.
+   (In product-test mode, point it at `04-gtm/tests/sessions`.) It prints the number of records, a confidence band, and an index you cite by filename. 8 or more is strong. 5 to 7 is usable, flag the thinner base. 1 to 4 is weak, patterns are tentative. 0 means stop and go interview people.
 
 2. **Read every record.** Do not skim. For each one, note the jobs the person is trying to get done, what actually hurts, what "done well" looks like to them, and whether they showed real buying signal. Anchor to behaviour and the past, per the interview method, not to opinions and the future.
 

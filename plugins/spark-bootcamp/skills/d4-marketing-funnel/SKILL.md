@@ -1,7 +1,7 @@
 ---
 name: Build The Funnel
 description: Map awareness to purchase in four stages, each with a named Jersey-appropriate channel, one asset and one numeric metric. Use on Day 4 after messaging is written.
-when_to_use: Day 4 go-to-market, after d4-messaging produces messaging.md, before you write outreach or spend on ads. Triggers on "funnel", "channels", "how do people find and buy".
+when_to_use: Day 4 go-to-market, after d4-icp-messaging produces messaging.md, before you write outreach or spend on ads. Triggers on "funnel", "channels", "how do people find and buy".
 ---
 
 # Build The Funnel
@@ -69,8 +69,8 @@ What good looks like: four stages, each with a real named channel (not "social m
 Append one line to CHANGELOG.md via the logbook helper: date, `d4-marketing-funnel`, `04-gtm/funnel.md`, and the numeric result (the top-of-funnel number you must reach to land one sale). Then update `.spark/state.json` through the journey-state helper: set the Day 4 outcome and mark progress.
 
 ```
-python3 ${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py --skill d4-marketing-funnel --path 04-gtm/funnel.md --result "<top-of-funnel N to reach 1 sale>"
-python3 ${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py --day 4 --outcome "Funnel mapped: 4 stages, top-of-funnel <N> to reach 1 sale"
+python3 ${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py --skill d4-marketing-funnel --artefact 04-gtm/funnel.md --result "<top-of-funnel N to reach 1 sale>"
+python3 ${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py --patch '{"days":{"4":{"outcome":"Funnel mapped: 4 stages, top-of-funnel <N> to reach 1 sale"}}}'
 ```
 
 Record the channel choice and why in DECISIONS.md, especially if you rejected an obvious channel. Future you will want to know why.

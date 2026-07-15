@@ -99,7 +99,7 @@ write "No record touched this" rather than padding it.
 
 Same discipline, different input and output. You are reading product-test
 sessions (a prospect using the built slice, prototype, or sample deliverable),
-not discovery interviews. Read them from `03-product/test-sessions/` if that
+not discovery interviews. Read them from `04-gtm/tests/sessions/` if that
 folder exists, otherwise from `01-discovery/interviews/` if the founder saved
 tests there, and say which you read.
 

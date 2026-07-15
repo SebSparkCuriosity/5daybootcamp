@@ -38,11 +38,7 @@ The CSV holds 20 or more prospects, each row has a channel and a warmth rating, 
 ## Log it
 Append one line to CHANGELOG.md via the logbook helper, with today's date, the skill id `d1-build-list`, the artefact path `01-discovery/interview-list.csv`, and the numeric result (the count of prospects listed):
 
-`python3 ${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py --skill d1-build-list --path 01-discovery/interview-list.csv --result "23 prospects"`
-
-Then update state via the journey-state helper so Day 1 progress reflects the finished list:
-
-`python3 ${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py --add-artefact d1-build-list:01-discovery/interview-list.csv:"23 prospects"`
+`python3 ${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py --skill d1-build-list --artefact 01-discovery/interview-list.csv --result "23 prospects"`
 
 ## If it goes wrong
 Cannot reach 20 that clear the screening questions? You have found a real signal, not a dead end. Either the segment is too narrow to serve, or your reach into it is thin. Do two things. First, widen the geography: Guernsey, the Isle of Man and the UK are all in scope, and a Jersey trust or fund niche often has a natural sister market next door. Second, before you widen the segment itself, go back to `d1-define-interviewees` and check whether an adjacent role feels the same pain, because a broader net that still passes the screening questions beats a lower bar. If you are stuck at, say, 12 solid names, run the 12 anyway rather than stall, and note the shortfall in DECISIONS.md so the market-map step knows the sample was small.

@@ -8,12 +8,13 @@ when_to_use: Day 4 GTM, after you have run the product-test sessions and capture
 
 **What this does.** Reads every product-test session plus every landing-page enquiry, scores each requested change with RICE and MoSCoW, and ranks every tester by how likely they are to buy.
 **Why it matters.** By Friday you can build three things, not thirty, and you can only phone a handful of people. This skill decides which three fixes and which people, using numbers instead of the loudest voice in the room. Get this wrong and you spend Day 5 polishing something nobody will pay for.
-**You are ready for this when.** `04-gtm/tests/sessions/` holds at least one session file written by synthesise-interviews in product-test mode.
+**You are ready for this when.** `04-gtm/tests/sessions/` holds at least one session file written by run-interview.
 
 ## Before you start
 Read these exact paths:
-- `04-gtm/tests/sessions/*.md`, one file per tester, each holding what they said, what they struggled with, and any change they asked for.
-- The landing-site capture store, whichever exists: `04-gtm/site/captures.csv`, `04-gtm/captures.json`, or `.spark/deliverables/captures.csv`. These are the people who left an email or clicked pre-order on your live page. Treat them as the warmest hand-raisers you have.
+- `04-gtm/product-test-findings.md`, the synthesis written by synthesise-interviews in product-test mode: the cross-session read on what testers said, struggled with, and asked for.
+- `04-gtm/tests/sessions/*.md`, one file per tester written by run-interview, each holding what they said, what they struggled with, and any change they asked for.
+- The landing-site capture store `04-gtm/captures.jsonl`, written by d3-landing-site. These are the people who left an email or clicked pre-order on your live page. Treat them as the warmest hand-raisers you have.
 - `.spark/state.json` for `business_type` and the founder's name.
 
 If no capture store exists yet, carry on with the sessions alone and note it. Do not invent enquiries.
@@ -58,14 +59,13 @@ Append one line to CHANGELOG.md via the logbook helper, recording the artefact p
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py \
   --skill d4-prioritise \
-  --path 04-gtm/feedback-synthesis.md \
+  --artefact 04-gtm/feedback-synthesis.md \
   --result "<N> changes scored, top 3 flagged, <M> testers ranked"
 ```
 Then update state via the journey-state helper, setting the Day 4 outcome:
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py \
-  --set-day-outcome 4 "Feedback prioritised: 3 fixes chosen for Friday, <M> testers ranked by buying intent" \
-  --add-artefact d4-prioritise 04-gtm/feedback-synthesis.md "<N> changes, <M> testers"
+  --patch '{"days":{"4":{"outcome":"Feedback prioritised: 3 fixes chosen for Friday, <M> testers ranked by buying intent"}}}'
 ```
 If a rationale drove a close call (a low-RICE change promoted to Must, or a tester bumped up the ranking), add a line to DECISIONS.md saying why.
 

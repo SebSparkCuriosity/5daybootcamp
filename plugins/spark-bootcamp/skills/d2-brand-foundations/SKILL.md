@@ -60,16 +60,11 @@ Append one line to `CHANGELOG.md` via the logbook helper, with the numeric resul
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py \
   --skill d2-brand-foundations \
-  --path 02-market/brand/brand-foundations.md \
+  --artefact 02-market/brand/brand-foundations.md \
   --result "5 values, 1 archetype, 4 tone dimensions, name resolved"
 ```
 
-Then update the journey state:
-
-```
-python3 ${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py \
-  --add-artefact d2-brand-foundations 02-market/brand/brand-foundations.md "brand foundations set"
-```
+The logbook helper registers the artefact in `.spark/state.json` for you, so no separate state update is needed for it.
 
 If the name choice was a genuine call between options, write one line in `DECISIONS.md`: the name you chose and why the others lost.
 

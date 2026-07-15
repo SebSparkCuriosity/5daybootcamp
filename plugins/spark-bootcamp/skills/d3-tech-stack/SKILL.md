@@ -8,10 +8,10 @@ when_to_use: Day 3 product build, straight after the blueprint is written, befor
 
 **What this does.** Turns your blueprint into one chosen stack, with a monthly cost, the accounts you need to open, and the MCP servers to connect.
 **Why it matters.** Founders lose days comparing tools. You do not need the best stack, you need one that ships this week and costs almost nothing. One decision, made now, beats a week of tabs open.
-**You are ready for this when.** `03-product/docs/product-context.md` and `03-product/docs/blueprint.md` both exist.
+**You are ready for this when.** `03-product/product-context.md` and `03-product/docs/blueprint.md` both exist.
 
 ## Before you start
-Read `03-product/docs/product-context.md` and `03-product/docs/blueprint.md`. Read `business_type` from `.spark/state.json` (via the journey-state helper). That one field decides which branch below you follow. Do not read all three branches, read yours.
+Read `03-product/product-context.md` and `03-product/docs/blueprint.md`. Read `business_type` from `.spark/state.json` (via the journey-state helper). That one field decides which branch below you follow. Do not read all three branches, read yours.
 
 No money is spent in this skill. You choose the stack and list the accounts. Opening paid accounts happens later, with your sign-off, in the build skills. Everything recommended here has a free tier that carries you to first paying customer.
 
@@ -70,7 +70,7 @@ What good looks like: someone in your finance team reads it in two minutes and c
 Exactly one stack is chosen (not two, not a shortlist), the monthly cost is stated as a number, and the accounts and MCP servers are listed. If any of those three is missing or hedged, you are not done.
 
 ## Log it
-Append one line to `CHANGELOG.md` via the logbook helper: date, `d3-tech-stack`, the artefact path, and the monthly cost as the numeric result. For example `python3 ${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py --skill d3-tech-stack --path 03-product/docs/tech-stack.md --result "£0/mo to first customer"`. Then update `.spark/state.json` via the journey-state helper: record the artefact and mark day 3 progress. If you deviated from the recommendation, the reasoning line goes in `DECISIONS.md`.
+Append one line to `CHANGELOG.md` via the logbook helper: date, `d3-tech-stack`, the artefact path, and the monthly cost as the numeric result. For example `python3 ${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py --skill d3-tech-stack --artefact 03-product/docs/tech-stack.md --result "£0/mo to first customer"`. Then update `.spark/state.json` via the journey-state helper: record the artefact and mark day 3 progress. If you deviated from the recommendation, the reasoning line goes in `DECISIONS.md`.
 
 ## If it goes wrong
 Cannot decide between code and no-code for software, or CAD versus physical mock for hardware? Default to the faster one and ship. You can always rebuild on a stronger stack once someone has paid, and a paying customer funds that rebuild. The only wrong move on Day 3 is spending the day choosing. If the cost calculator will not run (no Python), the free-tier answer is £0 for all three paths as written above, so state that and move on.

@@ -8,12 +8,12 @@ when_to_use: Day 5 sale, after d5-pricing-model and the proposition are written,
 
 **What this does.** Turns your pricing model into three named packages (good, better, best) with real numbers, marks one as recommended, and ties every price to a value assumption you can defend out loud.
 **Why it matters.** Founders freeze on price. They either pluck a number from thin air or copy a competitor and hope. Both lose money and trust. A buyer decides in seconds whether a price feels fair, and "fair" comes from value, not from your costs. Three packages beat one because they give the buyer a choice about how much, not whether. The middle one is where most people land, and that is the one you engineer to win.
-**You are ready for this when.** `05-sale/PRICING-MODEL.md` and `05-sale/proposition.md` both exist.
+**You are ready for this when.** `05-sale/PRICING-MODEL.md` and `02-market/proposition.md` both exist.
 
 ## Before you start
 Read three files:
 - `05-sale/PRICING-MODEL.md`: the model, the cost floor, the willingness-to-pay signals from your interviews.
-- `05-sale/proposition.md`: the promise and the numeric outcome you sell.
+- `02-market/proposition.md`: the promise and the numeric outcome you sell.
 - `.spark/state.json`: `business_type`, `founder`, `headline_target`.
 
 Guardrail: this skill sets numbers, it does not send them. Do not put a price in front of a real prospect until the founder has read the rate card aloud and signed off. No money moves in this step.
@@ -59,7 +59,7 @@ Append one line to `CHANGELOG.md` via the logbook helper, with the recommended p
 ```
 python3 "${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py" \
   --skill d5-price-number \
-  --path 05-sale/RATE-CARD.md \
+  --artefact 05-sale/RATE-CARD.md \
   --result "recommended GBP <number>"
 ```
 
@@ -67,7 +67,7 @@ Update the journey state:
 
 ```
 python3 "${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py" \
-  --day 5 --outcome "Rate card set: 3 packages, recommended GBP <number>"
+  --patch '{"days":{"5":{"outcome":"Rate card set: 3 packages, recommended GBP <number>"}}}'
 ```
 
 If a price rested on a value figure you could not source, record it in `DECISIONS.md`: the number, that it is an assumption, and how you would test it with the first buyer.

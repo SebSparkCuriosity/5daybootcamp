@@ -56,7 +56,7 @@ Append one line to CHANGELOG.md via the logbook helper, with the artefact path a
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py \
   --skill d5-triage \
-  --path 05-sale/TRIAGE.md \
+  --artefact 05-sale/TRIAGE.md \
   --result "Fix Now: 3 items, 210 min total; 5 parked, 4 roadmapped"
 ```
 
@@ -64,9 +64,7 @@ Then update state via the journey-state helper, marking Day 5 progress:
 
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py \
-  --skill d5-triage \
-  --path 05-sale/TRIAGE.md \
-  --result "triaged; 3 fixes queued"
+  --patch '{"days":{"5":{"outcome":"triaged; 3 fixes queued","complete":true}}}'
 ```
 
 ## If it goes wrong

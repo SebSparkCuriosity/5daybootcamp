@@ -51,4 +51,4 @@ Replace `<N>` with the artefact count the script printed.
 ## If it goes wrong
 If `state.json` is missing or unreadable, the script still writes a pack with the changelog and decisions and flags the gap in the headline. Recover the state file (or re-run the day skills) and rebuild.
 
-If the artefact table is empty but you know work was done, the day skills logged to CHANGELOG.md but never called the state helper's `add-artefact`. The changelog section will still show the work; re-run the missing `add-artefact` calls to populate the table, then rebuild.
+If the artefact table is empty but you know work was done, those skills wrote to CHANGELOG.md but their artefacts never reached `.spark/state.json`. The changelog section will still show the work. Re-run each skill's Log it step (the `log.py` call registers the artefact in state automatically), then rebuild.

@@ -53,7 +53,7 @@ Append one line to `CHANGELOG.md` via the logbook helper, with the numeric resul
 ```
 python ${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py \
   --skill d2-competitor-scan \
-  --path 02-market/competitors.md \
+  --artefact 02-market/competitors.md \
   --result "7 rivals x 6 dimensions compared, gap named"
 ```
 
@@ -61,8 +61,7 @@ Update state via the journey-state helper, recording the gap as the Day 2 progre
 
 ```
 python ${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py \
-  --add-artefact d2-competitor-scan 02-market/competitors.md "gap: <one line>" \
-  --set-day 2 outcome "<the gap sentence>"
+  --patch '{"days":{"2":{"outcome":"<the gap sentence>"}}}'
 ```
 
 If the gap changed your plan, add a line to `DECISIONS.md` saying which gap you chose and why.

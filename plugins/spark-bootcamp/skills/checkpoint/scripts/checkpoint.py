@@ -46,9 +46,9 @@ DAY_TARGET = {
 FIRST_COMMAND = {
     1: cmd("d1-refine-idea"),
     2: cmd("d2-market-map"),
-    3: cmd("d3-scope"),
-    4: cmd("d4-offer"),
-    5: cmd("d5-send"),
+    3: cmd("d3-product-context"),
+    4: cmd("d4-usability-plan"),
+    5: cmd("d5-triage"),
 }
 
 

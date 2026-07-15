@@ -93,11 +93,11 @@ def _get(row, *names):
 
 
 def load_scorecard(root):
-    path = os.path.join(root, "03-product", "buying-signal-scorecard.csv")
+    path = os.path.join(root, "04-gtm", "buying-signal-scorecard.csv")
     rows = _read_csv(path)
     people = []
     if rows is None:
-        print("  - scorecard missing (03-product/buying-signal-scorecard.csv), skipping")
+        print("  - scorecard missing (04-gtm/buying-signal-scorecard.csv), skipping")
         return people
     for r in rows:
         name = _get(r, "name", "prospect", "person")

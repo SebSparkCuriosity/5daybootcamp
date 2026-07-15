@@ -7,7 +7,7 @@ Two modes:
 
 Reads (from the founder's project, cwd):
   03-product/requirements-moscow.md  (the Must list)
-  03-product/tech-stack.md           (one-line description)
+  03-product/docs/tech-stack.md           (one-line description)
   .spark/state.json                  (founder, idea, business_type)
 
 Writes:

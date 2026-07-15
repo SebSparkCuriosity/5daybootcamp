@@ -1,25 +1,25 @@
 ---
 name: Review The Week
 description: Packages the whole week into one index and scores it honestly, then calls audit-pack. The last thing you run on Day 5, after the deal is closed and logged.
-when_to_use: Day 5, the final step, after d5-close has written 05-sale/sale.md. Use it to hand yourself a launch package, an honest scorecard, and a keep-it-running plan for the MVP.
+when_to_use: Day 5, the final step, after d5-close has written 05-sale/WON-DEAL.md. Use it to hand yourself a launch package, an honest scorecard, and a keep-it-running plan for the MVP.
 ---
 
 # Review The Week
 
 **What this does.** Pulls the five core artefacts you built (MVP, pitch deck, sales deck, brochure or live page, launch checklist) plus the deal into one index, states every headline number, writes an honest scorecard of target versus achieved, and calls audit-pack.
 **Why it matters.** By Friday afternoon your week is scattered across five folders and your own head. A prospect, a partner or a regulator wants one link, not a tour. This gives you that link, tells you honestly whether you hit your number, and, crucially, writes down how to keep the Claude-built MVP running once you walk away from the bootcamp. A working product nobody can log into is not an asset.
-**You are ready for this when.** Day 5 is otherwise done: `05-sale/sale.md` exists (from d5-close), and `.spark/state.json` records your headline target and each day's outcome.
+**You are ready for this when.** Day 5 is otherwise done: `05-sale/WON-DEAL.md` exists (from d5-close), and `.spark/state.json` records your headline target and each day's outcome.
 
 ## Before you start
 This skill reads a lot and invents nothing. It links what exists and marks the rest ABSENT. It reads, from the founder's project root:
 - `.spark/state.json` (via the journey-state helper): the headline target and every day's target and outcome.
 - The five core artefacts, wherever they landed: `03-product/site/index.html` or `03-product/BUILD-LOG.md` (the MVP), `02-market/pitch-deck.*`, `04-gtm/sales-deck.*`, `03-product/site/index.html` (the live page), `04-gtm/gtm-plan.md` (the launch checklist).
-- The deal: `05-sale/sale.md`, falling back to `05-sale/PROPOSAL.md` or `05-sale/outreach-log.md`.
+- The deal: `05-sale/WON-DEAL.md`, falling back to `05-sale/PROPOSAL.md` or `05-sale/outreach-log.md`.
 
 Guardrail: this is a review, not a rewrite. If a number is missing, the fix is to go back and log it properly, not to type a flattering one into the package. The whole value of the pack is that it matches reality.
 
 ## Steps
-1. Confirm the deal is closed and logged. If `05-sale/sale.md` does not exist, stop and run d5-close first. Reviewing a week with no logged ask is reviewing half a week.
+1. Confirm the deal is closed and logged. If `05-sale/WON-DEAL.md` does not exist, stop and run d5-close first. Reviewing a week with no logged ask is reviewing half a week.
 2. Build the package and scorecard in one command, run from the founder's project root:
    ```
    python3 ${CLAUDE_SKILL_DIR}/scripts/build_review.py --root .

@@ -8,10 +8,10 @@ when_to_use: Day 5 sale, after the proposition is written and before you build t
 
 **What this does.** Picks one pricing model and writes down why, names the thing you charge against (the value metric), and records a one-line reason for each model you rejected.
 **Why it matters.** How you charge decides who buys, how fast they say yes, and whether the work is worth doing. Founders default to hourly because it feels safe. It is the worst of the four for almost everyone here: it caps your income at the clock, invites haggling, and tells a regulated buyer nothing about the outcome. Choose the model first, then the number. Not the other way round.
-**You are ready for this when.** `03-product/proposition.md` exists and names the customer success metric.
+**You are ready for this when.** `02-market/proposition.md` exists and names the customer success metric.
 
 ## Before you start
-Read `03-product/proposition.md`, specifically the customer success metric (the numeric outcome the customer gets). Read `.spark/state.json` for `business_type` and `headline_target`. If you have not read `${CLAUDE_SKILL_DIR}/references/pricing-models.md`, read it now: it explains the four models, when each wins, and the Jersey and regulated-sector notes.
+Read `02-market/proposition.md`, specifically the customer success metric (the numeric outcome the customer gets). Read `.spark/state.json` for `business_type` and `headline_target`. If you have not read `${CLAUDE_SKILL_DIR}/references/pricing-models.md`, read it now: it explains the four models, when each wins, and the Jersey and regulated-sector notes.
 
 Guardrail: this skill chooses a model and a value metric. It does not send a proposal or take a payment. No money moves until the founder signs off in the sale step.
 
@@ -36,4 +36,4 @@ Append one line to CHANGELOG.md via the logbook helper: date, `d5-pricing-model`
 - state: `${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py`
 
 ## If it goes wrong
-If you genuinely cannot separate two models, default to the one-off build fee for hardware and services and pay-for-access plus build-in-partnership for software, and write "provisional, revisit after first sale" in the reason. A provisional model you can price today beats a perfect model you argue about all week. If the success metric will not sharpen into a number, go back to `d3` and fix the proposition before pricing anything.
+If you genuinely cannot separate two models, default to the one-off build fee for hardware and services and pay-for-access plus build-in-partnership for software, and write "provisional, revisit after first sale" in the reason. A provisional model you can price today beats a perfect model you argue about all week. If the success metric will not sharpen into a number, go back to `d2` and fix the proposition before pricing anything.

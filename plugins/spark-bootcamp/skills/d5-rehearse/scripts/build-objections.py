@@ -5,7 +5,7 @@ Degrades gracefully: if the Day 4 file is missing or unreadable, it falls back t
 the standard eight alone and tells you so. It never crashes.
 
 Usage:
-  python3 build-objections.py --day4 04-gtm/icp-messaging.md --out 05-sale/OBJECTIONS.md
+  python3 build-objections.py --day4 04-gtm/messaging.md --out 05-sale/OBJECTIONS.md
 """
 import argparse
 import os
@@ -60,7 +60,7 @@ def extract_objections(path):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--day4", default="04-gtm/icp-messaging.md",
+    ap.add_argument("--day4", default="04-gtm/messaging.md",
                     help="Path to the Day 4 icp-messaging file.")
     ap.add_argument("--out", default="05-sale/OBJECTIONS.md",
                     help="Where to write the seeded objections file.")

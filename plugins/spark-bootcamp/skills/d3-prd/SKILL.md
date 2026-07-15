@@ -8,13 +8,13 @@ when_to_use: Day 3 product, straight after d3-story-map and d3-moscow, before yo
 
 **What this does.** Turns your story map and your MoSCoW cut into a single build brief Claude Code (or you) can build from without guessing.
 **Why it matters.** A vague brief is the most expensive thing you can carry into build day. Every ambiguity becomes a question mid-build, and every question is an hour you do not have this week. Nail the brief and the build is mechanical. Every Must becomes a numbered requirement, every Won't becomes a written non-goal, and the whole thing points at one number.
-**You are ready for this when.** `03-product/story-map.md` and your MoSCoW cut (usually `03-product/moscow.md`) both exist.
+**You are ready for this when.** `03-product/story-map.md` and your MoSCoW cut (usually `03-product/requirements-moscow.md`) both exist.
 
 ## Before you start
 Read these three, in this order:
 
 - `03-product/story-map.md`: the user journey, step by step.
-- `03-product/moscow.md`: your Must, Should, Could, Won't cut.
+- `03-product/requirements-moscow.md`: your Must, Should, Could, Won't cut.
 - `.spark/state.json`: `business_type`, `idea` and `headline_target`. The brief must serve the headline target, not drift off it.
 
 One rule before you touch the brief: only the **Musts** go in as requirements this week. Shoulds and Coulds are listed as "later", never built now. If a Must does not trace back to a step on the story map, it is not really a Must. Send it back.
@@ -51,7 +51,7 @@ Writes two files:
 What good looks like: someone who has never heard your pitch can read the PRD and build the right thing without asking you a single question. Every Must is a numbered R. Nothing in the non-goals sneaks back into a requirement. The metric is a number with a deadline.
 
 ## Done when
-The checker passes: every Must from `moscow.md` maps to a numbered requirement in `PRD.md`, the non-goals section is non-empty, and the success metric contains a number. Both files exist and `functional-spec.md` names every field and every action on every screen or step.
+The checker passes: every Must from `requirements-moscow.md` maps to a numbered requirement in `PRD.md`, the non-goals section is non-empty, and the success metric contains a number. Both files exist and `functional-spec.md` names every field and every action on every screen or step.
 
 ## Log it
 Append one line to `CHANGELOG.md` via the logbook helper, with the requirement count as the numeric result:
@@ -59,19 +59,18 @@ Append one line to `CHANGELOG.md` via the logbook helper, with the requirement c
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py \
   --skill d3-prd \
-  --path 03-product/docs/PRD.md \
+  --artefact 03-product/docs/PRD.md \
   --result "<N> requirements, metric set"
 ```
 
-Then update state via the journey-state helper, recording the Day 3 target and marking progress:
+Then update state via the journey-state helper, recording the Day 3 target:
 
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py \
-  --add-artefact d3-prd:03-product/docs/PRD.md:"<N> requirements" \
-  --set-day-target 3:"Build brief written, <N> requirements"
+  --patch '{"days":{"3":{"target":"Build brief written, <N> requirements"}}}'
 ```
 
 Record any scope call you made (a Must you demoted, a Should you refused) in `DECISIONS.md` with one line of rationale.
 
 ## If it goes wrong
-If you have more than 7 Must requirements, you have not cut hard enough. A five-day week builds 3 to 5 Musts well, or 8 Musts badly. Go back to `moscow.md`, demote the weakest Musts to Should, and note why in `DECISIONS.md`. If you cannot state the success metric as a number, the idea is still too fuzzy to build; return to Day 1's idea brief and sharpen the outcome before you write a line of code.
+If you have more than 7 Must requirements, you have not cut hard enough. A five-day week builds 3 to 5 Musts well, or 8 Musts badly. Go back to `requirements-moscow.md`, demote the weakest Musts to Should, and note why in `DECISIONS.md`. If you cannot state the success metric as a number, the idea is still too fuzzy to build; return to Day 1's idea brief and sharpen the outcome before you write a line of code.

@@ -8,11 +8,11 @@ when_to_use: Day 4 go-to-market, after d4-intake-process, when you have a way fo
 
 **What this does.** Turns "you're in" into a document a new client can hold: 6 sections, a week-1 timeline they can follow, and a named human they can email, exported to a PDF.
 **Why it matters.** The gap between a client saying yes and feeling looked after is where trust leaks out. A first week that feels handled is the cheapest retention you will ever buy, and in regulated Jersey sectors it doubles as evidence you take onboarding seriously. Say who does what, by when, and who to call. That is the whole job.
-**You are ready for this when.** `04-gtm/intake-process.md` exists.
+**You are ready for this when.** `04-gtm/ops/intake-process.md` exists.
 
 ## Before you start
 Read these two files:
-- `04-gtm/intake-process.md`: how a prospect becomes a client, so the pack picks up exactly where intake ends.
+- `04-gtm/ops/intake-process.md`: how a prospect becomes a client, so the pack picks up exactly where intake ends.
 - `.spark/brand/brand.json`: name, colours, contact details, so the pack looks like you and not a template.
 
 If `brand.json` is missing, the pack still builds; it just uses plain styling. Do not block on it.
@@ -55,12 +55,11 @@ Append one line to `CHANGELOG.md` via the logbook helper, and update `.spark/sta
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py \
   --skill d4-onboarding-pack \
-  --path 04-gtm/onboarding-pack.pdf \
+  --artefact 04-gtm/onboarding-pack.pdf \
   --result "6 sections, 5-day week-1 timeline, named contact"
 
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py \
-  --add-artefact d4-onboarding-pack 04-gtm/onboarding-pack.pdf "onboarding pack built" \
-  --set-day-outcome 4 "onboarding pack ready to hand to first client"
+  --patch '{"days":{"4":{"outcome":"onboarding pack ready to hand to first client"}}}'
 ```
 
 ## If it goes wrong

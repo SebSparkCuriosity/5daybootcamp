@@ -8,12 +8,12 @@ when_to_use: Day 4 GTM, after the landing page is live and the buying-signal sco
 
 **What this does.** Turns your scattered signals into one ranked list of 10 named people, warmest first, each with a single next action, and hands the warmest one straight to Day 5.
 **Why it matters.** By Day 4 you have interest from three places: people who scored well in interviews, people who filled in your landing page, and your own scorecard. On their own they are noise. Ranked by warmth, they become a queue you work top to top down. The warmest prospect closes far faster than a cold one, so you start there, not at the top of an alphabet.
-**You are ready for this when.** `03-product/buying-signal-scorecard.csv` exists and your landing page has been live long enough to capture at least a few real visitors.
+**You are ready for this when.** `04-gtm/buying-signal-scorecard.csv` exists and your landing page has been live long enough to capture at least a few real visitors.
 
 ## Before you start
 Read these three inputs (the script pulls them for you, but know what they are):
 
-- `03-product/buying-signal-scorecard.csv`: your scored signals from Day 3.
+- `04-gtm/buying-signal-scorecard.csv`: your scored signals from Day 3.
 - The landing capture store: whoever filled in your Day 4 page. For software and services this is usually `04-gtm/landing-captures.csv`; for hardware it is your pre-order or waitlist export, same path. If your capture lives in Supabase or a form tool, export it to that CSV first.
 - `01-discovery/interviews/` or `01-discovery/interview-notes.md`: the interviewees you tagged with a strong buying signal on Day 1.
 
@@ -61,15 +61,15 @@ Append one line to CHANGELOG.md via the logbook helper, with the number of ranke
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py \
   --skill d4-gtm-plan \
-  --path 04-gtm/gtm-plan.md \
+  --artefact 04-gtm/gtm-plan.md \
   --result "10 prospects ranked, #1 handed to Day 5"
 ```
 
-Then update state via the journey-state helper: set `days.4.outcome` to the count and mark `days.4.complete` true when #1 is chosen.
+Then update state via the journey-state helper: set `days.4.outcome` to the count. Do not set `complete` here; the day is closed by checkpoint after d4-book-sale.
 
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py \
-  --day 4 --outcome "10 ranked, #1 chosen" --complete true
+  --patch '{"days":{"4":{"outcome":"10 ranked, #1 chosen"}}}'
 ```
 
 If you promoted a cooler prospect to #1, record the why in DECISIONS.md.

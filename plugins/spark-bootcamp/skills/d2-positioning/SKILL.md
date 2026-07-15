@@ -66,7 +66,7 @@ Append one line to `CHANGELOG.md` via the logbook helper, with the numeric resul
 ```
 python ${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py \
   --skill d2-positioning \
-  --path 02-market/positioning.md \
+  --artefact 02-market/positioning.md \
   --result "Moore statement + 2x2 with 7 players, USP in 11 words"
 ```
 
@@ -74,8 +74,7 @@ Update state via the journey-state helper, recording the USP as the Day 2 outcom
 
 ```
 python ${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py \
-  --add-artefact d2-positioning 02-market/positioning.md "USP: <the one line>" \
-  --set-day 2 outcome "<the USP>"
+  --patch '{"days":{"2":{"outcome":"<the USP>"}}}'
 ```
 
 If your position changed which segment or claim you chase, add a dated line to `DECISIONS.md` saying what you chose and why.

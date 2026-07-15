@@ -73,11 +73,6 @@ Replace the track and keep the result to a short numeric or observable line. The
 python3 "${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py" \
   --patch '{"current_day":3,"days":{"3":{"target":"Build the MVP live and actionable for the path","outcome":"product context set, MVP in one sentence"}}}'
 ```
-Then register the artefact:
-```
-python3 "${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py" \
-  --append-artefact '{"skill":"d3-product-context","path":"03-product/product-context.md","result":"Track confirmed, MVP in one sentence"}'
-```
 If you narrowed the MVP in a way that changes what Day 3 builds, log it as a dated decision with its rationale in DECISIONS.md via the logbook helper's `--decision` and `--rationale` flags.
 
 ## If it goes wrong
