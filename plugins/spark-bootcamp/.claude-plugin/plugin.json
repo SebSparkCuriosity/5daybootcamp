@@ -1,0 +1,21 @@
+{
+  "name": "spark-bootcamp",
+  "version": "1.0.0",
+  "description": "Five days from a raw idea to a first paying customer. A guided sprint for founders, built for Digital Jersey's cohort by Spark AI Agency.",
+  "author": {
+    "name": "Spark AI Agency",
+    "email": "seb@sparkcuriosityhq.com",
+    "url": "https://sparkconsulting.tech"
+  },
+  "homepage": "https://sparkconsulting.tech",
+  "license": "UNLICENSED",
+  "keywords": [
+    "startup",
+    "bootcamp",
+    "customer-discovery",
+    "mvp",
+    "pitch-deck",
+    "go-to-market",
+    "jersey"
+  ]
+}

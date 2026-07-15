@@ -1,0 +1,22 @@
+{
+  "name": "spark",
+  "owner": {
+    "name": "Spark AI Agency",
+    "email": "seb@sparkcuriosityhq.com"
+  },
+  "description": "Spark AI Agency plugins. Idea to system.",
+  "plugins": [
+    {
+      "name": "spark-bootcamp",
+      "source": "./plugins/spark-bootcamp",
+      "description": "Five days from a raw idea to a first paying customer.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Spark AI Agency",
+        "email": "seb@sparkcuriosityhq.com"
+      },
+      "homepage": "https://sparkconsulting.tech",
+      "keywords": ["startup", "bootcamp", "mvp", "go-to-market"]
+    }
+  ]
+}
