@@ -48,8 +48,7 @@ python3 ${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py --skill d3-landing-s
 ```
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py \
-  --patch '{"days": {"3": {"outcome": "landing live: <your-domain>"}}}' \
-  --append-artefact '{"skill":"d3-landing-site","path":"03-product/site/index.html","result":"live: <your-domain>, 1 test capture"}'
+  --patch '{"days": {"3": {"outcome": "landing live: <your-domain>"}}}'
 ```
 If the a11y check changed a colour or layout, log that as a dated line with rationale in DECISIONS.md.
 
