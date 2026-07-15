@@ -43,12 +43,7 @@ Append one line to CHANGELOG.md and record the artefact in state.json:
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py \
   --skill audit-pack \
-  --path .spark/deliverables/audit-pack.md \
-  --result "<N> artefacts compiled"
-
-python3 ${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py \
-  add-artefact --skill audit-pack \
-  --path .spark/deliverables/audit-pack.md \
+  --artefact .spark/deliverables/audit-pack.md \
   --result "<N> artefacts compiled"
 ```
 Replace `<N>` with the artefact count the script printed.

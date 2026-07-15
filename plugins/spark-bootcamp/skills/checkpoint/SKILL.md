@@ -35,8 +35,8 @@ python3 "${CLAUDE_SKILL_DIR}/scripts/checkpoint.py" <open|close>
 5. **Write the target.** Only after the yes:
 
    ```
-   python3 "${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py" set-day \
-     --day <n> --target "<the one confirmed target, with its number>"
+   python3 "${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py" \
+     --patch '{"days":{"<n>":{"target":"<the one confirmed target, with its number>"}}}'
    ```
 
    Use the current day number the script reported. Do not hand-edit `state.json`; the helper serialises writes so parallel skills never clobber each other.
@@ -51,14 +51,15 @@ python3 "${CLAUDE_SKILL_DIR}/scripts/checkpoint.py" <open|close>
 6. **Write the outcome and mark the day complete.** Only after the yes:
 
    ```
-   python3 "${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py" set-day \
-     --day <n> --outcome "<what actually happened, with the number>" --complete
+   python3 "${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py" \
+     --patch '{"days":{"<n>":{"outcome":"<what actually happened, with the number>","complete":true}}}'
    ```
 
    Then advance the sprint to tomorrow (skip this after Day 5, which is the last day):
 
    ```
-   python3 "${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py" set-current-day <n+1>
+   python3 "${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py" \
+     --patch '{"current_day":<n+1>}'
    ```
 
 7. **Point at tomorrow.** The script prints tomorrow's first command. Say it in plain words: "Tomorrow, open with `/spark-bootcamp:d2-market-map`." After Day 5, point them at `/spark-bootcamp:coach` to see where they landed.

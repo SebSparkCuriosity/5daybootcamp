@@ -34,12 +34,8 @@ One guardrail: do not overthink the idea here. You are not committing to it fore
 6. **Initialise state.** Once the founder confirms, write `.spark/state.json` via the journey-state helper. Do not hand-edit the file. Run:
 
    ```
-   python3 "${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py" init \
-     --founder "<first name>" \
-     --business-type "<software|hardware|services>" \
-     --idea "<the one sentence>" \
-     --headline-target "<the target with its number>" \
-     --current-day 1
+   python3 "${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py" \
+     --patch '{"founder":"<first name>","business_type":"<software|hardware|services>","idea":"<the one sentence>","headline_target":"<the target with its number>","current_day":1}'
    ```
 
    The helper creates the `.spark/` folder and day folders if they do not exist, and sets `days` to the five-day skeleton with each day's `complete` flag `false`. See `references/state-shape.md` for the exact object it writes and the full field list.
@@ -65,7 +61,7 @@ python3 "${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py" \
   --result "<the headline target>"
 ```
 
-The `init` call in step 6 already set `.spark/state.json`, so no separate state update is needed here. Then point the founder to the coach in plain words: "You are set up. Run `/spark-bootcamp:coach` and I will walk you into Day 1."
+The `update-state.py` call in step 6 already set `.spark/state.json`, so no separate state update is needed here. Then point the founder to the coach in plain words: "You are set up. Run `/spark-bootcamp:coach` and I will walk you into Day 1."
 
 ## If it goes wrong
 - **The helper is missing or errors.** Do not fall back to hand-writing `.spark/state.json`; a malformed state file will break every skill after this one. Tell the founder the journey-state skill has not installed correctly and stop. The fix is reinstalling the plugin, not patching the file.

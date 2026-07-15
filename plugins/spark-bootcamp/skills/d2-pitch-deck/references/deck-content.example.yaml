@@ -1,0 +1,70 @@
+# Example pitch-deck content for build_deck.py.
+# Copy this to 02-market/deck-content.yaml, replace every value with your own
+# from the 02-market artefacts and your Day 1 quotes, then run the builder.
+#
+# The `source:` lines are for your audit trail. build_deck.py ignores them.
+# Every claim below traces to a quote (with a role) or a sourced figure.
+# No em dashes. British spelling. One point per slide.
+#
+# Slide 1 is the title block (title + subtitle). The 11 items under slides:
+# are slides 2 to 12. Twelve in total.
+
+title: Rekey once, file everywhere
+subtitle: Trust admin, done in five minutes not forty. Fixed price from 2,000 pounds.
+
+slides:
+  - heading: The problem
+    body: "“I type the same client details into four systems, and if I fumble one, that is an audit finding.” A senior trust administrator, Jersey. Twelve of fourteen we interviewed said the same."
+    source: Day 1 verbatim quote, 01-discovery/discovery-synthesis.md
+    notes: Lead with the voice. Do not explain it.
+
+  - heading: The solution
+    body: One intake form that writes to all four systems at once, with every change logged and a person signing off before anything is filed. Rekeying drops from 40 minutes to under 5 per client.
+    source: Founder pilot design; time figures are a target, flagged as assumption until measured.
+
+  - heading: Why now
+    bullets:
+      - The JFSC now expects a documented audit trail on every client change
+      - Off-island software rekeys blindly, with no local sign-off step
+    source: JFSC handbook 2025; competitor-scan.md.
+
+  - heading: The market
+    bullets:
+      - TAM, all Channel Islands trust and fund admin back-office spend, 42m pounds a year
+      - SAM, Jersey firms of 5 to 250 people, 9m pounds a year
+      - SOM, year one, 120,000 pounds
+    source: 02-market/market-sizing.md, triangulated within 2x.
+
+  - heading: How it works
+    bullets:
+      - One form, filled once by the administrator
+      - Writes to all four systems, every field logged
+      - A person reviews and signs off before filing
+    source: Product design, 03-product to follow.
+
+  - heading: Who they use today
+    body: "A spreadsheet and four log-ins. The off-island tools rekey without a local sign-off step, so the audit gap stays open. We win on the one axis that matters here: an auditable trail built for the JFSC."
+    source: 02-market/competitor-scan.md.
+
+  - heading: The model
+    body: Fixed price from 2,000 pounds for the first workflow, live in one to six weeks, then a monthly seat fee. One firm of ten administrators pays back the build in under a quarter.
+    source: 02-market/pricing.md.
+
+  - heading: How they hear about us
+    body: One channel first. Warm introductions through the Jersey Finance network, where the founder has 30-plus direct contacts. Ten conversations, not a campaign.
+    source: Founder network; 04-gtm to follow.
+
+  - heading: What we already know
+    bullets:
+      - 14 interviews run in five days
+      - 12 confirmed the rekeying pain unprompted
+      - "“If this logged every change, I would buy it tomorrow.” Compliance lead, fund admin firm"
+    source: 01-discovery/validated-problem.md and discovery-synthesis.md.
+
+  - heading: Why us
+    body: The founder spent nine years inside Jersey trust administration and felt this pain personally. The network, the sector knowledge and the regulator fluency are the unfair advantage.
+    source: Founder background.
+
+  - heading: The ask
+    body: We are looking for one design partner firm to run a two-week paid pilot on a workflow you choose. If the rekeying time does not fall below ten minutes, you do not pay the balance. Next step, a 30-minute scoping call this week.
+    source: Founder offer.

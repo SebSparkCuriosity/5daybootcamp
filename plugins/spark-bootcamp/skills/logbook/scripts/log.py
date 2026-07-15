@@ -132,7 +132,7 @@ def main():
     ap.add_argument("--root", help="Project root holding .spark (default: nearest .spark ancestor)")
     # CHANGELOG mode
     ap.add_argument("--skill", help="Skill id producing the artefact")
-    ap.add_argument("--artefact", help="Path to the artefact, relative to the project root")
+    ap.add_argument("--artefact", "--path", dest="artefact", help="Path to the artefact, relative to the project root (--path is accepted as an alias)")
     ap.add_argument("--result", help="The numeric or observable result, e.g. '10 interviews targeted'")
     # DECISIONS mode
     ap.add_argument("--decision", help="The decision taken (switches to DECISIONS mode)")

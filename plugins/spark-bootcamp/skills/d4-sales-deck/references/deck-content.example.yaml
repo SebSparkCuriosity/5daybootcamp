@@ -1,0 +1,78 @@
+# Example sales-deck content for build_deck.py.
+# Copy this to 04-gtm/sales-deck-content.yaml, replace every value with your own
+# from 04-gtm/feedback-synthesis.md and 02-market/messaging.md, then run the
+# builder. This deck closes ONE named prospect, so address it to that person.
+#
+# The `source:` lines are for your audit trail. build_deck.py ignores them.
+# Every proof point below is a real tester quote with a role and a result.
+# No em dashes. British spelling. One point per slide.
+#
+# Slide 1 is the title block (title + subtitle). The items under slides: are
+# the rest. Aim for 10 to 14 slides in total, title block included.
+#
+# The five core sections must all be present: problem, solution, proof (2+),
+# pricing, and the ask. They are marked CORE below.
+
+title: Rekey once, file everywhere
+subtitle: "Prepared for Jane Roe, Head of Trust Admin at Example Trust Co. Live in three weeks, fixed price from 2,500 pounds."
+
+slides:
+  # CORE: problem
+  - heading: Your world right now
+    body: "“I type the same client details into four systems, and if I fumble one, that is an audit finding.” That was a senior trust administrator in your own line of work. You told us the same on our call."
+    source: 04-gtm/feedback-synthesis.md, tester T3 verbatim; prospect call notes.
+    notes: Read the quote. Do not explain it. Let Jane recognise herself.
+
+  - heading: What it costs today
+    body: Forty minutes per client onboarding, done four times over, and one mistyped field is a reportable finding. Across your team that is roughly two days a week rekeying.
+    source: Tester time logs, 04-gtm/feedback-synthesis.md; team size a stated assumption to confirm with Jane.
+
+  # CORE: solution
+  - heading: What we built
+    body: One intake form that writes to all four systems at once, with every change logged and a person signing off before anything files. Rekeying drops from 40 minutes to under 5 per client.
+    source: Working slice, 03-product; time figures measured with testers, 04-gtm/feedback-synthesis.md.
+
+  - heading: How it works
+    bullets:
+      - One form, filled once by the administrator
+      - Writes to all four systems, every field logged
+      - A person reviews and signs off before anything files
+    source: Product design, 03-product; live at the URL on the next slide.
+
+  # CORE: proof, first point
+  - heading: What the testers found
+    body: "“I did a full onboarding in four minutes and did not touch the other systems once. First time in years I trusted the record.” A trust administrator, one of eight who tested it. She onboarded three clients that afternoon."
+    source: 04-gtm/feedback-synthesis.md, tester T1 verbatim, result reported same session.
+
+  # CORE: proof, second point
+  - heading: And they were not alone
+    body: "“The sign-off step is the bit my compliance officer will love. Nothing files without a name against it.” A senior manager at a 40-person firm. He asked to be first on the pilot."
+    source: 04-gtm/feedback-synthesis.md, tester T5 verbatim, result reported on the call.
+
+  - heading: What you get, and what you do not
+    bullets:
+      - In, one intake form wired to your four systems, with logging and sign-off
+      - In, three weeks of build, weekly demo, and a walkthrough for your team
+      - Out, migrating historic records, that is a later phase we can quote
+    source: Scope agreed with founder; historic migration flagged as out of pilot.
+
+  - heading: When it is live
+    bullets:
+      - Week 1, your four systems connected, first form working end to end
+      - Week 2, logging and the sign-off step, tested with two of your admins
+      - Week 3, live with your team, handover and a short guide
+    source: Spark delivery framing, one to six weeks; three weeks agreed for this scope.
+
+  # CORE: pricing
+  - heading: What it costs
+    body: Fixed price, 2,500 pounds, paid on delivery in week three. That includes the build, the weekly demos, and the team walkthrough. No day rates, no surprises.
+    source: 02-market/pricing.md; exact figure confirmed with founder before sending.
+
+  - heading: Why us
+    body: We build for regulated Jersey firms and log every change so your regulator nods rather than flinches. We have already shipped this slice and eight administrators have used it.
+    source: Founder track record; tester count from 04-gtm/feedback-synthesis.md.
+
+  # CORE: the ask and next step
+  - heading: The next step
+    body: Start the pilot on Monday. We book a 30-minute kickoff this week, you name the two admins who test in week two, and you are live by the end of the month. Say yes and I send the one-page order form today.
+    source: Named next step; order form and kickoff owned by founder.
