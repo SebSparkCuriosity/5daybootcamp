@@ -77,6 +77,27 @@ can act on":
 The `business-profile` skill holds the one variance matrix, one row per day per path, so a new
 day skill needs one new row, not three copies.
 
+## Efficiency conventions (the cohort has a usage limit)
+
+Founders pay for tokens, so every skill earns its keep. The rules:
+
+- **Body under ~45 lines.** Three-line header (what, one warm why, ready-when), then terse
+  numbered steps. No hedging, no repetition, no restating the obvious.
+- **One log call.** `log.py --skill --artefact --result` already registers the artefact in
+  state. Only add an `update-state.py --patch` when the skill sets a day target, outcome or
+  completion (checkpoint and day-closing skills). Never log the same thing twice.
+- **Read compact, not whole.** Read `.spark/state.json` for context. Read a prior artefact only
+  when the skill transforms its content, and only the part it needs. Let scripts extract inputs.
+- **Scripts do the mechanical work.** Reading, scaffolding, validating and checking done-conditions
+  belong in `scripts/`, which run in Bash and never enter the model context. Claude fills only the
+  judgement gaps the script marks. Scripts print PASS or a short "missing: ..." list, nothing more.
+- **No inline templates.** Long templates live in `references/` (loaded on demand) or inside the
+  scaffold script, never pasted into SKILL.md.
+- **Fresh-session friendly.** Never rely on chat history. Always read from disk, so a founder can
+  start each day in a clean session and `coach` rebuilds from `state.json`.
+- **Tight frontmatter.** `description` under 160 characters, `when_to_use` under 120. These sit in
+  context on every turn, so they carry the trigger and nothing else.
+
 ## SKILL.md house structure
 
 Every skill is `plugins/spark-bootcamp/skills/<skill-id>/SKILL.md` with this frontmatter and shape:

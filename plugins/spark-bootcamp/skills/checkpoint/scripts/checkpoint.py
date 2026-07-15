@@ -236,7 +236,10 @@ def do_close(state):
         block(
             "Tomorrow's first move",
             "Once I mark today complete, Day {d} opens with:\n\n  {c}\n\n"
-            "Start there tomorrow.".format(d=n + 1, c=nxt),
+            "Start tomorrow in a FRESH session (or run /clear first). It keeps "
+            "Claude fast and cheap, and your usage lasts the week. Your progress "
+            "lives on disk, so nothing is lost: open a new session, run "
+            "/spark-bootcamp:coach, and I will pick up right here.".format(d=n + 1, c=nxt),
         )
     else:
         block(

@@ -48,6 +48,14 @@ This checks your machine, lays out your project, and prints the pre-work you nee
 
 From there, `/spark-bootcamp:coach` always tells you where you are and the one command to run next.
 
+## Keeping your Claude usage low
+
+The week is designed so you never need one long, expensive session. Every result
+is saved to disk (`.spark/state.json` and your day folders), and `coach` rebuilds
+your exact position from it. So start each day in a fresh session, or run `/clear`
+between steps, then run `/spark-bootcamp:coach` and carry on. A fresh session
+keeps Claude fast and makes your usage last the whole week.
+
 ## What is inside
 
 One plugin, 60 skills, organised as a five-day journey plus a spine that holds it together (a
