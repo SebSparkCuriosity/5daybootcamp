@@ -1,41 +1,37 @@
 ---
 name: Book The Sale
-description: Takes your warmest named prospect and gets a confirmed Friday meeting in the calendar. Use on Day 4 after the GTM plan, before Thursday's checkpoint closes.
-when_to_use: Day 4 go-to-market, straight after gtm-plan. The gating number on Thursday's close: no confirmed Friday slot, Day 4 is not done.
+description: Turns your warmest named prospect into a confirmed Friday meeting. Day 4, after gtm-plan, before Thursday's checkpoint closes.
+when_to_use: Day 4, straight after gtm-plan. No confirmed Friday slot means Day 4 is not done.
 ---
 
 # Book The Sale
 
-**What this does.** Turns the single warmest prospect in your GTM plan into a confirmed Friday meeting: the right person, a specific time, and a reply that says yes.
-**Why it matters.** Everything this week points at one thing, a real conversation with a real buyer on Friday. Nothing else in the plan actually books it. Regulated buyers in finance, trust and law rarely take a same-day meeting, so if you ask on Friday morning you have already lost. You ask on Thursday, for Friday, with a time already on the table.
+**What this does.** Turns the single warmest prospect in your GTM plan into a confirmed Friday meeting: right person, specific time, a reply that says yes.
+**Why it matters.** The whole week points at one real conversation with a real buyer, and regulated buyers rarely take a same-day meeting, so you ask on Thursday for Friday with a time already on the table.
 **You are ready for this when.** `04-gtm/gtm-plan.md` exists and names at least one prospect.
 
 ## Before you start
-Read `04-gtm/gtm-plan.md` and pick the ONE warmest prospect. Warmest means: a named human, a real channel to reach them (email, LinkedIn, phone, a mutual introduction), and a reason they would care this week. Not a company. A person.
+Read `04-gtm/gtm-plan.md` and pick the ONE warmest prospect: a named human, a real channel to reach them, and a reason they care this week. A person, not a company. Read `.spark/brand/brand.json` for your name and proposition if it exists.
 
-Read `.spark/brand/brand.json` for your name and one-line proposition if it exists.
-
-Guardrail: this skill drafts the message and gets it right. It does not send anything or book anything on anyone's behalf until you have read it and said go. Human sign-off before the message leaves your hands. That is a hard rule.
+Guardrail: this skill drafts and refines the message only. Nothing sends or books until you have read it and said go. Human sign-off before it leaves your hands. Hard rule.
 
 ## Steps
-1. Name the person. One line: who they are, where they work, and the single sentence of pain your idea removes for them. If you cannot write that sentence, they are not your warmest prospect. Pick again.
-2. Choose the channel they actually reply on. A trust officer replies to email, not a LinkedIn DM. A tradesperson replies to a text. Match the channel to the person, not to your comfort.
-3. Offer two specific Friday times, not "are you free Friday?". Give them a 20-minute slot and a fallback, for example "Friday 15 July, 10:00 or 14:00, 20 minutes, video or your office". A choice of two converts far better than an open question. One decision, not a diary negotiation.
-4. Draft the ask with the helper: run `python3 ${CLAUDE_SKILL_DIR}/scripts/draft-ask.py` and answer the prompts. It writes a tight message using the structure in `${CLAUDE_SKILL_DIR}/references/ask-templates.md`: one line of context, the reason it helps them, the two times, a one-line no-pressure exit. Keep it under 120 words. Regulated buyers distrust a wall of text.
-5. Read the draft out loud. Cut anything that sounds like a pitch. You are asking for 20 minutes to learn, not to sell. Sign off, then send it yourself through your own email or messaging.
-6. When they reply, lock it. Confirm the time in writing and, if you use Google Calendar, create the hold so it is real and it reminds both of you. The helper prints the exact confirmation line.
-7. If they go quiet by Thursday afternoon, send one short nudge and move to your second-warmest prospect in parallel. Two live asks beat one perfect one.
+1. Name the person: who they are, where they work, the one sentence of pain you remove. Can't write it? Pick again.
+2. Choose the channel they actually reply on (email for a trust officer, text for a tradesperson). Match to the person, not your comfort.
+3. Offer two specific 20-minute Friday times plus a fallback, never "are you free Friday?". Two choices convert far better than an open question.
+4. Draft the ask: run `python3 ${CLAUDE_SKILL_DIR}/scripts/draft-ask.py` and answer the prompts. It uses `${CLAUDE_SKILL_DIR}/references/ask-templates.md`: one line of context, why it helps them, the two times, a no-pressure exit. Under 120 words.
+5. Read it aloud, cut anything that sounds like a pitch (you want 20 minutes to learn, not to sell), then send it yourself.
+6. When they reply, lock it: confirm the time in writing and, in Google Calendar, create the hold. The helper prints the confirmation line.
+7. Quiet by Thursday afternoon: send one short nudge and start your second-warmest prospect in parallel.
 
 ## The artefact
-Writes `04-gtm/friday-meeting.md` in Markdown: the prospect (name, role, firm), the channel, the two times offered, the message you sent, the reply, and the confirmed slot (date, time, format, calendar link if any). The helper scaffolds it; you fill the reply and confirmation once they land.
-
-Good looks like: a named person, a specific Friday time both parties have agreed in writing, and a calendar entry that exists.
+Writes `04-gtm/friday-meeting.md`: prospect (name, role, firm), channel, two times offered, the message sent, the reply, the confirmed slot (date, time, format, calendar link). The helper scaffolds it; you fill the reply and confirmation.
 
 ## Done when
-The warmest prospect has a confirmed Friday slot (specific date and time, agreed in writing) recorded in `04-gtm/friday-meeting.md`, before Day 4 closes. One confirmed meeting. That is the number Thursday's checkpoint prints.
+The warmest prospect has a confirmed Friday slot (specific date and time, agreed in writing) in `04-gtm/friday-meeting.md` before Day 4 closes. One confirmed meeting.
 
 ## Log it
-Append one line to CHANGELOG.md via `${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py` (date, `d4-book-sale`, `04-gtm/friday-meeting.md`, result "1 Friday meeting confirmed"). Update `.spark/state.json` through `${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py`: set days.4 outcome to the confirmed slot and mark progress.
+Append one line via `${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py` (date, `d4-book-sale`, `04-gtm/friday-meeting.md`, result "1 Friday meeting confirmed"). Set days.4 outcome to the confirmed slot through `${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py --patch`.
 
 ## If it goes wrong
-No reply from the first prospect by Thursday close: fall back to the second-warmest name and send the same ask. Still nothing by end of day: book a "warm practice" meeting with the friendliest contact who fits your segment, so Friday still happens and you learn something real. A booked practice conversation beats an empty Friday. Log which fallback you used and why in DECISIONS.md.
+No reply from the first prospect by Thursday close: send the same ask to the second-warmest name. Still nothing: book a "warm practice" meeting with the friendliest contact in your segment, so Friday still happens. Log which fallback you used and why in DECISIONS.md.

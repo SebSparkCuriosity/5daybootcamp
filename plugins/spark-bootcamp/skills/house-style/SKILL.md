@@ -1,67 +1,63 @@
 ---
 name: House Style
-description: The shared kit every Spark document skill reuses so the deck, brochure, one-pager and landing page all look like one company. Not user-invocable; other skills call it.
-when_to_use: Whenever another skill builds a document, deck, brochure, one-pager or landing page and needs the Spark voice checklist, a branded template or the deck builder. Never triggered directly by the founder.
+description: The shared kit every Spark document skill reuses so deck, brochure, one-pager and landing page look like one company. Not user-invocable.
+when_to_use: When another skill builds a document, deck, brochure, one-pager or landing page and needs the Spark voice, template or deck builder.
 user-invocable: false
 ---
 
 # House Style
 
-**What this does.** Owns the four shared assets every document skill borrows: the voice checklist, the one-page template, the landing-page template and the deck builder.
-**Why it matters.** A founder who ships a pitch deck, a sales deck, a brochure and a landing page in one week can end up with four documents that look like four different companies. That reads as amateur, and in a regulated Jersey sector amateur loses the deal. One shared kit means everything the founder sends out looks like it came from the same firm, because it did.
-**You are ready for this when.** Another skill has called you. This skill produces no artefact of its own and the founder never runs it directly.
+**What this does.** Owns the four shared assets every document skill borrows: voice checklist, one-page template, landing-page template and deck builder.
+**Why it matters.** One shared kit means everything the founder sends out in the week looks like it came from the same firm, which in a regulated Jersey sector is the difference between winning and losing the deal.
+**You are ready for this when.** Another skill has called you. No artefact of its own, never run directly.
 
 ## Before you start
-Read `.spark/brand/brand.json` for the founder's tokens (colours, fonts, name, logo, contact). If it is missing or half-written, do not stop: the templates and the deck builder fall back to safe Spark defaults and carry on. The default typeface stack is system-safe on purpose: Arial and Calibri for text, Georgia for the occasional serif, so a deck opens the same on the founder's laptop and the prospect's.
+Read `.spark/brand/brand.json` for tokens (colours, fonts, name, logo, contact). If missing or half-written, carry on: everything falls back to safe Spark defaults. Default typeface stack is system-safe (Arial, Calibri, Georgia) so decks open identically on both laptops.
 
-The four assets and who uses them:
-
-1. `references/voice-checklist.md`: the Spark voice rules as a checklist. Any skill writing prose applies it before it saves the artefact.
-2. `references/one-pager.md`: a branded one-page markdown template with token placeholders. The brochure and proposal skills fill it in.
-3. `references/landing.html`: a clean, accessible, responsive single-page HTML template with a working lead-capture form, light and dark aware, brand tokens injected. The GTM and sale skills use it as the founder's live page.
-4. `scripts/build_deck.py`: reads a YAML content file plus `brand.json` and emits a `.pptx`. If `python-pptx` is not installed it prints the install line and emits a self-contained reveal.js HTML deck instead, so the founder is never blocked.
+The four assets:
+1. `references/voice-checklist.md`: Spark voice rules as a checklist, applied by any prose skill before saving.
+2. `references/one-pager.md`: branded one-page markdown template with token placeholders (brochure, proposal).
+3. `references/landing.html`: accessible responsive single-page HTML with lead-capture form, light/dark aware, tokens injected (GTM, sale).
+4. `scripts/build_deck.py`: reads a YAML content file plus `brand.json`, emits `.pptx`; falls back to a self-contained reveal.js HTML deck if `python-pptx` is absent.
 
 ## Steps
-These are the instructions the calling skill follows. Pick the asset that matches the job.
+The calling skill follows these. Pick the asset matching the job.
 
 ### Applying the voice checklist (every prose artefact)
 1. Read `${CLAUDE_SKILL_DIR}/references/voice-checklist.md`.
-2. Run every line of the artefact against it before saving. The two hard rules first: British spelling throughout, and zero em dashes anywhere. Then the tone rules.
-3. If the artefact fails a line, fix the artefact, not the checklist.
+2. Run every line of the artefact against it before saving. Hard rules first: British spelling, zero em dashes. Then tone.
+3. On a fail, fix the artefact, not the checklist.
 
 ### Filling the one-pager (brochure, proposal)
-1. Copy `${CLAUDE_SKILL_DIR}/references/one-pager.md` to the artefact path the calling skill owns.
-2. Replace every `{{token}}` with a real value. Pull `{{brand.name}}`, `{{brand.primary}}`, `{{brand.contact_email}}` and the rest from `brand.json`. Where a token has no value in `brand.json`, use the fallback noted in the template, never a raw `{{token}}` left in the file.
+1. Copy `${CLAUDE_SKILL_DIR}/references/one-pager.md` to the caller's artefact path.
+2. Replace every `{{token}}` with a real value from `brand.json` (`{{brand.name}}`, `{{brand.primary}}`, `{{brand.contact_email}}` etc). No value: use the template's fallback, never leave a raw `{{token}}`.
 3. Run the voice checklist over the finished prose.
 
 ### Building a landing page (GTM, sale)
-1. Copy `${CLAUDE_SKILL_DIR}/references/landing.html` to the artefact path the calling skill owns.
-2. Inject brand tokens into the `:root` CSS variables at the top and swap the copy blocks marked `<!-- COPY -->`.
-3. The lead-capture form posts to a `data-endpoint` attribute on the `<form>`. Set it to the founder's form handler (a Supabase table endpoint, a Formspree URL, or similar). Until an endpoint is set the form stores submissions in the browser and shows a thank-you state, so the page never looks broken in a demo.
-4. Human-in-the-loop: the page is not published and no money is spent from this skill. The GTM or sale skill handles deploy and asks the founder for sign-off first.
+1. Copy `${CLAUDE_SKILL_DIR}/references/landing.html` to the caller's artefact path.
+2. Inject tokens into the `:root` CSS variables and swap the `<!-- COPY -->` blocks.
+3. Set the `<form>` `data-endpoint` to the founder's handler (Supabase table, Formspree URL). Until set, the form stores submissions locally and shows a thank-you state so demos never look broken.
+4. Human-in-the-loop: this skill does not publish or spend. The GTM or sale skill deploys after founder sign-off.
 
 ### Building a deck (pitch deck, sales deck)
-1. Write the slide content as a YAML file. The shape is documented at the top of `scripts/build_deck.py` and mirrored in `references/deck-content.example.yaml`.
-2. Run the builder:
-
+1. Write slide content as a YAML file (shape documented atop `scripts/build_deck.py`, mirrored in `references/deck-content.example.yaml`).
+2. Run:
    ```
    python3 "${CLAUDE_SKILL_DIR}/scripts/build_deck.py" \
      --content <path-to-content.yaml> \
      --brand .spark/brand/brand.json \
      --out <artefact-path-without-extension>
    ```
-
-3. If `python-pptx` is present you get a `.pptx`. If it is not, you get a `.html` reveal.js deck and a printed install line. Either way the calling skill has a finished deck to hand the founder.
+3. With `python-pptx` you get a `.pptx`; without, a `.html` reveal.js deck plus a printed install line.
 
 ## The artefact
-None of its own. This skill is the shared kit: `references/voice-checklist.md`, `references/one-pager.md`, `references/landing.html`, `references/deck-content.example.yaml` and `scripts/build_deck.py`. Other skills write the artefacts and own their paths. What good looks like: two documents built through this kit, opened side by side, are obviously from the same company.
+None of its own. The kit: `references/voice-checklist.md`, `references/one-pager.md`, `references/landing.html`, `references/deck-content.example.yaml`, `scripts/build_deck.py`. Callers write and own their artefact paths. Good: two documents built through the kit are obviously from the same company.
 
 ## Done when
-The asset the calling skill needed was produced without error, and it passes its own numeric check: the voice checklist returns zero em dashes and zero American spellings on the flagged words; the one-pager and landing page contain zero unreplaced `{{token}}` placeholders; the deck builder exits 0 and writes exactly one deck file (`.pptx` or `.html`) with the requested slide count.
+The needed asset was produced without error and passes its numeric check: voice checklist returns zero em dashes and zero American spellings on flagged words; one-pager and landing page contain zero unreplaced `{{token}}`; deck builder exits 0 and writes exactly one deck file with the requested slide count.
 
 ## Log it
-This skill does not log on its own, because it produces no artefact of its own. The calling skill logs the artefact it built, using the logbook helper:
-
+This skill does not log. The calling skill logs its artefact:
 ```
 python3 "${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py" \
   --skill <caller-skill-id> \
@@ -69,7 +65,5 @@ python3 "${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py" \
   --result "<numeric result, e.g. 12-slide deck built>"
 ```
 
-and updates `.spark/state.json` through the journey-state helper. House Style never writes state or the changelog itself.
-
 ## If it goes wrong
-If `brand.json` is missing or malformed, everything still runs on Spark defaults (primary `#0B5FEF`, ink `#12141A`, Arial/Calibri/Georgia). Tell the founder their brand tokens were not found so they can run the brand skill, then carry on rather than blocking. If `python-pptx` is missing, the deck builder self-substitutes the reveal.js HTML deck and prints `pip install python-pptx` for next time. If a template still shows a `{{token}}`, that is a bug in the calling skill: fill it before saving.
+Missing or malformed `brand.json`: run on Spark defaults (primary `#0B5FEF`, ink `#12141A`, Arial/Calibri/Georgia) and tell the founder to run the brand skill. Missing `python-pptx`: the builder emits reveal.js HTML and prints `pip install python-pptx`. A surviving `{{token}}` is a caller bug: fill it before saving.
