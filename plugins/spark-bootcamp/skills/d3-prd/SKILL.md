@@ -11,7 +11,7 @@ when_to_use: Day 3, after d3-story-map and d3-moscow, before you build the worki
 **You are ready for this when.** `03-product/story-map.md` and `03-product/requirements-moscow.md` both exist.
 
 ## Before you start
-Read `03-product/story-map.md` (the journey), `03-product/requirements-moscow.md` (your cut), and `.spark/state.json` (`business_type`, `idea`, `headline_target`). Only Musts become requirements this week. If a Must does not trace to a story-map step, send it back.
+Read `03-product/story-map.md` (the journey), `03-product/requirements-moscow.md` (your cut), and `.spark/state.json` (`business_type`, `idea`, `headline_target`). Draft, then explain back (about 15 minutes): write the brief fast, then walk it through in plain English and let the founder poke holes. A non-technical founder must be able to retell this brief to a friend; until they can, it is not done. Only Musts become requirements this week. If a Must does not trace to a story-map step, send it back.
 
 ## Steps
 1. **Restate the outcome as a number.** One sentence: what a real prospect can do by end of Day 3 and the single metric that proves it. Pull the number from `headline_target`, narrowed to what Day 3 alone proves.
@@ -20,7 +20,8 @@ Read `03-product/story-map.md` (the journey), `03-product/requirements-moscow.md
 4. **Define the acceptance test.** For each requirement, the one check that proves it: "R1 passes when a prospect submits and a row appears within 5 seconds."
 5. **Write the functional spec.** Go one layer down: screens or steps, fields, states (empty, loading, error, done), what each action does. Name every field, button and message.
 6. **Branch by path (below) for the parts that differ.**
-7. **Run the checker.** `python3 ${CLAUDE_SKILL_DIR}/scripts/check-brief.py 03-product/docs/PRD.md`. Fix what it flags.
+7. **Explain it back.** Read each requirement to the founder in plain English ("R1 means a visitor types their email and you see it in a list") and ask what is wrong or missing. Their corrections go in before the file is final.
+8. **Run the checker.** `python3 ${CLAUDE_SKILL_DIR}/scripts/check-brief.py 03-product/docs/PRD.md`. Fix what it flags.
 
 ## For software
 Functional spec names routes, the data the page reads/writes, and the one Supabase table. Requirements describe visible behaviour, e.g. "let a visitor submit email and one line of context, and store it"; acceptance "a new row appears in `leads` within 5 seconds". Metric is completions, not deploys.

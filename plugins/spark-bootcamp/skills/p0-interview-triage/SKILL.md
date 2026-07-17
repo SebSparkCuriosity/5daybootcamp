@@ -11,7 +11,7 @@ when_to_use: Pre-work, 2 to 4 weeks before the bootcamp Monday, straight after s
 **You are ready for this when.** `.spark/state.json` exists with `idea` filled (run `start` first).
 
 ## Before you start
-Read state for `founder`, `idea` and `prework.bootcamp_monday`. This is a conversation, not a form: ask one question at a time, listen, and capture the founder's own words. It is a light triage, good enough to invite the right people; the deep idea work happens on Day 1.
+Read state for `founder`, `idea` and `prework.bootcamp_monday`. This is a conversation, not a form (about 30 minutes): ask one question at a time, listen, and capture the founder's own words. It is a light triage, good enough to invite the right people; the deep idea work happens on Day 1.
 
 ## Steps
 1. Ask who they picture when they imagine the idea working. Push from category to person: not "small businesses" but "the office manager at a 15-person Jersey trust company". Their answer names the segment: "people who [do this job] at [this kind of place]".

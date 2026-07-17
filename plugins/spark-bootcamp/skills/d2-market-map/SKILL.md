@@ -13,6 +13,8 @@ when_to_use: Day 2 opener, straight after d1-validated-problem writes validated-
 ## Before you start
 Read `01-discovery/validated-problem.md` for the problem and verdict, and `01-discovery/target-segment.md` for the segment. If the Day 1 verdict was INSUFFICIENT EVIDENCE, stop and reach 5 solid interviews first.
 
+Ask, then draft (5 to 10 minutes). Before drawing anything, ask the founder three questions, one at a time: who else have you seen feel this problem, who do you fear being compared to, and what do people do instead of buying today? Their answers seed the segments, incumbents and substitutes; you research the rest.
+
 Guardrail: every incumbent carries a source (URL, registry entry, interviewee, directory). No source, no name. Never fabricate players or market-size numbers: any figure is sourced or written down as an assumption in plain sight.
 
 Open `references/market-map-template.md` (the structure) and `references/sourcing-a-market.md` (where to find real Jersey and UK players) before you write.

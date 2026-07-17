@@ -23,7 +23,7 @@ Guardrail: this is read-and-report only. Do not message interviewees, promise an
 ## Steps
 1. Count records first. Run `python3 ${CLAUDE_SKILL_DIR}/scripts/scan-interviews.py 01-discovery/interviews` (point at `04-gtm/tests/sessions` in product-test mode). 8+ is strong, 5-7 usable (flag the thin base), 1-4 tentative, 0 stop.
 2. Read every record. Note jobs, real pains, what "done well" looks like, and buying signal. Anchor to past behaviour, not opinions.
-3. Mark each riskiest assumption: one verdict (VALIDATED, KILLED, UNCLEAR, UNTESTED) with its tally and cited records, e.g. "6 of 9, cites (interviews/03-jane.md)". One chat is not a verdict. Log material verdicts as decisions (see Log it).
+3. Mark each riskiest assumption: one verdict (VALIDATED, KILLED, UNCLEAR, UNTESTED) with its tally and cited records, e.g. "6 of 9, cites (interviews/03-jane.md)". One chat is not a verdict. Before writing the findings, read each verdict and its tally to the founder: they heard tone the notes lost and may re-tag an UNCLEAR. The counts stand; the interpretation is shared. Log material verdicts as decisions (see Log it).
 4. Rank jobs, pains and gains by frequency, each with tally and cited records. A single record is a hunch, not a pattern.
 5. Sharpen the segment: one paragraph on who these people really are. If the evidence points at a narrower buyer than the brief assumed, say so.
 6. Tag warm prospects. Anyone who asked price, offered to pay or pilot, gave a firm next step, or named their decision-maker gets STRONG. A polite "keep me posted" does not count. Write them to findings and to state (see Log it).

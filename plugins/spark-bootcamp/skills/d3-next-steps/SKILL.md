@@ -17,7 +17,7 @@ Read, in order: `03-product/BUILD-LOG.md` (built and skipped today), `03-product
 1. **Dump every open item.** From the three inputs, list everything undone. Don't rank yet. 10 to 25 items is normal.
 2. **Score each 1 to 3 on two axes.** Impact: blocks a sale (3), helps (2), polish (1). Effort: under an hour (1), half a day (2), a day or more (3). Run `${CLAUDE_SKILL_DIR}/scripts/rank.py` to sort.
 3. **Rank by priority.** Impact first, lowest effort as tie-breaker. Every item gets a rank number, no ties.
-4. **Name the top 3 blockers.** A blocker means a prospect cannot pay or book. Mark exactly three. Fewer: say so, you are ahead. More: the extras are urgent but not blockers.
+4. **Name the top 3 blockers with the founder.** Present your three with the scores, then let them confirm or swap (a swap against the numbers gets its reason in DECISIONS.md). A blocker means a prospect cannot pay or book. Mark exactly three. Fewer: say so, you are ahead. More: the extras are urgent but not blockers.
 5. **Sanity-check against the day 3 target.** If clearing the top 3 does not deliver the promised outcome, your ranking is wrong. Fix it.
 6. **Write one line per blocker on how you clear it tomorrow.** Concrete: "Test the Stripe link with a 1 pound charge and refund it".
 7. **Record the call in DECISIONS.md.** Why these three, and what you consciously leave undone.

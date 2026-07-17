@@ -23,7 +23,7 @@ Guardrail: this plans the funnel only. It sends nothing and spends nothing. Outr
 
 ## Steps
 1. Write top to bottom. Buyers move forward, so plan forward.
-2. Name ONE channel per stage, one you can run this week. Read `references/jersey-channels.md`. In a regulated market favour high-trust channels (warm intro, professional body, named referrer) over cold reach.
+2. Ask the founder before naming any channel: where does your buyer already gather, and which of those could YOU actually work this week (who do you know there)? Then name ONE channel per stage from their answers and `references/jersey-channels.md`. In a regulated market favour high-trust channels (warm intro, professional body, named referrer) over cold reach.
 3. Name ONE asset per stage: the thing that persuades. If it does not exist yet, mark it "to build" for Day 4 and 5.
 4. Set ONE numeric metric with a target per stage. Work the arithmetic back from one sale using the ladder in `references/conversion-benchmarks.md`. Label these as assumptions; replace with real numbers when you have them.
 5. Branch on business path for the bottom two stages (below).

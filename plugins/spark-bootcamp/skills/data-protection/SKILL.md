@@ -11,7 +11,7 @@ when_to_use: Run Day 1, before the first interview or landing page. Feeds run-in
 **You are ready for this when.** `.spark/state.json` exists. A `brand.json` helps but is not required.
 
 ## Before you start
-Reads `.spark/state.json` and `.spark/brand/brand.json` via the safe helpers. Writes four drafts into `.spark/deliverables/data-protection/`.
+Reads `.spark/state.json` and `.spark/brand/brand.json` via the safe helpers. Two questions before generating (2 minutes): what personal data will you actually collect this week, and where will it live? The founder's answers set the storage line and stop the notice claiming practices they do not follow. Writes four drafts into `.spark/deliverables/data-protection/`.
 
 Every document is a draft. Each is stamped: "This is a draft. Have a qualified lawyer review it before you rely on it. Spark does not warrant it." That line stays. The drafts are Jersey Data Protection Law 2018 and UK GDPR aware, not authoritative, and not legal advice.
 

@@ -11,7 +11,7 @@ when_to_use: Day 5, straight after Day 4 gtm feedback, before you touch the live
 **You are ready for this when.** `04-gtm/feedback-synthesis.md` exists.
 
 ## Before you start
-Read `04-gtm/feedback-synthesis.md` in full. Read `.spark/state.json` for `headline_target` and `business_type`; your Day 5 target is the tie-breaker between competing Fix Now items. This skill only classifies: it does not change your page, spend money or contact anyone.
+Read `04-gtm/feedback-synthesis.md` in full. Read `.spark/state.json` for `headline_target` and `business_type`; your Day 5 target is the tie-breaker between competing Fix Now items. The Fix Now list is the founder's call (10 minutes): you score and propose, they choose the three, and a swap against the numbers gets its reason in DECISIONS.md. This skill only classifies: it does not change your page, spend money or contact anyone.
 
 ## Steps
 1. List every distinct item from the synthesis, one line each. Merge duplicates but note repetition.

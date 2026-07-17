@@ -11,13 +11,13 @@ when_to_use: End of Day 1, once discovery-findings.md exists, before Day 2 marke
 **You are ready for this when.** `01-discovery/discovery-findings.md` exists.
 
 ## Before you start
-Read `01-discovery/discovery-findings.md` and `00-prework/interview-target-spec.md`. Count your solid interviews against `references/interview-quality-bar.md`: real people in your segment with specific first-hand answers. Guardrail: the verdict follows the evidence, not your hopes. Under 5 solid interviews means insufficient evidence, no exceptions.
+Read `01-discovery/discovery-findings.md` and `00-prework/interview-target-spec.md`. Count your solid interviews against `references/interview-quality-bar.md`: real people in your segment with specific first-hand answers. The verdict is the founder's to make, in a working discussion (about 15 minutes): you present the counts, they call it, you challenge once if the evidence disagrees. Guardrail: the verdict follows the evidence, not your hopes. Under 5 solid interviews means insufficient evidence, no exceptions.
 
 ## Steps
 1. Count solid interviews against `references/interview-quality-bar.md`. Write the number down. Warm answers from people who would never pay do not count.
 2. If fewer than 5, record INSUFFICIENT EVIDENCE and stop. Your pre-work schedule may already hold Tuesday-morning overflow slots; count those first, then use the Digital Jersey shared interviewee pool if your network is dry. Reach 5 before calling it.
 3. If 5 or more, score three tests yes/no with counts. Frequency: pain hits at least weekly? Intensity: people already spend money, time or workarounds on it? Consistency: same problem in at least 60 percent of interviews (6 of 10)?
-4. Make the call. Three yeses on the same dominant problem: PERSEVERE. Problem real but not the one you tested, or a different segment feels it most: PIVOT and reframe. Fewer than two yeses, or mild and occasional: pivot to the sharper problem your interviews revealed.
+4. Present the three scores, then the founder makes the call out loud. Three yeses on the same dominant problem: PERSEVERE. Problem real but not the one you tested, or a different segment feels it most: PIVOT and reframe. Fewer than two yeses, or mild and occasional: pivot to the sharper problem the interviews revealed. If their call fights the evidence, challenge once with the counts, then let it stand and log the tension in DECISIONS.md.
 5. Write the problem as one sentence in the customer's words: "[Segment] struggle to [specific job] because [specific reason], which costs them [time, money or risk]." No product, no solution.
 6. Name the segment precisely: who, where they work, the one trait that makes them feel it most. Make it findable in Jersey.
 7. Record the verdict, the three test scores, and one line of why in DECISIONS.md.

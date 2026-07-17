@@ -16,7 +16,7 @@ Read `04-gtm/gtm-plan.md` and pick the ONE warmest prospect: a named human, a re
 Guardrail: this skill drafts and refines the message only. Nothing sends or books until you have read it and said go. Human sign-off before it leaves your hands. Hard rule.
 
 ## Steps
-1. Name the person: who they are, where they work, the one sentence of pain you remove. Can't write it? Pick again.
+1. Choose the person with the founder: ask why THIS one, and listen for a real reason (budget, timing, pain), not alphabetical comfort. Then name them: who they are, where they work, the one sentence of pain you remove. Can't write it? Pick again together.
 2. Choose the channel they actually reply on (email for a trust officer, text for a tradesperson). Match to the person, not your comfort.
 3. Offer two specific 20-minute Friday times plus a fallback, never "are you free Friday?". Two choices convert far better than an open question.
 4. Draft the ask: run `python3 ${CLAUDE_SKILL_DIR}/scripts/draft-ask.py` and answer the prompts. It uses `${CLAUDE_SKILL_DIR}/references/ask-templates.md`: one line of context, why it helps them, the two times, a no-pressure exit. Under 120 words.

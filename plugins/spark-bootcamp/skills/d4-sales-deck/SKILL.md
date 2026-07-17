@@ -18,7 +18,7 @@ Name the prospect first: the top buyer in `04-gtm/feedback-synthesis.md`, or the
 - `02-market/proposition.md` and, if present, `02-market/pricing.md`: what one customer pays. If neither states a price, use the Spark default (fixed price from 2,000 pounds, live in one to six weeks) and flag the figure to confirm.
 - `.spark/brand/brand.json`: colours, fonts, contact. `.spark/state.json`: `business_type`, founder name.
 
-Every proof point is a verbatim quote with the speaker's role (never their name) beside the result. No invented or borrowed quotes; short of proof, phone another tester. Guardrail: this builds a file, sends and spends nothing. Confirm the exact price before it goes on a slide; showing the deck is Day 5 outreach, so sign-off waits there.
+Every proof point is a verbatim quote with the speaker's role (never their name) beside the result. No invented or borrowed quotes; short of proof, phone another tester. Once built, walk the deck with the founder as the prospect (10 minutes): they narrate each slide in their own words, and whatever they stumble on gets rewritten in words they actually say. Guardrail: this builds a file, sends and spends nothing. Confirm the exact price before it goes on a slide; showing the deck is Day 5 outreach, so sign-off waits there.
 
 Open `${CLAUDE_SKILL_DIR}/references/sales-deck-outline.md` (slide shape, five core sections marked) and `${CLAUDE_SKILL_DIR}/references/deck-content.example.yaml` (filled example).
 

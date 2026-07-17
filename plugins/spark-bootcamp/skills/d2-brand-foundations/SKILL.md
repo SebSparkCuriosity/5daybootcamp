@@ -11,11 +11,11 @@ when_to_use: Day 2, after d2-proposition and d2-messaging, before any logo, colo
 **You are ready for this when.** `02-market/proposition.md` and `02-market/messaging.md` both exist.
 
 ## Before you start
-Read `02-market/proposition.md`, `02-market/messaging.md`, and `.spark/state.json` (`founder`, `idea`, `business_type`). Fit the buyer in the proposition, not your own taste. For regulated Jersey firms, "trustworthy" is the entry ticket, not a differentiator: push past it.
+Read `02-market/proposition.md`, `02-market/messaging.md`, `.spark/state.json` (`founder`, `idea`, `business_type`), and the "Where this idea comes from" section of `01-discovery/idea-brief.md`: the founder already told you their philosophy on Day 1, so start from it. This is a working discussion (about 20 minutes): values are the founder's beliefs, not a menu. Ask before proposing: what would you refuse to do for a client, even paid? What should working with you feel like? Capture their answers verbatim. Fit the buyer in the proposition, not your own taste. For regulated Jersey firms, "trustworthy" is the entry ticket, not a differentiator: push past it.
 
 ## Steps
 1. **Values: pick 3 to 5.** Written as what you do, not adjectives ("We ship in weeks, not quarters" beats "agile"). Add one sentence each on how a customer sees it in practice. Cut any value that changes no decision.
-2. **Archetype: pick exactly one.** Open `${CLAUDE_SKILL_DIR}/references/archetypes.md` (12 archetypes, one example each). Pick the single one matching how you want the buyer to feel. Write one sentence on why it fits.
+2. **Archetype: pick exactly one, together.** Open `${CLAUDE_SKILL_DIR}/references/archetypes.md` (12 archetypes, one example each). Offer the two that best match what the founder just said, one reason each; the founder picks. Write one sentence on why it fits.
 3. **Tone: rate 4 dimensions.** Open `${CLAUDE_SKILL_DIR}/references/tone-dimensions.md`. Rate each slider 1 to 5 with a note: Formal to Casual, Serious to Playful, Plain to Expressive, Reserved to Bold. Regulated sectors usually sit 2 to 3 formal, 1 to 2 playful. Write one example sentence in your voice.
 4. **Name: resolve it or set a direction.** Follow `${CLAUDE_SKILL_DIR}/references/naming-checklist.md`. Run each candidate through the five gates and land on ONE name, or a shortlist of at most 3 with the reason each survives. Flag domain and trademark checks as "confirm before spending" (a Day 4 spend, not Day 2).
 5. **Write the file** and update state.

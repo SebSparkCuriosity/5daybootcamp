@@ -11,7 +11,7 @@ when_to_use: Day 1, after d1-interview-plan, before the first booked call. Last 
 **You are ready for this when.** `01-discovery/interview-plan.md` exists.
 
 ## Before you start
-Read `01-discovery/idea-brief.md` (especially the riskiest assumption) and `01-discovery/interview-plan.md`. Load the craft from `${CLAUDE_PLUGIN_ROOT}/skills/interview-method/references/`: `mom-test.md` (compulsory) and `jtbd.md` (shapes the arc). This is co-writing, not ghost-writing: for each area, ask what the founder most wants to learn, draft together, and keep their phrasing wherever it passes the test.
+Read `01-discovery/idea-brief.md` (especially the riskiest assumption) and `01-discovery/interview-plan.md`. Load the craft from `${CLAUDE_PLUGIN_ROOT}/skills/interview-method/references/`: `mom-test.md` (compulsory) and `jtbd.md` (shapes the arc). This is co-writing, not ghost-writing (about 30 minutes): for each area, ask what the founder most wants to learn, draft together, and keep their phrasing wherever it passes the test.
 
 ## Steps
 1. Read the Mom Test rule that matters: ask for specifics in the past, never generics about the future. Say it to the founder in one line before drafting anything.

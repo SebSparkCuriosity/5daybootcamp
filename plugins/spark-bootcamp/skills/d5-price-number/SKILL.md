@@ -13,13 +13,15 @@ when_to_use: Day 5, after d5-pricing-model and proposition. Triggers on "what do
 ## Before you start
 Read `05-sale/PRICING-MODEL.md` (model, cost floor, willingness-to-pay), `02-market/proposition.md` (promise, numeric outcome), and `.spark/state.json` (`business_type`, `founder`, `headline_target`).
 
+A working discussion (about 15 minutes), Socratic first: what does a year of this problem cost the buyer? What number would feel embarrassingly low? At what number would the founder walk away rather than do the work? Their answers anchor everything below.
+
 Guardrail: this sets numbers, it does not send them. No price goes to a prospect until the founder reads the rate card aloud and signs off.
 
 Floor is GBP 2,000. No package below it. If the maths lands lower, fix the scope, do not drop the price.
 
 ## Steps
 1. **Anchor on value, not cost.** Write the buyer's number first: what does solving this save or make them per year? Pull from `proposition.md` and interviews. Your price is a fraction of that. Never invent it; flag as an assumption if unevidenced.
-2. **Set the recommended (better) package first.** Price at 10 to 20 percent of the annual value. Round clean (GBP 3,500, not 3,470). This anchors the rest.
+2. **Set the recommended (better) package first.** Price at 10 to 20 percent of the annual value. Round clean (GBP 3,500, not 3,470). Have the founder say the number aloud before it is written down: a price they cannot say is not their price yet. This anchors the rest.
 3. **Build the good package below it.** Strip scope, not quality. Price 55 to 70 percent of recommended, never below GBP 2,000. If stripping takes you under, make the recommended one the entry point and say so.
 4. **Build the best package above it.** Add speed, depth, done-for-you, ongoing support. Price 1.6 to 2.2 times recommended. It rarely sells; its job is to make the middle look sensible.
 5. **Trace every price to one value assumption.** Beside each number write a sentence starting "Worth it because...". If you cannot, the price is guessed.

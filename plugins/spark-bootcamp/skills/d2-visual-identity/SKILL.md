@@ -14,6 +14,7 @@ when_to_use: Day 2, after d2-brand-foundations, before brand-register. The one s
 Read `02-market/brand/brand-foundations.md` (archetype, tone, values, name) and `.spark/state.json` via journey-state (`founder`, `idea`, `business_type`).
 Open `${CLAUDE_SKILL_DIR}/references/palette-and-fonts.md`: colour roles, sector-safe primaries, default font stacks, exact token shape.
 Non-negotiable: the palette must pass WCAG AA. The scripts refuse a failing palette.
+Ask before you pick (5 minutes): offer two or three palette directions tied to the archetype, one sentence each, with a recommendation. The founder chooses in a minute; their taste wins everywhere the checks allow. Contrast is not a matter of taste.
 
 ## Steps
 1. **Name five colours by role.** `surface` (background, usually white), `ink` (body text, near-black), `primary` (headings, links, logo), `accent` (buttons, one highlight), `muted` (secondary text, borders). Primary and accent carry the brand; no sixth. Sector-safe starts in the reference: deep green, navy or slate for finance, trust, law; warmer earth tones for hospitality and trades.

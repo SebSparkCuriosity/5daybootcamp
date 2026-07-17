@@ -21,6 +21,8 @@ Read each for one part of the page:
 
 Read `${CLAUDE_SKILL_DIR}/references/proposal-template.md` once.
 
+Draft fast, then read it aloud with the founder (10 minutes): one page in their voice, one round of corrections, their explicit yes before it is final.
+
 Guardrail: this writes a document, it does not send it or take payment. Human sign-off before it leaves your hands. Hard rule.
 
 ## Steps

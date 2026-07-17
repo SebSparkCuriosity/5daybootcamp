@@ -15,6 +15,8 @@ Read `02-market/market-map.md` and lift its one-line market definition. Open `re
 
 TAM: everyone with the problem. SAM: the slice you can reach and serve (geography plus one segment). SOM: what you realistically win in a year or two as one small firm, the number that decides if this is worth building.
 
+The judgement lives in the assumptions, so talk them through first (10 minutes). Ask in plain English: how many of these firms could you realistically reach, how many would you win in year one, and what would one pay? Offer your own number with a reason for each, then let the founder set it, push back, or say "you decide" (logged in DECISIONS.md). The founder owns every assumption the register carries.
+
 ## Steps
 1. Name the market in one line at the top, verbatim from `market-map.md`.
 2. Generate inputs: `python3 ${CLAUDE_SKILL_DIR}/scripts/size.py --template 02-market/market-sizing-inputs.json`.

@@ -19,7 +19,7 @@ Guardrail: this skill only reads and scores. Outreach happens Day 5 after your s
 1. Pull every distinct change request from the sessions, one per line, merge duplicates, keep a count (frequency feeds Reach).
 2. Score each change with RICE. Reach: testers plus enquirers it touches (real count). Impact: 3 massive, 2 high, 1 medium, 0.5 low, 0.25 minimal. Confidence: % sure (100 watched it, 80 one clear account, 50 hunch; never round up). Effort: person-days. Score = (Reach x Impact x Confidence) / Effort.
 3. Tag each change MoSCoW: Must (sale dies without it), Should (strong pull), Could (later), Won't (parked, written down).
-4. Flag the top 3 by RICE, breaking ties for Must over Should. Those are Friday's build list.
+4. Flag the top 3 by RICE, breaking ties for Must over Should. Read the three to the founder with the numbers behind them and ask "does this match what you watched?" A founder who sat in every session may overrule one, reason logged in DECISIONS.md. Those are Friday's build list.
 5. Score each tester 0-3 on Pain, Budget, Timing, Pull, total out of 12. Capture-store people start top of the warmth order.
 6. Run the scorer to do the arithmetic and write both files:
    `python3 ${CLAUDE_SKILL_DIR}/scripts/score.py --project .`

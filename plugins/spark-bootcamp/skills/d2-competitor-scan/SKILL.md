@@ -11,14 +11,14 @@ when_to_use: Day 2, after d2-market-map, before the proposition. "who are my com
 **You are ready for this when.** `02-market/market-map.md` exists.
 
 ## Before you start
-Read `02-market/market-map.md` (your chosen segment and pain) and `00-prework/interview-target-spec.md` if it exists. Never invent numbers: every cell is a fact from the rival's own site (cite the URL) or a cell marked "assumption".
+Read `02-market/market-map.md` (your chosen segment and pain) and `00-prework/interview-target-spec.md` if it exists. Ask before you hunt (5 minutes): who did the interviewees name, who does the founder fear losing to, and what would the buyer do instead of paying anyone? Then research. Never invent numbers: every cell is a fact from the rival's own site (cite the URL) or a cell marked "assumption".
 
 ## Steps
 1. List six to eight rivals: direct (same job, same buyer), indirect (different tool, same pain), and the status quo (spreadsheet, manual process, "do nothing"). The status quo wins the most deals, so include it.
 2. Pick five or more dimensions your buyer weighs, not ones that flatter you. Defaults: price, who it is for, main strength, main weakness, one regulated-Jersey concern (data residency, audit trail, local support). Fuller menu in `references/dimensions.md`.
 3. Fill the matrix in `competitor-matrix.csv`: one row per rival, one column per dimension, each cell a short phrase plus its source.
 4. Score honestly. Mark who leads each dimension. Write down where a rival beats you.
-5. Name the gap. Find one column where every rival is weak and your buyer cares. Write it as one sentence: every rival does X weakly, our buyer feels Y, so we win by Z. One gap.
+5. Name the gap. Find one column where every rival is weak and your buyer cares. Write it as one sentence: every rival does X weakly, our buyer feels Y, so we win by Z. One gap, read to the founder and agreed out loud: it is their claim to defend on Friday.
 6. Sanity-check: can you deliver it in five days? If not, pick the next-best provable gap. Record the reasoning in `DECISIONS.md`.
 
 Branch only where sourcing differs.

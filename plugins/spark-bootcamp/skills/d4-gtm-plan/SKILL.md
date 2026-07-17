@@ -17,7 +17,7 @@ Guardrail: this skill plans outreach. It sends nothing and spends nothing until 
 
 ## Steps
 1. Run `python3 ${CLAUDE_SKILL_DIR}/scripts/rank_prospects.py`. It merges the three sources, de-duplicates by name and email, scores warmth 0 to 100, and writes `04-gtm/prospect-ranking.csv`. Missing sources are flagged and skipped.
-2. Trust or overrule the score. Warmth rewards intent (deposit, booked call, "when can I buy"), exact segment match, and repeat engagement. Formula in `references/warmth-model.md`.
+2. Walk the list with the founder, name by name (15 minutes): they know warmth the model cannot see (a shared history, a feud, a budget freeze). Trust or overrule the score together; every overrule gets one line in DECISIONS.md. Warmth rewards intent (deposit, booked call, "when can I buy"), exact segment match, and repeat engagement. Formula in `references/warmth-model.md`.
 3. Cut to exactly 10. Fewer starves Day 5; more spreads you thin. If the ranker found fewer than 10 real people, that is the finding: your funnel is too narrow. Note it, carry the shorter list, do not invent names.
 4. Give each of the 10 one next action naming the channel and the ask. One, not three.
 5. Branch the next action by path:

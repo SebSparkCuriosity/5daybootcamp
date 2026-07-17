@@ -16,23 +16,35 @@ Read this before editing or adding a skill.
 - Warm, first-name, short sentences. No corporate-speak, no throat-clearing.
 - Every recommendation carries a number. Prose over bullets unless a comparison needs structure.
 
-## Conversation-first skills (the shaping work is a dialogue)
+## How each skill talks to the founder (four patterns)
 
-The skills that shape the founder's thinking (`start`, `p0-interview-triage`,
-`d1-refine-idea`, `d1-interview-plan`, `d1-write-script`) work by conversation, not
-form-filling. The rules they share:
+The founder's thinking is the product, so no skill silently decides for them. But a day
+holds 6 to 10 skills, so no skill holds them hostage either. Each skill follows one of four
+patterns, chosen per skill on what the judgement is worth, never per day:
 
-- One question at a time. Listen, then follow up on what the founder actually said.
-- Reflect back before moving on; capture the founder's phrases verbatim. Their words go
-  in the artefact, not Claude's paraphrase.
-- Offer a view with a number attached, then ask. Never silently decide for them.
-- Never write a section the founder has not spoken to. A blank with a note beats an
-  invented paragraph.
-- The artefact is done when the founder explicitly says it is theirs.
+- **Deep conversation (30 to 90 minutes).** The thinking IS the artefact: `start`,
+  `p0-interview-triage`, `d1-refine-idea`, `d1-interview-plan`, `d1-write-script`. One
+  question at a time, listen, reflect back, capture the founder's phrases verbatim, never
+  write a section they have not spoken to. Arcs live in `references/`; the session may run long.
+- **Working discussion (15 to 25 minutes).** The call belongs to the founder and Claude
+  argues like a partner: `d1-validated-problem`, `d2-positioning`, `d2-proposition`,
+  `d2-brand-foundations`, `d3-moscow`, `d3-story-map`, `d4-gtm-plan`, `d5-pricing-model`,
+  `d5-price-number`. Socratic questions first, then a recommendation with a number, then the
+  founder decides and their words go in the artefact.
+- **Draft, then explain back (10 to 15 minutes).** For technical artefacts a non-technical
+  founder must genuinely own: `d3-prd`, `d3-blueprint`, `d3-tech-stack`. Claude drafts fast,
+  then walks it through in plain English and asks the founder to poke holes with their domain
+  knowledge ("does a client ever have two properties?"). Their corrections reshape the draft.
+  Done when the founder could retell the document to a friend.
+- **Ask, then draft (5 to 10 minutes).** Two to four sharp questions, then Claude does the
+  work and shows it once: the research, assembly and ops skills. Mechanical skills
+  (scaffolds, registers, checks, log compiles) stay silent.
 
-For these skills the conversation IS the work, so the token-efficiency rules below bend:
-the SKILL.md stays terse, but the conversation arcs live in `references/` and the session
-itself is allowed to be long. Everywhere else, mechanical skills stay mechanical.
+Three rules hold everywhere. "Skip" and "you decide" are always acceptable answers, logged in
+DECISIONS.md so no artefact hides a call the founder never saw. One round of corrections, not
+endless iteration. And the exchange ends with an explicit yes before the artefact is final.
+For the deep tier the token-efficiency rules below bend: SKILL.md stays terse, the arcs live
+in `references/`, and the session is allowed to be long.
 
 ## The founder's project layout (what skills read and write)
 

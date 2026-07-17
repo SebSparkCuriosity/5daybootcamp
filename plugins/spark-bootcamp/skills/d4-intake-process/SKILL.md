@@ -11,7 +11,7 @@ when_to_use: Day 4 go-to-market, once the proposition is written and before a re
 **You are ready for this when.** `02-market/proposition.md` exists.
 
 ## Before you start
-Read `02-market/proposition.md` (offer, price, promise) and `.spark/state.json` (`founder`, `business_type`). If `.spark/brand/brand.json` exists, note the business name for the templates. The engagement letter is a legal document: it ships as a draft, so have a qualified lawyer review this before use.
+Read `02-market/proposition.md` (offer, price, promise) and `.spark/state.json` (`founder`, `business_type`). If `.spark/brand/brand.json` exists, note the business name for the templates. Two questions before drafting (5 minutes): how should a new client's first week feel, and what response times can the founder honestly keep alongside the day job? Their answers set the tone and the SLAs; the defaults below are the fallback, not the answer. The engagement letter is a legal document: it ships as a draft, so have a qualified lawyer review this before use.
 
 ## Steps
 1. Name the four stages, exactly these, in order (the minimum that survives an audit): **proposal**, **engagement** (contract or engagement letter), **kickoff**, **delivery**. No fifth.

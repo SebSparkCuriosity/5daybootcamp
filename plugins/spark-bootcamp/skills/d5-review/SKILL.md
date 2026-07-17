@@ -23,7 +23,7 @@ This links what exists and invents nothing; missing numbers get marked ABSENT, n
 3. If `core_linked` is below 5, build or move the missing artefact, then re-run.
 4. Open `05-sale/LAUNCH-PACKAGE.md`. Check "Achieved" honestly answers "Target", every core row links a real file, and the live page row carries a working URL.
 5. Fill the keep-it-running section: replace every `[TO COMPLETE: ...]` marker (Vercel owner, refund policy, delivery capacity). Background in `${CLAUDE_SKILL_DIR}/references/keep-it-running.md`.
-6. Open `05-sale/SCORECARD.md` and write one honest sentence at the foot: did you hit the headline number, and the single most important thing you learned. No spin.
+6. Open `05-sale/SCORECARD.md` and ask the founder for the honest sentence at the foot: did you hit the headline number, and what is the single most important thing you learned? Their words, verbatim. No spin.
 7. Call audit-pack:
    ```
    python3 ${CLAUDE_PLUGIN_ROOT}/skills/audit-pack/scripts/build_pack.py --root .

@@ -17,7 +17,7 @@ Read via journey-state: `.spark/state.json` for `business_type` (set on Day 1, c
 1. Read the path: `python3 "${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py" --read`. Take `business_type`; it must be `software`, `hardware` or `services`. If missing or invalid, stop and send them back to Day 1. Do not re-ask or guess.
 2. Confirm the path to the founder in one line so they can catch a genuine error.
 3. Copy the Day 3 variance-matrix cell for your path: that is the day's definition of done.
-4. Boil the MVP to one sentence: the single core action or output the build must deliver, not three features. A stranger reads it and knows exactly what the thing does. Use the path shape below.
+4. Ask the founder to say it before you shape it: "describe the smallest thing someone would pay for, in one breath." Boil their answer to one sentence: the single core action or output the build must deliver, not three features. A stranger reads it and knows exactly what the thing does. Use the path shape below.
 5. Sanity-check against the success metric in `proposition.md`. If the sentence does not plausibly move that number, narrow it until it does.
 6. Write the artefact with the track flag so every later Day 3 skill branches the same way.
 

@@ -9,9 +9,11 @@ real prospects, and closing your first sale. It works whether you are building s
 hardware or a service. Built by [Spark AI Agency](https://sparkconsulting.tech) for Digital
 Jersey's cohort.
 
-Everything you produce is saved to your own project and logged, so you finish the week with a
-working product, a full set of documents, and an audit trail a regulator nods at rather than
-flinches from.
+It works like a thinking partner, not a form: the big decisions (your idea, your position, your
+price) are talked through with you, and technical documents are explained back in plain English
+until you could retell them. Everything you produce is saved to your own project and logged, so
+you finish the week with a working product, a full set of documents, and an audit trail a
+regulator nods at rather than flinches from.
 
 ## The journey
 

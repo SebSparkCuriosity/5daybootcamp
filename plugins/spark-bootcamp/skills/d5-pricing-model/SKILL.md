@@ -13,13 +13,15 @@ when_to_use: Day 5 sale, after the proposition, before the offer or price. When 
 ## Before you start
 Read the success metric in `02-market/proposition.md` and `business_type` + `headline_target` in `.spark/state.json`. Read `${CLAUDE_SKILL_DIR}/references/pricing-models.md` (the four models, when each wins, Jersey and regulated notes).
 
+A working discussion (10 to 15 minutes), and ask before proposing: what does this buyer already pay for similar outcomes, and do they say yes faster to a one-off or to recurring spend? The founder answers from their world; you score the models against it.
+
 Guardrail: this chooses a model and value metric only. No proposal, no payment. Money moves in the sale step.
 
 ## Steps
 1. Write the customer success metric in one line. If it is fuzzy ("saves time"), sharpen to a number first: you cannot price a feeling.
 2. Name the value metric: the one unit your price scales with (the customer's value, not your effort). Per fund, per matter, per seat, per report, one-off per system. Pick one.
 3. Score the four models (one-off build fee, pay-for-access plus build-in-partnership, subscription, retainer) against your success and value metrics. Read the "when it wins" line for each in the reference.
-4. Choose ONE. Reason in two sentences: why it fits this buyer and value metric, and what it does to the first yes. Favour a real payment inside five days over lifetime value on paper.
+4. The founder chooses ONE, with your recommendation and its number on the table. Reason in two sentences: why it fits this buyer and value metric, and what it does to the first yes. Favour a real payment inside five days over lifetime value on paper.
 5. Give each rejected model a specific one-line reason it lost.
 6. Sanity-check against Jersey and regulated sectors: a capital line item (one-off) often clears faster than new recurring spend. Note any constraint that shaped the choice.
 7. Set a first-price range: a floor and ceiling with one reason each. Spark's floor is £2,000 fixed; do not go below without a written reason.

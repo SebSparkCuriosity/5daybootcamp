@@ -11,7 +11,7 @@ when_to_use: Day 1 mid-morning, after d1-refine-idea, before the script. The int
 **You are ready for this when.** `01-discovery/idea-brief.md` exists and `00-prework/interview-schedule.md` holds booked slots.
 
 ## Before you start
-Read `01-discovery/idea-brief.md` (the riskiest assumption above all), `00-prework/interview-schedule.md` and `00-prework/interview-target-spec.md`. This is a conversation: discuss each booked name with the founder rather than deciding for them. Guardrail: do not cancel anyone on the day; a same-day cancellation burns goodwill you will want on Thursday.
+Read `01-discovery/idea-brief.md` (the riskiest assumption above all), `00-prework/interview-schedule.md` and `00-prework/interview-target-spec.md`. This is a conversation (about 30 minutes): discuss each booked name with the founder rather than deciding for them. Guardrail: do not cancel anyone on the day; a same-day cancellation burns goodwill you will want on Thursday.
 
 ## Steps
 1. Check fit together. For each booked name, ask the founder: does this person still clear the three screening questions against this morning's sharpened idea? Mark each KEEP, REWEIGHT (still useful, different emphasis) or MISMATCH (run it anyway, as learning about the adjacent segment).

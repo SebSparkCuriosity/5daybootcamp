@@ -19,7 +19,8 @@ Read both files above. Read `business_type` from `.spark/state.json` (via journe
 3. Get a firm monthly figure: `python3 ${CLAUDE_SKILL_DIR}/scripts/stack-cost.py <software|hardware|services>`. It prints free-tier total (usually £0) and the realistic paid total.
 4. List every account to open and whether it needs a card on file (a card on file is not a charge, but flag it for finance sign-off).
 5. List the MCP servers to connect. See `references/mcp-setup.md` for connect steps.
-6. Write the artefact.
+6. Explain the stack back in plain English (5 minutes): what each piece does, what it costs monthly, what breaks first and who fixes it. The founder owns this stack after the week ends, so invite questions until they can say what they are paying for.
+7. Write the artefact.
 
 ## For software
 **Next.js on Vercel, Supabase for database and auth.** Cost to first customer: **£0**, stepping to about £45/mo with real users (Vercel Pro £16, Supabase Pro £19, domain ~£10/yr). Same-firm deploy is one command to a public URL in under two minutes, Supabase gives real Postgres, login and storage, and both connect to Claude Code over MCP so I build and deploy for you. No-code branch: if the slice is a form, booking or content page with no custom logic, use **Softr or Carrd on an Airtable base**, ~£0 to £24/mo, ship in hours. Note the choice in `DECISIONS.md`. Do not pick no-code just because code feels scary, I will do the code.

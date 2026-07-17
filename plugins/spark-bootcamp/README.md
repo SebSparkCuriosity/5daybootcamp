@@ -16,6 +16,12 @@ Day 1 interviews (nobody is free tomorrow, so invitations go out weeks ahead), t
 /spark-bootcamp:coach     # any time you are lost: where you are, what is done, what to run next
 ```
 
+Every skill talks before it writes, sized to the decision: the shaping work (your idea, your
+interviews, your position, your price) is a proper conversation; technical documents get drafted
+fast and then explained back in plain English so you can poke holes; research and assembly skills
+ask two or three sharp questions and get on with it. "Skip" and "you decide" are always allowed,
+and always logged, so no artefact hides a call you never saw.
+
 Everything you produce is saved to your own project (`00-prework/` … `05-sale/`) and logged to
 `CHANGELOG.md` and `DECISIONS.md`, so you end the week with an audit trail, not just a product.
 

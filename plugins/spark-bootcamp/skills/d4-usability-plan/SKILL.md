@@ -13,6 +13,8 @@ when_to_use: Day 4 go-to-market, straight after the MVP deploys. Run before any 
 ## Before you start
 Read: `.spark/state.json` (`founder`, `business_type`, day 3 outcome with the live MVP URL, every task runs against it); `03-product/story-map.md` (backbone click-path and acceptance criteria, your tasks come off these); `00-prework/invite-list.csv` and `00-prework/invitation-pack.md` (the testers who said yes in pre-work, the five you book).
 
+Two quick questions before drafting (5 minutes): what is the one thing the founder most wants to learn from watching people tomorrow, and which five names from the tester tally do they trust to show up? Their answers shape the tasks and the bookings.
+
 Guardrail: **you contact testers, but nothing goes out until you approve it.** This skill drafts booking messages and stops. It never sends and never spends. A confirmed booking means a real reply to a real slot.
 
 ## Steps
