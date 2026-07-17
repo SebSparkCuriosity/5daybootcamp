@@ -6,19 +6,20 @@ software, hardware and services businesses.
 
 ## How it runs
 
-Install, then run three commands in order. After that, `coach` always tells you the one command
-to run next.
+Install 2 to 4 weeks before your bootcamp Monday, then run three commands in order. After that,
+`coach` always tells you the one command to run next: first the pre-work chain that books your
+Day 1 interviews (nobody is free tomorrow, so invitations go out weeks ahead), then the five days.
 
 ```
 /spark-bootcamp:doctor    # once: checks your machine, lays out your project, prints the pre-work
-/spark-bootcamp:start     # captures your idea, your path, and your numeric target for the week
+/spark-bootcamp:start     # captures your idea, your path, your bootcamp Monday and your numeric target
 /spark-bootcamp:coach     # any time you are lost: where you are, what is done, what to run next
 ```
 
-Everything you produce is saved to your own project (`01-discovery/` … `05-sale/`) and logged to
+Everything you produce is saved to your own project (`00-prework/` … `05-sale/`) and logged to
 `CHANGELOG.md` and `DECISIONS.md`, so you end the week with an audit trail, not just a product.
 
-## The 60 skills
+## The 62 skills
 
 ### The spine (always on)
 | skill | what it does |
@@ -44,8 +45,16 @@ Everything you produce is saved to your own project (`01-discovery/` … `05-sal
 | `run-interview` | Runs and captures one interview, discovery or product-test mode |
 | `synthesise-interviews` | Pulls the patterns out of a folder of interview records |
 
-### Day 1: Discovery
-`d1-refine-idea` · `d1-define-interviewees` · `d1-build-list` · `d1-write-outreach` · `d1-write-script` · `d1-validated-problem`
+### Pre-work: book the interviews (2 to 4 weeks before the Monday)
+| skill | what it does |
+|---|---|
+| `p0-interview-triage` | A conversation that decides who to interview: one segment, the role, 8 to 12, three screens |
+| `p0-invite-list` | 20+ named, reachable people, each with a channel and warmth rating |
+| `p0-invitations` | Email, WhatsApp or LinkedIn invitations to a real slot on the bootcamp Monday |
+| `p0-schedule` | Tracks replies, chases silence, closes pre-work at 8+ booked |
+
+### Day 1: Idea and Discovery
+`d1-refine-idea` · `d1-interview-plan` · `d1-write-script` · `d1-validated-problem`
 
 ### Day 2: Market and Proposition
 `d2-market-map` · `d2-market-sizing` · `d2-competitor-scan` · `d2-positioning` · `d2-proposition` · `d2-messaging` · `d2-brand-foundations` · `d2-visual-identity` · `d2-pitch-deck`

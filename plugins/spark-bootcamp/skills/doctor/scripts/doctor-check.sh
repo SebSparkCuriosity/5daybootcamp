@@ -132,6 +132,7 @@ touch_file() {
 mk_dir "${PROJECT_ROOT}/.spark"
 mk_dir "${PROJECT_ROOT}/.spark/brand"
 mk_dir "${PROJECT_ROOT}/.spark/deliverables"
+mk_dir "${PROJECT_ROOT}/00-prework"
 mk_dir "${PROJECT_ROOT}/01-discovery"
 mk_dir "${PROJECT_ROOT}/02-market"
 mk_dir "${PROJECT_ROOT}/03-product"
@@ -177,7 +178,8 @@ line "Summary"
 line "-------"
 line "  Passed: ${PASS_COUNT}    Needs a fix: ${FAIL_COUNT}"
 if [ "${FAIL_COUNT}" -eq 0 ]; then
-  line "  Machine is ready. Do the pre-work in .spark/prework.md, then run /spark-bootcamp:start."
+  line "  Machine is ready. Open .spark/prework.md, then run /spark-bootcamp:start."
+  line "  The pre-work's long pole is booking your Day 1 interviews: invitations go out 2 to 4 weeks ahead."
 else
   line "  Fix the [FAIL] items above, then run doctor again."
 fi

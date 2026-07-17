@@ -1,6 +1,6 @@
 # Discovery Interview Script
 
-Segment and role: [PASTE FROM interview-target-spec.md]
+Segment and role: [PASTE FROM 00-prework/interview-target-spec.md]
 Riskiest assumption this call must test: [PASTE FROM idea-brief.md]
 
 Keep this beside you. Glance at it, do not read it out. You are aiming to talk less than a third of the time.

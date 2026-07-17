@@ -2,8 +2,9 @@
 
 This repository is a Claude Code marketplace holding one plugin, `spark-bootcamp`, in
 `plugins/spark-bootcamp/`. The plugin takes a founder from a raw idea to a first paying
-customer in five days. These are the conventions every skill obeys. Read this before
-editing or adding a skill.
+customer: a pre-work phase 2 to 4 weeks out (idea captured, 8 to 12 interviews booked
+for the bootcamp Monday), then five days. These are the conventions every skill obeys.
+Read this before editing or adding a skill.
 
 ## Voice (Spark house style, non-negotiable)
 
@@ -14,6 +15,24 @@ editing or adding a skill.
 - Pragmatic. "Does it actually work?" beats "is it cutting-edge?".
 - Warm, first-name, short sentences. No corporate-speak, no throat-clearing.
 - Every recommendation carries a number. Prose over bullets unless a comparison needs structure.
+
+## Conversation-first skills (the shaping work is a dialogue)
+
+The skills that shape the founder's thinking (`start`, `p0-interview-triage`,
+`d1-refine-idea`, `d1-interview-plan`, `d1-write-script`) work by conversation, not
+form-filling. The rules they share:
+
+- One question at a time. Listen, then follow up on what the founder actually said.
+- Reflect back before moving on; capture the founder's phrases verbatim. Their words go
+  in the artefact, not Claude's paraphrase.
+- Offer a view with a number attached, then ask. Never silently decide for them.
+- Never write a section the founder has not spoken to. A blank with a note beats an
+  invented paragraph.
+- The artefact is done when the founder explicitly says it is theirs.
+
+For these skills the conversation IS the work, so the token-efficiency rules below bend:
+the SKILL.md stays terse, but the conversation arcs live in `references/` and the session
+itself is allowed to be long. Everywhere else, mechanical skills stay mechanical.
 
 ## The founder's project layout (what skills read and write)
 
@@ -29,6 +48,7 @@ Skills operate inside the founder's own project, not this repo. They create and 
 │   └── deliverables/          # audit-pack, compliance notes, launch package
 ├── CHANGELOG.md               # append-only log, one line per artefact produced
 ├── DECISIONS.md               # decision log, why each call was made
+├── 00-prework/                # pre-work artefacts: triage, invite list, invitations, schedule
 ├── 01-discovery/              # Day 1 artefacts
 ├── 02-market/                 # Day 2 artefacts
 ├── 03-product/                # Day 3 artefacts
@@ -43,7 +63,12 @@ Skills operate inside the founder's own project, not this repo. They create and 
   "founder": "string",
   "business_type": "software | hardware | services",
   "idea": "one sentence",
-  "headline_target": "the founder's numeric outcome for the week, set on Monday",
+  "headline_target": "the founder's numeric outcome for the week, set in pre-work",
+  "prework": {
+    "bootcamp_monday": "ISO date of the bootcamp's Monday, e.g. 2026-09-14",
+    "interviews_booked": 0,
+    "complete": false
+  },
   "current_day": 1,
   "days": {
     "1": { "target": "string", "outcome": "string", "complete": false },
@@ -152,5 +177,6 @@ Founders install with:
 /plugin install spark-bootcamp@spark
 ```
 
-Then run `/spark-bootcamp:doctor` once, then `/spark-bootcamp:start`. The `coach` skill tells
-them the one next command at every step.
+Then run `/spark-bootcamp:doctor` once, then `/spark-bootcamp:start`, ideally 2 to 4 weeks
+before the bootcamp Monday so the interview invitations can go out in time. The `coach` skill
+tells them the one next command at every step, starting with the pre-work chain.

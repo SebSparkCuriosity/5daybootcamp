@@ -1,6 +1,6 @@
 # Interview Target Spec
 
-_Day 1 discovery. Fill every field. Delete the guidance in brackets as you go._
+_Pre-work triage, 2 to 4 weeks before the bootcamp. Fill every field. Delete the guidance in brackets as you go._
 
 ## Segment (one only)
 People who [do this job] at [this kind of place].

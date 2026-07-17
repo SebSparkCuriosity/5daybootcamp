@@ -11,7 +11,7 @@ when_to_use: Day 2, after d2-market-map, before the proposition. "who are my com
 **You are ready for this when.** `02-market/market-map.md` exists.
 
 ## Before you start
-Read `02-market/market-map.md` (your chosen segment and pain) and `01-discovery/interview-target-spec.md` if it exists. Never invent numbers: every cell is a fact from the rival's own site (cite the URL) or a cell marked "assumption".
+Read `02-market/market-map.md` (your chosen segment and pain) and `00-prework/interview-target-spec.md` if it exists. Never invent numbers: every cell is a fact from the rival's own site (cite the URL) or a cell marked "assumption".
 
 ## Steps
 1. List six to eight rivals: direct (same job, same buyer), indirect (different tool, same pain), and the status quo (spreadsheet, manual process, "do nothing"). The status quo wins the most deals, so include it.

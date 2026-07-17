@@ -9,16 +9,17 @@ A target passes if it contains a digit and you could tell, at 6pm, whether it
 happened. "Understand the market" fails. "One position statement, tested on 3
 prospects" passes.
 
-## Day 1, Discovery
+## Day 1, Idea and Discovery
 
-The daily job is the same across all three paths: talk to real people and
-prove the pain is real.
+The daily job is the same across all three paths: develop the idea in the
+morning, then hold the interviews you booked in pre-work. The booking happened
+weeks ago; today's number is about holding them and what they prove.
 
 | Path | A target that passes |
 | --- | --- |
-| software | 8 to 12 interviews booked and at least 5 held, pain confirmed in 3+ |
-| hardware | 8 to 12 interviews booked, 5 held, willingness-to-pay probed in 3+ |
-| services | 8 to 12 interviews booked, 5 held, 3+ naming a budget line |
+| software | 5+ of the booked interviews held, pain confirmed in 3+ |
+| hardware | 5+ of the booked interviews held, willingness-to-pay probed in 3+ |
+| services | 5+ of the booked interviews held, 3+ naming a budget line |
 
 ## Day 2, Market
 

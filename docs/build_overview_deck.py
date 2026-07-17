@@ -90,7 +90,7 @@ textbox(s, MARGIN + Inches(0.2), Inches(2.55), CW, Inches(2.2), [
     {"text": "Five days from a raw idea to a first paying customer.", "size": 24, "color": RGBColor(0xC9,0xD4,0xDE)},
 ])
 textbox(s, MARGIN + Inches(0.2), Inches(5.1), CW, Inches(1.4), [
-    {"text": "A Claude Code plugin. 60 skills, one guided week.", "size": 16, "color": SPARK, "bold": True, "space_after": 4},
+    {"text": "A Claude Code plugin. 62 skills, a pre-work phase and one guided week.", "size": 16, "color": SPARK, "bold": True, "space_after": 4},
     {"text": "Built by Spark AI Agency for Digital Jersey's cohort.", "size": 14, "color": RGBColor(0xC9,0xD4,0xDE)},
     {"text": "sparkconsulting.tech", "size": 12, "color": MUTED},
 ])
@@ -98,14 +98,15 @@ textbox(s, MARGIN + Inches(0.2), Inches(5.1), CW, Inches(1.4), [
 # ---------- 2. WHAT IT IS ----------
 s = slide(); bg(s); header(s, "What it is", "One plugin that walks a founder from idea to income")
 textbox(s, MARGIN + Inches(0.5), Inches(1.95), CW - Inches(0.5), Inches(1.8), [
-    {"text": "You install it, type one command a day, and it hand-holds you through the whole journey: validating "
-             "the problem with real interviews, mapping the market, building a brand and a pitch deck, defining and "
-             "building an MVP, testing it, and closing your first sale.", "size": 17, "color": INK, "space_after": 10},
+    {"text": "You install it 2 to 4 weeks early, type one command a day, and it hand-holds you through the whole "
+             "journey: booking interviews weeks ahead, developing the idea, validating the problem with real "
+             "conversations, mapping the market, building a brand and a pitch deck, defining and building an MVP, "
+             "testing it, and closing your first sale.", "size": 17, "color": INK, "space_after": 10},
     {"text": "It works whether you are building software, hardware or a service. Everything you produce is saved to "
              "your own project and logged, so you finish the week with a working product and an audit trail a "
              "regulator nods at rather than flinches from.", "size": 17, "color": INK},
 ])
-facts = [("60", "skills"), ("5", "days"), ("3", "business paths"), ("£2,000+", "first sale, fixed price")]
+facts = [("62", "skills"), ("5", "days"), ("3", "business paths"), ("£2,000+", "first sale, fixed price")]
 fw = (CW - Inches(0.5) - Inches(0.6)) / 4
 for i, (big, small) in enumerate(facts):
     x = MARGIN + Inches(0.5) + i * (fw + Inches(0.2))
@@ -118,15 +119,16 @@ for i, (big, small) in enumerate(facts):
 footer(s, 2)
 
 # ---------- 3. WEEK AT A GLANCE ----------
-s = slide(); bg(s); header(s, "The week", "Five days, five numeric outcomes")
+s = slide(); bg(s); header(s, "The journey", "A pre-work phase, then five days of numeric outcomes")
 week = [
-    ("Mon", "Discovery", "8 to 12 interviews synthesised, one validated problem, one named segment"),
+    ("Pre", "Interviews booked", "2 to 4 weeks out: idea captured, 20+ invitations sent, 8 to 12 interviews booked for the Monday"),
+    ("Mon", "Idea & Discovery", "The idea developed in a deep morning conversation, booked interviews held and synthesised"),
     ("Tue", "Market & Proposition", "A market map, TAM/SAM/SOM, a proposition and USP, a brand, a hand-out pitch deck"),
     ("Wed", "Product & Build", "A working MVP live for a real prospect to act on, tracked in GitHub"),
     ("Thu", "Test & Go-to-Market", "5 usability tests, a sales deck, client processes, a funnel, a booked Friday meeting"),
     ("Fri", "Tweaks & First Sale", "Final fixes, pricing, and one committed yes with a date and an amount"),
 ]
-y = Inches(2.05); rh = Inches(0.92)
+y = Inches(2.0); rh = Inches(0.76)
 for i, (day, theme, out) in enumerate(week):
     yy = y + i * (rh + Inches(0.06))
     rect(s, MARGIN + Inches(0.5), yy, CW - Inches(0.5), rh, PANEL if i % 2 == 0 else WHITE, line=LINE)
@@ -156,8 +158,8 @@ code_block(s, MARGIN + Inches(0.5), Inches(2.32), CW - Inches(0.5),
 textbox(s, MARGIN + Inches(0.5), Inches(3.5), CW - Inches(0.5), Inches(0.3),
         [{"text": "2. Set up and start the week", "size": 15, "color": INK, "bold": True}])
 code_block(s, MARGIN + Inches(0.5), Inches(3.87), CW - Inches(0.5),
-           ["/spark-bootcamp:doctor    # checks your machine, lays out your project, lists the pre-work",
-            "/spark-bootcamp:start     # captures your idea, path and numeric target for the week"])
+           ["/spark-bootcamp:doctor    # 2 to 4 weeks early: machine check, project layout, the pre-work list",
+            "/spark-bootcamp:start     # your idea, path, bootcamp Monday and numeric target"])
 textbox(s, MARGIN + Inches(0.5), Inches(5.05), CW - Inches(0.5), Inches(0.3),
         [{"text": "3. Every step after that", "size": 15, "color": INK, "bold": True}])
 code_block(s, MARGIN + Inches(0.5), Inches(5.42), CW - Inches(0.5),
@@ -170,8 +172,8 @@ footer(s, 4)
 # ---------- 5. ARCHITECTURE ----------
 s = slide(); bg(s); header(s, "How it is built", "A thin spine holds a guided journey together")
 layers = [
-    ("The five days", "Day 1 Discovery  ·  Day 2 Market & Proposition  ·  Day 3 Product & Build  ·  Day 4 Test & GTM  ·  Day 5 First Sale",
-     "42 skills that do the daily work, each producing one concrete artefact", SPARK),
+    ("Pre-work + the five days", "Pre-work books the interviews  ·  Day 1 Idea & Discovery  ·  Day 2 Market  ·  Day 3 Build  ·  Day 4 Test & GTM  ·  Day 5 First Sale",
+     "46 skills that do the phase work, each producing one concrete artefact", SPARK),
     ("The interview engine", "run-interview  ·  synthesise-interviews  ·  interview-method",
      "Built once, borrowed twice: discovery on Monday, product-testing on Thursday", RGBColor(0x2E,0x86,0xC1)),
     ("The spine (always on)", "state machine  ·  coach  ·  checkpoint  ·  logging  ·  brand  ·  guardrails  ·  data-protection",
@@ -256,14 +258,19 @@ table_slide("Architecture", "The interview engine: built once, used twice", [
 ], note="Day 1 validates the problem. Day 4 tests the build. Same engine, one mode switch.", page=7, size=12.5)
 
 # ---------- 8-12. DAYS ----------
-table_slide("Day 1  ·  Monday", "Discovery", [
-    ("d1-refine-idea", "Sharpen a raw idea into a testable problem and name the riskiest assumption"),
-    ("d1-define-interviewees", "Decide the segment, the role and how many people to interview"),
-    ("d1-build-list", "Turn the target into 20+ named, reachable people"),
-    ("d1-write-outreach", "Messages that book interviews by asking for help, not selling"),
-    ("d1-write-script", "A Mom Test-proof interview script and a how-to-run guide"),
+table_slide("Pre-work  ·  2 to 4 weeks out", "Book the interviews", [
+    ("p0-interview-triage", "A conversation that decides who to interview: one segment, the role, 8 to 12"),
+    ("p0-invite-list", "20+ named, reachable people, each with a channel and warmth rating"),
+    ("p0-invitations", "Email, WhatsApp or LinkedIn invitations to a real slot on the bootcamp Monday"),
+    ("p0-schedule", "Tracks replies, chases silence, closes pre-work at 8+ booked"),
+], note="Outcome: 8 to 12 interviews in the Monday diary before the week begins.", page=8, size=13)
+
+table_slide("Day 1  ·  Monday", "Idea & Discovery", [
+    ("d1-refine-idea", "A deep partner conversation that develops the idea and names the riskiest assumption"),
+    ("d1-interview-plan", "Turn the booked schedule into a run plan: one focus per conversation"),
+    ("d1-write-script", "Co-write a Mom Test-proof interview script in the founder's own voice"),
     ("d1-validated-problem", "The persevere, pivot, or keep-interviewing call"),
-], note="Outcome: 8 to 12 interviews synthesised, one validated problem, one named segment.", page=8, size=13)
+], note="Outcome: the idea developed, booked interviews held and synthesised, one validated problem.", page=9, size=13)
 
 table_slide("Day 2  ·  Tuesday", "Market & Proposition", [
     ("d2-market-map", "Name the players, the value chain and the substitutes"),
@@ -275,7 +282,7 @@ table_slide("Day 2  ·  Tuesday", "Market & Proposition", [
     ("d2-brand-foundations", "Values, personality, naming and tone of voice"),
     ("d2-visual-identity", "A palette that passes contrast, two fonts and a simple logo"),
     ("d2-pitch-deck", "Assemble the day into a branded, evidence-traced pitch deck"),
-], note="Outcome: a market map, market sizing, a proposition and USP, a brand, and a hand-out pitch deck.", page=9, size=11.5)
+], note="Outcome: a market map, market sizing, a proposition and USP, a brand, and a hand-out pitch deck.", page=10, size=11.5)
 
 table_slide("Day 3  ·  Wednesday", "Product & Build", [
     ("d3-product-context", "Confirm your path and boil the MVP to one sentence"),
@@ -289,7 +296,7 @@ table_slide("Day 3  ·  Wednesday", "Product & Build", [
     ("d3-domain-email", "A real domain and a working business email"),
     ("d3-landing-site", "Your public shopfront with working lead capture"),
     ("d3-next-steps", "An honest, prioritised launch checklist"),
-], note="Outcome: a working MVP live for a real prospect to act on, tracked in GitHub.", page=10, size=10.5)
+], note="Outcome: a working MVP live for a real prospect to act on, tracked in GitHub.", page=11, size=10.5)
 
 table_slide("Day 4  ·  Thursday", "Test & Go-to-Market", [
     ("d4-usability-plan", "Reorient the interview engine and book 5 tests"),
@@ -301,7 +308,7 @@ table_slide("Day 4  ·  Thursday", "Test & Go-to-Market", [
     ("d4-marketing-funnel", "Awareness to purchase, with named channels"),
     ("d4-gtm-plan", "Name the first 10 customers, ranked by warmth"),
     ("d4-book-sale", "Get the warmest prospect into a confirmed Friday slot"),
-], note="Outcome: 5 usability tests, a sales deck, client processes, a funnel, a GTM plan, and a booked meeting.", page=11, size=11.5)
+], note="Outcome: 5 usability tests, a sales deck, client processes, a funnel, a GTM plan, and a booked meeting.", page=12, size=11.5)
 
 table_slide("Day 5  ·  Friday", "Tweaks & First Sale", [
     ("d5-triage", "Sort Day 4 feedback: Fix Now (max 3), Park, Roadmap"),
@@ -313,7 +320,7 @@ table_slide("Day 5  ·  Friday", "Tweaks & First Sale", [
     ("d5-rehearse", "Role-play the sale until the ask feels natural"),
     ("d5-close", "Turn the yes into a signature, recorded with a tier and amount"),
     ("d5-review", "Package the week and score it against your target"),
-], note="Outcome: one committed yes (cash, deposit, paid pilot or signed LOI) with a date and an amount.", page=12, size=11.5)
+], note="Outcome: one committed yes (cash, deposit, paid pilot or signed LOI) with a date and an amount.", page=13, size=11.5)
 
 # ---------- 13. THREE PATHS ----------
 s = slide(); bg(s); header(s, "One plugin, three paths", "The build flexes to what you are making")
@@ -339,7 +346,7 @@ textbox(s, MARGIN + Inches(0.85), Inches(5.5), CW - Inches(1.2), Inches(0.95), [
     {"text": "a live page a real prospect can act on. Skills that build or ship branch from one variance "
              "matrix, so the journey stays the same shape whatever you are making.", "size": 14, "color": WHITE},
 ], anchor=MSO_ANCHOR.MIDDLE)
-footer(s, 13)
+footer(s, 14)
 
 # ---------- 14. EFFICIENT & AUDITABLE ----------
 s = slide(); bg(s); header(s, "By design", "Efficient to run, auditable to trust")
@@ -366,7 +373,7 @@ for i, (title, items) in enumerate(cols):
     for it in items:
         lines.append({"text": "•  " + it, "size": 13.5, "color": INK, "space_after": 8})
     textbox(s, x + Inches(0.3), Inches(2.4), cwx - Inches(0.6), Inches(3.8), lines)
-footer(s, 14)
+footer(s, 15)
 
 # ---------- 15. WHAT YOU WALK AWAY WITH ----------
 s = slide(); bg(s); header(s, "By Friday", "What the founder walks away with")
@@ -388,7 +395,7 @@ for col in range(2):
     for it in chunk:
         lines.append({"text": "✓   " + it, "size": 15, "color": INK, "bold": False, "space_after": 12})
     textbox(s, x, Inches(2.3), CW/2 - Inches(0.4), Inches(4), lines)
-footer(s, 15)
+footer(s, 16)
 
 # ---------- 16. CLOSING ----------
 s = slide(); bg(s, INK)

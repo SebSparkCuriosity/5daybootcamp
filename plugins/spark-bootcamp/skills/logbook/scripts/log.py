@@ -12,8 +12,8 @@ CHANGELOG mode (the common one). Appends a single line to CHANGELOG.md:
 and registers the same artefact in .spark/state.json via the journey-state
 helper, so state and log never drift apart.
 
-    log.py --skill d1-define-interviewees \
-           --artefact 01-discovery/interview-target-spec.md \
+    log.py --skill p0-interview-triage \
+           --artefact 00-prework/interview-target-spec.md \
            --result "10 interviews targeted"
 
 DECISIONS mode. Appends a decision and its one-line rationale to DECISIONS.md:

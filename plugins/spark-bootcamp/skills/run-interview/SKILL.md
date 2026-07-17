@@ -9,7 +9,7 @@ argument-hint: [discovery|product-test]
 
 **What this does.** Runs one customer call end to end: a live prompt sheet and note capture, then one structured record with context, three-plus verbatim quotes, the job and pain observed, and (product-test) a 0 to 5 buying-signal score with evidence.
 **Why it matters.** The interview is where the truth lives and the easiest thing to do badly: ask about the future and people are kind and wrong, so this engine keeps you asking about the past in specifics and writing down what you actually saw.
-**You are ready for this when.** Discovery: `01-discovery/interview-target-spec.md` exists and a call is booked. Product-test: you have built the thing (page, prototype or sample) and a tester in front of it.
+**You are ready for this when.** Discovery: `01-discovery/interview-plan.md` exists and `00-prework/interview-schedule.md` holds today's booked calls. Product-test: you have built the thing (page, prototype or sample) and a tester in front of it.
 
 ## Before you start
 Pick the mode. `discovery` (Day 1) understands the problem; `product-test` (Day 4) watches someone use what you built.

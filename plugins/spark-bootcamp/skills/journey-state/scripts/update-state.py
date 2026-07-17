@@ -15,8 +15,8 @@ Usage:
   echo '{"business_type": "services"}' | update-state.py --patch -
 
   # Append one artefact record (safe append, does not replace the array)
-  update-state.py --append-artefact '{"skill":"d1-define-interviewees",
-      "path":"01-discovery/interview-target-spec.md",
+  update-state.py --append-artefact '{"skill":"p0-interview-triage",
+      "path":"00-prework/interview-target-spec.md",
       "result":"10 interviews targeted"}'
 
   # Just read and print the current state (no write)
@@ -50,6 +50,11 @@ def default_state():
         "business_type": "",          # "software" | "hardware" | "services"
         "idea": "",
         "headline_target": "",
+        "prework": {
+            "bootcamp_monday": "",    # ISO date of the bootcamp's Monday
+            "interviews_booked": 0,
+            "complete": False,        # set by p0-schedule at 8+ booked
+        },
         "current_day": 1,
         "days": {
             "1": day(),

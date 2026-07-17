@@ -35,19 +35,32 @@ def cmd(skill_id):
     return "/{plugin}:{skill}".format(plugin=PLUGIN, skill=skill_id)
 
 
+# The pre-work chain runs 2 to 4 weeks before the bootcamp Monday. Nobody is
+# free for an interview tomorrow, so the invitations go out weeks ahead and
+# pre-work only closes when the Monday diary holds 8+ booked conversations
+# (state.prework.complete, set by p0-schedule).
+PREWORK = {
+    "name": "Pre-work",
+    "target": "idea captured, and 8 to 12 interviews booked for your bootcamp Monday",
+    "steps": [
+        ("p0-interview-triage", "00-prework/interview-target-spec.md"),
+        ("p0-invite-list", "00-prework/invite-list.csv"),
+        ("p0-invitations", "00-prework/invitation-pack.md"),
+        ("p0-schedule", "00-prework/interview-schedule.md"),
+    ],
+}
+
 # The five-day chain. Each day has a short target reminder and an ordered list
 # of steps. Each step names the skill to run, and the artefact that proves the
 # step is done. The coach walks the chain and stops at the first step whose
 # artefact does not yet exist.
 JOURNEY = {
     1: {
-        "name": "Discovery",
-        "target": "prove real people feel the pain, from 8 to 12 interviews",
+        "name": "Idea and Discovery",
+        "target": "develop the idea deep enough to test, then hold the interviews you booked in pre-work",
         "steps": [
             ("d1-refine-idea", "01-discovery/idea-brief.md"),
-            ("d1-define-interviewees", "01-discovery/interview-target-spec.md"),
-            ("d1-build-list", "01-discovery/interview-list.csv"),
-            ("d1-write-outreach", "01-discovery/outreach-pack.md"),
+            ("d1-interview-plan", "01-discovery/interview-plan.md"),
             ("d1-write-script", "01-discovery/interview-script.md"),
             ("run-interview", "01-discovery/interviews"),
             ("synthesise-interviews", "01-discovery/discovery-findings.md"),
@@ -182,6 +195,49 @@ def artefact_present(project_root, state, path):
     return False
 
 
+def prework_route(project_root, state, hello):
+    """Route the founder through pre-work until 8+ interviews are booked."""
+    prework = state.get("prework") or {}
+    monday = prework.get("bootcamp_monday") or "your bootcamp Monday"
+    booked = prework.get("interviews_booked") or 0
+
+    block(
+        "Where you are",
+        "{h}you are in pre-work, 2 to 4 weeks out.\n"
+        "The point of this phase: {t}.\n"
+        "Interviews booked so far: {b}. Bootcamp Monday: {m}.".format(
+            h=hello, t=PREWORK["target"], b=booked, m=monday
+        ),
+    )
+
+    done = [(s, a) for s, a in PREWORK["steps"] if artefact_present(project_root, state, a)]
+    if done:
+        body = "Pre-work steps done: " + ", ".join(s for s, _ in done)
+    else:
+        body = "No pre-work step is done yet, and that is fine. Everyone starts here."
+    block("What you have finished", body)
+
+    for skill_id, artefact in PREWORK["steps"]:
+        if not artefact_present(project_root, state, artefact):
+            block(
+                "Your next move",
+                "Run  {c}\n\nThat is the next pre-work step. It writes  {art}.\n"
+                "Do that one thing, then run me again and I will point you at the next.".format(
+                    c=cmd(skill_id), art=artefact
+                ),
+            )
+            return
+
+    block(
+        "Your next move",
+        "Every pre-work artefact exists, but only {b} interviews are booked.\n"
+        "Run  {c}  whenever replies land: it logs each yes, chases silence, and\n"
+        "closes pre-work once you reach 8. Day 1 opens after that.".format(
+            b=booked, c=cmd("p0-schedule")
+        ),
+    )
+
+
 def main():
     start_dir = sys.argv[1] if len(sys.argv) > 1 else os.getcwd()
 
@@ -201,6 +257,13 @@ def main():
 
     founder = (state.get("founder") or "").strip()
     hello = "{name}, ".format(name=founder) if founder else ""
+
+    # Pre-work gates the week: until it is closed (8+ interviews booked,
+    # recorded by p0-schedule), the coach routes inside the pre-work chain.
+    if not (state.get("prework") or {}).get("complete"):
+        prework_route(project_root, state, hello)
+        return
+
     days = state.get("days", {}) or {}
 
     def day_complete(n):

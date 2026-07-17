@@ -36,7 +36,7 @@ def cmd(skill_id):
 # "close" can point at tomorrow's opening move. This mirrors the coach's
 # journey map; if day skills are renamed, update both in step.
 DAY_TARGET = {
-    1: "prove real people feel the pain, from 8 to 12 interviews",
+    1: "develop the idea deep enough to test, then hold the interviews booked in pre-work",
     2: "size the market and stake out one position you can win",
     3: "ship the smallest slice a real prospect can act on",
     4: "one live page and an outreach list ready to send",

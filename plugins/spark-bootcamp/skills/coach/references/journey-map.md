@@ -7,19 +7,30 @@ mirror it here. Keep the two in step.
 
 The coach walks a day's chain top to bottom and stops at the first step whose
 artefact does not yet exist. That step's skill is the one command it hands the
-founder.
+founder. Pre-work gates the whole week: until `state.prework.complete` is true,
+the coach routes inside the pre-work chain and never points at a day skill.
 
-## Day 1: Discovery (`01-discovery/`)
-Target: prove real people feel the pain, from 8 to 12 interviews.
+## Pre-work (`00-prework/`), 2 to 4 weeks before the bootcamp Monday
+Target: idea captured, and 8 to 12 interviews booked for the bootcamp Monday.
+Nobody is free for an interview tomorrow, so invitations go out weeks ahead.
+
+1. `p0-interview-triage` writes `00-prework/interview-target-spec.md`
+2. `p0-invite-list` writes `00-prework/invite-list.csv`
+3. `p0-invitations` writes `00-prework/invitation-pack.md`
+4. `p0-schedule` writes `00-prework/interview-schedule.md`, keeps
+   `state.prework.interviews_booked` current, and sets `state.prework.complete`
+   once 8+ interviews are booked (or the founder consciously accepts 5 to 7).
+
+## Day 1: Idea and Discovery (`01-discovery/`)
+Target: develop the idea deep enough to test, then hold the interviews booked
+in pre-work (Monday afternoon, with Tuesday morning as overflow).
 
 1. `d1-refine-idea` writes `01-discovery/idea-brief.md`
-2. `d1-define-interviewees` writes `01-discovery/interview-target-spec.md`
-3. `d1-build-list` writes `01-discovery/interview-list.csv`
-4. `d1-write-outreach` writes `01-discovery/outreach-pack.md`
-5. `d1-write-script` writes `01-discovery/interview-script.md`
-6. `run-interview` writes one record per session under `01-discovery/interviews/`
-7. `synthesise-interviews` writes `01-discovery/discovery-findings.md`
-8. `d1-validated-problem` writes `01-discovery/validated-problem.md`
+2. `d1-interview-plan` writes `01-discovery/interview-plan.md`
+3. `d1-write-script` writes `01-discovery/interview-script.md`
+4. `run-interview` writes one record per session under `01-discovery/interviews/`
+5. `synthesise-interviews` writes `01-discovery/discovery-findings.md`
+6. `d1-validated-problem` writes `01-discovery/validated-problem.md`
 
 ## Day 2: Market and Proposition (`02-market/`)
 Target: size the market, sharpen the proposition, hand out a pitch deck.
@@ -84,3 +95,8 @@ path appears in `state.artefacts[]`. A whole day counts as done only when
 founder signs it off. So a day can have all its artefacts present and still not
 be signed off; in that case the coach points back at the last skill in the chain
 to confirm and close the day.
+
+Pre-work is different: its artefacts can all exist while bookings still trickle
+in, so it closes on `state.prework.complete`, set by `p0-schedule` when 8 or
+more interviews are booked. Until then the coach keeps pointing at
+`p0-schedule` on every run.
