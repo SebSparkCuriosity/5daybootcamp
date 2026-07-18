@@ -56,10 +56,12 @@ Spark default and you should take it unless you have a strong reason not to.
 - Heading (serif, feels considered): `Georgia, 'Times New Roman', serif`
 - Body (sans, feels clean and modern): `system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif`
 
-Alternative pairing if your brand is more modern than traditional:
+Offer the founder these three pairings by feel, one line each, and let them pick:
 
-- Heading: `'Segoe UI', system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif` (set bold, large)
-- Body: `Georgia, 'Times New Roman', serif`
+1. **Considered** (trust, law, finance): heading `Georgia, 'Times New Roman', serif`,
+   body `system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif`.
+2. **Modern** (software, product): heading `'Segoe UI', system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif` set bold and large, body the same stack at text size.
+3. **Editorial** (advisory, premium services): heading `Palatino, 'Palatino Linotype', 'Book Antiqua', Georgia, serif`, body `Verdana, Geneva, Tahoma, sans-serif` set slightly small.
 
 That is two fonts. One for headings, one for body. You do not need a third. A web font
 from a CDN adds load time, a licence question and a point of failure, for a difference

@@ -80,6 +80,7 @@ JOURNEY = {
             ("d2-brand-foundations", "02-market/brand/brand-foundations.md"),
             ("d2-visual-identity", "02-market/brand/brand-board.html"),
             ("brand-register", ".spark/brand/brand.json"),
+            ("d2-brand-book", "02-market/brand/brand-book.html"),
             ("d2-pitch-deck", "02-market/pitch-deck.pptx"),
         ],
     },

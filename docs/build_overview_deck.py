@@ -90,7 +90,7 @@ textbox(s, MARGIN + Inches(0.2), Inches(2.55), CW, Inches(2.2), [
     {"text": "Five days from a raw idea to a first paying customer.", "size": 24, "color": RGBColor(0xC9,0xD4,0xDE)},
 ])
 textbox(s, MARGIN + Inches(0.2), Inches(5.1), CW, Inches(1.4), [
-    {"text": "A Claude Code plugin. 62 skills, a pre-work phase and one guided week.", "size": 16, "color": SPARK, "bold": True, "space_after": 4},
+    {"text": "A Claude Code plugin. 63 skills, a pre-work phase and one guided week.", "size": 16, "color": SPARK, "bold": True, "space_after": 4},
     {"text": "Built by Spark AI Agency for Digital Jersey's cohort.", "size": 14, "color": RGBColor(0xC9,0xD4,0xDE)},
     {"text": "sparkconsulting.tech", "size": 12, "color": MUTED},
 ])
@@ -106,7 +106,7 @@ textbox(s, MARGIN + Inches(0.5), Inches(1.95), CW - Inches(0.5), Inches(1.8), [
              "your own project and logged, so you finish the week with a working product and an audit trail a "
              "regulator nods at rather than flinches from.", "size": 17, "color": INK},
 ])
-facts = [("62", "skills"), ("5", "days"), ("3", "business paths"), ("£2,000+", "first sale, fixed price")]
+facts = [("63", "skills"), ("5", "days"), ("3", "business paths"), ("£2,000+", "first sale, fixed price")]
 fw = (CW - Inches(0.5) - Inches(0.6)) / 4
 for i, (big, small) in enumerate(facts):
     x = MARGIN + Inches(0.5) + i * (fw + Inches(0.2))
@@ -173,7 +173,7 @@ footer(s, 4)
 s = slide(); bg(s); header(s, "How it is built", "A thin spine holds a guided journey together")
 layers = [
     ("Pre-work + the five days", "Pre-work books the interviews  ·  Day 1 Idea & Discovery  ·  Day 2 Market  ·  Day 3 Build  ·  Day 4 Test & GTM  ·  Day 5 First Sale",
-     "46 skills that do the phase work, each producing one concrete artefact", SPARK),
+     "47 skills that do the phase work, each producing one concrete artefact", SPARK),
     ("The interview engine", "run-interview  ·  synthesise-interviews  ·  interview-method",
      "Built once, borrowed twice: discovery on Monday, product-testing on Thursday", RGBColor(0x2E,0x86,0xC1)),
     ("The spine (always on)", "state machine  ·  coach  ·  checkpoint  ·  logging  ·  brand  ·  guardrails  ·  data-protection",
@@ -280,9 +280,10 @@ table_slide("Day 2  ·  Tuesday", "Market & Proposition", [
     ("d2-proposition", "Turn jobs, pains and gains into one proposition, with a number"),
     ("d2-messaging", "A one-liner, three key messages and a 30-second pitch"),
     ("d2-brand-foundations", "Values, personality, naming and tone of voice"),
-    ("d2-visual-identity", "A palette that passes contrast, two fonts and a simple logo"),
+    ("d2-visual-identity", "Choose the logo from 3 concepts, the fonts and an AA-safe palette"),
+    ("d2-brand-book", "The full logo kit and an 8-section brand book, HTML and PDF"),
     ("d2-pitch-deck", "Assemble the day into a branded, evidence-traced pitch deck"),
-], note="Outcome: a market map, market sizing, a proposition and USP, a brand, and a hand-out pitch deck.", page=10, size=11.5)
+], note="Outcome: a market map, sizing, a proposition and USP, a chosen brand with its book, and a pitch deck.", page=10, size=11)
 
 table_slide("Day 3  ·  Wednesday", "Product & Build", [
     ("d3-product-context", "Confirm your path and boil the MVP to one sentence"),

@@ -44,7 +44,8 @@ Target: size the market, sharpen the proposition, hand out a pitch deck.
 7. `d2-brand-foundations` writes `02-market/brand/brand-foundations.md`
 8. `d2-visual-identity` writes `02-market/brand/brand-board.html`
 9. `brand-register` writes `.spark/brand/brand.json` (read by every document after it)
-10. `d2-pitch-deck` writes `02-market/pitch-deck.pptx`
+10. `d2-brand-book` writes `02-market/brand/brand-book.html` (plus `.pdf` and the logo kit)
+11. `d2-pitch-deck` writes `02-market/pitch-deck.pptx`
 
 ## Day 3: Product and Build (`03-product/`)
 Target: ship the smallest slice a real prospect can act on. Branches by path.

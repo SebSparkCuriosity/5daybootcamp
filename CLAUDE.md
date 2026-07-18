@@ -28,8 +28,8 @@ patterns, chosen per skill on what the judgement is worth, never per day:
   write a section they have not spoken to. Arcs live in `references/`; the session may run long.
 - **Working discussion (15 to 25 minutes).** The call belongs to the founder and Claude
   argues like a partner: `d1-validated-problem`, `d2-positioning`, `d2-proposition`,
-  `d2-brand-foundations`, `d3-moscow`, `d3-story-map`, `d4-gtm-plan`, `d5-pricing-model`,
-  `d5-price-number`. Socratic questions first, then a recommendation with a number, then the
+  `d2-brand-foundations`, `d2-visual-identity`, `d3-moscow`, `d3-story-map`, `d4-gtm-plan`,
+  `d5-pricing-model`, `d5-price-number`. Socratic questions first, then a recommendation with a number, then the
   founder decides and their words go in the artefact.
 - **Draft, then explain back (10 to 15 minutes).** For technical artefacts a non-technical
   founder must genuinely own: `d3-prd`, `d3-blueprint`, `d3-tech-stack`. Claude drafts fast,

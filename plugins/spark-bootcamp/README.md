@@ -25,7 +25,7 @@ and always logged, so no artefact hides a call you never saw.
 Everything you produce is saved to your own project (`00-prework/` … `05-sale/`) and logged to
 `CHANGELOG.md` and `DECISIONS.md`, so you end the week with an audit trail, not just a product.
 
-## The 62 skills
+## The 63 skills
 
 ### The spine (always on)
 | skill | what it does |
@@ -63,7 +63,7 @@ Everything you produce is saved to your own project (`00-prework/` … `05-sale/
 `d1-refine-idea` · `d1-interview-plan` · `d1-write-script` · `d1-validated-problem`
 
 ### Day 2: Market and Proposition
-`d2-market-map` · `d2-market-sizing` · `d2-competitor-scan` · `d2-positioning` · `d2-proposition` · `d2-messaging` · `d2-brand-foundations` · `d2-visual-identity` · `d2-pitch-deck`
+`d2-market-map` · `d2-market-sizing` · `d2-competitor-scan` · `d2-positioning` · `d2-proposition` · `d2-messaging` · `d2-brand-foundations` · `d2-visual-identity` · `d2-brand-book` · `d2-pitch-deck`
 
 ### Day 3: Product and Build
 `d3-product-context` · `d3-moscow` · `d3-story-map` · `d3-prd` · `d3-blueprint` · `d3-tech-stack` · `d3-github-setup` · `d3-mvp-build` · `d3-domain-email` · `d3-landing-site` · `d3-next-steps`
