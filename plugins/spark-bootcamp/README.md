@@ -57,6 +57,7 @@ Everything you produce is saved to your own project (`00-prework/` … `05-sale/
 | `p0-interview-triage` | A conversation that decides who to interview: one segment, the role, 8 to 12, three screens |
 | `p0-invite-list` | 20+ named, reachable people, each with a channel and warmth rating |
 | `p0-invitations` | Email, WhatsApp or LinkedIn invitations to a real slot on the bootcamp Monday |
+| `data-protection` | Consent wording, privacy notice and data clause drafted while replies come in |
 | `p0-schedule` | Tracks replies, chases silence, closes pre-work at 8+ booked |
 
 ### Day 1: Idea and Discovery
@@ -69,10 +70,10 @@ Everything you produce is saved to your own project (`00-prework/` … `05-sale/
 `d3-product-context` · `d3-moscow` · `d3-story-map` · `d3-prd` · `d3-blueprint` · `d3-tech-stack` · `d3-github-setup` · `d3-mvp-build` · `d3-domain-email` · `d3-landing-site` · `d3-next-steps`
 
 ### Day 4: Test and Go-to-Market
-`d4-usability-plan` · `d4-prioritise` · `d4-icp-messaging` · `d4-sales-deck` · `d4-intake-process` · `d4-onboarding-pack` · `d4-marketing-funnel` · `d4-gtm-plan` · `d4-book-sale`
+`d4-usability-plan` · `d4-prioritise` · `d4-icp-messaging` · `d4-pricing-model` · `d4-sales-deck` · `d4-intake-process` · `d4-onboarding-pack` · `d4-marketing-funnel` · `d4-gtm-plan` · `d4-book-sale`
 
 ### Day 5: Tweaks and First Sale
-`d5-triage` · `d5-ship-fixes` · `d5-pricing-model` · `d5-price-number` · `d5-proposal` · `d5-paperwork` · `d5-rehearse` · `d5-close` · `d5-review`
+`d5-triage` · `d5-ship-fixes` · `d5-price-number` · `d5-proposal` · `d5-paperwork` · `d5-rehearse` · `d5-close` · `d5-review`
 
 ## The three paths
 

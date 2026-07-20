@@ -23,12 +23,12 @@ Ask, then draft (about 15 minutes total). The choices were made in visual-identi
    ```
    It derives the logo variants from the chosen master, exports PNGs if a converter is on the machine, writes `brand-book.html`, and prints to `brand-book.pdf` via a headless browser where one exists. Read the `BOOK_RESULT` line.
 3. Eyeball the derived variants in `02-market/brand/kit/`: recolouring is mechanical, so check the mono and reversed logos actually read. If one is wrong, fix the master SVG and re-run.
-4. If `pdf=manual`, have the founder open `brand-book.html` in their browser and print to PDF (Cmd or Ctrl+P), saved as `02-market/brand/brand-book.pdf`. Two minutes, once.
+4. If `pdf=manual`, have the founder open `brand-book.html` in their browser and print to PDF (Cmd or Ctrl+P), saved as `02-market/brand/brand-book.pdf`. Two minutes, once. If PNG exports were skipped, `kit/png-export.html` downloads them from any browser, offline, whenever a platform demands one.
 5. Walk the book with the founder, section by section, as if they were handing it to a freelancer tomorrow. One round of corrections (usually the story, the voice example or the signature), edit `book-content.json`, re-run the script. Get an explicit yes.
 
 ## The artefact
-- `02-market/brand/kit/`: `logo-primary.svg`, `logo-mono.svg`, `logo-reversed.svg`, `favicon.svg`, plus `logo-primary-1200w.png`, `favicon-512.png`, `favicon-180.png`, `favicon-32.png` where PNG export was possible.
-- `02-market/brand/brand-book.html` and `brand-book.pdf`: cover plus 8 sections (the brand, logo and rules, colour with measured contrast, typography, voice, applications, the kit index, keeping it).
+- `02-market/brand/kit/`: `logo-primary.svg`, `logo-mono.svg`, `logo-reversed.svg`, `favicon.svg`, a `png-export.html` that downloads PNGs from any browser, plus pre-baked `logo-primary-1200w.png`, `favicon-512.png`, `favicon-180.png`, `favicon-32.png` where a converter was on the machine.
+- `02-market/brand/brand-book.html` and `02-market/brand/brand-book.pdf`: cover plus 8 sections (the brand, logo and rules, colour with measured contrast, typography, voice, applications, the kit index, keeping it), rendered from the filled `02-market/brand/book-content.json`.
 
 Good: a freelancer who has never met the founder could produce an on-brand proposal from the book alone.
 

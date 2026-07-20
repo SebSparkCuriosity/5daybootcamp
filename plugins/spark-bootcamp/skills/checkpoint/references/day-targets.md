@@ -47,9 +47,9 @@ This is where the three paths split hardest.
 
 | Path | A target that passes |
 | --- | --- |
-| software | landing page live, outreach list of 20+ named prospects, 1 Friday meeting booked |
-| hardware | pre-order page live, outreach list of 20+, 1 Friday demo booked |
-| services | offer and intake page live, outreach list of 20+, 1 Friday call booked |
+| software | 5 tests run, pricing model fixed, 10 prospects ranked warmest-first, 1 Friday meeting booked |
+| hardware | 5 tests run, pricing model fixed, 10 prospects ranked, 1 Friday demo booked |
+| services | 5 tests run, pricing model fixed, 10 prospects ranked, 1 Friday call booked |
 
 The booked Friday meeting is the load-bearing part. Everything else on Day 4 is
 in service of it. See the Thursday gate in the skill.

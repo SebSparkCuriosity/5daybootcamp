@@ -54,7 +54,7 @@ python3 ${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py \
 
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py \
-  --patch '{"days":{"5":{"outcome":"triaged; 3 fixes queued","complete":true}}}'
+  --patch '{"days":{"5":{"outcome":"triaged; 3 fixes queued"}}}'
 ```
 
 ## If it goes wrong

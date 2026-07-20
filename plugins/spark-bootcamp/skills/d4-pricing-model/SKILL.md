@@ -1,13 +1,13 @@
 ---
 name: Choose The Pricing Model
-description: Commit to ONE pricing model, name the value metric, and give each rejected model a one-line reason. Day 5, before you set a number.
-when_to_use: Day 5 sale, after the proposition, before the offer or price. When you catch yourself saying "I'll just charge for time".
+description: Commit to ONE pricing model, name the value metric, and give each rejected model a one-line reason. Day 4, before the sales deck carries a price.
+when_to_use: Day 4, after d4-icp-messaging, before the sales deck. When you catch yourself saying "I'll just charge for time".
 ---
 
 # Choose The Pricing Model
 
 **What this does.** Picks one pricing model and why, names what you charge against (the value metric), and records a reason for each rejected model.
-**Why it matters.** How you charge decides who buys and how fast they say yes, so choose the model first, then the number.
+**Why it matters.** How you charge decides who buys and how fast they say yes, and this afternoon's sales deck carries a price slide, so the model and floor get fixed now. The exact number is Friday morning's first job (`d5-price-number`).
 **You are ready for this when.** `02-market/proposition.md` exists and names the customer success metric.
 
 ## Before you start
@@ -27,15 +27,14 @@ Guardrail: this chooses a model and value metric only. No proposal, no payment. 
 7. Set a first-price range: a floor and ceiling with one reason each. Spark's floor is £2,000 fixed; do not go below without a written reason.
 
 ## The artefact
-Writes `05-sale/PRICING-MODEL.md`. Good: success metric restated in one line; value metric in three words or fewer; chosen model with two-sentence reason; four-row table (model, when it wins, verdict) with each rejected row carrying a reason; any Jersey/regulatory constraint; floor and ceiling with a reason each. Use `${CLAUDE_SKILL_DIR}/references/pricing-model-template.md`.
+Writes `04-gtm/PRICING-MODEL.md`. Good: success metric restated in one line; value metric in three words or fewer; chosen model with two-sentence reason; four-row table (model, when it wins, verdict) with each rejected row carrying a reason; any Jersey/regulatory constraint; floor and ceiling with a reason each. Use `${CLAUDE_SKILL_DIR}/references/pricing-model-template.md`.
 
 ## Done when
 One model chosen and named, value metric named, each of the three rejected models has a one-line reason, and the file carries a floor and ceiling.
 
 ## Log it
-Append one line to CHANGELOG.md and set the Day 5 outcome:
-- `${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py --skill d5-pricing-model --artefact 05-sale/PRICING-MODEL.md --result "floor GBP 2,000"`
-- `${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py --patch` to set the Day 5 target or outcome to the chosen model.
+Append one line to CHANGELOG.md:
+- `${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py --skill d4-pricing-model --artefact 04-gtm/PRICING-MODEL.md --result "floor GBP 2,000"`
 Record the choice and its reason in DECISIONS.md.
 
 ## If it goes wrong

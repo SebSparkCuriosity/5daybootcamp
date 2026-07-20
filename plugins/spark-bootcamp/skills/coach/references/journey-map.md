@@ -17,7 +17,10 @@ Nobody is free for an interview tomorrow, so invitations go out weeks ahead.
 1. `p0-interview-triage` writes `00-prework/interview-target-spec.md`
 2. `p0-invite-list` writes `00-prework/invite-list.csv`
 3. `p0-invitations` writes `00-prework/invitation-pack.md`
-4. `p0-schedule` writes `00-prework/interview-schedule.md`, keeps
+4. `data-protection` writes the consent wording and privacy drafts under
+   `.spark/deliverables/data-protection/` (the interviews and Friday's
+   paperwork both depend on them, so they are drafted while replies come in)
+5. `p0-schedule` writes `00-prework/interview-schedule.md`, keeps
    `state.prework.interviews_booked` current, and sets `state.prework.complete`
    once 8+ interviews are booked (or the founder consciously accepts 5 to 7).
 
@@ -68,34 +71,34 @@ Target: test the build for buying signals, then build the machine that sells it.
 1. `d4-usability-plan` writes `04-gtm/tests/usability-test-plan.md`
 2. `d4-prioritise` writes `04-gtm/feedback-synthesis.md`
 3. `d4-icp-messaging` writes `04-gtm/messaging.md`
-4. `d4-sales-deck` writes `04-gtm/sales-deck.pptx`
-5. `d4-intake-process` writes `04-gtm/ops/intake-process.md`
-6. `d4-onboarding-pack` writes `04-gtm/onboarding-pack.pdf`
-7. `d4-marketing-funnel` writes `04-gtm/funnel.md`
-8. `d4-gtm-plan` writes `04-gtm/gtm-plan.md`
-9. `d4-book-sale` writes `04-gtm/friday-meeting.md` (the booked Friday meeting, the Thursday gate)
+4. `d4-pricing-model` writes `04-gtm/PRICING-MODEL.md` (the model and floor; the exact number is Friday's first job)
+5. `d4-sales-deck` writes `04-gtm/sales-deck.pptx`
+6. `d4-intake-process` writes `04-gtm/ops/intake-process.md`
+7. `d4-onboarding-pack` writes `04-gtm/onboarding-pack.pdf`
+8. `d4-marketing-funnel` writes `04-gtm/funnel.md`
+9. `d4-gtm-plan` writes `04-gtm/gtm-plan.md`
+10. `d4-book-sale` writes `04-gtm/friday-meeting.md` (the booked Friday meeting, the Thursday gate)
 
 ## Day 5: Tweaks and First Sale (`05-sale/`)
 Target: hit your headline number, a real customer commits.
 
 1. `d5-triage` writes `05-sale/TRIAGE.md`
 2. `d5-ship-fixes` writes `05-sale/DEMO-SCRIPT.md`
-3. `d5-pricing-model` writes `05-sale/PRICING-MODEL.md`
-4. `d5-price-number` writes `05-sale/RATE-CARD.md`
-5. `d5-proposal` writes `05-sale/PROPOSAL.md`
-6. `d5-paperwork` writes the files under `05-sale/paperwork/`
-7. `d5-rehearse` writes `05-sale/SALE-SCRIPT.md`
-8. `d5-close` writes `05-sale/WON-DEAL.md`
-9. `d5-review` writes `05-sale/LAUNCH-PACKAGE.md`
+3. `d5-price-number` writes `05-sale/RATE-CARD.md` (the number for the Day 4 model)
+4. `d5-proposal` writes `05-sale/PROPOSAL.md`
+5. `d5-paperwork` writes the files under `05-sale/paperwork/`
+6. `d5-rehearse` writes `05-sale/SALE-SCRIPT.md`
+7. `d5-close` writes `05-sale/WON-DEAL.md`
+8. `d5-review` writes `05-sale/LAUNCH-PACKAGE.md`
 
 ## How completeness is judged
 
 A step counts as done when its artefact exists on disk, or when the artefact
-path appears in `state.artefacts[]`. A whole day counts as done only when
-`state.days[n].complete` is `true`, which `checkpoint close` sets after the
-founder signs it off. So a day can have all its artefacts present and still not
-be signed off; in that case the coach points back at the last skill in the chain
-to confirm and close the day.
+path appears in `state.artefacts[]`. Days are bookended by `checkpoint` and by
+nothing else: the coach points at `checkpoint open` when a day has no target
+yet, and at `checkpoint close` once every artefact exists. Only `checkpoint
+close` sets `state.days[n].complete` and advances `current_day`; no chain skill
+touches either. Day skills record outcomes, checkpoint records completion.
 
 Pre-work is different: its artefacts can all exist while bookings still trickle
 in, so it closes on `state.prework.complete`, set by `p0-schedule` when 8 or

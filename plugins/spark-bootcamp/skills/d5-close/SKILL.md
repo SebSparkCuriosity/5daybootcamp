@@ -58,7 +58,7 @@ python3 ${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py \
 Then set the day outcome and completion:
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py \
-  --patch '{"days":{"5":{"outcome":"Won: deposit, GBP 2000","complete":true}}}'
+  --patch '{"days":{"5":{"outcome":"Won: deposit, GBP 2000"}}}'
 ```
 If the win clears `headline_target`, say so plainly. Record why you accepted that tier in `DECISIONS.md`.
 

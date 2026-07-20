@@ -1,13 +1,13 @@
 ---
 name: Data Protection
 description: Drafts four data-protection documents a regulated firm needs in week one: privacy notice, lawful-basis note, consent wording and engagement-letter data clause.
-when_to_use: Run Day 1, before the first interview or landing page. Feeds run-interview and d5-paperwork.
+when_to_use: Pre-work, after the invitations go out, before the first interview. Feeds run-interview and d5-paperwork.
 ---
 
 # Data Protection
 
 **What this does.** Generates four DRAFT data-protection documents for your business, pre-filled from what we know, ready for a lawyer to check.
-**Why it matters.** From Monday you collect real personal data, and in finance, trust, law and fund admin that data is the thing you are judged on, so get the paperwork drafted before the data arrives.
+**Why it matters.** Your booked interviews start collecting real personal data on the bootcamp Monday, and in finance, trust, law and fund admin that data is the thing you are judged on. Draft the paperwork in pre-work, while replies trickle in, so consent wording exists before the first call and the data clause is lawyer-checked before Friday.
 **You are ready for this when.** `.spark/state.json` exists. A `brand.json` helps but is not required.
 
 ## Before you start

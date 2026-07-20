@@ -13,6 +13,7 @@ Run from the founder's project root, or pass --root.
 
 import argparse
 import csv
+import json
 import os
 import re
 import sys
@@ -116,11 +117,26 @@ def load_scorecard(root):
 
 
 def load_captures(root):
-    path = os.path.join(root, "04-gtm", "landing-captures.csv")
-    rows = _read_csv(path)
+    """Read 04-gtm/captures.jsonl (one JSON object per line, see the
+    capture-store reference). Falls back to a legacy CSV at the old path."""
+    path = os.path.join(root, "04-gtm", "captures.jsonl")
+    rows = None
+    if os.path.exists(path):
+        rows = []
+        with open(path, "r", encoding="utf-8") as fh:
+            for line in fh:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    rows.append(json.loads(line))
+                except ValueError:
+                    continue
+    else:
+        rows = _read_csv(os.path.join(root, "04-gtm", "landing-captures.csv"))
     people = []
     if rows is None:
-        print("  - landing captures missing (04-gtm/landing-captures.csv), skipping")
+        print("  - captures missing (04-gtm/captures.jsonl), skipping")
         return people
     for r in rows:
         name = _get(r, "name", "full_name") or _get(r, "email")

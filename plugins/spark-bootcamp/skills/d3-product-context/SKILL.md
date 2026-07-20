@@ -48,7 +48,7 @@ python3 "${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py" \
 Then set Day 3 progress:
 ```
 python3 "${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py" \
-  --patch '{"current_day":3,"days":{"3":{"target":"Build the MVP live and actionable for the path","outcome":"product context set, MVP in one sentence"}}}'
+  --patch '{"days":{"3":{"outcome":"product context set, MVP in one sentence"}}}'
 ```
 If you narrowed the MVP in a way that changes what Day 3 builds, log it via the logbook helper's `--decision` and `--rationale` flags in DECISIONS.md.
 

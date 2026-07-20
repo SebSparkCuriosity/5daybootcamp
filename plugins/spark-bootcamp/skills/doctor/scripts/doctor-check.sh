@@ -50,6 +50,16 @@ line ""
 line "Machine checks"
 line "--------------"
 
+# --- python3 (every helper script in the plugin runs on it) ----------------
+if have python3; then
+  PY_V="$(python3 --version 2>/dev/null | head -n1)"
+  pass "python3 installed (${PY_V}); every plugin helper runs on it"
+elif have py; then
+  fail "python3 not on PATH (Windows 'py' launcher found)" "Run 'py -3 --version' to confirm Python 3, then add python3 to PATH: in Windows Settings enable the 'python3' alias, or reinstall from python.org ticking 'Add python.exe to PATH'."
+else
+  fail "python3 not found" "Every plugin helper needs it. Install Python 3 from python.org (Windows: tick 'Add python.exe to PATH'; Mac: 'brew install python3'; Linux: 'sudo apt install python3')."
+fi
+
 # --- git ------------------------------------------------------------------
 if have git; then
   GIT_V="$(git --version 2>/dev/null | head -n1)"

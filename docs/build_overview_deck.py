@@ -303,6 +303,7 @@ table_slide("Day 4  ·  Thursday", "Test & Go-to-Market", [
     ("d4-usability-plan", "Reorient the interview engine and book 5 tests"),
     ("d4-prioritise", "Score the changes and rank testers by buying intent"),
     ("d4-icp-messaging", "Nail one ideal customer profile and the words that move them"),
+    ("d4-pricing-model", "Commit to one pricing model and a GBP 2,000 floor, before the deck carries a price"),
     ("d4-sales-deck", "The deck that closes one named prospect"),
     ("d4-intake-process", "Proposal to delivery, with a signable template per stage"),
     ("d4-onboarding-pack", "Make a new client's first week feel handled"),
@@ -314,8 +315,7 @@ table_slide("Day 4  ·  Thursday", "Test & Go-to-Market", [
 table_slide("Day 5  ·  Friday", "Tweaks & First Sale", [
     ("d5-triage", "Sort Day 4 feedback: Fix Now (max 3), Park, Roadmap"),
     ("d5-ship-fixes", "Ship the three fixes and prove the demo runs end to end"),
-    ("d5-pricing-model", "Commit to one pricing model, with the reason written down"),
-    ("d5-price-number", "Three packages, one recommended, floor £2,000"),
+    ("d5-price-number", "Three packages priced on the Day 4 model, one recommended, floor £2,000"),
     ("d5-proposal", "A one-page offer: problem, target, price, next step"),
     ("d5-paperwork", "Draft engagement letter, terms, invoice and a way to get paid"),
     ("d5-rehearse", "Role-play the sale until the ask feels natural"),

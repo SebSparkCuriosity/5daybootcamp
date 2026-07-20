@@ -55,7 +55,7 @@ python3 ${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py \
 ```
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py \
-  --patch '{"days":{"5":{"target":"Sale rehearsed","outcome":"12 objections, ask under 8s","complete":true}}}' \
+  --patch '{"days":{"5":{"outcome":"12 objections, ask under 8s"}}}' \
   --append-artefact '{"skill":"d5-rehearse","path":"05-sale/OBJECTIONS.md","result":"12 objections answered"}'
 ```
 

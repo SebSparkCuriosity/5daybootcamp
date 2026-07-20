@@ -27,7 +27,7 @@ A working discussion, about 25 minutes in three choices: logo, colours, fonts. T
 8. **Eyeball the board together.** Open `brand-board.html`. Does it look like the foundations? One round of corrections, then an explicit yes. Hand off to `brand-register`, which locks this into the canonical `.spark/brand/brand.json`; the brand book skill then builds the full kit from it. Do not skip either.
 
 ## The artefact
-In `02-market/brand/`: `concepts/` (three SVG concepts) and `logo-concepts.html` (the choice sheet); `logo.svg` (the chosen master, transparent background); `brand-tokens.json` (the single script input); `brand-board.html` (palette with measured contrast, type specimen, logo, tone line). Good: the founder can say why each piece won.
+Writes `02-market/brand/concepts/` (three SVG concepts) and `02-market/brand/logo-concepts.html` (the choice sheet); `02-market/brand/logo.svg` (the chosen master, transparent background); `02-market/brand/brand-tokens.json` (the single script input); `02-market/brand/brand-board.html` (palette with measured contrast, type specimen, logo, tone line). Good: the founder can say why each piece won.
 
 ## Done when
 All five true: three concepts exist and one is chosen as `logo.svg` (or the founder's own logo sits there, logged); `check_contrast.py` exits 0 with every text role at 4.5:1 and accent at 3.0:1; exactly two fonts chosen from a real choice; `brand-tokens.json` is valid JSON with five colours and two fonts; the founder has said yes to the board.

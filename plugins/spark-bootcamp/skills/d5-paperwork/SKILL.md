@@ -60,4 +60,6 @@ python3 ${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py \
 ```
 
 ## If it goes wrong
+Missing `.spark/deliverables/data-protection/dpa-clause.md`? Do not stall the sale: run `data-protection` now (it generates in minutes), then re-run the assembler. It was meant to be drafted in pre-work, so note the late run in DECISIONS.md.
+
 The assembler never crashes on a missing source: it writes all four drafts, leaves a `[TO COMPLETE]` marker where a source was missing, and names which to produce. Missing schedule: run the data-protection skill, then re-run. No bank transfer in time: fall back to a signed engagement letter plus an agreed payment date within seven days, recorded in writing.

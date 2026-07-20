@@ -130,6 +130,75 @@ def favicon_svg(name, colours):
     )
 
 
+def build_png_exporter(variants):
+    """A self-contained page that turns every kit SVG into downloadable PNGs
+    in the founder's own browser: no converter install, works offline."""
+    assets = [{"name": os.path.splitext(k)[0], "svg": v,
+               "widths": [512, 180, 32] if k.startswith("favicon") else [1200, 600]}
+              for k, v in variants.items()]
+    payload = json.dumps(assets)
+    return """<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PNG exporter</title>
+<style>
+  body { margin:0; background:#F4F6F5; color:#12211B;
+         font-family:system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+  .wrap { max-width:760px; margin:0 auto; padding:32px 20px 56px; }
+  h1 { font-size:1.5rem; margin:0 0 4px; }
+  .hint { color:#5B6B63; margin:0 0 20px; }
+  .card { background:#fff; border:1px solid #E4E7E5; border-radius:12px;
+          padding:16px 20px; margin-bottom:14px; display:flex; gap:18px;
+          align-items:center; flex-wrap:wrap; }
+  .card.dark { background:#12211B; color:#fff; }
+  .prev { max-width:180px; max-height:56px; }
+  .name { font-weight:600; min-width:130px; }
+  a.btn { display:inline-block; background:#0B3D2E; color:#fff; border-radius:8px;
+          padding:6px 12px; text-decoration:none; font-size:.85rem; margin:2px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Download your logos as PNG</h1>
+  <p class="hint">Everything renders in this page, offline. Click a size; the PNG keeps its transparent background.</p>
+  <div id="cards"></div>
+</div>
+<script>
+const assets = """ + payload + """;
+const cards = document.getElementById('cards');
+assets.forEach(a => {
+  const card = document.createElement('div');
+  card.className = 'card' + (a.name.includes('reversed') ? ' dark' : '');
+  const name = document.createElement('div');
+  name.className = 'name'; name.textContent = a.name;
+  const prev = document.createElement('img');
+  prev.className = 'prev';
+  prev.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(a.svg);
+  card.appendChild(name); card.appendChild(prev);
+  const img = new Image();
+  img.onload = () => a.widths.forEach(w => {
+    const scale = w / img.naturalWidth;
+    const canvas = document.createElement('canvas');
+    canvas.width = w; canvas.height = Math.round(img.naturalHeight * scale);
+    canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+    const link = document.createElement('a');
+    link.className = 'btn';
+    link.textContent = w + 'px';
+    link.download = a.name + '-' + w + 'w.png';
+    link.href = canvas.toDataURL('image/png');
+    card.appendChild(link);
+  });
+  img.src = prev.src;
+  cards.appendChild(card);
+});
+</script>
+</body>
+</html>
+"""
+
+
 def find_png_tool():
     """Return (kind, path) for the first SVG-to-PNG converter found, or None."""
     for name in ("rsvg-convert", "inkscape", "magick", "convert"):
@@ -183,6 +252,9 @@ def build_kit(brand_dir, master_svg, name, colours):
             fh.write(markup)
 
     files = list(variants)
+    with open(os.path.join(kit_dir, "png-export.html"), "w", encoding="utf-8") as fh:
+        fh.write(build_png_exporter(variants))
+    files.append("png-export.html")
     tool = find_png_tool()
     png_status = "skipped"
     if tool:
@@ -260,9 +332,10 @@ def build_book_html(tokens, content, master_svg, kit_files, png_status):
         f'<tr><td class="mono">kit/{esc(f)}</td><td>{esc(kit_use(f))}</td></tr>'
         for f in kit_files)
     png_note = ("" if png_status == "ok" else
-                "<p class=\"note\">PNG exports were skipped on this machine (no converter found). "
-                "The SVGs cover every screen use; export PNGs later with any converter or "
-                "an online tool if a platform demands them.</p>")
+                "<p class=\"note\">No SVG-to-PNG converter was found on this machine, so no "
+                "PNGs were pre-baked. When a platform demands one, open "
+                "<span class=\"mono\">kit/png-export.html</span> in any browser and click the "
+                "size you need. It works offline.</p>")
     email_sig = apps.get("email_signature", "")
     doc_header = apps.get("doc_header_line", "")
 
@@ -436,6 +509,7 @@ def kit_use(fname):
         "favicon-512.png": "App stores and platform uploads asking for 512 px.",
         "favicon-180.png": "Apple touch icon.",
         "favicon-32.png": "Classic browser favicon.",
+        "png-export.html": "Open in any browser to download PNGs of every asset at platform sizes. Works offline.",
     }
     return uses.get(fname, "As labelled.")
 

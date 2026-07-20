@@ -35,7 +35,7 @@ Pre-order or waitlist with the CAD render or product shot as hero. CTA: "Reserve
 Bookable intake showing the one sample deliverable and the fixed price. CTA: "Book a call" or "Request the package". A form or Calendly-style embed both count, as long as the submission also writes a `captures` row.
 
 ## The artefact
-Writes `03-product/site/index.html` (self-contained, inline styles, one capture form, privacy notice in the footer) and `03-product/site/accessibility-report.md`. Plus the capture store (Supabase `captures` table or Formspree) and the live deployment. Record the live URL at the top of the report. Good looks like: a stranger reads the headline, gets the promise and number in ten seconds, and completes the one action on a phone.
+Writes `03-product/site/index.html` (self-contained, inline styles, one capture form, privacy notice in the footer) and `03-product/site/accessibility-report.md`. Plus the capture store (Supabase `captures` table or Formspree), exported to `04-gtm/captures.jsonl` for Day 4 per `references/capture-store.md`, and the live deployment. Record the live URL at the top of the report. Good looks like: a stranger reads the headline, gets the promise and number in ten seconds, and completes the one action on a phone.
 
 ## Done when
 Live on your real domain (not a preview), a test submission you made lands as a row in `captures`, and `a11y_check.py` prints PASS or every flag is fixed or noted as accepted. State the live domain and the capture count (at least 1) as the result.

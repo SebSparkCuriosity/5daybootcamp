@@ -31,7 +31,7 @@ Good looks like a problem sentence a stranger could instantly picture, backed by
 `01-discovery/validated-problem.md` holds a single-sentence problem and one verdict. `01-discovery/target-segment.md` names one segment. DECISIONS.md has one dated line with the three scores. If INSUFFICIENT EVIDENCE: the count and a plan to reach 5 are recorded instead.
 
 ## Log it
-Append one line to CHANGELOG.md via `${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py`: date, skill id `d1-validated-problem`, artefact path `01-discovery/validated-problem.md`, numeric result (solid interview count). Then update state via `${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py`: set days.1 outcome to the verdict and mark days.1 complete only if PERSEVERE or PIVOT. Append the decision and rationale to DECISIONS.md.
+Append one line to CHANGELOG.md via `${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py`: date, skill id `d1-validated-problem`, artefact path `01-discovery/validated-problem.md`, numeric result (solid interview count). Then update state via `${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py`: set days.1 outcome to the verdict. Completion belongs to `checkpoint close`, which the coach points at next. Append the decision and rationale to DECISIONS.md.
 
 ## If it goes wrong
 Stuck between persevere and pivot: default to the problem the most people described in the most specific terms, and note the doubt in DECISIONS.md for Day 2. Cannot reach 5 by Tuesday midday even with the pool: narrow the segment. Do not start Day 2 on fewer than 5 solid interviews. Guessing the problem is the one mistake this week cannot recover from.

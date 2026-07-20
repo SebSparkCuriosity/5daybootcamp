@@ -28,6 +28,10 @@ point you at the next one.
 - [ ] **Write and send the invitations** (`p0-invitations`). Email, WhatsApp or
       LinkedIn, whichever each person actually answers, inviting them to a 20 to
       25 minute slot on your bootcamp Monday. You approve every message before it goes.
+- [ ] **Draft the data-protection pack** (`data-protection`). Ten minutes while
+      replies come in: consent wording for the interviews, a privacy notice, and
+      the data clause Friday's engagement letter embeds. Drafts only; a qualified
+      lawyer reviews them before you rely on them.
 - [ ] **Track replies to 8 booked** (`p0-schedule`). Run it whenever a reply lands.
       Pre-work is done when 8 or more interviews are in the Monday diary.
 

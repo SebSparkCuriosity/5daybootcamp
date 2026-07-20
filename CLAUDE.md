@@ -29,7 +29,7 @@ patterns, chosen per skill on what the judgement is worth, never per day:
 - **Working discussion (15 to 25 minutes).** The call belongs to the founder and Claude
   argues like a partner: `d1-validated-problem`, `d2-positioning`, `d2-proposition`,
   `d2-brand-foundations`, `d2-visual-identity`, `d3-moscow`, `d3-story-map`, `d4-gtm-plan`,
-  `d5-pricing-model`, `d5-price-number`. Socratic questions first, then a recommendation with a number, then the
+  `d4-pricing-model`, `d5-price-number`. Socratic questions first, then a recommendation with a number, then the
   founder decides and their words go in the artefact.
 - **Draft, then explain back (10 to 15 minutes).** For technical artefacts a non-technical
   founder must genuinely own: `d3-prd`, `d3-blueprint`, `d3-tech-stack`. Claude drafts fast,
@@ -121,8 +121,8 @@ Founders pay for tokens, so every skill earns its keep. The rules:
 - **Body under ~45 lines.** Three-line header (what, one warm why, ready-when), then terse
   numbered steps. No hedging, no repetition, no restating the obvious.
 - **One log call.** `log.py --skill --artefact --result` already registers the artefact in
-  state. Only add an `update-state.py --patch` when the skill sets a day target, outcome or
-  completion (checkpoint and day-closing skills). Never log the same thing twice.
+  state. Only add an `update-state.py --patch` when the skill sets a day outcome. Targets,
+  completion and `current_day` belong to `checkpoint` alone. Never log the same thing twice.
 - **Read compact, not whole.** Read `.spark/state.json` for context. Read a prior artefact only
   when the skill transforms its content, and only the part it needs. Let scripts extract inputs.
 - **Scripts do the mechanical work.** Reading, scaffolding, validating and checking done-conditions

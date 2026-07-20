@@ -15,7 +15,7 @@ subtitle: Trust admin, done in five minutes not forty. Fixed price from 2,000 po
 slides:
   - heading: The problem
     body: "“I type the same client details into four systems, and if I fumble one, that is an audit finding.” A senior trust administrator, Jersey. Twelve of fourteen we interviewed said the same."
-    source: Day 1 verbatim quote, 01-discovery/discovery-synthesis.md
+    source: Day 1 verbatim quote, 01-discovery/discovery-findings.md
     notes: Lead with the voice. Do not explain it.
 
   - heading: The solution
@@ -48,7 +48,7 @@ slides:
 
   - heading: The model
     body: Fixed price from 2,000 pounds for the first workflow, live in one to six weeks, then a monthly seat fee. One firm of ten administrators pays back the build in under a quarter.
-    source: 02-market/pricing.md.
+    source: revenue-model hypothesis from 02-market/proposition.md, flagged as an assumption until Day 4 prices it.
 
   - heading: How they hear about us
     body: One channel first. Warm introductions through the Jersey Finance network, where the founder has 30-plus direct contacts. Ten conversations, not a campaign.
@@ -59,7 +59,7 @@ slides:
       - 14 interviews run in five days
       - 12 confirmed the rekeying pain unprompted
       - "“If this logged every change, I would buy it tomorrow.” Compliance lead, fund admin firm"
-    source: 01-discovery/validated-problem.md and discovery-synthesis.md.
+    source: 01-discovery/validated-problem.md and discovery-findings.md.
 
   - heading: Why us
     body: The founder spent nine years inside Jersey trust administration and felt this pain personally. The network, the sector knowledge and the regulator fluency are the unfair advantage.

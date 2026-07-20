@@ -43,7 +43,7 @@ python3 ${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py \
   --result "4-stage intake process, 4 signable templates"
 
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py \
-  --patch '{"days":{"4":{"outcome":"4-stage intake process, 4 signable templates","complete":true}}}'
+  --patch '{"days":{"4":{"outcome":"4-stage intake process, 4 signable templates"}}}'
 ```
 
 ## If it goes wrong

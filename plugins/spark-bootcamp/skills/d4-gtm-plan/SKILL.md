@@ -11,7 +11,7 @@ when_to_use: "Day 4 GTM, after landing page live and scorecard exists. Trigger: 
 **You are ready for this when.** `04-gtm/buying-signal-scorecard.csv` exists and your landing page has captured real visitors.
 
 ## Before you start
-The ranker reads three inputs: `04-gtm/buying-signal-scorecard.csv`, the landing capture store (`04-gtm/landing-captures.csv`, or your hardware pre-order/waitlist export at the same path; export from Supabase or a form tool to that CSV first), and `01-discovery/interviews/` or `01-discovery/interview-notes.md`.
+The ranker reads three inputs: `04-gtm/buying-signal-scorecard.csv`, the landing capture export at `04-gtm/captures.jsonl` (export from Supabase or your form tool per the capture-store reference in `d3-landing-site`; hardware pre-order and waitlist exports land at the same path), and the interview records in `01-discovery/interviews/`.
 
 Guardrail: this skill plans outreach. It sends nothing and spends nothing until Day 5, and only after you say yes.
 

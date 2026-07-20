@@ -48,7 +48,7 @@ python3 ${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py --skill d3-mvp-build
 ```
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py \
-  --patch '{"days":{"3":{"outcome":"live: <url>","complete":true}}}'
+  --patch '{"days":{"3":{"outcome":"live: <url>"}}}'
 ```
 
 ## If it goes wrong

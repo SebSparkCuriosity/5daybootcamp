@@ -49,7 +49,7 @@ Then update `.spark/state.json`:
 
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py \
-  --patch '{"current_day": 4, "days": {"4": {"target": "5 usability sessions booked against the live MVP", "outcome": "5 sessions confirmed", "complete": true}}}'
+  --patch '{"days":{"4":{"outcome":"5 usability sessions confirmed"}}}'
 ```
 
 If you changed the booking method or dropped a task, note why in DECISIONS.md via the logbook `--decision`/`--rationale` mode.
