@@ -14,7 +14,7 @@ when_to_use: Day 2, straight after d2-proposition, before the landing page and a
 Read `02-market/proposition.md` (segment, pain, promise, numeric outcome) and `01-discovery/` notes if they exist, because the strongest messages steal the customer's own words. Match `.spark/brand/brand.json` tone if present. Do not invent proof: every claim traces to a real number or quote, or is flagged as an assumption.
 
 ## Steps
-1. Draft the one-liner: "[We help] [segment] [do the outcome] [without the pain]." Under 12 words, no jargon. Write five, keep one.
+1. Ask the founder first: "how would you tell a mate at the pub what you do?" Their pub sentence seeds the one-liner: "[We help] [segment] [do the outcome] [without the pain]." Under 12 words, no jargon. Write five together, the founder keeps one.
 2. Write three key messages: the three things you most want a prospect to believe. Each is a claim plus proof (a number, named result, demo, or interview quote). No proof, no message.
 3. Rank them. Lead with "why should I care?", not "how does it work?".
 4. Write the 60-word pitch: hook, what you do, who for, proof, ask. Aim 55 to 65 words. Read it aloud; if you stumble, cut a clause.

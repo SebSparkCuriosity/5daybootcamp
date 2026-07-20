@@ -10,6 +10,7 @@ This is what the journey-state helper writes when `start` runs its `init` call. 
   "business_type": "services",
   "idea": "SparkAudit helps Jersey trust firms clear their AML backlog so they pass inspection without hiring.",
   "headline_target": "1 paying client at GBP 2,000+",
+  "prework": { "bootcamp_monday": "2026-09-14", "interviews_booked": 0, "complete": false },
   "current_day": 1,
   "days": {
     "1": { "target": null, "outcome": null, "complete": false },
@@ -28,6 +29,7 @@ This is what the journey-state helper writes when `start` runs its `init` call. 
 - **business_type**: exactly one of `"software"`, `"hardware"` or `"services"`. This one field branches every build-and-ship skill later in the sprint, so it must be correct. No other value is valid.
 - **idea**: one sentence, one full stop, no line breaks. If it does not fit on one line, it is not ready.
 - **headline_target**: the week's success condition as a string, and it must contain at least one digit. This is Spark's non-negotiable: no number, no start.
+- **prework**: the pre-work phase record. `bootcamp_monday` is the ISO date of the bootcamp's Monday (every interview invitation points at it), `interviews_booked` counts the booked Day 1 interviews, and `complete` stays `false` until `p0-schedule` closes pre-work at 8+ booked. The coach routes inside the pre-work chain until then.
 - **current_day**: an integer 1 to 5. `start` sets it to `1`. The coach and the day skills advance it.
 - **days**: the five-day skeleton. Each day holds its own `target` (set by the coach when that day opens), `outcome` (what actually happened) and `complete` (a boolean flag, `false` until the day is signed off). `start` leaves all five empty and incomplete.
 - **artefacts**: an append-only list. Each entry is `{ "skill": "...", "path": "...", "result": "...", "at": "..." }`, added by every skill that produces an output. `start` leaves it empty.

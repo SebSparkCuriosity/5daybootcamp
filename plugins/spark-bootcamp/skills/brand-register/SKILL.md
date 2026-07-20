@@ -35,6 +35,8 @@ Guardrail: do not invent a brand. If the identity work is thin (no logo, no colo
 - `.spark/brand/brand.json`: hex primary and secondary, heading and body fonts, logo path, one-line tone, tagline, and a `contrast` block of the measured WCAG ratios. Field list in `${CLAUDE_SKILL_DIR}/references/brand-json-schema.md`.
 - `.spark/brand/logo.svg`: logo copied to one stable path.
 
+Next stop after this is `d2-brand-book`, which derives the full logo kit and the brand book from what you just locked.
+
 ## Done when
 Script exits 0 and prints "brand.json validates": `brand.json` has a non-empty `primary`, at least one non-empty font, `logo` set to `.spark/brand/logo.svg`, a non-empty `tone`, and `contrast.primary.on_white` at 4.5:1 or higher. `.spark/brand/logo.svg` exists.
 

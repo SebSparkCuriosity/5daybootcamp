@@ -22,7 +22,7 @@ One helper: `${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py`
 
 - Read: `python3 "${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py" --read`
 - Change fields with a JSON merge patch (touches only named keys, nested keys merge): `python3 "${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py" --patch '{"days":{"1":{"complete":true,"outcome":"10 interviews booked"}}}'`
-- Add an artefact (never via `--patch`, which replaces the whole array and loses history): `python3 "${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py" --append-artefact '{"skill":"d1-define-interviewees","path":"01-discovery/interview-target-spec.md","result":"10 interviews targeted"}'`
+- Add an artefact (never via `--patch`, which replaces the whole array and loses history): `python3 "${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py" --append-artefact '{"skill":"p0-interview-triage","path":"00-prework/interview-target-spec.md","result":"10 interviews targeted"}'`
 - Pipe a patch on stdin with `--patch -` when the JSON is large.
 - `--file <path>` points it elsewhere (tests); otherwise it walks up to the nearest `.spark`.
 

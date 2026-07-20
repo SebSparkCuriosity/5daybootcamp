@@ -58,7 +58,7 @@ python3 ${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py \
 Set Day 3 progress:
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py \
-  --patch '{"current_day":3,"days":{"3":{"outcome":"domain live and business email verified"}}}'
+  --patch '{"days":{"3":{"outcome":"domain live and business email verified"}}}'
 ```
 
 ## If it goes wrong

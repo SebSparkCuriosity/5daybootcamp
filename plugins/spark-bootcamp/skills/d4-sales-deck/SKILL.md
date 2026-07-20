@@ -15,10 +15,10 @@ argument-hint: [prospect name]
 Name the prospect first: the top buyer in `04-gtm/feedback-synthesis.md`, or the argument if passed. The deck is assembled from these, not invented:
 - `04-gtm/feedback-synthesis.md`: ranked buyers, verbatim tester quotes, reported results (your proof).
 - `02-market/messaging.md`: the tested proposition and words.
-- `02-market/proposition.md` and, if present, `02-market/pricing.md`: what one customer pays. If neither states a price, use the Spark default (fixed price from 2,000 pounds, live in one to six weeks) and flag the figure to confirm.
+- `02-market/proposition.md` and `04-gtm/PRICING-MODEL.md`: what one customer pays, from the model and floor fixed earlier today. If the model is not written yet, use the Spark default (fixed price from 2,000 pounds, live in one to six weeks) and flag the figure to confirm.
 - `.spark/brand/brand.json`: colours, fonts, contact. `.spark/state.json`: `business_type`, founder name.
 
-Every proof point is a verbatim quote with the speaker's role (never their name) beside the result. No invented or borrowed quotes; short of proof, phone another tester. Guardrail: this builds a file, sends and spends nothing. Confirm the exact price before it goes on a slide; showing the deck is Day 5 outreach, so sign-off waits there.
+Every proof point is a verbatim quote with the speaker's role (never their name) beside the result. No invented or borrowed quotes; short of proof, phone another tester. Once built, walk the deck with the founder as the prospect (10 minutes): they narrate each slide in their own words, and whatever they stumble on gets rewritten in words they actually say. Guardrail: this builds a file, sends and spends nothing. Confirm the exact price before it goes on a slide; showing the deck is Day 5 outreach, so sign-off waits there.
 
 Open `${CLAUDE_SKILL_DIR}/references/sales-deck-outline.md` (slide shape, five core sections marked) and `${CLAUDE_SKILL_DIR}/references/deck-content.example.yaml` (filled example).
 
@@ -48,7 +48,7 @@ Open `${CLAUDE_SKILL_DIR}/references/sales-deck-outline.md` (slide shape, five c
 8. Read it as the prospect: 10 to 14 slides, five sections present, two or more real quotes, final slide names a next step. Fix the YAML and re-run; overwrites cleanly.
 
 ## The artefact
-Under `04-gtm/`: `sales-deck-content.yaml` (source of truth, each proof point carries `source:`) and `sales-deck.pptx` (or `sales-deck.html`), branded from `brand.json`. Good is a 10 to 14 slide deck for one named prospect, all five core sections, two or more sourced quotes, ending on a slide they could act on today.
+Writes `04-gtm/sales-deck-content.yaml` (source of truth, each proof point carries `source:`) and `04-gtm/sales-deck.pptx` (or `04-gtm/sales-deck.html`), branded from `brand.json`. Good is a 10 to 14 slide deck for one named prospect, all five core sections, two or more sourced quotes, ending on a slide they could act on today.
 
 ## Done when
 `04-gtm/sales-deck.pptx` (or `.html`) exists and opens; 10 to 14 slides; all five core sections present; proof carries at least 2 verbatim quotes each with role and result; final slide states one named next step; re-running reproduces the deck without error.

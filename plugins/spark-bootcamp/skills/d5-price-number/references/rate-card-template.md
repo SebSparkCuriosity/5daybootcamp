@@ -5,7 +5,7 @@ Set on Day 5 by [founder]. Prices in GBP. Spark floor is GBP 2,000.
 ## The value on the table
 
 [One line: what solving this is worth to the buyer per year, sourced or flagged.]
-Example: "A trust firm doing this by hand loses about 6 hours a week. At GBP 50 an hour that is roughly GBP 15,000 a year. (Source: three interview notes, 05-sale/PRICING-MODEL.md.)"
+Example: "A trust firm doing this by hand loses about 6 hours a week. At GBP 50 an hour that is roughly GBP 15,000 a year. (Source: three interview notes, 04-gtm/PRICING-MODEL.md.)"
 
 If you have no evidence yet, write: "Assumption, untested. First sale is the test."
 

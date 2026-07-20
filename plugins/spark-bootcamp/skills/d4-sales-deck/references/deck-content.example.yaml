@@ -66,7 +66,7 @@ slides:
   # CORE: pricing
   - heading: What it costs
     body: Fixed price, 2,500 pounds, paid on delivery in week three. That includes the build, the weekly demos, and the team walkthrough. No day rates, no surprises.
-    source: 02-market/pricing.md; exact figure confirmed with founder before sending.
+    source: 04-gtm/PRICING-MODEL.md floor; exact figure set by d5-price-number and confirmed with the founder before sending.
 
   - heading: Why us
     body: We build for regulated Jersey firms and log every change so your regulator nods rather than flinches. We have already shipped this slice and eight administrators have used it.

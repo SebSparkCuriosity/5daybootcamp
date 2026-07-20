@@ -50,6 +50,16 @@ line ""
 line "Machine checks"
 line "--------------"
 
+# --- python3 (every helper script in the plugin runs on it) ----------------
+if have python3; then
+  PY_V="$(python3 --version 2>/dev/null | head -n1)"
+  pass "python3 installed (${PY_V}); every plugin helper runs on it"
+elif have py; then
+  fail "python3 not on PATH (Windows 'py' launcher found)" "Run 'py -3 --version' to confirm Python 3, then add python3 to PATH: in Windows Settings enable the 'python3' alias, or reinstall from python.org ticking 'Add python.exe to PATH'."
+else
+  fail "python3 not found" "Every plugin helper needs it. Install Python 3 from python.org (Windows: tick 'Add python.exe to PATH'; Mac: 'brew install python3'; Linux: 'sudo apt install python3')."
+fi
+
 # --- git ------------------------------------------------------------------
 if have git; then
   GIT_V="$(git --version 2>/dev/null | head -n1)"
@@ -132,6 +142,7 @@ touch_file() {
 mk_dir "${PROJECT_ROOT}/.spark"
 mk_dir "${PROJECT_ROOT}/.spark/brand"
 mk_dir "${PROJECT_ROOT}/.spark/deliverables"
+mk_dir "${PROJECT_ROOT}/00-prework"
 mk_dir "${PROJECT_ROOT}/01-discovery"
 mk_dir "${PROJECT_ROOT}/02-market"
 mk_dir "${PROJECT_ROOT}/03-product"
@@ -177,7 +188,8 @@ line "Summary"
 line "-------"
 line "  Passed: ${PASS_COUNT}    Needs a fix: ${FAIL_COUNT}"
 if [ "${FAIL_COUNT}" -eq 0 ]; then
-  line "  Machine is ready. Do the pre-work in .spark/prework.md, then run /spark-bootcamp:start."
+  line "  Machine is ready. Open .spark/prework.md, then run /spark-bootcamp:start."
+  line "  The pre-work's long pole is booking your Day 1 interviews: invitations go out 2 to 4 weeks ahead."
 else
   line "  Fix the [FAIL] items above, then run doctor again."
 fi

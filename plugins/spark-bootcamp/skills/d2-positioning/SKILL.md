@@ -11,13 +11,13 @@ when_to_use: "Day 2, after d2-competitor-scan. Triggers: how do I position this,
 **You are ready for this when.** `02-market/competitors.md` and `01-discovery/target-segment.md` both exist.
 
 ## Before you start
-Read the gap sentence and matrix dimensions in `02-market/competitors.md`, and the buyer in `01-discovery/target-segment.md`. Open `references/moore-and-usp.md` for the Moore template, axis choices and three-part USP test. Guardrail: every claim must be true and provable this week. If you cannot back it, weaken it.
+Read the gap sentence and matrix dimensions in `02-market/competitors.md`, and the buyer in `01-discovery/target-segment.md`. Open `references/moore-and-usp.md` for the Moore template, axis choices and three-part USP test. This is a working discussion (about 20 minutes), not a form: the corner picked here decides Days 3 to 5, so the founder picks it. Guardrail: every claim must be true and provable this week. If you cannot back it, weaken it.
 
 ## Steps
-1. Write the Moore statement using the exact format in `references/moore-and-usp.md`. Fill every bracket. The category must be one your buyer recognises in one second.
-2. Pick two axes from the `competitors.md` dimensions: the two where buyers disagree most. Do not pick two that measure the same thing.
+1. Ask the founder first, one question at a time: what do you want to be known for, and where do you refuse to compete? Then write the Moore statement together using the exact format in `references/moore-and-usp.md`. Fill every bracket. The category must be one your buyer recognises in one second.
+2. Pick two axes from the `competitors.md` dimensions: the two where buyers disagree most. Offer your pair with a reason; the founder can swap one. Do not pick two that measure the same thing.
 3. Plot at least six players (direct rivals, adjacent tools, the status quo), each with x and y from 0.0 to 1.0. Mark yourself in a corner no rival occupies. On top of a rival means your axes are wrong: fix before continuing.
-4. Write the USP: one sentence, under 20 words, passing all three tests in the reference. Cut until only you can say it.
+4. Write the USP: have the founder say it out loud first, in their own words, then cut together to one sentence, under 20 words, passing all three tests in the reference. Keep their phrasing wherever it survives. Cut until only you can say it.
 5. Sanity-check against Day 3: can you deliver what the USP promises in the page you ship this week? If not, pick a provable claim and record the swap in `DECISIONS.md`.
 
 Branch only where the axes and deliverable differ.

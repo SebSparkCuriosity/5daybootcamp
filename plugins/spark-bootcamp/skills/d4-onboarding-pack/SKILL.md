@@ -34,7 +34,7 @@ First outcome is the pre-order confirmed and the prototype milestone made clear.
 First outcome is the first sample deliverable in their hands. Timeline: kick-off, information gathering, drafting, delivery. "What good looks like" names the deliverable and the standard.
 
 ## The artefact
-Writes `04-gtm/onboarding-pack.pdf` (from a markdown draft at `04-gtm/onboarding-pack.md`). Use `${CLAUDE_SKILL_DIR}/references/onboarding-pack-template.md` as the structure and fill every placeholder. Then run:
+Writes `04-gtm/onboarding-pack.pdf` (from a markdown draft at `04-gtm/onboarding-pack.md`; with no PDF library the script writes `04-gtm/onboarding-pack.html` instead). Use `${CLAUDE_SKILL_DIR}/references/onboarding-pack-template.md` as the structure and fill every placeholder. Then run:
 ```
 python3 ${CLAUDE_SKILL_DIR}/scripts/md_to_pdf.py 04-gtm/onboarding-pack.md 04-gtm/onboarding-pack.pdf
 ```

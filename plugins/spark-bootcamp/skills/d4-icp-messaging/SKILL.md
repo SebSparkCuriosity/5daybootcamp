@@ -13,14 +13,14 @@ when_to_use: Day 4 GTM, after d4-prioritise ranks buyers. Decide exactly who you
 ## Before you start
 Read: `02-market/proposition.md` (segment, pain, promise, numeric outcome), `02-market/positioning.md` (USP your ICP must fit), `04-gtm/buying-signal-scorecard.csv` (who scored Hot and Warm, and why), `.spark/state.json` (`business_type`, founder name), and `01-discovery/` notes plus `04-gtm/tests/sessions/*.md` for the buyer's own words and objections.
 
-Describe the buyers the scorecard shows, do not invent a persona. Guardrail: this writes words only. Day 5 outreach goes out after your sign-off.
+Describe the buyers the scorecard shows, do not invent a persona. Run the words as a short discussion (10 to 15 minutes): the founder says these sentences out loud on Friday, so they draft them with you, not receive them. Guardrail: this writes words only. Day 5 outreach goes out after your sign-off.
 
 ## Steps
 1. Read the Hot and Warm rows. Note what top scorers share: sector, size, role, pain, trigger.
 2. Write the ICP as ONE sentence, exactly three checkable criteria: "A [role] at a [type and size of firm] who [observable trigger or pain]."
 3. Sanity-check: at least half your Hot rows must match all three criteria. If not, widen or swap a criterion until they fit, then stop.
 4. Write the one-liner, under 20 words: "[We help] [the ICP] [reach the outcome] [without the pain]." Lead with their outcome. Steal a Hot tester's phrase if it fits.
-5. Answer the five objections (usually price, trust, switching effort, "does it actually work", timing). Each answer: two or three sentences backed by a number, named result, demo or quote. Flag any answer with no evidence as one to close before Friday.
+5. Answer the five objections (usually price, trust, switching effort, "does it actually work", timing). The founder answers each out loud first, in their own words (they will have to on Friday); then tighten together to two or three sentences backed by a number, named result, demo or quote. Flag any answer with no evidence as one to close before Friday.
 6. Branch by path (below) so the proof fits how you earn trust.
 7. Run `python3 ${CLAUDE_SKILL_DIR}/scripts/icp_check.py 04-gtm/messaging.md`. Fix what it flags, re-run until PASS.
 

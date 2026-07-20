@@ -7,19 +7,33 @@ mirror it here. Keep the two in step.
 
 The coach walks a day's chain top to bottom and stops at the first step whose
 artefact does not yet exist. That step's skill is the one command it hands the
-founder.
+founder. Pre-work gates the whole week: until `state.prework.complete` is true,
+the coach routes inside the pre-work chain and never points at a day skill.
 
-## Day 1: Discovery (`01-discovery/`)
-Target: prove real people feel the pain, from 8 to 12 interviews.
+## Pre-work (`00-prework/`), 2 to 4 weeks before the bootcamp Monday
+Target: idea captured, and 8 to 12 interviews booked for the bootcamp Monday.
+Nobody is free for an interview tomorrow, so invitations go out weeks ahead.
+
+1. `p0-interview-triage` writes `00-prework/interview-target-spec.md`
+2. `p0-invite-list` writes `00-prework/invite-list.csv`
+3. `p0-invitations` writes `00-prework/invitation-pack.md`
+4. `data-protection` writes the consent wording and privacy drafts under
+   `.spark/deliverables/data-protection/` (the interviews and Friday's
+   paperwork both depend on them, so they are drafted while replies come in)
+5. `p0-schedule` writes `00-prework/interview-schedule.md`, keeps
+   `state.prework.interviews_booked` current, and sets `state.prework.complete`
+   once 8+ interviews are booked (or the founder consciously accepts 5 to 7).
+
+## Day 1: Idea and Discovery (`01-discovery/`)
+Target: develop the idea deep enough to test, then hold the interviews booked
+in pre-work (Monday afternoon, with Tuesday morning as overflow).
 
 1. `d1-refine-idea` writes `01-discovery/idea-brief.md`
-2. `d1-define-interviewees` writes `01-discovery/interview-target-spec.md`
-3. `d1-build-list` writes `01-discovery/interview-list.csv`
-4. `d1-write-outreach` writes `01-discovery/outreach-pack.md`
-5. `d1-write-script` writes `01-discovery/interview-script.md`
-6. `run-interview` writes one record per session under `01-discovery/interviews/`
-7. `synthesise-interviews` writes `01-discovery/discovery-findings.md`
-8. `d1-validated-problem` writes `01-discovery/validated-problem.md`
+2. `d1-interview-plan` writes `01-discovery/interview-plan.md`
+3. `d1-write-script` writes `01-discovery/interview-script.md`
+4. `run-interview` writes one record per session under `01-discovery/interviews/`
+5. `synthesise-interviews` writes `01-discovery/discovery-findings.md`
+6. `d1-validated-problem` writes `01-discovery/validated-problem.md`
 
 ## Day 2: Market and Proposition (`02-market/`)
 Target: size the market, sharpen the proposition, hand out a pitch deck.
@@ -33,7 +47,8 @@ Target: size the market, sharpen the proposition, hand out a pitch deck.
 7. `d2-brand-foundations` writes `02-market/brand/brand-foundations.md`
 8. `d2-visual-identity` writes `02-market/brand/brand-board.html`
 9. `brand-register` writes `.spark/brand/brand.json` (read by every document after it)
-10. `d2-pitch-deck` writes `02-market/pitch-deck.pptx`
+10. `d2-brand-book` writes `02-market/brand/brand-book.html` (plus `.pdf` and the logo kit)
+11. `d2-pitch-deck` writes `02-market/pitch-deck.pptx`
 
 ## Day 3: Product and Build (`03-product/`)
 Target: ship the smallest slice a real prospect can act on. Branches by path.
@@ -56,31 +71,36 @@ Target: test the build for buying signals, then build the machine that sells it.
 1. `d4-usability-plan` writes `04-gtm/tests/usability-test-plan.md`
 2. `d4-prioritise` writes `04-gtm/feedback-synthesis.md`
 3. `d4-icp-messaging` writes `04-gtm/messaging.md`
-4. `d4-sales-deck` writes `04-gtm/sales-deck.pptx`
-5. `d4-intake-process` writes `04-gtm/ops/intake-process.md`
-6. `d4-onboarding-pack` writes `04-gtm/onboarding-pack.pdf`
-7. `d4-marketing-funnel` writes `04-gtm/funnel.md`
-8. `d4-gtm-plan` writes `04-gtm/gtm-plan.md`
-9. `d4-book-sale` writes `04-gtm/friday-meeting.md` (the booked Friday meeting, the Thursday gate)
+4. `d4-pricing-model` writes `04-gtm/PRICING-MODEL.md` (the model and floor; the exact number is Friday's first job)
+5. `d4-sales-deck` writes `04-gtm/sales-deck.pptx`
+6. `d4-intake-process` writes `04-gtm/ops/intake-process.md`
+7. `d4-onboarding-pack` writes `04-gtm/onboarding-pack.pdf`
+8. `d4-marketing-funnel` writes `04-gtm/funnel.md`
+9. `d4-gtm-plan` writes `04-gtm/gtm-plan.md`
+10. `d4-book-sale` writes `04-gtm/friday-meeting.md` (the booked Friday meeting, the Thursday gate)
 
 ## Day 5: Tweaks and First Sale (`05-sale/`)
 Target: hit your headline number, a real customer commits.
 
 1. `d5-triage` writes `05-sale/TRIAGE.md`
 2. `d5-ship-fixes` writes `05-sale/DEMO-SCRIPT.md`
-3. `d5-pricing-model` writes `05-sale/PRICING-MODEL.md`
-4. `d5-price-number` writes `05-sale/RATE-CARD.md`
-5. `d5-proposal` writes `05-sale/PROPOSAL.md`
-6. `d5-paperwork` writes the files under `05-sale/paperwork/`
-7. `d5-rehearse` writes `05-sale/SALE-SCRIPT.md`
-8. `d5-close` writes `05-sale/WON-DEAL.md`
-9. `d5-review` writes `05-sale/LAUNCH-PACKAGE.md`
+3. `d5-price-number` writes `05-sale/RATE-CARD.md` (the number for the Day 4 model)
+4. `d5-proposal` writes `05-sale/PROPOSAL.md`
+5. `d5-paperwork` writes the files under `05-sale/paperwork/`
+6. `d5-rehearse` writes `05-sale/SALE-SCRIPT.md`
+7. `d5-close` writes `05-sale/WON-DEAL.md`
+8. `d5-review` writes `05-sale/LAUNCH-PACKAGE.md`
 
 ## How completeness is judged
 
 A step counts as done when its artefact exists on disk, or when the artefact
-path appears in `state.artefacts[]`. A whole day counts as done only when
-`state.days[n].complete` is `true`, which `checkpoint close` sets after the
-founder signs it off. So a day can have all its artefacts present and still not
-be signed off; in that case the coach points back at the last skill in the chain
-to confirm and close the day.
+path appears in `state.artefacts[]`. Days are bookended by `checkpoint` and by
+nothing else: the coach points at `checkpoint open` when a day has no target
+yet, and at `checkpoint close` once every artefact exists. Only `checkpoint
+close` sets `state.days[n].complete` and advances `current_day`; no chain skill
+touches either. Day skills record outcomes, checkpoint records completion.
+
+Pre-work is different: its artefacts can all exist while bookings still trickle
+in, so it closes on `state.prework.complete`, set by `p0-schedule` when 8 or
+more interviews are booked. Until then the coach keeps pointing at
+`p0-schedule` on every run.

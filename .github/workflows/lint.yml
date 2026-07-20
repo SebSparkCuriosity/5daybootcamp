@@ -1,0 +1,28 @@
+name: lint
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Cross-skill contract lint
+        run: python3 tools/lint_plugin.py
+
+      - name: Compile every Python helper
+        run: |
+          find plugins tools docs -name "*.py" -print0 | xargs -0 python3 -m py_compile
+
+      - name: Syntax-check every shell script
+        run: |
+          find plugins -name "*.sh" -print0 | xargs -0 -n1 bash -n

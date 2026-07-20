@@ -11,7 +11,9 @@ when_to_use: Day 4 go-to-market, straight after the MVP deploys. Run before any 
 **You are ready for this when.** The MVP is live on a public URL (in `.spark/state.json` day 3 outcome and `03-product/BUILD-LOG.md`) and `03-product/story-map.md` exists.
 
 ## Before you start
-Read: `.spark/state.json` (`founder`, `business_type`, day 3 outcome with the live MVP URL, every task runs against it); `03-product/story-map.md` (backbone click-path and acceptance criteria, your tasks come off these); `01-discovery/interview-list.csv` and `01-discovery/outreach-pack.md` (the testers you flagged Day 1, the five you book).
+Read: `.spark/state.json` (`founder`, `business_type`, day 3 outcome with the live MVP URL, every task runs against it); `03-product/story-map.md` (backbone click-path and acceptance criteria, your tasks come off these); `00-prework/invite-list.csv` and `00-prework/invitation-pack.md` (the testers who said yes in pre-work, the five you book).
+
+Two quick questions before drafting (5 minutes): what is the one thing the founder most wants to learn from watching people tomorrow, and which five names from the tester tally do they trust to show up? Their answers shape the tasks and the bookings.
 
 Guardrail: **you contact testers, but nothing goes out until you approve it.** This skill drafts booking messages and stops. It never sends and never spends. A confirmed booking means a real reply to a real slot.
 
@@ -47,7 +49,7 @@ Then update `.spark/state.json`:
 
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py \
-  --patch '{"current_day": 4, "days": {"4": {"target": "5 usability sessions booked against the live MVP", "outcome": "5 sessions confirmed", "complete": true}}}'
+  --patch '{"days":{"4":{"outcome":"5 usability sessions confirmed"}}}'
 ```
 
 If you changed the booking method or dropped a task, note why in DECISIONS.md via the logbook `--decision`/`--rationale` mode.

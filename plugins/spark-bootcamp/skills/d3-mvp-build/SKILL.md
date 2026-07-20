@@ -17,7 +17,7 @@ Read: `03-product/docs/PRD.md` (the one action), `03-product/docs/blueprint.md` 
 Pause for founder sign-off before spending money (domain, paid tier, live Stripe key) or sending anything to a real prospect. Deploying a page is fine. Hard stop 17:00 Wednesday: if not live, switch to the fallback below.
 
 ## Steps
-1. Order the issues so the first produces something visible on screen.
+1. Order the issues so the first produces something visible on screen. When it lands, show the founder and take corrections immediately: they react better to a real screen than to a plan, and five minutes now beats an hour at 16:00.
 2. Take ONE issue, tell Claude in one sentence, let it write the code. One small commit per issue with the issue number (`git commit -m "closes #3: ..."`).
 3. Log each issue in `03-product/BUILD-LOG.md` (template in `references/build-log-template.md`).
 4. Repeat until the PRD action works end to end locally.
@@ -48,7 +48,7 @@ python3 ${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py --skill d3-mvp-build
 ```
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py \
-  --patch '{"days":{"3":{"outcome":"live: <url>","complete":true}}}'
+  --patch '{"days":{"3":{"outcome":"live: <url>"}}}'
 ```
 
 ## If it goes wrong

@@ -1,17 +1,17 @@
 ---
 name: Data Protection
 description: Drafts four data-protection documents a regulated firm needs in week one: privacy notice, lawful-basis note, consent wording and engagement-letter data clause.
-when_to_use: Run Day 1, before the first interview or landing page. Feeds run-interview and d5-paperwork.
+when_to_use: Pre-work, after the invitations go out, before the first interview. Feeds run-interview and d5-paperwork.
 ---
 
 # Data Protection
 
 **What this does.** Generates four DRAFT data-protection documents for your business, pre-filled from what we know, ready for a lawyer to check.
-**Why it matters.** From Monday you collect real personal data, and in finance, trust, law and fund admin that data is the thing you are judged on, so get the paperwork drafted before the data arrives.
+**Why it matters.** Your booked interviews start collecting real personal data on the bootcamp Monday, and in finance, trust, law and fund admin that data is the thing you are judged on. Draft the paperwork in pre-work, while replies trickle in, so consent wording exists before the first call and the data clause is lawyer-checked before Friday.
 **You are ready for this when.** `.spark/state.json` exists. A `brand.json` helps but is not required.
 
 ## Before you start
-Reads `.spark/state.json` and `.spark/brand/brand.json` via the safe helpers. Writes four drafts into `.spark/deliverables/data-protection/`.
+Reads `.spark/state.json` and `.spark/brand/brand.json` via the safe helpers. Two questions before generating (2 minutes): what personal data will you actually collect this week, and where will it live? The founder's answers set the storage line and stop the notice claiming practices they do not follow. Writes four drafts into `.spark/deliverables/data-protection/`.
 
 Every document is a draft. Each is stamped: "This is a draft. Have a qualified lawyer review it before you rely on it. Spark does not warrant it." That line stays. The drafts are Jersey Data Protection Law 2018 and UK GDPR aware, not authoritative, and not legal advice.
 

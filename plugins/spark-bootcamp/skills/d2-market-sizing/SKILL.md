@@ -15,6 +15,8 @@ Read `02-market/market-map.md` and lift its one-line market definition. Open `re
 
 TAM: everyone with the problem. SAM: the slice you can reach and serve (geography plus one segment). SOM: what you realistically win in a year or two as one small firm, the number that decides if this is worth building.
 
+The judgement lives in the assumptions, so talk them through first (10 minutes). Ask in plain English: how many of these firms could you realistically reach, how many would you win in year one, and what would one pay? Offer your own number with a reason for each, then let the founder set it, push back, or say "you decide" (logged in DECISIONS.md). The founder owns every assumption the register carries.
+
 ## Steps
 1. Name the market in one line at the top, verbatim from `market-map.md`.
 2. Generate inputs: `python3 ${CLAUDE_SKILL_DIR}/scripts/size.py --template 02-market/market-sizing-inputs.json`.
@@ -25,7 +27,7 @@ TAM: everyone with the problem. SAM: the slice you can reach and serve (geograph
 7. Write up `market-sizing.md` per the template: market line, results table, both workings in words, triangulation verdict, assumptions register. Close with two sentences on what the SOM means for the sale: how many customers at your price, and could you work through that many by Day 5?
 
 ## The artefact
-Under `02-market/`: `market-sizing.md` (market line, results table, both workings with a source or explicit assumption per number, verdict, register), `market-sizing.csv` (six figures plus gap ratio and currency, one row per layer), and `market-sizing-inputs.json` (assumptions and sources, so a changed input re-runs both outputs). Good means a sceptic can retrace every number.
+Writes `02-market/market-sizing.md` (market line, results table, both workings with a source or explicit assumption per number, verdict, register), `02-market/market-sizing.csv` (six figures plus gap ratio and currency, one row per layer), and `02-market/market-sizing-inputs.json` (assumptions and sources, so a changed input re-runs both outputs). Good means a sceptic can retrace every number.
 
 ## Done when
 TAM, SAM, SOM each stated with a currency symbol; both methods shown for each layer; the two SOM figures within 2x, OR the write-up names the single assumption explaining the gap. Both `market-sizing.md` and `market-sizing.csv` exist. Any unsourced number not in the register means not done.

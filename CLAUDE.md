@@ -2,8 +2,9 @@
 
 This repository is a Claude Code marketplace holding one plugin, `spark-bootcamp`, in
 `plugins/spark-bootcamp/`. The plugin takes a founder from a raw idea to a first paying
-customer in five days. These are the conventions every skill obeys. Read this before
-editing or adding a skill.
+customer: a pre-work phase 2 to 4 weeks out (idea captured, 8 to 12 interviews booked
+for the bootcamp Monday), then five days. These are the conventions every skill obeys.
+Read this before editing or adding a skill.
 
 ## Voice (Spark house style, non-negotiable)
 
@@ -14,6 +15,36 @@ editing or adding a skill.
 - Pragmatic. "Does it actually work?" beats "is it cutting-edge?".
 - Warm, first-name, short sentences. No corporate-speak, no throat-clearing.
 - Every recommendation carries a number. Prose over bullets unless a comparison needs structure.
+
+## How each skill talks to the founder (four patterns)
+
+The founder's thinking is the product, so no skill silently decides for them. But a day
+holds 6 to 10 skills, so no skill holds them hostage either. Each skill follows one of four
+patterns, chosen per skill on what the judgement is worth, never per day:
+
+- **Deep conversation (30 to 90 minutes).** The thinking IS the artefact: `start`,
+  `p0-interview-triage`, `d1-refine-idea`, `d1-interview-plan`, `d1-write-script`. One
+  question at a time, listen, reflect back, capture the founder's phrases verbatim, never
+  write a section they have not spoken to. Arcs live in `references/`; the session may run long.
+- **Working discussion (15 to 25 minutes).** The call belongs to the founder and Claude
+  argues like a partner: `d1-validated-problem`, `d2-positioning`, `d2-proposition`,
+  `d2-brand-foundations`, `d2-visual-identity`, `d3-moscow`, `d3-story-map`, `d4-gtm-plan`,
+  `d4-pricing-model`, `d5-price-number`. Socratic questions first, then a recommendation with a number, then the
+  founder decides and their words go in the artefact.
+- **Draft, then explain back (10 to 15 minutes).** For technical artefacts a non-technical
+  founder must genuinely own: `d3-prd`, `d3-blueprint`, `d3-tech-stack`. Claude drafts fast,
+  then walks it through in plain English and asks the founder to poke holes with their domain
+  knowledge ("does a client ever have two properties?"). Their corrections reshape the draft.
+  Done when the founder could retell the document to a friend.
+- **Ask, then draft (5 to 10 minutes).** Two to four sharp questions, then Claude does the
+  work and shows it once: the research, assembly and ops skills. Mechanical skills
+  (scaffolds, registers, checks, log compiles) stay silent.
+
+Three rules hold everywhere. "Skip" and "you decide" are always acceptable answers, logged in
+DECISIONS.md so no artefact hides a call the founder never saw. One round of corrections, not
+endless iteration. And the exchange ends with an explicit yes before the artefact is final.
+For the deep tier the token-efficiency rules below bend: SKILL.md stays terse, the arcs live
+in `references/`, and the session is allowed to be long.
 
 ## The founder's project layout (what skills read and write)
 
@@ -29,6 +60,7 @@ Skills operate inside the founder's own project, not this repo. They create and 
 │   └── deliverables/          # audit-pack, compliance notes, launch package
 ├── CHANGELOG.md               # append-only log, one line per artefact produced
 ├── DECISIONS.md               # decision log, why each call was made
+├── 00-prework/                # pre-work artefacts: triage, invite list, invitations, schedule
 ├── 01-discovery/              # Day 1 artefacts
 ├── 02-market/                 # Day 2 artefacts
 ├── 03-product/                # Day 3 artefacts
@@ -43,7 +75,12 @@ Skills operate inside the founder's own project, not this repo. They create and 
   "founder": "string",
   "business_type": "software | hardware | services",
   "idea": "one sentence",
-  "headline_target": "the founder's numeric outcome for the week, set on Monday",
+  "headline_target": "the founder's numeric outcome for the week, set in pre-work",
+  "prework": {
+    "bootcamp_monday": "ISO date of the bootcamp's Monday, e.g. 2026-09-14",
+    "interviews_booked": 0,
+    "complete": false
+  },
   "current_day": 1,
   "days": {
     "1": { "target": "string", "outcome": "string", "complete": false },
@@ -84,8 +121,8 @@ Founders pay for tokens, so every skill earns its keep. The rules:
 - **Body under ~45 lines.** Three-line header (what, one warm why, ready-when), then terse
   numbered steps. No hedging, no repetition, no restating the obvious.
 - **One log call.** `log.py --skill --artefact --result` already registers the artefact in
-  state. Only add an `update-state.py --patch` when the skill sets a day target, outcome or
-  completion (checkpoint and day-closing skills). Never log the same thing twice.
+  state. Only add an `update-state.py --patch` when the skill sets a day outcome. Targets,
+  completion and `current_day` belong to `checkpoint` alone. Never log the same thing twice.
 - **Read compact, not whole.** Read `.spark/state.json` for context. Read a prior artefact only
   when the skill transforms its content, and only the part it needs. Let scripts extract inputs.
 - **Scripts do the mechanical work.** Reading, scaffolding, validating and checking done-conditions
@@ -152,5 +189,6 @@ Founders install with:
 /plugin install spark-bootcamp@spark
 ```
 
-Then run `/spark-bootcamp:doctor` once, then `/spark-bootcamp:start`. The `coach` skill tells
-them the one next command at every step.
+Then run `/spark-bootcamp:doctor` once, then `/spark-bootcamp:start`, ideally 2 to 4 weeks
+before the bootcamp Monday so the interview invitations can go out in time. The `coach` skill
+tells them the one next command at every step, starting with the pre-work chain.

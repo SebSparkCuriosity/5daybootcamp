@@ -11,15 +11,15 @@ when_to_use: Day 2, after d2-positioning, once discovery-findings.md exists. Las
 **You are ready for this when.** `01-discovery/discovery-findings.md` and `02-market/positioning.md` both exist.
 
 ## Before you start
-Read `01-discovery/discovery-findings.md` (the raw material) and `02-market/positioning.md` (the proposition must fit the position). Open `${CLAUDE_SKILL_DIR}/references/proposition-template.md` for the shape. One rule: no quote, no claim. Every job, pain or gain must trace to a real interview line.
+Read `01-discovery/discovery-findings.md` (the raw material) and `02-market/positioning.md` (the proposition must fit the position). Open `${CLAUDE_SKILL_DIR}/references/proposition-template.md` for the shape. A working discussion of about 15 minutes: the quote work is mechanical, the promise is the founder's. One rule: no quote, no claim. Every job, pain or gain must trace to a real interview line.
 
 The Value Proposition Canvas, customer half first: **jobs** (task, stated as a verb), **pains** (friction/cost/risk today), **gains** (outcome they'd pay for). Do the customer half honestly and the offer half writes itself.
 
 ## Steps
 1. Pull the sharpest verbatim quotes from `discovery-findings.md`. Number them Q1, Q2, Q3... Aim for at least nine.
 2. Fill the customer half in the template: at least three jobs, three pains, three gains, each tagged like `(quote: Q3)`. No quote backing it, delete it.
-3. Rank each list. Top item is the one pain that would make them switch supplier. That pain is the spine of the statement.
-4. Write the proposition: one sentence under 25 words. Who it's for, the top pain removed or gain delivered, how you differ (from positioning.md). Plain words, read aloud.
+3. Rank each list with the founder: offer your top pick with the tally behind it, then ask which pain would really make their buyer switch supplier. Their call stands. That pain is the spine of the statement.
+4. Write the proposition together: ask the founder to make the promise out loud first ("what do you promise this buyer?"), then cut to one sentence under 25 words. Who it's for, the top pain removed or gain delivered, how you differ (from positioning.md). Plain words, read aloud, their phrasing kept where it survives.
 5. Name the success metric: "move X from [baseline] to [target], measured by [method]". No baseline, no metric.
 6. Sanity-check statement and metric against `positioning.md`: same story? Fix now, before Day 3.
 7. Run `python3 ${CLAUDE_SKILL_DIR}/scripts/proposition_check.py 02-market/proposition.md`. Fix what it flags, re-run until PASS.

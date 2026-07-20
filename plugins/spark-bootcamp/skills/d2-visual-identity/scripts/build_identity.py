@@ -8,6 +8,10 @@ tokens file and it writes two things next to it:
   brand-board.html  a one-page reference: swatches with hex and contrast, fonts,
                     the logo, and your tone line
 
+If logo.svg already exists (a concept the founder chose, or a logo they brought
+with them), it is kept and only the board is rebuilt. Pass --force-wordmark to
+overwrite it with the generated fallback wordmark.
+
 It refuses to build if the palette fails WCAG AA, because a brand board that
 looks fine on your screen and fails a regulator's eye on a projector is worse
 than none. Fix the colour, run again.
@@ -204,6 +208,8 @@ def main():
     ap = argparse.ArgumentParser(description="Build logo.svg and brand-board.html from tokens.")
     ap.add_argument("--tokens", required=True, help="Path to brand-tokens.json")
     ap.add_argument("--out-dir", help="Where to write outputs (default: tokens folder)")
+    ap.add_argument("--force-wordmark", action="store_true",
+                    help="Overwrite an existing logo.svg with the generated wordmark")
     args = ap.parse_args()
 
     try:
@@ -254,15 +260,19 @@ def main():
     logo_path = os.path.join(out_dir, "logo.svg")
     board_path = os.path.join(out_dir, "brand-board.html")
 
-    with open(logo_path, "w", encoding="utf-8") as fh:
-        fh.write(build_logo_svg(name, colours, heading))
+    if os.path.exists(logo_path) and not args.force_wordmark:
+        logo_note = "Kept the existing logo.svg (chosen concept or founder's own)."
+    else:
+        with open(logo_path, "w", encoding="utf-8") as fh:
+            fh.write(build_logo_svg(name, colours, heading))
+        logo_note = "One SVG fallback wordmark written."
     with open(board_path, "w", encoding="utf-8") as fh:
         fh.write(build_board_html(tokens))
 
     print("Built:")
     print("  " + logo_path)
     print("  " + board_path)
-    print("Palette passes WCAG AA. Two fonts set. One SVG wordmark written.")
+    print("Palette passes WCAG AA. Two fonts set. " + logo_note)
     print("Next: open brand-board.html to eyeball it, then run brand-register.")
     return 0
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create Gmail drafts from the outreach pack. Drafts only, never sends.
+"""Create Gmail drafts from the invitation pack. Drafts only, never sends.
 
 Degrades gracefully: this environment exposes Gmail via MCP tools that this
 script cannot call directly, so its job is to parse the pack into clean,
@@ -7,7 +7,7 @@ copy-ready message blocks and hand them back. If anything is missing it prints
 a clear message and the raw text, and it never crashes.
 
 Usage:
-    python3 create-gmail-drafts.py 01-discovery/outreach-pack.md
+    python3 create-gmail-drafts.py 00-prework/invitation-pack.md
 """
 
 import re
@@ -56,13 +56,13 @@ def parse_messages(text):
 
 def main():
     if len(sys.argv) < 2:
-        print("Give me the path to outreach-pack.md.")
-        print("Usage: python3 create-gmail-drafts.py 01-discovery/outreach-pack.md")
+        print("Give me the path to invitation-pack.md.")
+        print("Usage: python3 create-gmail-drafts.py 00-prework/invitation-pack.md")
         return 0
 
     path = Path(sys.argv[1])
     if not path.exists():
-        print(f"Could not find {path}. Run the outreach skill first to create it.")
+        print(f"Could not find {path}. Run the invitations skill first to create it.")
         return 0
 
     text = path.read_text(encoding="utf-8", errors="replace")

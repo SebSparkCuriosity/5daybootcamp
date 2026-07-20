@@ -35,19 +35,35 @@ def cmd(skill_id):
     return "/{plugin}:{skill}".format(plugin=PLUGIN, skill=skill_id)
 
 
+# The pre-work chain runs 2 to 4 weeks before the bootcamp Monday. Nobody is
+# free for an interview tomorrow, so the invitations go out weeks ahead and
+# pre-work only closes when the Monday diary holds 8+ booked conversations
+# (state.prework.complete, set by p0-schedule).
+PREWORK = {
+    "name": "Pre-work",
+    "target": "idea captured, and 8 to 12 interviews booked for your bootcamp Monday",
+    "steps": [
+        ("p0-interview-triage", "00-prework/interview-target-spec.md"),
+        ("p0-invite-list", "00-prework/invite-list.csv"),
+        ("p0-invitations", "00-prework/invitation-pack.md"),
+        ("data-protection", ".spark/deliverables/data-protection/consent.md"),
+        ("p0-schedule", "00-prework/interview-schedule.md"),
+    ],
+}
+
 # The five-day chain. Each day has a short target reminder and an ordered list
 # of steps. Each step names the skill to run, and the artefact that proves the
 # step is done. The coach walks the chain and stops at the first step whose
 # artefact does not yet exist.
 JOURNEY = {
     1: {
-        "name": "Discovery",
-        "target": "prove real people feel the pain, from 8 to 12 interviews",
+        "name": "Idea and Discovery",
+        "target": "develop the idea deep enough to test, then hold the interviews you booked in pre-work",
+        "hours": 9,
+        "cut": "move interviews 9 and up to Tuesday morning; never cut tonight's synthesis",
         "steps": [
             ("d1-refine-idea", "01-discovery/idea-brief.md"),
-            ("d1-define-interviewees", "01-discovery/interview-target-spec.md"),
-            ("d1-build-list", "01-discovery/interview-list.csv"),
-            ("d1-write-outreach", "01-discovery/outreach-pack.md"),
+            ("d1-interview-plan", "01-discovery/interview-plan.md"),
             ("d1-write-script", "01-discovery/interview-script.md"),
             ("run-interview", "01-discovery/interviews"),
             ("synthesise-interviews", "01-discovery/discovery-findings.md"),
@@ -57,6 +73,8 @@ JOURNEY = {
     2: {
         "name": "Market and Proposition",
         "target": "size the market, sharpen the proposition, hand out a pitch deck",
+        "hours": 9,
+        "cut": "ship the deck at 10 slides and hold brand-book corrections to one round",
         "steps": [
             ("d2-market-map", "02-market/market-map.md"),
             ("d2-market-sizing", "02-market/market-sizing.md"),
@@ -67,12 +85,15 @@ JOURNEY = {
             ("d2-brand-foundations", "02-market/brand/brand-foundations.md"),
             ("d2-visual-identity", "02-market/brand/brand-board.html"),
             ("brand-register", ".spark/brand/brand.json"),
+            ("d2-brand-book", "02-market/brand/brand-book.html"),
             ("d2-pitch-deck", "02-market/pitch-deck.pptx"),
         ],
     },
     3: {
         "name": "Product and Build",
         "target": "ship the smallest slice a real prospect can act on",
+        "hours": 9,
+        "cut": "cut Coulds and polish, never the deploy; landing copy can be rough tonight",
         "steps": [
             ("d3-product-context", "03-product/product-context.md"),
             ("d3-moscow", "03-product/requirements-moscow.md"),
@@ -90,10 +111,13 @@ JOURNEY = {
     4: {
         "name": "Test and Go to Market",
         "target": "test the build for buying signals, then build the machine that sells it",
+        "hours": 8,
+        "cut": "onboarding pack and funnel detail wait; the booked Friday meeting never does",
         "steps": [
             ("d4-usability-plan", "04-gtm/tests/usability-test-plan.md"),
             ("d4-prioritise", "04-gtm/feedback-synthesis.md"),
             ("d4-icp-messaging", "04-gtm/messaging.md"),
+            ("d4-pricing-model", "04-gtm/PRICING-MODEL.md"),
             ("d4-sales-deck", "04-gtm/sales-deck.pptx"),
             ("d4-intake-process", "04-gtm/ops/intake-process.md"),
             ("d4-onboarding-pack", "04-gtm/onboarding-pack.pdf"),
@@ -105,10 +129,11 @@ JOURNEY = {
     5: {
         "name": "Tweaks and First Sale",
         "target": "hit your headline number: a real customer commits",
+        "hours": 8,
+        "cut": "cut Fix Now to one and rehearse once; the ask itself is the day",
         "steps": [
             ("d5-triage", "05-sale/TRIAGE.md"),
             ("d5-ship-fixes", "05-sale/DEMO-SCRIPT.md"),
-            ("d5-pricing-model", "05-sale/PRICING-MODEL.md"),
             ("d5-price-number", "05-sale/RATE-CARD.md"),
             ("d5-proposal", "05-sale/PROPOSAL.md"),
             ("d5-paperwork", "05-sale/paperwork"),
@@ -182,6 +207,49 @@ def artefact_present(project_root, state, path):
     return False
 
 
+def prework_route(project_root, state, hello):
+    """Route the founder through pre-work until 8+ interviews are booked."""
+    prework = state.get("prework") or {}
+    monday = prework.get("bootcamp_monday") or "your bootcamp Monday"
+    booked = prework.get("interviews_booked") or 0
+
+    block(
+        "Where you are",
+        "{h}you are in pre-work, 2 to 4 weeks out.\n"
+        "The point of this phase: {t}.\n"
+        "Interviews booked so far: {b}. Bootcamp Monday: {m}.".format(
+            h=hello, t=PREWORK["target"], b=booked, m=monday
+        ),
+    )
+
+    done = [(s, a) for s, a in PREWORK["steps"] if artefact_present(project_root, state, a)]
+    if done:
+        body = "Pre-work steps done: " + ", ".join(s for s, _ in done)
+    else:
+        body = "No pre-work step is done yet, and that is fine. Everyone starts here."
+    block("What you have finished", body)
+
+    for skill_id, artefact in PREWORK["steps"]:
+        if not artefact_present(project_root, state, artefact):
+            block(
+                "Your next move",
+                "Run  {c}\n\nThat is the next pre-work step. It writes  {art}.\n"
+                "Do that one thing, then run me again and I will point you at the next.".format(
+                    c=cmd(skill_id), art=artefact
+                ),
+            )
+            return
+
+    block(
+        "Your next move",
+        "Every pre-work artefact exists and {b} interviews are booked.\n"
+        "Run  {c}  whenever replies land: it logs each yes, chases silence, and\n"
+        "closes pre-work once you are at 8 or more. Day 1 opens after that.".format(
+            b=booked, c=cmd("p0-schedule")
+        ),
+    )
+
+
 def main():
     start_dir = sys.argv[1] if len(sys.argv) > 1 else os.getcwd()
 
@@ -201,6 +269,13 @@ def main():
 
     founder = (state.get("founder") or "").strip()
     hello = "{name}, ".format(name=founder) if founder else ""
+
+    # Pre-work gates the week: until it is closed (8+ interviews booked,
+    # recorded by p0-schedule), the coach routes inside the pre-work chain.
+    if not (state.get("prework") or {}).get("complete"):
+        prework_route(project_root, state, hello)
+        return
+
     days = state.get("days", {}) or {}
 
     def day_complete(n):
@@ -229,11 +304,14 @@ def main():
             "Where you are",
             "{h}you are on Day {n}: {name}.\n"
             "The point of today: {target}.\n"
+            "Budget: about {hours} focused hours. If you fall behind: {cut}.\n"
             "Your week's headline target: {ht}".format(
                 h=hello,
                 n=current,
                 name=meta["name"],
                 target=meta["target"],
+                hours=meta.get("hours", 9),
+                cut=meta.get("cut", "cut polish, not the day's one number"),
                 ht=state.get("headline_target", "(not recorded)"),
             ),
         )
@@ -271,6 +349,19 @@ def main():
         return
 
     meta = JOURNEY[current]
+
+    # A day opens with one committed number. No target yet means the next
+    # move is checkpoint open, not the first skill.
+    day_target = ((days.get(str(current)) or {}).get("target") or "").strip()
+    if not day_target:
+        block(
+            "Your next move",
+            "Open the day before touching its skills:\n\n  {c} open\n\n"
+            "Commit to ONE observable number for today. Tonight's close grades "
+            "it and unlocks tomorrow.".format(c=cmd("checkpoint")),
+        )
+        return
+
     next_step = None
     for skill_id, artefact in meta["steps"]:
         if not artefact_present(project_root, state, artefact):
@@ -278,13 +369,16 @@ def main():
             break
 
     if next_step is None:
-        # Every step's artefact exists, but the day is not signed off.
+        # Every step's artefact exists. Checkpoint close is the ONE way a day
+        # is marked complete: it records the real number against the morning's
+        # target and advances the week.
         block(
             "Your next move",
-            "Every step of Day {n} has produced its artefact, but the day is not signed "
-            "off yet. Run the last skill in the chain again to confirm and mark Day {n} "
-            "complete, then come back to me:\n\n  {c}".format(
-                n=current, c=cmd(meta["steps"][-1][0])
+            "Every step of Day {n} has produced its artefact. Close the day:\n\n"
+            "  {c} close\n\n"
+            "It records tonight's real number against this morning's target, "
+            "marks Day {n} complete and unlocks tomorrow.".format(
+                n=current, c=cmd("checkpoint")
             ),
         )
         return

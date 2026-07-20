@@ -11,7 +11,7 @@ when_to_use: Any point in the five days when you are unsure what to do next. Aft
 **You are ready for this when.** You have run `/spark-bootcamp:start` at least once, so `.spark/state.json` exists.
 
 ## Before you start
-Reads only `.spark/state.json` (via the routing script) and checks day folders `01-discovery/` through `05-sale/` to see which artefacts exist. Writes nothing. Safe to run repeatedly. The coach only points: it never runs the next skill or does the work.
+Reads only `.spark/state.json` (via the routing script) and checks the phase folders `00-prework/` through `05-sale/` to see which artefacts exist. Until `prework.complete` is true it routes inside the pre-work chain (triage, invite list, invitations, schedule). Writes nothing. Safe to run repeatedly. The coach only points: it never runs the next skill or does the work.
 
 ## Steps
 1. Run the routing script from the project root:
@@ -30,7 +30,7 @@ Reads only `.spark/state.json` (via the routing script) and checks day folders `
 No artefact. Output is three blocks printed to screen: WHERE YOU ARE, WHAT YOU HAVE FINISHED, YOUR NEXT MOVE. Logic lives in `scripts/coach-route.py`; the day and skill map in `references/journey-map.md`.
 
 ## Done when
-1. The founder has seen their current day (1 to 5) and that day's target from `.spark/state.json`.
+1. The founder has seen where they are (pre-work, or a day 1 to 5) and that phase's target from `.spark/state.json`.
 2. They have seen what is finished: days signed off and count of artefacts logged.
 3. They have exactly 1 next command, and no second option.
 

@@ -13,9 +13,18 @@ top-level keys casually: the whole plugin agrees on this shape.
 | `business_type` | string | Exactly `"software"`, `"hardware"` or `"services"`. Decides which path the build and ship skills follow. Set once. | Day 0 / onboarding |
 | `idea` | string | One-line description of what they are building. | Day 1 |
 | `headline_target` | string | The single numeric promise for the week, e.g. "one paying customer by Friday". | Day 0 / Day 1 |
+| `prework` | object | The pre-work phase record (below). Gates the week: the coach routes to pre-work until `prework.complete` is true. | `start`, then `p0-schedule` |
 | `current_day` | integer | Which day they are on, 1 to 5. | Every day skill |
 | `days` | object | Five entries keyed `"1"` to `"5"`, each a day record (below). | Every day skill |
 | `artefacts` | array | Append-only history of produced artefacts (record below). | Every skill that ships an artefact |
+
+## Pre-work record (`prework`)
+
+| Field | Type | Meaning |
+| --- | --- | --- |
+| `bootcamp_monday` | string | ISO date of the bootcamp's Monday, e.g. `"2026-09-14"`. Every interview invitation points at it. |
+| `interviews_booked` | integer | Booked interview count, kept current by `p0-schedule`. |
+| `complete` | boolean | Set by `p0-schedule` at 8+ booked (or a logged founder decision at 5 to 7). |
 
 ## Day record (`days["1"]` … `days["5"]`)
 
@@ -29,8 +38,8 @@ top-level keys casually: the whole plugin agrees on this shape.
 
 | Field | Type | Meaning |
 | --- | --- | --- |
-| `skill` | string | The skill id that produced it, e.g. `"d1-define-interviewees"`. |
-| `path` | string | Project-relative path to the artefact, e.g. `"01-discovery/interview-target-spec.md"`. |
+| `skill` | string | The skill id that produced it, e.g. `"p0-interview-triage"`. |
+| `path` | string | Project-relative path to the artefact, e.g. `"00-prework/interview-target-spec.md"`. |
 | `result` | string | The numeric or observable result, e.g. `"10 interviews targeted"`. |
 | `at` | string | ISO timestamp, added automatically by the helper if omitted. |
 
@@ -54,16 +63,17 @@ of the history. That is the only safe way to grow the list.
   "business_type": "services",
   "idea": "Fixed-price AI workflow builds for Jersey trust firms",
   "headline_target": "one paying customer by Friday",
+  "prework": { "bootcamp_monday": "2026-09-14", "interviews_booked": 9, "complete": true },
   "current_day": 3,
   "days": {
-    "1": { "target": "10 interviews booked", "outcome": "11 booked", "complete": true },
+    "1": { "target": "hold 7+ of 9 booked interviews", "outcome": "8 held", "complete": true },
     "2": { "target": "5 competitors mapped", "outcome": "6 mapped", "complete": true },
     "3": { "target": "1 sample deliverable built", "outcome": "", "complete": false },
     "4": { "target": "", "outcome": "", "complete": false },
     "5": { "target": "", "outcome": "", "complete": false }
   },
   "artefacts": [
-    { "skill": "d1-define-interviewees", "path": "01-discovery/interview-target-spec.md", "result": "10 interviews targeted", "at": "2026-07-13T09:14:00" },
+    { "skill": "p0-interview-triage", "path": "00-prework/interview-target-spec.md", "result": "10 interviews targeted", "at": "2026-08-17T09:14:00" },
     { "skill": "d2-market-map", "path": "02-market/market-map.md", "result": "6 competitors mapped", "at": "2026-07-14T16:40:00" }
   ]
 }

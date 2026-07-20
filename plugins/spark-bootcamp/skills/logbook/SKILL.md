@@ -26,8 +26,8 @@ Every artefact carries a number or observable fact. A log line with no number is
 1. When your skill has written its artefact, log it once (path relative to project root). This appends the changelog line and registers the artefact in `state.json.artefacts` in one call, so do not append the artefact separately:
    ```bash
    python3 "${CLAUDE_PLUGIN_ROOT}/skills/logbook/scripts/log.py" \
-     --skill "d1-define-interviewees" \
-     --artefact "01-discovery/interview-target-spec.md" \
+     --skill "p0-interview-triage" \
+     --artefact "00-prework/interview-target-spec.md" \
      --result "10 interviews targeted"
    ```
 2. When the founder makes a real decision with a reason (path, segment, price), record it with a one-line rationale:

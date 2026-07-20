@@ -14,7 +14,7 @@ argument-hint: [path to blueprint.md, optional]
 ## Before you start
 Read `03-product/docs/PRD.md` (the Musts, and non-goals) and `.spark/state.json` (`business_type` picks your diagrams). Templates: `${CLAUDE_SKILL_DIR}/references/blueprint-templates.md`, one block per path.
 
-Only model what the PRD says you build this week. Diagrams are Mermaid in fenced ```` ```mermaid ```` blocks; use a Markdown table where a picture cannot carry it (a BOM).
+Only model what the PRD says you build this week. Draft, then explain back (about 15 minutes): the founder cannot draw this, but only they know the world it models. After drafting, walk each diagram through in plain English and ask domain questions ("does a client ever have two properties?", "who updates this when it changes?"). Their answers reshape the model before the checker runs. Diagrams are Mermaid in fenced ```` ```mermaid ```` blocks; use a Markdown table where a picture cannot carry it (a BOM).
 
 ## Steps
 1. Create `03-product/docs/blueprint.md` with a one-line heading: what it models and which path.

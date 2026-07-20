@@ -12,7 +12,7 @@ argument-hint: [path to the file to check]
 **You are ready for this when.** The file you want to ship exists on disk (`.md`, `.html`, `.txt` or a plain deck export).
 
 ## Before you start
-Reads the file you point it at and `.spark/state.json` (via journey-state) for `business_type`, since the bar differs by path. This skill reviews only, it sends nothing: you sign off fixes before any outreach leaves (Day 4 human-in-the-loop).
+Reads the file you point it at and `.spark/state.json` (via journey-state) for `business_type`, since the bar differs by path. Rulings are proposals: walk every amber and red past the founder before applying a fix, because it is their name on the claim; an overruled amber is their call to defend, logged in DECISIONS.md. This skill reviews only, it sends nothing: you sign off fixes before any outreach leaves (Day 4 human-in-the-loop).
 
 ## Steps
 1. Scan the file from the project root:

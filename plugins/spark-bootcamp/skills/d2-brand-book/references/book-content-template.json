@@ -1,0 +1,25 @@
+{
+  "_help": "Copy this file to 02-market/brand/book-content.json and fill every field with the founder. Sources: story from the 'Where this idea comes from' section of 01-discovery/idea-brief.md; values, archetype and tone_sliders from 02-market/brand/brand-foundations.md; voice_example adapted from the 60-word pitch in 02-market/messaging.md. Delete this _help line when done.",
+  "story": "Two or three sentences, in the founder's own words, on where the brand comes from and what it believes.",
+  "values": [
+    { "value": "We ship in weeks, not quarters", "practice": "A client sees working output in the first fortnight, every time." },
+    { "value": "Second value as a thing we do", "practice": "How a customer sees it in practice, one sentence." },
+    { "value": "Third value as a thing we do", "practice": "How a customer sees it in practice, one sentence." }
+  ],
+  "archetype": {
+    "name": "The archetype chosen in brand-foundations",
+    "why": "One sentence on why it fits, from brand-foundations.md."
+  },
+  "tone_sliders": [
+    { "dimension": "Formal to Casual", "score": 2, "note": "The note from brand-foundations.md." },
+    { "dimension": "Serious to Playful", "score": 2, "note": "..." },
+    { "dimension": "Plain to Expressive", "score": 2, "note": "..." },
+    { "dimension": "Reserved to Bold", "score": 3, "note": "..." }
+  ],
+  "voice_example": "A short paragraph of real copy in the brand voice, adapted from the 60-word pitch in messaging.md, so a future writer can hear the voice rather than infer it.",
+  "applications": {
+    "email_signature": "First Name Last Name\nFounder, Business Name\nyou@yourdomain.com | +44 7700 900000\nOne-line tagline",
+    "doc_header_line": "Business Name | one-line descriptor"
+  },
+  "logo_provenance": "Optional. One line on where the logo came from, e.g. 'Chosen from three concepts on Day 2; concept B (monogram) won for legibility at small sizes.' Leave empty to omit."
+}

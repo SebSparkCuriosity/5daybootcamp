@@ -11,14 +11,14 @@ when_to_use: Day 3 product, after d3-product-context, with proposition.md in han
 **You are ready for this when.** `03-product/product-context.md` and `02-market/proposition.md` both exist.
 
 ## Before you start
-Read `03-product/product-context.md` and `02-market/proposition.md`. The proposition is the referee: every Must must deliver it. Bucket definitions: `${CLAUDE_SKILL_DIR}/references/moscow-rules.md`.
+Read `03-product/product-context.md` and `02-market/proposition.md`. The cut is a working discussion (about 20 minutes): you propose, challenge and count, the founder makes every call. A Must the founder cannot defend out loud is a Should. The proposition is the referee: every Must must deliver it. Bucket definitions: `${CLAUDE_SKILL_DIR}/references/moscow-rules.md`.
 
 ## Steps
-1. Brain-dump every requirement first, no sorting, 15 to 25 lines.
+1. Brain-dump every requirement together, the founder talking, you typing: no sorting, 15 to 25 lines.
 2. Sort each line into one bucket. **Must**: without it the promise breaks and nobody pays. **Should**: painful to drop, promise survives, goes in v2. **Could**: cheap, only if time. **Won't**: out of scope this week, name at least three.
 3. Cap the Musts at seven. Move the weakest down until seven remain.
 4. Beside each Must, write the `proposition.md` words it delivers. No link means it is a Should. Demote it.
-5. Per Must, ask "would a paying customer walk away without this on day one?" If no, it is a Should.
+5. Per Must, ask the founder "would a paying customer walk away without this on day one?" and wait for their answer. If no, it is a Should. Challenge a kind answer once, with the proposition as referee, then let their call stand.
 6. Write at least three explicit Won'ts. Login, dashboards, settings, integrations, mobile: usually Won't.
 7. Branch only where the Musts differ. The method is identical.
 

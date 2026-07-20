@@ -11,10 +11,10 @@ when_to_use: Day 3 product, straight after d3-moscow, before you build or ship.
 **You are ready for this when.** `03-product/requirements-moscow.md` exists with at most seven Musts.
 
 ## Before you start
-Read `03-product/requirements-moscow.md` (the Musts and the one-line MVP statement) and `02-market/proposition.md`: the slice must deliver that promise end to end. Optional: `${CLAUDE_SKILL_DIR}/references/acceptance-criteria.md` for testable "done" lines.
+Read `03-product/requirements-moscow.md` (the Musts and the one-line MVP statement) and `02-market/proposition.md`: the slice must deliver that promise end to end. Run it as a conversation (about 15 minutes): the founder narrates the journey, you map it. Optional: `${CLAUDE_SKILL_DIR}/references/acceptance-criteria.md` for testable "done" lines.
 
 ## Steps
-1. **Write the backbone.** List the ordered steps a user takes, landing to acting (arrive, understand, see it work, trust, act, confirm). Five to nine short verb phrases. Journey, not build plan.
+1. **Have the founder narrate the backbone.** Ask them to walk it in plain English: "your customer arrives; what happens first, then what?" Turn the narration into five to nine short verb phrases, landing to acting (arrive, understand, see it work, trust, act, confirm). Journey, not build plan. Read it back before hanging anything on it.
 2. **Hang each Must under its step.** Place every Must under the backbone step it serves. A Must that fits nowhere means a missing step or a fake Must. Fix it.
 3. **Check every step has cover.** A step with no Must is a hole. Promote a Should to fill it, or cut the step. No gaps.
 4. **Draw the MVP slice.** Tag `[MVP]` the thinnest set of Musts that lets one user complete the whole backbone once. If the slice needs more than seven Musts, go back to `d3-moscow`.

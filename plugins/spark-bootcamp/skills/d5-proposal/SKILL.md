@@ -9,17 +9,19 @@ argument-hint: [buyer-name]
 
 **What this does.** Writes a single page a named buyer can say yes to: their problem, one numeric target, a delivery window inside six weeks, one price, one next step.
 **Why it matters.** This is where the week lands or leaks away, so make the yes easy: one page, one number, one price, one ask, not three pages of features a busy buyer never reads.
-**You are ready for this when.** `01-discovery/validated-problem.md`, `02-market/proposition.md`, `05-sale/PRICING-MODEL.md`, `05-sale/DEMO-SCRIPT.md` exist and `04-gtm/friday-meeting.md` names the buyer.
+**You are ready for this when.** `01-discovery/validated-problem.md`, `02-market/proposition.md`, `05-sale/RATE-CARD.md`, `05-sale/DEMO-SCRIPT.md` exist and `04-gtm/friday-meeting.md` names the buyer.
 
 ## Before you start
 Read each for one part of the page:
 - `01-discovery/validated-problem.md`: the problem in the buyer's words.
 - `02-market/proposition.md`: the success metric, your numeric target.
-- `05-sale/PRICING-MODEL.md`: the price (or `05-sale/RATE-CARD.md` if that was produced instead).
+- `05-sale/RATE-CARD.md`: the recommended package and its price (the model behind it sits in `04-gtm/PRICING-MODEL.md`).
 - `05-sale/DEMO-SCRIPT.md`: the value moment. Promise only what the demo proves.
 - `04-gtm/friday-meeting.md`: named buyer and slot. Read `.spark/state.json` for `business_type` and founder.
 
 Read `${CLAUDE_SKILL_DIR}/references/proposal-template.md` once.
+
+Draft fast, then read it aloud with the founder (10 minutes): one page in their voice, one round of corrections, their explicit yes before it is final.
 
 Guardrail: this writes a document, it does not send it or take payment. Human sign-off before it leaves your hands. Hard rule.
 
@@ -28,7 +30,7 @@ Guardrail: this writes a document, it does not send it or take payment. Human si
 2. State the problem in three sentences from `validated-problem.md`, in their language. Name the workflow that hurts and its cost. No solution yet.
 3. State the target as a number from `proposition.md`: "from X to Y, by when". If it is fuzzy, sharpen it first.
 4. Set the timeline inside six weeks with one milestone the buyer sees and when. Say the work is human-in-the-loop and changelogged. If scope needs longer, cut scope.
-5. State one price from `PRICING-MODEL.md`: fixed, GBP, no ranges or options. Floor is GBP 2,000; below it needs a reason in DECISIONS.md.
+5. State one price from `05-sale/RATE-CARD.md` (the recommended package): fixed, GBP, no ranges or options. Floor is GBP 2,000; below it needs a reason in DECISIONS.md.
 6. Write one next step: one action, one owner, one date.
 7. Add the draft disclaimer at the foot (the template carries it): this is a draft, have a qualified lawyer review it before use, Spark does not warrant it.
 
@@ -47,7 +49,7 @@ Promise the productised package: one named sample deliverable plus a bookable in
 9. Export the PDF: `python3 ${CLAUDE_SKILL_DIR}/scripts/md_to_pdf.py 05-sale/PROPOSAL.md 05-sale/proposal.pdf`. If no PDF library, it writes `05-sale/proposal.html` instead, which is fine to send.
 
 ## The artefact
-Writes `05-sale/PROPOSAL.md` (Markdown) and `05-sale/proposal.pdf` (or `proposal.html` fallback), per `${CLAUDE_SKILL_DIR}/references/proposal-template.md`. Good: one page read in ninety seconds, names the buyer, one numeric target, one window inside six weeks, one fixed price, one next step, the draft disclaimer. `proposal_check.py` prints PASS.
+Writes `05-sale/PROPOSAL.md` (Markdown) and `05-sale/proposal.pdf` (or `05-sale/proposal.html` fallback), per `${CLAUDE_SKILL_DIR}/references/proposal-template.md`. Good: one page read in ninety seconds, names the buyer, one numeric target, one window inside six weeks, one fixed price, one next step, the draft disclaimer. `proposal_check.py` prints PASS.
 
 ## Done when
 `proposal_check.py` prints PASS: under 500 words, names the buyer, carries a numeric target, a 1 to 6 week timeline, exactly one price and one next step. The PDF (or HTML fallback) exists at `05-sale/proposal.pdf`.

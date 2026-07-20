@@ -44,7 +44,7 @@ Stack line reads "Docs, CAD and pre-order page". Issues track the prototype and 
 Stack line reads "Sample deliverable and intake page". Issues track the productised package: "One sample deliverable written", "Bookable intake page live".
 
 ## The artefact
-A live GitHub repo (private by default) at `https://github.com/<you>/<repo>`, with a README on the front page and one open issue per Must. Plus `03-product/github.md`: the repo URL, issue count, and a line per issue (number and title), so the audit pack survives even if GitHub is unreachable.
+A live GitHub repo (private by default) at `https://github.com/<you>/<repo>`, with a README on the front page and one open issue per Must. Plus `03-product/github.md`: the repo URL, issue count, and a line per issue (number and title), so the audit pack survives even if GitHub is unreachable. The script also saves the README draft to `03-product/README.draft.md` for the browser fallback.
 
 ## Done when
 The repo URL returns 200, the README is on the front page, and open issues equal the Musts in `requirements-moscow.md`. The script prints a final PASS/FAIL; you want PASS.
