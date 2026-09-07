@@ -13,6 +13,8 @@ when_to_use: Pre-work, after invitations go out. Re-run each time replies arrive
 ## Before you start
 Read `.spark/state.json` (`prework.bootcamp_monday`, `prework.interviews_booked`), `00-prework/interview-schedule.md` if it exists, and `00-prework/invite-list.csv` for reserves. Ask the founder what has come in since last time; paste replies if easier. Guardrail: you draft confirmations and chases, the founder sends them.
 
+Interviews already booked outside the plugin, from a workpack? Skip straight here even if the earlier pre-work artefacts do not exist yet: ask who is booked and when, write the schedule from that, and log it. Backfill `p0-interview-triage` and `p0-invite-list` after, in ten minutes, only so `coach` and later skills have the full record.
+
 ## Steps
 1. For each yes: agree a 25-minute slot on the bootcamp Monday afternoon or the Tuesday morning overflow, with 10+ minutes between slots. Cap Monday at 8 slots; from the ninth yes, book Tuesday morning by default (the day only holds so many honest conversations). Add the row: name, role, channel, confirmed time, format (call or in person), status BOOKED.
 2. Draft the confirmation with the exact time, the format and the joining detail. Founder sends it.

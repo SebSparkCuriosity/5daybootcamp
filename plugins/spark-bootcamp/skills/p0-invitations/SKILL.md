@@ -15,6 +15,8 @@ Read `00-prework/invite-list.csv` (name, role, channel, warmth, notes) and `.spa
 
 Guardrail: nothing goes out until the founder approves it. This skill drafts and stops. It never sends and never spends.
 
+Already sent these by hand? Do not re-send: write up what actually went out (channel, wording, date) so the pack matches reality, then move straight to `p0-schedule` to log the replies.
+
 ## Steps
 1. Set the ask with the founder: 20 to 25 minutes on the named Monday (or Tuesday morning), remote or in person, to learn from them. Not a pitch. Lead with why you picked them.
 2. Choose one booking method together: a scheduling link (Calendly free tier, GBP 0) with ONLY the Monday afternoon and Tuesday morning windows open is the default; otherwise offer two concrete slots with times. Same method for everyone.
