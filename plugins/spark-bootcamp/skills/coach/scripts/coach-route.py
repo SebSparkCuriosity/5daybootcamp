@@ -231,11 +231,17 @@ def prework_route(project_root, state, hello):
 
     for skill_id, artefact in PREWORK["steps"]:
         if not artefact_present(project_root, state, artefact):
+            aside = (
+                "\n\nAlready got interviews booked outside the plugin, from a workpack or your\n"
+                "own outreach? Skip ahead to  {sched}  and log what you actually have; backfill\n"
+                "this step after, in minutes, since the decision is already made."
+                .format(sched=cmd("p0-schedule")) if booked > 0 and skill_id != "p0-schedule" else ""
+            )
             block(
                 "Your next move",
                 "Run  {c}\n\nThat is the next pre-work step. It writes  {art}.\n"
-                "Do that one thing, then run me again and I will point you at the next.".format(
-                    c=cmd(skill_id), art=artefact
+                "Do that one thing, then run me again and I will point you at the next.{aside}".format(
+                    c=cmd(skill_id), art=artefact, aside=aside
                 ),
             )
             return

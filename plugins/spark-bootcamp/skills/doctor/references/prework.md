@@ -13,8 +13,10 @@ project, so edit it and save.
 
 Nobody is free for an interview tomorrow. Day 1 of the bootcamp runs on 8 to 12
 booked conversations, and the only way they exist is if the invitations went out
-2 to 4 weeks earlier. For the September 2026 cohort the interviews happen on
-Monday 14 September 2026 (afternoon), with Tuesday morning the 15th as overflow.
+2 to 4 weeks earlier. `start` will ask for your actual bootcamp Monday and every
+later skill reads it from there, so it is always the true date, never a guess.
+If today is less than 2 weeks out from it, say so out loud: 8 to 12 booked is
+still possible, but only if invitations go out today, not this evening.
 
 The plugin walks you through each step; run `/spark-bootcamp:coach` and it will
 point you at the next one.

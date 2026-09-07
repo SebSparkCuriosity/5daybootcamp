@@ -15,6 +15,8 @@ Read `00-prework/interview-target-spec.md`. Everyone you add must clear the segm
 
 This is the founder's network, so work it together: ask where they already know people before searching anywhere else. Guardrail: this step gathers contacts only. Send nothing until the invitations step. Business contact details are fine to collect; keep the list on your own machine and add no note you would not show the person.
 
+Already have a list from a workpack or a spreadsheet? Do not rebuild it: bring it in, sanity-check it against the spec (step 6), and write it straight into the CSV.
+
 ## Steps
 1. Empty the easy buckets first, working the sourcing tactics reference top to bottom: phone contacts, past colleagues and clients, LinkedIn first connections, then Jersey sources (industry bodies, member directories, event lists, parish and networking scenes). One warm name beats five cold.
 2. Add each person into the CSV as you find them, using the header from `references/interview-list-template.csv` copied exactly.

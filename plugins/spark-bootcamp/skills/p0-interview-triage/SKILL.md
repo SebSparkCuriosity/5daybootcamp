@@ -13,6 +13,8 @@ when_to_use: Pre-work, 2 to 4 weeks before the bootcamp Monday, straight after s
 ## Before you start
 Read state for `founder`, `idea` and `prework.bootcamp_monday`. This is a conversation, not a form (about 30 minutes): ask one question at a time, listen, and capture the founder's own words. It is a light triage, good enough to invite the right people; the deep idea work happens on Day 1.
 
+Already worked this out on paper, from a workpack or your own notes? Good, this goes in minutes: read back what you have, tighten anything vague against the steps below, and write it. Skip nothing, but do not re-litigate a call already made.
+
 ## Steps
 1. Ask who they picture when they imagine the idea working. Push from category to person: not "small businesses" but "the office manager at a 15-person Jersey trust company". Their answer names the segment: "people who [do this job] at [this kind of place]".
 2. Ask for the exact job title of the person who feels the pain. "Head of compliance", not "someone in compliance". If they are unsure, ask who they last saw struggle with it.

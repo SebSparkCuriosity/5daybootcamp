@@ -19,14 +19,15 @@ No prior artefact, this is step zero. Do not overthink the idea. It needs to be 
 1. **Get their first name.** Use it from here on. No titles.
 2. **Pick one path.** `software` (code that runs), `hardware` (a physical object you ship), `services` (productised time and expertise). If it is a mix, choose the part the customer pays for first.
 3. **Write the idea as ONE sentence, together.** Ask where the idea came from and who it is for before touching the wording; a couple of genuine questions beat a template. Then shape their answer: "[product] helps [who] do [job] so they [get outcome]." If it will not fit one line, it is not clear enough to sell; keep talking until it does. Their words, not yours.
-4. **Name the bootcamp Monday.** Ask which Monday the week starts. For the Digital Jersey autumn cohort that is Monday 14 September 2026. Write it as an ISO date; every interview invitation points at it.
+4. **Name the bootcamp Monday.** Ask which Monday the week starts, do not assume it: cohort dates change. Write it as an ISO date; every interview invitation points at it. Check today's date against it: fewer than 14 days out and 8 to 12 booked interviews is a stretch, so say that plainly and tell them to start `p0-interview-triage` today, not this evening.
 5. **Set the headline target with a number.** Ask: "What does success look like by that Friday, as a number?" Pass: "one paying customer at GBP 2,000+", "3 signed pilots". Fail: "validate the market". No number, no proceeding. Prefer one paying customer over any vanity metric.
-6. **Read it back.** Say all five aloud (name, path, idea, Monday, target) and get an explicit "yes" before writing.
-7. **Initialise state** via the journey-state helper (never hand-edit):
+6. **Check what's already done.** Ask if any of this happened outside the plugin already, for example from a manual pre-work pack: idea refined, contacts sourced, interviews already booked. If so, get the real count now. Tell them plainly: the pre-work skills still go fast, because the thinking is already made; running `p0-interview-triage` through `p0-schedule` is logging what they decided, not redeciding it, and it is what lets `coach` and Day 1 read what they already have.
+7. **Read it back.** Say all five aloud (name, path, idea, Monday, target) and get an explicit "yes" before writing.
+8. **Initialise state** via the journey-state helper (never hand-edit):
 
    ```
    python3 "${CLAUDE_PLUGIN_ROOT}/skills/journey-state/scripts/update-state.py" \
-     --patch '{"founder":"<first name>","business_type":"<software|hardware|services>","idea":"<the one sentence>","headline_target":"<the target with its number>","current_day":1,"prework":{"bootcamp_monday":"<YYYY-MM-DD>","interviews_booked":0,"complete":false}}'
+     --patch '{"founder":"<first name>","business_type":"<software|hardware|services>","idea":"<the one sentence>","headline_target":"<the target with its number>","current_day":1,"prework":{"bootcamp_monday":"<YYYY-MM-DD>","interviews_booked":<0, or the real count if pre-work already happened outside the plugin>,"complete":false}}'
    ```
 
    It creates `.spark/` and day folders and sets the five-day skeleton. See `references/state-shape.md` for the exact object.
