@@ -11,7 +11,7 @@ when_to_use: Pre-work, straight after the invite list, 2 to 4 weeks before the b
 **You are ready for this when.** `00-prework/invite-list.csv` exists with 20+ rows.
 
 ## Before you start
-Read `00-prework/invite-list.csv` (name, role, channel, warmth, notes) and `.spark/state.json` for `founder`, `idea` and `prework.bootcamp_monday`. For the September 2026 cohort that is Monday 14 September 2026, with Tuesday morning 15 September as overflow.
+Read `00-prework/invite-list.csv` (name, role, channel, warmth, notes) and `.spark/state.json` for `founder`, `idea` and `prework.bootcamp_monday`. Every date in every template comes from that field, plus the Tuesday after it as overflow: never hardcode a date. If `prework.bootcamp_monday` is missing or already past, stop and send the founder back to `start`.
 
 Guardrail: nothing goes out until the founder approves it. This skill drafts and stops. It never sends and never spends.
 

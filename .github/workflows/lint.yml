@@ -26,3 +26,6 @@ jobs:
       - name: Syntax-check every shell script
         run: |
           find plugins -name "*.sh" -print0 | xargs -0 -n1 bash -n
+
+      - name: Pre-work + Day 1 smoke test (runs the real scripts end to end)
+        run: python3 tools/smoke_test.py
