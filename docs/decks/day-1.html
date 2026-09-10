@@ -261,10 +261,21 @@ h1.title,h2.title{font-size:clamp(28px,4.2vw,52px);font-weight:300;line-height:1
 .dot.active{background:#5435AE;transform:scale(1.5);}
 .hint{position:absolute;bottom:66px;left:50%;transform:translateX(-50%);font-family:'Open Sans',sans-serif;font-size:.78rem;color:rgba(255,255,255,.85);background:rgba(33,43,91,.55);padding:6px 14px;border-radius:20px;backdrop-filter:blur(4px);transition:opacity .6s ease;white-space:nowrap;}
 
+.pace-wrap{position:absolute;top:64px;right:8vw;display:flex;align-items:center;gap:6px;pointer-events:auto;}
+.pace-pill{background:rgba(255,255,255,.9);color:#212B5B;border:none;padding:6px 14px;border-radius:20px;font-family:'Cairo',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.02em;cursor:pointer;box-shadow:0 3px 12px rgba(33,43,91,.15);backdrop-filter:blur(6px);transition:background .2s ease,color .2s ease;white-space:nowrap;}
+.pace-pill:hover{background:#fff;}
+.pace-pill.pace-behind{background:#9F37BB;color:#fff;}
+.pace-pill[hidden]{display:none;}
+.pace-reset{width:26px;height:26px;flex:none;border-radius:50%;border:none;background:rgba(255,255,255,.9);color:#212B5B;cursor:pointer;font-size:.85rem;line-height:1;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 12px rgba(33,43,91,.15);backdrop-filter:blur(6px);transition:background .2s ease;}
+.pace-reset:hover{background:#fff;}
+.pace-reset[hidden]{display:none;}
+
 @media (max-width:680px){
   .slide{padding:9vh 6vw 12vh;}
   .arrow{display:none;}
   .brand .deck-name{display:none;}
+  .pace-wrap{top:60px;right:4vw;}
+  .pace-pill{font-size:.62rem;padding:5px 11px;}
   .b-cards,.b-grid,.b-flip{grid-template-columns:1fr !important;}
   .tl-row{grid-template-columns:80px 16px 1fr;}
   .cover-stats{gap:10px;}
@@ -285,6 +296,10 @@ h1.title,h2.title{font-size:clamp(28px,4.2vw,52px);font-weight:300;line-height:1
 <div class="chrome">
   <div class="brand">Digital Jersey<span class="deck-name">Day 1</span></div>
   <div class="counter"><span id="counterCur">1</span>&nbsp;/&nbsp;<span id="counterTotal"></span></div>
+  <div class="pace-wrap">
+    <button class="pace-pill" id="pacePill" hidden title="Tap to sync the schedule to now"></button>
+    <button class="pace-reset" id="paceReset" hidden title="Reset to the printed schedule" aria-label="Reset schedule sync">&#8635;</button>
+  </div>
   <button class="arrow prev" id="prevBtn" aria-label="Previous slide">&#8249;</button>
   <button class="arrow next" id="nextBtn" aria-label="Next slide">&#8250;</button>
   <div class="dots" id="dots"></div>
@@ -740,6 +755,8 @@ const counterTotal=document.getElementById('counterTotal');
 const progressBar=document.getElementById('progressBar');
 const prevBtn=document.getElementById('prevBtn');
 const nextBtn=document.getElementById('nextBtn');
+const pacePill=document.getElementById('pacePill');
+const paceReset=document.getElementById('paceReset');
 
 const slideEls=DATA.map(renderSlide);
 slideEls.forEach(e=>stage.appendChild(e));
@@ -768,6 +785,62 @@ function tickCountdowns(){
 setInterval(tickCountdowns,1000);
 tickCountdowns();
 
+// --- live pacing: compares the room's clock to each slide's scheduled
+// time band, shifted by a day offset the facilitator sets by tapping the
+// pill ("this block starts now"). Offset persists per browser/device.
+let dayOffsetMin=0;
+try{
+  const saved=localStorage.getItem('djBootcampScheduleOffset');
+  if(saved!==null){const n=parseFloat(saved);if(!isNaN(n))dayOffsetMin=n;}
+}catch(e){}
+function saveOffset(){
+  try{localStorage.setItem('djBootcampScheduleOffset',String(dayOffsetMin));}catch(e){}
+}
+function parseBand(timeStr){
+  if(!timeStr)return null;
+  const parts=timeStr.split('-').map(s=>s.trim());
+  if(parts.length!==2)return null;
+  const mk=hhmm=>{const [h,m]=hhmm.split(':').map(Number);if(isNaN(h)||isNaN(m))return null;const d=new Date();d.setHours(h,m,0,0);return d;};
+  const start=mk(parts[0]),end=mk(parts[1]);
+  if(!start||!end)return null;
+  return [start,end];
+}
+function updatePace(){
+  const s=DATA[idx];
+  const band=s?parseBand(s.time):null;
+  if(!band){pacePill.hidden=true;paceReset.hidden=true;return;}
+  pacePill.hidden=false;
+  paceReset.hidden=dayOffsetMin===0;
+  const shiftMs=dayOffsetMin*60000;
+  const start=new Date(band[0].getTime()+shiftMs);
+  const end=new Date(band[1].getTime()+shiftMs);
+  const now=new Date();
+  pacePill.classList.remove('pace-behind');
+  if(now<start){
+    pacePill.textContent='Starts in '+Math.round((start-now)/60000)+'m';
+  }else if(now<=end){
+    pacePill.textContent='On schedule \u00b7 '+Math.round((end-now)/60000)+'m left';
+  }else{
+    pacePill.textContent=Math.round((now-end)/60000)+'m behind';
+    pacePill.classList.add('pace-behind');
+  }
+}
+pacePill.addEventListener('click',()=>{
+  const s=DATA[idx];
+  const band=s?parseBand(s.time):null;
+  if(!band)return;
+  dayOffsetMin=Math.round((new Date()-band[0])/60000);
+  saveOffset();
+  updatePace();
+});
+paceReset.addEventListener('click',e=>{
+  e.stopPropagation();
+  dayOffsetMin=0;
+  saveOffset();
+  updatePace();
+});
+setInterval(updatePace,15000);
+
 DATA.forEach((_,i)=>{
   const d=document.createElement('button');
   d.className='dot';d.setAttribute('aria-label','Go to slide '+(i+1));
@@ -792,6 +865,7 @@ function activate(i){
   fx.forEach((f,k)=>k===i?f.start():f.stop());
   prevBtn.style.visibility=i===0?'hidden':'visible';
   nextBtn.style.visibility=i===DATA.length-1?'hidden':'visible';
+  updatePace();
 }
 function goto(i){
   idx=Math.max(0,Math.min(DATA.length-1,i));
