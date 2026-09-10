@@ -8,6 +8,19 @@
   (`pip install python-pptx`), then `python3 build_overview_deck.py out.pptx`.
 - `session-plan.md`: the facilitator's timed session plan for running the
   bootcamp live, pre-work plus all five days, mapped against the real skill
-  chain. The source outline for the five day-by-day decks below.
-- `decks/`: one Spark-branded `.pptx` per bootcamp day (`day-1.pptx` through
-  `day-5.pptx`), built from `session-plan.md` via the `spark-branding` skill.
+  chain. The source outline for the day-by-day decks below.
+- `decks/`: the day-by-day facilitator decks, two versions, both built from
+  `session-plan.md`:
+  - `day-1.html` through `day-5.html`: the current version. Interactive,
+    Digital Jersey-branded, self-contained single-file decks (keyboard,
+    swipe and click navigation, a progress bar, an animated network
+    background on gradient slides). Just open one in a browser.
+    `build_day_html_decks.py` regenerates them; it reads the Cairo and Open
+    Sans font files from `fonts/` and embeds them so each deck works
+    offline with no installed fonts or network connection.
+  - `day-1.pptx` through `day-5.pptx`: the earlier Spark-branded PowerPoint
+    version, kept for reference. `build_day_decks.py` regenerates these via
+    the `spark-branding` skill; needs `python-pptx` plus Lora and Inter
+    installed for accurate layout.
+- `fonts/`: Cairo and Open Sans WOFF2 files used by
+  `build_day_html_decks.py` to make the HTML decks self-contained.
