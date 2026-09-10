@@ -194,6 +194,34 @@ h1.title,h2.title{font-size:clamp(28px,4.2vw,52px);font-weight:300;line-height:1
 .tr-tag.good{background:rgba(0,196,255,.16);color:#212B5B;}
 .tr-tag.bad{background:rgba(159,55,187,.14);color:#5435AE;}
 
+.mode-icon{display:inline-flex;flex:none;width:13px;height:13px;margin-right:6px;vertical-align:-2px;}
+.mode-icon svg{width:100%;height:100%;display:block;}
+
+.b-diagram{margin:0 0 1.1em;background:#FAFAFC;border:1px solid #ECECF2;border-radius:14px;padding:18px;}
+.b-diagram svg{width:100%;height:auto;display:block;max-height:44vh;}
+.diagram-caption{margin-top:10px;font-size:.76rem;color:#9A9AA8;text-align:center;}
+
+.moscow-board{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 1.1em;}
+.moscow-col{background:#FAFAFC;border-radius:10px;padding:12px;border-top:4px solid var(--c,#5435AE);min-height:120px;border-left:1px solid #ECECF2;border-right:1px solid #ECECF2;border-bottom:1px solid #ECECF2;}
+.moscow-head{font-family:'Cairo',sans-serif;font-weight:700;font-size:.78rem;color:#212B5B;margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em;}
+.moscow-tag{background:#fff;border:1px solid #ECECF2;border-radius:6px;padding:7px 10px;font-size:.74rem;color:#3C3C3B;margin-bottom:7px;box-shadow:0 1px 3px rgba(33,43,91,.06);}
+
+.b-activity{border-radius:16px;background:linear-gradient(180deg,#FAFAFC,#F5F5FA);border:1px solid #ECECF2;padding:20px 24px 24px;margin:.4em 0 1.1em;}
+.activity-head{display:flex;align-items:center;gap:20px;margin-bottom:14px;flex-wrap:wrap;}
+.activity-diagram{flex:none;width:120px;height:92px;}
+.activity-diagram svg{width:100%;height:100%;display:block;}
+.activity-setup{display:flex;gap:8px;flex-wrap:wrap;flex:1;min-width:200px;}
+.activity-chip{background:#fff;border:1px solid #ECECF2;border-radius:20px;padding:6px 14px;font-size:.76rem;color:#3C3C3B;line-height:1.4;}
+.activity-chip b{color:#212B5B;}
+.activity-steps{margin:6px 0 0;}
+.activity-step{display:flex;gap:14px;padding:9px 0;border-top:1px solid #ECECF2;}
+.activity-step:first-child{border-top:1px solid #ECECF2;}
+.activity-step .t{flex:none;width:56px;font-family:'Cairo',sans-serif;font-weight:700;font-size:.76rem;color:var(--accent,#5435AE);}
+.activity-step .txt{font-size:.88rem;color:#3C3C3B;line-height:1.48;}
+.activity-debrief{margin-top:14px;background:#212B5B;border-radius:10px;padding:13px 18px;}
+.activity-debrief .lbl{font-family:'Cairo',sans-serif;font-weight:700;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#00C4FF;margin-bottom:.3em;}
+.activity-debrief p{margin:0;color:#fff;font-size:.88rem;line-height:1.5;}
+
 .b-timeline{margin:.5em 0;}
 .tl-row{display:grid;grid-template-columns:112px 22px 1fr;gap:0 16px;align-items:start;}
 .tl-time{font-family:'Cairo',sans-serif;font-weight:700;font-size:.8rem;color:#212B5B;padding-top:.15em;font-variant-numeric:tabular-nums;}
@@ -244,6 +272,9 @@ h1.title,h2.title{font-size:clamp(28px,4.2vw,52px);font-weight:300;line-height:1
   .countdown-time{font-size:clamp(44px,16vw,80px);}
   .flip-card{height:auto;min-height:140px;}
   .reveal-body p{padding-left:18px;}
+  .moscow-board{grid-template-columns:repeat(2,1fr);}
+  .activity-head{flex-direction:column;align-items:flex-start;}
+  .activity-diagram{width:96px;height:76px;}
 }
 
 </style>
@@ -264,12 +295,116 @@ h1.title,h2.title{font-size:clamp(28px,4.2vw,52px);font-weight:300;line-height:1
 const ACCENT_ROTATION = ["#9F37BB", "#5435AE", "#4EABF2", "#00C4FF", "#212B5B"];
 const MODE_COLOR = {"Together": "#5435AE", "1:1": "#212B5B", "Out": "#9F37BB", "Solo": "#9A9AA8", "Break": "#C7C7D2"};
 const MODE_CLASS = {"Together": "together", "1:1": "onetoone", "Out": "out", "Solo": "solo", "Break": "break"};
-const DATA = [{"kind": "cover", "number": "04", "eyebrow": "Day 4 \u00b7 Thursday", "title": "Prove it", "subtitle": "By tonight: real usability tests done, a ranked list of buyers, and a confirmed Friday meeting.", "stats": [{"value": "5", "label": "Usability sessions"}, {"value": "09:00-17:25", "label": "Today's hours"}], "meta": "Digital Jersey Academy \u00b7 Founder Bootcamp"}, {"kind": "content", "title": "Today, start to finish", "blocks": [{"type": "timeline", "rows": [{"time": "09:00-09:10", "title": "Morning huddle", "mode": "Together"}, {"time": "09:10-09:40", "title": "Plan your usability tests, book 5 sessions", "mode": "Solo"}, {"time": "09:40-12:40", "title": "Live usability and buying-signal tests", "mode": "Out"}, {"time": "12:40-13:20", "title": "Lunch", "mode": "Break"}, {"time": "13:20-13:50", "title": "Find the patterns, prioritise", "mode": "Solo"}, {"time": "13:50-14:05", "title": "Break", "mode": "Break"}, {"time": "14:05-14:35", "title": "Go-to-market plan: your first 10 buyers, ranked", "mode": "Solo"}, {"time": "14:35-15:05", "title": "Choose your pricing model", "mode": "1:1"}, {"time": "15:05-15:35", "title": "ICP, sales deck, client intake", "mode": "Solo"}, {"time": "15:35-15:55", "title": "Build the marketing funnel", "mode": "Solo"}, {"time": "15:55-16:25", "title": "Channels are a hypothesis, not a checklist, then a funnel wall build", "mode": "Together"}, {"time": "16:25-16:40", "title": "Break", "mode": "Break"}, {"time": "16:40-17:00", "title": "Onboarding pack", "mode": "Solo"}, {"time": "17:00-17:15", "title": "Book the sale: confirmed Friday meeting", "mode": "Solo"}, {"time": "17:15-17:25", "title": "Evening close", "mode": "Together"}]}]}, {"kind": "content", "time": "09:00-09:10", "mode": "Together", "title": "Morning huddle", "blocks": [{"type": "para", "text": "Say today's number: sessions booked, or the buyer you'll have confirmed for Friday by tonight."}]}, {"kind": "content", "time": "09:10-09:40", "mode": "Solo", "title": "Plan your usability tests", "blocks": [{"type": "para", "text": "You now have a thing, so the question changes from \u201cis the pain real?\u201d to \u201cdoes my build remove it, and is that worth money?\u201d"}, {"type": "bullets", "items": ["Real tasks on the live URL, not a demo you drive", "Three probes reading whether they would actually pay", "Five sessions, booked for this morning"]}]}, {"kind": "content", "time": "09:40-12:40", "mode": "Out", "title": "Live usability and buying-signal tests", "blocks": [{"type": "para", "text": "Watching five people fumble your build teaches you more than fifty surveys. Watch, don't narrate, and don't rescue them when they get stuck."}, {"type": "bullets", "items": ["Hand them a task, then stay quiet", "Write down where they hesitate, not just where they fail", "Ask what they'd pay, only after they've used it"]}]}, {"kind": "break", "time": "12:40-13:20", "title": "Lunch", "until": "13:20"}, {"kind": "content", "time": "13:20-13:50", "mode": "Solo", "title": "Find the patterns, prioritise", "blocks": [{"type": "quote", "text": "By Friday you can build three things not thirty and phone a handful of people, so numbers decide, not the loudest voice.", "attribution": "d4-prioritise"}, {"type": "bullets", "items": ["Score every requested change with RICE and MoSCoW", "Rank every tester by likelihood to buy"]}]}, {"kind": "break", "time": "13:50-14:05", "title": "Break", "until": "14:05"}, {"kind": "content", "time": "14:05-14:35", "mode": "Solo", "title": "Go-to-market plan", "blocks": [{"type": "quote", "text": "The warmest prospect closes far faster than a cold one, so you start there, not at the top of an alphabet.", "attribution": "d4-gtm-plan"}]}, {"kind": "content", "time": "14:35-15:05", "mode": "1:1", "title": "Choose your pricing model", "blocks": [{"type": "para", "text": "How you charge decides who buys and how fast they say yes. This afternoon's sales deck carries a price slide, so the model and the floor get fixed now, with Seb, not guessed at alone."}, {"type": "bullets", "items": ["Name what you charge against: the value metric", "One reason logged for every rejected model", "The exact number is tomorrow morning's first job"]}]}, {"kind": "content", "time": "15:05-15:35", "mode": "Solo", "title": "ICP, sales deck, client intake", "blocks": [{"type": "cards", "cols": 2, "items": [{"title": "ICP and sales deck", "body": "A prospect who hears their own words read back, then sees two others got the result they want, is a prospect who signs."}, {"title": "Client intake", "body": "Most first sales die in the gap between the nod and the kickoff. Map it now: four stages, one owner, one SLA each."}]}]}, {"kind": "content", "time": "15:35-15:55", "mode": "Solo", "title": "Build the marketing funnel", "blocks": [{"type": "para", "text": "The path a stranger walks from first hearing about you to paying, in four stages, each with a channel, an asset and a number."}]}, {"kind": "content", "time": "15:55-16:25", "mode": "Together", "title": "Channels are a hypothesis, not a checklist", "blocks": [{"type": "para", "text": "A channel is a bet, not a box to tick: a cost, a reach, and a conversion guess. Run the cheapest, fastest test first. Kill what shows no signal. Double down on what does."}, {"type": "label", "text": "Reframe"}, {"type": "panel", "title": "Stop asking", "body": "\u201cWhich channels should I be on?\u201d Start asking: \u201cWhich channel can I test for GBP 20 by Monday?\u201d"}]}, {"kind": "content", "time": "15:55-16:25", "mode": "Together", "title": "How to test a channel in a day", "blocks": [{"type": "reveal", "hint": "Click each to unpack it", "items": [{"title": "Write the hypothesis down", "body": "\u201cIf I post in [X community], I expect [Y] replies and [Z] worth a call.\u201d A number, not a hope."}, {"title": "Spend the smallest amount that gets a real answer", "body": "One post, one ad, one batch of ten DMs. Not a month-long campaign."}, {"title": "Measure the number you wrote down", "body": "Not likes, not impressions. The number that actually predicts revenue."}, {"title": "Kill it or double down", "body": "No signal after a fair test, drop it. Real signal, put the next hour into it, not a new channel."}]}]}, {"kind": "content", "time": "15:55-16:25", "mode": "Together", "title": "Worked example", "blocks": [{"type": "label", "text": "Click a card to see what actually happened"}, {"type": "flip", "cols": 2, "items": [{"front": "\u201cLinkedIn outreach will work, everyone says so\u201d", "back": "Tested: 40 DMs, 2 replies, 0 calls booked. Killed it.", "frontLabel": "The assumption"}, {"front": "\u201cA Jersey Facebook group is too small to bother\u201d", "back": "Tested: 1 post, 6 replies, 3 calls booked by Thursday. Doubled down.", "frontLabel": "The assumption"}]}]}, {"kind": "content", "time": "15:55-16:25", "mode": "Together", "title": "Then: funnel wall build", "blocks": [{"type": "panel", "title": "Then: funnel wall build", "body": "Pin your four stages on the wall: channel, asset, number, at each one. Walk the room and defend your weakest step."}, {"type": "bullets", "items": ["Every channel gets a number attached before you spend a day on it", "A leaky step is a channel to fix or cut, not a reason to add another", "One channel proven beats five half-tried"]}]}, {"kind": "break", "time": "16:25-16:40", "title": "Break", "until": "16:40"}, {"kind": "content", "time": "16:40-17:00", "mode": "Solo", "title": "Onboarding pack", "blocks": [{"type": "para", "text": "A first week that feels handled is the cheapest retention you will ever buy. Six sections, a week-1 timeline, a named human to email."}]}, {"kind": "content", "time": "17:00-17:15", "mode": "Solo", "title": "Book the sale", "blocks": [{"type": "numbered", "items": [{"title": "Right person", "body": "Not just any contact, the warmest one from today's ranking."}, {"title": "Specific time", "body": "A slot on the table, not \u201csometime Friday\u201d."}, {"title": "A reply that says yes", "body": "Confirmed before you leave the room tonight."}]}, {"type": "quote", "text": "Regulated buyers rarely take a same-day meeting, so you ask on Thursday for Friday with a time already on the table.", "attribution": "d4-book-sale"}]}, {"kind": "closing", "title": "Evening close", "steps": ["Roll call: read every name and their booked Friday time out loud", "Rehearse the price out loud tonight", "Bring your three-item fix list tomorrow, not a feature wishlist"], "line": "Watch them use it, don't ask if they like it."}];
+const DATA = [{"kind": "cover", "number": "04", "eyebrow": "Day 4 \u00b7 Thursday", "title": "Prove it", "subtitle": "By tonight: real usability tests done, a ranked list of buyers, and a confirmed Friday meeting.", "stats": [{"value": "5", "label": "Usability sessions"}, {"value": "09:00-17:25", "label": "Today's hours"}], "meta": "Digital Jersey Academy \u00b7 Founder Bootcamp"}, {"kind": "content", "title": "Today, start to finish", "blocks": [{"type": "timeline", "rows": [{"time": "09:00-09:10", "title": "Morning huddle", "mode": "Together"}, {"time": "09:10-09:40", "title": "Plan your usability tests, book 5 sessions", "mode": "Solo"}, {"time": "09:40-12:40", "title": "Live usability and buying-signal tests", "mode": "Out"}, {"time": "12:40-13:20", "title": "Lunch", "mode": "Break"}, {"time": "13:20-13:50", "title": "Find the patterns, prioritise", "mode": "Solo"}, {"time": "13:50-14:05", "title": "Break", "mode": "Break"}, {"time": "14:05-14:35", "title": "Go-to-market plan: your first 10 buyers, ranked", "mode": "Solo"}, {"time": "14:35-15:05", "title": "Choose your pricing model", "mode": "1:1"}, {"time": "15:05-15:35", "title": "ICP, sales deck, client intake", "mode": "Solo"}, {"time": "15:35-15:55", "title": "Build the marketing funnel", "mode": "Solo"}, {"time": "15:55-16:25", "title": "Channels are a hypothesis, not a checklist, then a funnel wall build", "mode": "Together"}, {"time": "16:25-16:40", "title": "Break", "mode": "Break"}, {"time": "16:40-17:00", "title": "Onboarding pack", "mode": "Solo"}, {"time": "17:00-17:15", "title": "Book the sale: confirmed Friday meeting", "mode": "Solo"}, {"time": "17:15-17:25", "title": "Evening close", "mode": "Together"}]}]}, {"kind": "content", "time": "09:00-09:10", "mode": "Together", "title": "Morning huddle", "blocks": [{"type": "para", "text": "Say today's number: sessions booked, or the buyer you'll have confirmed for Friday by tonight."}]}, {"kind": "content", "time": "09:10-09:40", "mode": "Solo", "title": "Plan your usability tests", "blocks": [{"type": "para", "text": "You now have a thing, so the question changes from \u201cis the pain real?\u201d to \u201cdoes my build remove it, and is that worth money?\u201d"}, {"type": "bullets", "items": ["Real tasks on the live URL, not a demo you drive", "Three probes reading whether they would actually pay", "Five sessions, booked for this morning"]}]}, {"kind": "content", "time": "09:40-12:40", "mode": "Out", "title": "Live usability and buying-signal tests", "blocks": [{"type": "para", "text": "Watching five people fumble your build teaches you more than fifty surveys. Watch, don't narrate, and don't rescue them when they get stuck."}, {"type": "bullets", "items": ["Hand them a task, then stay quiet", "Write down where they hesitate, not just where they fail", "Ask what they'd pay, only after they've used it"]}]}, {"kind": "break", "time": "12:40-13:20", "title": "Lunch", "until": "13:20"}, {"kind": "content", "time": "13:20-13:50", "mode": "Solo", "title": "Find the patterns, prioritise", "blocks": [{"type": "quote", "text": "By Friday you can build three things not thirty and phone a handful of people, so numbers decide, not the loudest voice.", "attribution": "d4-prioritise"}, {"type": "bullets", "items": ["Score every requested change with RICE and MoSCoW", "Rank every tester by likelihood to buy"]}]}, {"kind": "break", "time": "13:50-14:05", "title": "Break", "until": "14:05"}, {"kind": "content", "time": "14:05-14:35", "mode": "Solo", "title": "Go-to-market plan", "blocks": [{"type": "quote", "text": "The warmest prospect closes far faster than a cold one, so you start there, not at the top of an alphabet.", "attribution": "d4-gtm-plan"}]}, {"kind": "content", "time": "14:35-15:05", "mode": "1:1", "title": "Choose your pricing model", "blocks": [{"type": "para", "text": "How you charge decides who buys and how fast they say yes. This afternoon's sales deck carries a price slide, so the model and the floor get fixed now, with Seb, not guessed at alone."}, {"type": "bullets", "items": ["Name what you charge against: the value metric", "One reason logged for every rejected model", "The exact number is tomorrow morning's first job"]}]}, {"kind": "content", "time": "15:05-15:35", "mode": "Solo", "title": "ICP, sales deck, client intake", "blocks": [{"type": "cards", "cols": 2, "items": [{"title": "ICP and sales deck", "body": "A prospect who hears their own words read back, then sees two others got the result they want, is a prospect who signs."}, {"title": "Client intake", "body": "Most first sales die in the gap between the nod and the kickoff. Map it now: four stages, one owner, one SLA each."}]}]}, {"kind": "content", "time": "15:35-15:55", "mode": "Solo", "title": "Build the marketing funnel", "blocks": [{"type": "para", "text": "The path a stranger walks from first hearing about you to paying, in four stages, each with a channel, an asset and a number."}]}, {"kind": "content", "time": "15:55-16:25", "mode": "Together", "title": "Channels are a hypothesis, not a checklist", "blocks": [{"type": "para", "text": "A channel is a bet, not a box to tick: a cost, a reach, and a conversion guess. Run the cheapest, fastest test first. Kill what shows no signal. Double down on what does."}, {"type": "label", "text": "Reframe"}, {"type": "panel", "title": "Stop asking", "body": "\u201cWhich channels should I be on?\u201d Start asking: \u201cWhich channel can I test for GBP 20 by Monday?\u201d"}]}, {"kind": "content", "time": "15:55-16:25", "mode": "Together", "title": "How to test a channel in a day", "blocks": [{"type": "reveal", "hint": "Click each to unpack it", "items": [{"title": "Write the hypothesis down", "body": "\u201cIf I post in [X community], I expect [Y] replies and [Z] worth a call.\u201d A number, not a hope."}, {"title": "Spend the smallest amount that gets a real answer", "body": "One post, one ad, one batch of ten DMs. Not a month-long campaign."}, {"title": "Measure the number you wrote down", "body": "Not likes, not impressions. The number that actually predicts revenue."}, {"title": "Kill it or double down", "body": "No signal after a fair test, drop it. Real signal, put the next hour into it, not a new channel."}]}]}, {"kind": "content", "time": "15:55-16:25", "mode": "Together", "title": "Worked example", "blocks": [{"type": "label", "text": "Click a card to see what actually happened"}, {"type": "flip", "cols": 2, "items": [{"front": "\u201cLinkedIn outreach will work, everyone says so\u201d", "back": "Tested: 40 DMs, 2 replies, 0 calls booked. Killed it.", "frontLabel": "The assumption"}, {"front": "\u201cA Jersey Facebook group is too small to bother\u201d", "back": "Tested: 1 post, 6 replies, 3 calls booked by Thursday. Doubled down.", "frontLabel": "The assumption"}]}]}, {"kind": "content", "time": "15:55-16:25", "mode": "Together", "title": "What a funnel actually looks like", "blocks": [{"type": "diagramFunnel", "stages": [{"label": "Awareness", "sub": "500 people reached"}, {"label": "Interest", "sub": "80 clicked through"}, {"label": "Decision", "sub": "15 booked a call"}, {"label": "Action", "sub": "4 signed"}], "caption": "Illustrative example: the drop between stages is where you test next"}]}, {"kind": "content", "time": "15:55-16:25", "mode": "Together", "title": "Then: funnel wall build", "blocks": [{"type": "activity", "icon": "wall", "setup": {"group": "Whole room, standing", "materials": "Your four funnel stages, written up: channel, asset, number", "time": "~10 minutes"}, "steps": [{"time": "0:00", "text": "Pin your four stages on the wall: channel, asset, number, at each one."}, {"time": "5:00", "text": "Walk the room and read everyone else's."}, {"time": "8:00", "text": "Defend your weakest step to whoever's standing next to you."}], "debrief": "Where's the biggest drop between stages, and what's your cheapest test for it?"}]}, {"kind": "break", "time": "16:25-16:40", "title": "Break", "until": "16:40"}, {"kind": "content", "time": "16:40-17:00", "mode": "Solo", "title": "Onboarding pack", "blocks": [{"type": "para", "text": "A first week that feels handled is the cheapest retention you will ever buy. Six sections, a week-1 timeline, a named human to email."}]}, {"kind": "content", "time": "17:00-17:15", "mode": "Solo", "title": "Book the sale", "blocks": [{"type": "numbered", "items": [{"title": "Right person", "body": "Not just any contact, the warmest one from today's ranking."}, {"title": "Specific time", "body": "A slot on the table, not \u201csometime Friday\u201d."}, {"title": "A reply that says yes", "body": "Confirmed before you leave the room tonight."}]}, {"type": "quote", "text": "Regulated buyers rarely take a same-day meeting, so you ask on Thursday for Friday with a time already on the table.", "attribution": "d4-book-sale"}]}, {"kind": "closing", "title": "Evening close", "steps": ["Roll call: read every name and their booked Friday time out loud", "Rehearse the price out loud tonight", "Bring your three-item fix list tomorrow, not a feature wishlist"], "line": "Watch them use it, don't ask if they like it."}];
 const SIG = {"org": "Digital Jersey", "line": "digital.je"};
 const DAY_ACCENT = '#00C4FF';
 
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function el(tag,cls,html){const e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e;}
+
+const MODE_ICON_SVG = {
+  Solo: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="3.2"/><path d="M5 20c0-4 3-6.5 7-6.5s7 2.5 7 6.5"/></svg>',
+  Together: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="8" cy="8" r="2.6"/><circle cx="16" cy="8" r="2.6"/><path d="M3 19c0-3.2 2.3-5.3 5-5.3s5 2.1 5 5.3M11 19c0-3.2 2.3-5.3 5-5.3s5 2.1 5 5.3"/></svg>',
+  'Out': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h5"/><path d="M14 8l4 4-4 4M18 12H9"/></svg>',
+  '1:1': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="7" cy="12" r="3.5"/><circle cx="17" cy="12" r="3.5"/><path d="M10.2 12h3.6"/></svg>',
+  Break: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 4c0 1-1 1-1 2M12 4c0 1-1 1-1 2"/></svg>',
+};
+function modeIconEl(mode){
+  return el('span','mode-icon',MODE_ICON_SVG[mode]||'');
+}
+function pillEl(mode){
+  const p=el('span','pill pill-'+MODE_CLASS[mode]);
+  p.appendChild(modeIconEl(mode));
+  p.appendChild(document.createTextNode(mode));
+  return p;
+}
+
+function svgActivityIcon(kind){
+  if(kind==='wall'){
+    const notes=[[30,20,-6],[90,33,4],[150,16,-3],[205,30,7],[60,68,3],[170,72,-5]];
+    const colors=['#9F37BB','#5435AE','#4EABF2','#00C4FF','#212B5B','#9F37BB'];
+    let s='<svg viewBox="0 0 240 130" preserveAspectRatio="xMidYMid meet">';
+    s+='<rect x="4" y="4" width="232" height="96" rx="8" fill="#F3F3F8" stroke="#E4E4EC"/>';
+    notes.forEach((n,i)=>{const [x,y,r]=n;s+=`<rect x="${x}" y="${y}" width="38" height="28" rx="3" fill="${colors[i]}" opacity="0.85" transform="rotate(${r} ${x+19} ${y+14})"/>`;});
+    for(let i=0;i<3;i++){const x=40+i*80,y=122;s+=`<circle cx="${x}" cy="${y-16}" r="5" fill="#212B5B"/><path d="M${x} ${y-11}v10M${x-6} ${y+9}L${x} ${y-1}L${x+6} ${y+9}M${x-5} ${y-4}h10" stroke="#212B5B" stroke-width="2" fill="none" stroke-linecap="round"/>`;}
+    s+='</svg>';
+    return s;
+  }
+  if(kind==='circle'){
+    const cx=65,cy=65,r=48,n=8;
+    let s='<svg viewBox="0 0 130 130" preserveAspectRatio="xMidYMid meet">';
+    s+=`<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#E4E4EC" stroke-width="1.5" stroke-dasharray="3 6"/>`;
+    for(let i=0;i<n;i++){
+      const a=(i/n)*Math.PI*2-Math.PI/2;
+      const x=cx+r*Math.cos(a), y=cy+r*Math.sin(a);
+      const c = i%3===0?'#5435AE':(i%3===1?'#4EABF2':'#9F37BB');
+      s+=`<circle cx="${x}" cy="${y}" r="7" fill="${c}"/>`;
+    }
+    s+=`<path d="M ${cx} ${cy-r+16} A ${r-16} ${r-16} 0 0 1 ${cx+r-16} ${cy}" fill="none" stroke="#212B5B" stroke-width="2" marker-end="url(#arrow)"/>`;
+    s+='<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#212B5B"/></marker></defs>';
+    s+='</svg>';
+    return s;
+  }
+  // speak
+  let s='<svg viewBox="0 0 120 100" preserveAspectRatio="xMidYMid meet">';
+  s+='<path d="M15 15h70a10 10 0 0 1 10 10v30a10 10 0 0 1-10 10H45l-18 16v-16H15a10 10 0 0 1-10-10V25a10 10 0 0 1 10-10z" fill="#5435AE" opacity="0.12"/>';
+  s+='<path d="M15 15h70a10 10 0 0 1 10 10v30a10 10 0 0 1-10 10H45l-18 16v-16H15a10 10 0 0 1-10-10V25a10 10 0 0 1 10-10z" fill="none" stroke="#5435AE" stroke-width="2.5"/>';
+  s+='<circle cx="35" cy="40" r="4" fill="#5435AE"/><circle cx="55" cy="40" r="4" fill="#5435AE"/><circle cx="75" cy="40" r="4" fill="#5435AE"/>';
+  s+='<circle cx="95" cy="72" r="16" fill="#fff" stroke="#5435AE" stroke-width="2.5"/><path d="M95 64v9l6 4" stroke="#5435AE" stroke-width="2.5" fill="none" stroke-linecap="round"/>';
+  s+='</svg>';
+  return s;
+}
+
+function svgDiagram2x2(b){
+  const W=460,H=300,L=68,R=W-24,T=18,Bm=H-46;
+  const midX=(L+R)/2, midY=(T+Bm)/2;
+  const px=nx=>L+nx*(R-L), py=ny=>T+ny*(Bm-T);
+  const corners={
+    'top-left':[L,T,midX-L,midY-T],'top-right':[midX,T,R-midX,midY-T],
+    'bottom-left':[L,midY,midX-L,Bm-midY],'bottom-right':[midX,midY,R-midX,Bm-midY],
+  };
+  const oc=corners[b.openCorner||'top-right'];
+  let s=`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">`;
+  s+=`<rect x="${oc[0]}" y="${oc[1]}" width="${oc[2]}" height="${oc[3]}" fill="rgba(0,196,255,0.14)" rx="4"/>`;
+  s+=`<text x="${oc[0]+oc[2]/2}" y="${oc[1]+20}" font-size="10.5" font-weight="700" fill="#2E8FC4" text-anchor="middle" font-family="Cairo" letter-spacing="1">OPEN CORNER</text>`;
+  s+=`<line x1="${L}" y1="${T}" x2="${L}" y2="${Bm}" stroke="#D7D7E2" stroke-width="1.5"/>`;
+  s+=`<line x1="${L}" y1="${Bm}" x2="${R}" y2="${Bm}" stroke="#D7D7E2" stroke-width="1.5"/>`;
+  s+=`<line x1="${midX}" y1="${T}" x2="${midX}" y2="${Bm}" stroke="#ECECF2" stroke-width="1" stroke-dasharray="4 4"/>`;
+  s+=`<line x1="${L}" y1="${midY}" x2="${R}" y2="${midY}" stroke="#ECECF2" stroke-width="1" stroke-dasharray="4 4"/>`;
+  s+=`<text x="${L}" y="${Bm+22}" font-size="11.5" fill="#6B6B6B" font-family="Open Sans">${esc(b.xLabel[0])}</text>`;
+  s+=`<text x="${R}" y="${Bm+22}" font-size="11.5" fill="#6B6B6B" text-anchor="end" font-family="Open Sans">${esc(b.xLabel[1])}</text>`;
+  s+=`<text x="${L-10}" y="${T+11}" font-size="11.5" fill="#6B6B6B" text-anchor="end" font-family="Open Sans">${esc(b.yLabel[1])}</text>`;
+  s+=`<text x="${L-10}" y="${Bm}" font-size="11.5" fill="#6B6B6B" text-anchor="end" font-family="Open Sans">${esc(b.yLabel[0])}</text>`;
+  (b.rivals||[]).forEach(r=>{
+    const x=px(r.x), y=py(r.y);
+    s+=`<circle cx="${x}" cy="${y}" r="7" fill="#C7C7D6"/>`;
+    s+=`<text x="${x}" y="${y-12}" font-size="10.5" fill="#9A9AA8" text-anchor="middle" font-family="Open Sans">${esc(r.label)}</text>`;
+  });
+  const yx=px(b.you.x), yy=py(b.you.y);
+  s+=`<circle cx="${yx}" cy="${yy}" r="9" fill="#5435AE" stroke="#fff" stroke-width="2.5"/>`;
+  s+=`<text x="${yx}" y="${yy-16}" font-size="13" font-weight="700" fill="#212B5B" text-anchor="middle" font-family="Cairo">${esc(b.you.label||'You')}</text>`;
+  s+='</svg>';
+  return s;
+}
+
+function svgFunnel(stages){
+  const W=460,rowH=48,gap=10,top=6;
+  const H=top+stages.length*(rowH+gap);
+  const maxW=420,minW=150;
+  const colors=['#9F37BB','#5435AE','#4EABF2','#00C4FF','#212B5B'];
+  let s=`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">`;
+  stages.forEach((st,i)=>{
+    const wTop=maxW-i*(maxW-minW)/stages.length;
+    const wBot=maxW-(i+1)*(maxW-minW)/stages.length;
+    const y=top+i*(rowH+gap);
+    const xTop=(W-wTop)/2, xBot=(W-wBot)/2;
+    s+=`<polygon points="${xTop},${y} ${xTop+wTop},${y} ${xBot+wBot},${y+rowH} ${xBot},${y+rowH}" fill="${colors[i%colors.length]}"/>`;
+    s+=`<text x="${W/2}" y="${y+rowH/2-4}" font-size="13.5" fill="#fff" text-anchor="middle" font-weight="700" font-family="Cairo">${esc(st.label)}</text>`;
+    s+=`<text x="${W/2}" y="${y+rowH/2+13}" font-size="10.5" fill="rgba(255,255,255,.9)" text-anchor="middle" font-family="Open Sans">${esc(st.sub)}</text>`;
+  });
+  s+='</svg>';
+  return s;
+}
 
 class NetworkFX{
   constructor(canvas){
@@ -435,11 +570,61 @@ function renderBlock(b,accent){
       const wrap=el('div','legend');
       (b.items||[]).forEach(it=>{
         const chip=el('div','legend-item');
-        const dot=el('span','pill pill-'+MODE_CLASS[it.mode],esc(it.mode));
         const body=el('span','lg-body',esc(it.text));
-        chip.appendChild(dot);chip.appendChild(body);
+        chip.appendChild(pillEl(it.mode));chip.appendChild(body);
         wrap.appendChild(chip);
       });
+      return wrap;
+    }
+    case 'diagram2x2': {
+      const wrap=el('div','b-diagram');
+      wrap.innerHTML=svgDiagram2x2(b);
+      if(b.caption) wrap.appendChild(el('div','diagram-caption',esc(b.caption)));
+      return wrap;
+    }
+    case 'diagramFunnel': {
+      const wrap=el('div','b-diagram');
+      wrap.innerHTML=svgFunnel(b.stages||[]);
+      if(b.caption) wrap.appendChild(el('div','diagram-caption',esc(b.caption)));
+      return wrap;
+    }
+    case 'diagramBoard': {
+      const wrap=el('div','moscow-board');
+      (b.columns||[]).forEach((col,i)=>{
+        const colEl=el('div','moscow-col');
+        colEl.style.setProperty('--c',ACCENT_ROTATION[i%ACCENT_ROTATION.length]);
+        let html=`<div class="moscow-head">${esc(col.title)}</div>`;
+        (col.items||[]).forEach(it=>html+=`<div class="moscow-tag">${esc(it)}</div>`);
+        colEl.innerHTML=html;
+        wrap.appendChild(colEl);
+      });
+      return wrap;
+    }
+    case 'activity': {
+      const wrap=el('div','b-activity');
+      wrap.style.setProperty('--accent',accent);
+      const head=el('div','activity-head');
+      head.appendChild(el('div','activity-diagram',svgActivityIcon(b.icon)));
+      const setup=el('div','activity-setup');
+      if(b.setup){
+        if(b.setup.group) setup.appendChild(el('div','activity-chip',`<b>Group</b> ${esc(b.setup.group)}`));
+        if(b.setup.materials) setup.appendChild(el('div','activity-chip',`<b>Bring</b> ${esc(b.setup.materials)}`));
+        if(b.setup.time) setup.appendChild(el('div','activity-chip',`<b>Time</b> ${esc(b.setup.time)}`));
+      }
+      head.appendChild(setup);
+      wrap.appendChild(head);
+      const steps=el('div','activity-steps');
+      (b.steps||[]).forEach(st=>{
+        const row=el('div','activity-step');
+        row.innerHTML=`<div class="t">${esc(st.time)}</div><div class="txt">${esc(st.text)}</div>`;
+        steps.appendChild(row);
+      });
+      wrap.appendChild(steps);
+      if(b.debrief){
+        const d=el('div','activity-debrief');
+        d.innerHTML=`<div class="lbl">Debrief</div><p>${esc(b.debrief)}</p>`;
+        wrap.appendChild(d);
+      }
       return wrap;
     }
     case 'countdown': {
@@ -462,7 +647,7 @@ function renderBlock(b,accent){
         rail.appendChild(dot);
         const body=el('div','tl-body');
         body.innerHTML=`<div class="block">${esc(r.title)}</div>`;
-        if(r.mode) body.appendChild(el('span','pill pill-'+MODE_CLASS[r.mode],esc(r.mode)));
+        if(r.mode) body.appendChild(pillEl(r.mode));
         row.appendChild(time);row.appendChild(rail);row.appendChild(body);
         wrap.appendChild(row);
       });
@@ -535,7 +720,7 @@ function renderSlide(s){
     if(s.time||s.mode){
       const meta=el('div','slide-meta');
       if(s.time) meta.appendChild(el('span','time',esc(s.time)));
-      if(s.mode) meta.appendChild(el('span','pill pill-'+MODE_CLASS[s.mode],esc(s.mode)));
+      if(s.mode) meta.appendChild(pillEl(s.mode));
       inner.appendChild(meta);
     }
     const h2=el('h2','title');h2.textContent=s.title;inner.appendChild(h2);

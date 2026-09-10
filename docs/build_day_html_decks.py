@@ -254,6 +254,34 @@ h1.title,h2.title{font-size:clamp(28px,4.2vw,52px);font-weight:300;line-height:1
 .tr-tag.good{background:rgba(0,196,255,.16);color:__NAVY__;}
 .tr-tag.bad{background:rgba(159,55,187,.14);color:__PURPLE__;}
 
+.mode-icon{display:inline-flex;flex:none;width:13px;height:13px;margin-right:6px;vertical-align:-2px;}
+.mode-icon svg{width:100%;height:100%;display:block;}
+
+.b-diagram{margin:0 0 1.1em;background:#FAFAFC;border:1px solid #ECECF2;border-radius:14px;padding:18px;}
+.b-diagram svg{width:100%;height:auto;display:block;max-height:44vh;}
+.diagram-caption{margin-top:10px;font-size:.76rem;color:#9A9AA8;text-align:center;}
+
+.moscow-board{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 1.1em;}
+.moscow-col{background:#FAFAFC;border-radius:10px;padding:12px;border-top:4px solid var(--c,__PURPLE__);min-height:120px;border-left:1px solid #ECECF2;border-right:1px solid #ECECF2;border-bottom:1px solid #ECECF2;}
+.moscow-head{font-family:'Cairo',sans-serif;font-weight:700;font-size:.78rem;color:__NAVY__;margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em;}
+.moscow-tag{background:#fff;border:1px solid #ECECF2;border-radius:6px;padding:7px 10px;font-size:.74rem;color:__GREY__;margin-bottom:7px;box-shadow:0 1px 3px rgba(33,43,91,.06);}
+
+.b-activity{border-radius:16px;background:linear-gradient(180deg,#FAFAFC,#F5F5FA);border:1px solid #ECECF2;padding:20px 24px 24px;margin:.4em 0 1.1em;}
+.activity-head{display:flex;align-items:center;gap:20px;margin-bottom:14px;flex-wrap:wrap;}
+.activity-diagram{flex:none;width:120px;height:92px;}
+.activity-diagram svg{width:100%;height:100%;display:block;}
+.activity-setup{display:flex;gap:8px;flex-wrap:wrap;flex:1;min-width:200px;}
+.activity-chip{background:#fff;border:1px solid #ECECF2;border-radius:20px;padding:6px 14px;font-size:.76rem;color:__GREY__;line-height:1.4;}
+.activity-chip b{color:__NAVY__;}
+.activity-steps{margin:6px 0 0;}
+.activity-step{display:flex;gap:14px;padding:9px 0;border-top:1px solid #ECECF2;}
+.activity-step:first-child{border-top:1px solid #ECECF2;}
+.activity-step .t{flex:none;width:56px;font-family:'Cairo',sans-serif;font-weight:700;font-size:.76rem;color:var(--accent,__PURPLE__);}
+.activity-step .txt{font-size:.88rem;color:__GREY__;line-height:1.48;}
+.activity-debrief{margin-top:14px;background:__NAVY__;border-radius:10px;padding:13px 18px;}
+.activity-debrief .lbl{font-family:'Cairo',sans-serif;font-weight:700;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:__CYAN_LIGHT__;margin-bottom:.3em;}
+.activity-debrief p{margin:0;color:#fff;font-size:.88rem;line-height:1.5;}
+
 .b-timeline{margin:.5em 0;}
 .tl-row{display:grid;grid-template-columns:112px 22px 1fr;gap:0 16px;align-items:start;}
 .tl-time{font-family:'Cairo',sans-serif;font-weight:700;font-size:.8rem;color:__NAVY__;padding-top:.15em;font-variant-numeric:tabular-nums;}
@@ -304,6 +332,9 @@ h1.title,h2.title{font-size:clamp(28px,4.2vw,52px);font-weight:300;line-height:1
   .countdown-time{font-size:clamp(44px,16vw,80px);}
   .flip-card{height:auto;min-height:140px;}
   .reveal-body p{padding-left:18px;}
+  .moscow-board{grid-template-columns:repeat(2,1fr);}
+  .activity-head{flex-direction:column;align-items:flex-start;}
+  .activity-diagram{width:96px;height:76px;}
 }
 """
 
@@ -319,6 +350,110 @@ const DAY_ACCENT = '__ACCENT__';
 
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function el(tag,cls,html){const e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e;}
+
+const MODE_ICON_SVG = {
+  Solo: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="3.2"/><path d="M5 20c0-4 3-6.5 7-6.5s7 2.5 7 6.5"/></svg>',
+  Together: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="8" cy="8" r="2.6"/><circle cx="16" cy="8" r="2.6"/><path d="M3 19c0-3.2 2.3-5.3 5-5.3s5 2.1 5 5.3M11 19c0-3.2 2.3-5.3 5-5.3s5 2.1 5 5.3"/></svg>',
+  'Out': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h5"/><path d="M14 8l4 4-4 4M18 12H9"/></svg>',
+  '1:1': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="7" cy="12" r="3.5"/><circle cx="17" cy="12" r="3.5"/><path d="M10.2 12h3.6"/></svg>',
+  Break: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 4c0 1-1 1-1 2M12 4c0 1-1 1-1 2"/></svg>',
+};
+function modeIconEl(mode){
+  return el('span','mode-icon',MODE_ICON_SVG[mode]||'');
+}
+function pillEl(mode){
+  const p=el('span','pill pill-'+MODE_CLASS[mode]);
+  p.appendChild(modeIconEl(mode));
+  p.appendChild(document.createTextNode(mode));
+  return p;
+}
+
+function svgActivityIcon(kind){
+  if(kind==='wall'){
+    const notes=[[30,20,-6],[90,33,4],[150,16,-3],[205,30,7],[60,68,3],[170,72,-5]];
+    const colors=['#9F37BB','#5435AE','#4EABF2','#00C4FF','#212B5B','#9F37BB'];
+    let s='<svg viewBox="0 0 240 130" preserveAspectRatio="xMidYMid meet">';
+    s+='<rect x="4" y="4" width="232" height="96" rx="8" fill="#F3F3F8" stroke="#E4E4EC"/>';
+    notes.forEach((n,i)=>{const [x,y,r]=n;s+=`<rect x="${x}" y="${y}" width="38" height="28" rx="3" fill="${colors[i]}" opacity="0.85" transform="rotate(${r} ${x+19} ${y+14})"/>`;});
+    for(let i=0;i<3;i++){const x=40+i*80,y=122;s+=`<circle cx="${x}" cy="${y-16}" r="5" fill="#212B5B"/><path d="M${x} ${y-11}v10M${x-6} ${y+9}L${x} ${y-1}L${x+6} ${y+9}M${x-5} ${y-4}h10" stroke="#212B5B" stroke-width="2" fill="none" stroke-linecap="round"/>`;}
+    s+='</svg>';
+    return s;
+  }
+  if(kind==='circle'){
+    const cx=65,cy=65,r=48,n=8;
+    let s='<svg viewBox="0 0 130 130" preserveAspectRatio="xMidYMid meet">';
+    s+=`<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#E4E4EC" stroke-width="1.5" stroke-dasharray="3 6"/>`;
+    for(let i=0;i<n;i++){
+      const a=(i/n)*Math.PI*2-Math.PI/2;
+      const x=cx+r*Math.cos(a), y=cy+r*Math.sin(a);
+      const c = i%3===0?'#5435AE':(i%3===1?'#4EABF2':'#9F37BB');
+      s+=`<circle cx="${x}" cy="${y}" r="7" fill="${c}"/>`;
+    }
+    s+=`<path d="M ${cx} ${cy-r+16} A ${r-16} ${r-16} 0 0 1 ${cx+r-16} ${cy}" fill="none" stroke="#212B5B" stroke-width="2" marker-end="url(#arrow)"/>`;
+    s+='<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#212B5B"/></marker></defs>';
+    s+='</svg>';
+    return s;
+  }
+  // speak
+  let s='<svg viewBox="0 0 120 100" preserveAspectRatio="xMidYMid meet">';
+  s+='<path d="M15 15h70a10 10 0 0 1 10 10v30a10 10 0 0 1-10 10H45l-18 16v-16H15a10 10 0 0 1-10-10V25a10 10 0 0 1 10-10z" fill="#5435AE" opacity="0.12"/>';
+  s+='<path d="M15 15h70a10 10 0 0 1 10 10v30a10 10 0 0 1-10 10H45l-18 16v-16H15a10 10 0 0 1-10-10V25a10 10 0 0 1 10-10z" fill="none" stroke="#5435AE" stroke-width="2.5"/>';
+  s+='<circle cx="35" cy="40" r="4" fill="#5435AE"/><circle cx="55" cy="40" r="4" fill="#5435AE"/><circle cx="75" cy="40" r="4" fill="#5435AE"/>';
+  s+='<circle cx="95" cy="72" r="16" fill="#fff" stroke="#5435AE" stroke-width="2.5"/><path d="M95 64v9l6 4" stroke="#5435AE" stroke-width="2.5" fill="none" stroke-linecap="round"/>';
+  s+='</svg>';
+  return s;
+}
+
+function svgDiagram2x2(b){
+  const W=460,H=300,L=68,R=W-24,T=18,Bm=H-46;
+  const midX=(L+R)/2, midY=(T+Bm)/2;
+  const px=nx=>L+nx*(R-L), py=ny=>T+ny*(Bm-T);
+  const corners={
+    'top-left':[L,T,midX-L,midY-T],'top-right':[midX,T,R-midX,midY-T],
+    'bottom-left':[L,midY,midX-L,Bm-midY],'bottom-right':[midX,midY,R-midX,Bm-midY],
+  };
+  const oc=corners[b.openCorner||'top-right'];
+  let s=`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">`;
+  s+=`<rect x="${oc[0]}" y="${oc[1]}" width="${oc[2]}" height="${oc[3]}" fill="rgba(0,196,255,0.14)" rx="4"/>`;
+  s+=`<text x="${oc[0]+oc[2]/2}" y="${oc[1]+20}" font-size="10.5" font-weight="700" fill="#2E8FC4" text-anchor="middle" font-family="Cairo" letter-spacing="1">OPEN CORNER</text>`;
+  s+=`<line x1="${L}" y1="${T}" x2="${L}" y2="${Bm}" stroke="#D7D7E2" stroke-width="1.5"/>`;
+  s+=`<line x1="${L}" y1="${Bm}" x2="${R}" y2="${Bm}" stroke="#D7D7E2" stroke-width="1.5"/>`;
+  s+=`<line x1="${midX}" y1="${T}" x2="${midX}" y2="${Bm}" stroke="#ECECF2" stroke-width="1" stroke-dasharray="4 4"/>`;
+  s+=`<line x1="${L}" y1="${midY}" x2="${R}" y2="${midY}" stroke="#ECECF2" stroke-width="1" stroke-dasharray="4 4"/>`;
+  s+=`<text x="${L}" y="${Bm+22}" font-size="11.5" fill="#6B6B6B" font-family="Open Sans">${esc(b.xLabel[0])}</text>`;
+  s+=`<text x="${R}" y="${Bm+22}" font-size="11.5" fill="#6B6B6B" text-anchor="end" font-family="Open Sans">${esc(b.xLabel[1])}</text>`;
+  s+=`<text x="${L-10}" y="${T+11}" font-size="11.5" fill="#6B6B6B" text-anchor="end" font-family="Open Sans">${esc(b.yLabel[1])}</text>`;
+  s+=`<text x="${L-10}" y="${Bm}" font-size="11.5" fill="#6B6B6B" text-anchor="end" font-family="Open Sans">${esc(b.yLabel[0])}</text>`;
+  (b.rivals||[]).forEach(r=>{
+    const x=px(r.x), y=py(r.y);
+    s+=`<circle cx="${x}" cy="${y}" r="7" fill="#C7C7D6"/>`;
+    s+=`<text x="${x}" y="${y-12}" font-size="10.5" fill="#9A9AA8" text-anchor="middle" font-family="Open Sans">${esc(r.label)}</text>`;
+  });
+  const yx=px(b.you.x), yy=py(b.you.y);
+  s+=`<circle cx="${yx}" cy="${yy}" r="9" fill="#5435AE" stroke="#fff" stroke-width="2.5"/>`;
+  s+=`<text x="${yx}" y="${yy-16}" font-size="13" font-weight="700" fill="#212B5B" text-anchor="middle" font-family="Cairo">${esc(b.you.label||'You')}</text>`;
+  s+='</svg>';
+  return s;
+}
+
+function svgFunnel(stages){
+  const W=460,rowH=48,gap=10,top=6;
+  const H=top+stages.length*(rowH+gap);
+  const maxW=420,minW=150;
+  const colors=['#9F37BB','#5435AE','#4EABF2','#00C4FF','#212B5B'];
+  let s=`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">`;
+  stages.forEach((st,i)=>{
+    const wTop=maxW-i*(maxW-minW)/stages.length;
+    const wBot=maxW-(i+1)*(maxW-minW)/stages.length;
+    const y=top+i*(rowH+gap);
+    const xTop=(W-wTop)/2, xBot=(W-wBot)/2;
+    s+=`<polygon points="${xTop},${y} ${xTop+wTop},${y} ${xBot+wBot},${y+rowH} ${xBot},${y+rowH}" fill="${colors[i%colors.length]}"/>`;
+    s+=`<text x="${W/2}" y="${y+rowH/2-4}" font-size="13.5" fill="#fff" text-anchor="middle" font-weight="700" font-family="Cairo">${esc(st.label)}</text>`;
+    s+=`<text x="${W/2}" y="${y+rowH/2+13}" font-size="10.5" fill="rgba(255,255,255,.9)" text-anchor="middle" font-family="Open Sans">${esc(st.sub)}</text>`;
+  });
+  s+='</svg>';
+  return s;
+}
 
 class NetworkFX{
   constructor(canvas){
@@ -484,11 +619,61 @@ function renderBlock(b,accent){
       const wrap=el('div','legend');
       (b.items||[]).forEach(it=>{
         const chip=el('div','legend-item');
-        const dot=el('span','pill pill-'+MODE_CLASS[it.mode],esc(it.mode));
         const body=el('span','lg-body',esc(it.text));
-        chip.appendChild(dot);chip.appendChild(body);
+        chip.appendChild(pillEl(it.mode));chip.appendChild(body);
         wrap.appendChild(chip);
       });
+      return wrap;
+    }
+    case 'diagram2x2': {
+      const wrap=el('div','b-diagram');
+      wrap.innerHTML=svgDiagram2x2(b);
+      if(b.caption) wrap.appendChild(el('div','diagram-caption',esc(b.caption)));
+      return wrap;
+    }
+    case 'diagramFunnel': {
+      const wrap=el('div','b-diagram');
+      wrap.innerHTML=svgFunnel(b.stages||[]);
+      if(b.caption) wrap.appendChild(el('div','diagram-caption',esc(b.caption)));
+      return wrap;
+    }
+    case 'diagramBoard': {
+      const wrap=el('div','moscow-board');
+      (b.columns||[]).forEach((col,i)=>{
+        const colEl=el('div','moscow-col');
+        colEl.style.setProperty('--c',ACCENT_ROTATION[i%ACCENT_ROTATION.length]);
+        let html=`<div class="moscow-head">${esc(col.title)}</div>`;
+        (col.items||[]).forEach(it=>html+=`<div class="moscow-tag">${esc(it)}</div>`);
+        colEl.innerHTML=html;
+        wrap.appendChild(colEl);
+      });
+      return wrap;
+    }
+    case 'activity': {
+      const wrap=el('div','b-activity');
+      wrap.style.setProperty('--accent',accent);
+      const head=el('div','activity-head');
+      head.appendChild(el('div','activity-diagram',svgActivityIcon(b.icon)));
+      const setup=el('div','activity-setup');
+      if(b.setup){
+        if(b.setup.group) setup.appendChild(el('div','activity-chip',`<b>Group</b> ${esc(b.setup.group)}`));
+        if(b.setup.materials) setup.appendChild(el('div','activity-chip',`<b>Bring</b> ${esc(b.setup.materials)}`));
+        if(b.setup.time) setup.appendChild(el('div','activity-chip',`<b>Time</b> ${esc(b.setup.time)}`));
+      }
+      head.appendChild(setup);
+      wrap.appendChild(head);
+      const steps=el('div','activity-steps');
+      (b.steps||[]).forEach(st=>{
+        const row=el('div','activity-step');
+        row.innerHTML=`<div class="t">${esc(st.time)}</div><div class="txt">${esc(st.text)}</div>`;
+        steps.appendChild(row);
+      });
+      wrap.appendChild(steps);
+      if(b.debrief){
+        const d=el('div','activity-debrief');
+        d.innerHTML=`<div class="lbl">Debrief</div><p>${esc(b.debrief)}</p>`;
+        wrap.appendChild(d);
+      }
       return wrap;
     }
     case 'countdown': {
@@ -511,7 +696,7 @@ function renderBlock(b,accent){
         rail.appendChild(dot);
         const body=el('div','tl-body');
         body.innerHTML=`<div class="block">${esc(r.title)}</div>`;
-        if(r.mode) body.appendChild(el('span','pill pill-'+MODE_CLASS[r.mode],esc(r.mode)));
+        if(r.mode) body.appendChild(pillEl(r.mode));
         row.appendChild(time);row.appendChild(rail);row.appendChild(body);
         wrap.appendChild(row);
       });
@@ -584,7 +769,7 @@ function renderSlide(s){
     if(s.time||s.mode){
       const meta=el('div','slide-meta');
       if(s.time) meta.appendChild(el('span','time',esc(s.time)));
-      if(s.mode) meta.appendChild(el('span','pill pill-'+MODE_CLASS[s.mode],esc(s.mode)));
+      if(s.mode) meta.appendChild(pillEl(s.mode));
       inner.appendChild(meta);
     }
     const h2=el('h2','title');h2.textContent=s.title;inner.appendChild(h2);
@@ -900,12 +1085,16 @@ def day1_slides():
         {
             "kind": "content", "time": "12:00-12:40", "mode": "Together", "title": "Then: 30-second pitch round",
             "blocks": [
-                {"type": "para", "text": "Everyone in the room pitches their idea in 30 seconds flat. Not to sell it, to hear how it sounds out loud before a stranger does."},
-                {"type": "bullets", "items": [
-                    "30 seconds, no more, no notes",
-                    "Not a sales pitch, just the idea in your own words",
-                    "The room gives one honest reaction each",
-                ]},
+                {"type": "activity", "icon": "speak", "setup": {
+                    "group": "Whole room, standing or seated in a circle",
+                    "materials": "A phone timer, nothing else",
+                    "time": "~15 minutes for 8-12 people",
+                }, "steps": [
+                    {"time": "Each turn", "text": "One founder stands. 30 seconds on the visible timer. No notes, no slides."},
+                    {"time": "0:30", "text": "Timer goes off mid-sentence if it has to. That's the point, it forces the essential version."},
+                    {"time": "+15s", "text": "The room gives one honest reaction, one sentence, no discussion."},
+                    {"time": "Repeat", "text": "Next founder goes. Keep the pace brisk, don't let it drift into Q&A."},
+                ], "debrief": "What changed when you heard yourself say it out loud, instead of just thinking it?"},
             ],
         },
         {"kind": "break", "time": "12:40-13:20", "title": "Lunch", "until": "13:20"},
@@ -1026,6 +1215,19 @@ def day2_slides():
             ],
         },
         {
+            "kind": "content", "time": "11:25-12:00", "mode": "Together", "title": "What a plotted 2x2 looks like",
+            "blocks": [
+                {"type": "diagram2x2", "xLabel": ["Slower", "Faster"], "yLabel": ["Generalist", "Specialist"], "openCorner": "top-right",
+                 "you": {"x": 0.80, "y": 0.20, "label": "You"},
+                 "rivals": [
+                     {"x": 0.25, "y": 0.78, "label": "Big consultancy"},
+                     {"x": 0.68, "y": 0.66, "label": "Freelancer"},
+                     {"x": 0.18, "y": 0.30, "label": "Spreadsheet"},
+                 ],
+                 "caption": "Illustrative example, plot your own on the wall"},
+            ],
+        },
+        {
             "kind": "content", "time": "11:25-12:00", "mode": "Together", "title": "Common mistakes",
             "blocks": [
                 {"type": "label", "text": "Click a card to see the fix"},
@@ -1039,8 +1241,14 @@ def day2_slides():
         {
             "kind": "content", "time": "11:25-12:00", "mode": "Together", "title": "Then: wall gallery walk",
             "blocks": [
-                {"type": "panel", "title": "Then: wall gallery walk", "body": "Pin your 2x2 on the wall. Walk the room and read everyone else's before we talk as a group."},
-                {"type": "bullets", "items": ["Five minutes to pin it up", "Silent walk, no talking, just reading", "Then: who's standing in your open corner?"]},
+                {"type": "activity", "icon": "wall", "setup": {
+                    "group": "Whole room, standing", "materials": "Your printed or drawn 2x2, tape or pins",
+                    "time": "~10 minutes",
+                }, "steps": [
+                    {"time": "0:00", "text": "Pin your 2x2 to the wall. Two minutes, no talking yet."},
+                    {"time": "2:00", "text": "Silent walk. Everyone reads everyone else's map. No commentary."},
+                    {"time": "7:00", "text": "Group debrief: who else is standing in your open corner?"},
+                ], "debrief": "If someone else plotted themselves in your open corner, which of you is wrong?"},
             ],
         },
         {"kind": "break", "time": "12:00-12:45", "title": "Lunch", "until": "12:45"},
@@ -1157,15 +1365,28 @@ def day3_slides():
             ],
         },
         {
+            "kind": "content", "time": "09:45-10:15", "mode": "Together", "title": "What a sorted board looks like",
+            "blocks": [
+                {"type": "diagramBoard", "columns": [
+                    {"title": "Must", "items": ["Founder can book a real call", "Payment actually goes through"]},
+                    {"title": "Should", "items": ["Email confirmation", "A logo on the page"]},
+                    {"title": "Could", "items": ["Dark mode", "Saved preferences"]},
+                    {"title": "Won't (this week)", "items": ["Multi-language support", "A mobile app"]},
+                ]},
+            ],
+        },
+        {
             "kind": "content", "time": "09:45-10:15", "mode": "Together", "title": "How to run the wall sort",
             "blocks": [
-                {"type": "reveal", "hint": "Click each to unpack it", "items": [
-                    {"title": "Post every Must on the wall", "body": "One sticky note, one sentence, no jargon."},
-                    {"title": "Defend it in one sentence", "body": "“A prospect cannot book a call without this” is a defence. “It'll look more finished” is not."},
-                    {"title": "Anyone can challenge it", "body": "The room gets to say “that sounds like a Should”, and you have to answer, out loud."},
-                    {"title": "If you can't defend it out loud, cut it", "body": "No hard feelings, straight off the wall, into the Should column."},
-                ]},
-                {"type": "panel", "title": "Then: live wall sort", "body": "Post every Must on the wall now. Defend each one to the room in one sentence."},
+                {"type": "activity", "icon": "wall", "setup": {
+                    "group": "Whole room, standing at the wall", "materials": "Sticky notes, a marker, wall or whiteboard space",
+                    "time": "~15 minutes",
+                }, "steps": [
+                    {"time": "0:00", "text": "Post every Must on the wall. One sticky note, one sentence, no jargon."},
+                    {"time": "3:00", "text": "Each founder defends their Musts in turn: one sentence each, no more."},
+                    {"time": "per turn", "text": "The room can challenge: “that sounds like a Should”, and you answer, out loud, right there."},
+                    {"time": "final", "text": "Anything you can't defend comes off the wall, into the Should column."},
+                ], "debrief": "What's still on the wall that nobody could actually defend?"},
             ],
         },
         {"kind": "break", "time": "10:15-10:30", "title": "Break", "until": "10:30"},
@@ -1334,14 +1555,27 @@ def day4_slides():
             ],
         },
         {
+            "kind": "content", "time": "15:55-16:25", "mode": "Together", "title": "What a funnel actually looks like",
+            "blocks": [
+                {"type": "diagramFunnel", "stages": [
+                    {"label": "Awareness", "sub": "500 people reached"},
+                    {"label": "Interest", "sub": "80 clicked through"},
+                    {"label": "Decision", "sub": "15 booked a call"},
+                    {"label": "Action", "sub": "4 signed"},
+                ], "caption": "Illustrative example: the drop between stages is where you test next"},
+            ],
+        },
+        {
             "kind": "content", "time": "15:55-16:25", "mode": "Together", "title": "Then: funnel wall build",
             "blocks": [
-                {"type": "panel", "title": "Then: funnel wall build", "body": "Pin your four stages on the wall: channel, asset, number, at each one. Walk the room and defend your weakest step."},
-                {"type": "bullets", "items": [
-                    "Every channel gets a number attached before you spend a day on it",
-                    "A leaky step is a channel to fix or cut, not a reason to add another",
-                    "One channel proven beats five half-tried",
-                ]},
+                {"type": "activity", "icon": "wall", "setup": {
+                    "group": "Whole room, standing", "materials": "Your four funnel stages, written up: channel, asset, number",
+                    "time": "~10 minutes",
+                }, "steps": [
+                    {"time": "0:00", "text": "Pin your four stages on the wall: channel, asset, number, at each one."},
+                    {"time": "5:00", "text": "Walk the room and read everyone else's."},
+                    {"time": "8:00", "text": "Defend your weakest step to whoever's standing next to you."},
+                ], "debrief": "Where's the biggest drop between stages, and what's your cheapest test for it?"},
             ],
         },
         {"kind": "break", "time": "16:25-16:40", "title": "Break", "until": "16:40"},
@@ -1456,8 +1690,14 @@ def day5_slides():
         {
             "kind": "content", "time": "09:40-10:10", "mode": "Together", "title": "Then: round-robin",
             "blocks": [
-                {"type": "panel", "title": "Then: round-robin", "body": "Everyone states their price out loud, once. The room fires back one real objection. You answer it, live."},
-                {"type": "bullets", "items": ["State the number, then stop talking", "Take one objection from the room", "Answer it without apologising, then sit down"]},
+                {"type": "activity", "icon": "circle", "setup": {
+                    "group": "Whole room, standing in a circle", "materials": "None, just your number",
+                    "time": "~10 minutes",
+                }, "steps": [
+                    {"time": "Each turn", "text": "State your price, flat. Then stop talking."},
+                    {"time": "+", "text": "The room fires back one real objection, the kind a prospect would actually raise."},
+                    {"time": "+", "text": "Answer it without apologising. Then it passes to the next person around the circle."},
+                ], "debrief": "Which objection actually rattled you, and what will you say differently next time?"},
             ],
         },
         {"kind": "break", "time": "10:10-10:25", "title": "Break", "until": "10:25"},
