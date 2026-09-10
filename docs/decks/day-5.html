@@ -158,6 +158,42 @@ h1.title,h2.title{font-size:clamp(28px,4.2vw,52px);font-weight:300;line-height:1
 .b-template .fill{font-weight:700;color:var(--accent,#5435AE);}
 .slide.gradient .b-template .fill{color:#00C4FF;}
 
+.reveal-hint{font-size:.74rem;color:var(--accent,#5435AE);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin:0 0 .6em;}
+.b-reveal{margin:0 0 1.1em;}
+.reveal-item{border:1.5px solid #ECECF2;border-radius:10px;margin-bottom:9px;overflow:hidden;background:#FCFCFE;}
+.reveal-head{width:100%;display:flex;align-items:center;gap:14px;padding:13px 18px;background:none;border:none;cursor:pointer;text-align:left;font-family:inherit;}
+.reveal-chip{flex:none;width:30px;height:30px;border-radius:50%;background:var(--accent,#5435AE);color:#fff;font-family:'Cairo',sans-serif;font-weight:700;font-size:.78rem;display:flex;align-items:center;justify-content:center;}
+.reveal-title{flex:1;font-family:'Cairo',sans-serif;font-weight:700;font-size:.98rem;color:#212B5B;}
+.reveal-chevron{font-size:1.25rem;color:#B4B4C2;transition:transform .25s ease,color .25s ease;line-height:1;}
+.reveal-item.open .reveal-chevron{transform:rotate(45deg);color:var(--accent,#5435AE);}
+.reveal-body{max-height:0;opacity:0;transition:max-height .35s ease,opacity .3s ease;}
+.reveal-item.open .reveal-body{max-height:220px;opacity:1;}
+.reveal-body p{margin:0;padding:0 18px 15px 62px;font-size:.9rem;color:#3C3C3B;line-height:1.55;}
+
+.b-flip{display:grid;gap:14px;margin:0 0 1.1em;}
+.flip-card{perspective:1200px;height:158px;cursor:pointer;}
+.flip-inner{position:relative;width:100%;height:100%;transition:transform .55s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d;}
+.flip-card.flipped .flip-inner{transform:rotateY(180deg);}
+.flip-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;justify-content:center;}
+.flip-front{background:#F5F5FA;border-top:4px solid var(--c,#5435AE);}
+.flip-back{background:var(--c,#5435AE);transform:rotateY(180deg);}
+.fc-label{font-family:'Cairo',sans-serif;font-weight:700;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;margin:0 0 .5em;}
+.flip-front .fc-label{color:#9A9AA8;}
+.flip-back .fc-label{color:rgba(255,255,255,.78);}
+.fc-text{font-size:.92rem;line-height:1.42;}
+.flip-front .fc-text{color:#212B5B;font-weight:700;}
+.flip-back .fc-text{color:#fff;}
+.flip-hint{position:absolute;bottom:8px;right:12px;font-size:.62rem;color:#C7C7D6;letter-spacing:.04em;}
+
+.b-transcript{margin:0 0 1.1em;border-radius:12px;background:#FAFAFC;border:1px solid #ECECF2;padding:18px 20px;}
+.tr-line{margin-bottom:13px;}
+.tr-line:last-child{margin-bottom:0;}
+.tr-who{font-family:'Cairo',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:#9A9AA8;margin-bottom:.25em;}
+.tr-text{font-size:.9rem;color:#212B5B;line-height:1.5;}
+.tr-tag{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:10px;font-size:.6rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;vertical-align:middle;}
+.tr-tag.good{background:rgba(0,196,255,.16);color:#212B5B;}
+.tr-tag.bad{background:rgba(159,55,187,.14);color:#5435AE;}
+
 .b-timeline{margin:.5em 0;}
 .tl-row{display:grid;grid-template-columns:112px 22px 1fr;gap:0 16px;align-items:start;}
 .tl-time{font-family:'Cairo',sans-serif;font-weight:700;font-size:.8rem;color:#212B5B;padding-top:.15em;font-variant-numeric:tabular-nums;}
@@ -201,11 +237,13 @@ h1.title,h2.title{font-size:clamp(28px,4.2vw,52px);font-weight:300;line-height:1
   .slide{padding:9vh 6vw 12vh;}
   .arrow{display:none;}
   .brand .deck-name{display:none;}
-  .b-cards,.b-grid{grid-template-columns:1fr !important;}
+  .b-cards,.b-grid,.b-flip{grid-template-columns:1fr !important;}
   .tl-row{grid-template-columns:80px 16px 1fr;}
   .cover-stats{gap:10px;}
   .stat-plate{min-width:100px;padding:12px 14px;}
   .countdown-time{font-size:clamp(44px,16vw,80px);}
+  .flip-card{height:auto;min-height:140px;}
+  .reveal-body p{padding-left:18px;}
 }
 
 </style>
@@ -226,7 +264,7 @@ h1.title,h2.title{font-size:clamp(28px,4.2vw,52px);font-weight:300;line-height:1
 const ACCENT_ROTATION = ["#9F37BB", "#5435AE", "#4EABF2", "#00C4FF", "#212B5B"];
 const MODE_COLOR = {"Together": "#5435AE", "1:1": "#212B5B", "Out": "#9F37BB", "Solo": "#9A9AA8", "Break": "#C7C7D2"};
 const MODE_CLASS = {"Together": "together", "1:1": "onetoone", "Out": "out", "Solo": "solo", "Break": "break"};
-const DATA = [{"kind": "cover", "number": "05", "eyebrow": "Day 5 \u00b7 Friday", "title": "Sell it", "subtitle": "By tonight: your price, proposal and rehearsed pitch locked by lunchtime, then a closed deal, or a clear next step.", "stats": [{"value": "3", "label": "Price tiers"}, {"value": "09:00-17:00", "label": "Today's hours"}], "meta": "Digital Jersey Academy \u00b7 Founder Bootcamp"}, {"kind": "content", "title": "Today, start to finish", "blocks": [{"type": "timeline", "rows": [{"time": "09:00-09:10", "title": "Morning huddle", "mode": "Together"}, {"time": "09:10-09:40", "title": "Set your price", "mode": "1:1"}, {"time": "09:40-10:10", "title": "Say it without flinching, then a round-robin", "mode": "Together"}, {"time": "10:10-10:25", "title": "Break", "mode": "Break"}, {"time": "10:25-11:05", "title": "Triage and ship your top 3 fixes", "mode": "Solo"}, {"time": "11:05-11:30", "title": "Write the proposal, prep the paperwork", "mode": "Solo"}, {"time": "11:30-12:00", "title": "Final rehearsal", "mode": "1:1"}, {"time": "12:00-12:45", "title": "Lunch", "mode": "Break"}, {"time": "12:45-16:00", "title": "Speak to your prospect: the sales call", "mode": "Out"}, {"time": "16:00-16:30", "title": "Close the deal: record the win, send the paperwork", "mode": "Solo"}, {"time": "16:30-17:00", "title": "Review the week: index artefacts, build your audit pack", "mode": "Solo"}]}]}, {"kind": "content", "time": "09:00-09:10", "mode": "Together", "title": "Morning huddle", "blocks": [{"type": "para", "text": "Last one. Say today's number: your price, or the one outcome you want on the record by tonight, a signed deal or a dated next step."}]}, {"kind": "content", "time": "09:10-09:40", "mode": "1:1", "title": "Set your price", "blocks": [{"type": "quote", "text": "Founders freeze on price, and a buyer decides in seconds whether it feels fair, so we anchor on value and engineer the middle package to win.", "attribution": "d5-price-number"}, {"type": "bullets", "items": ["Three named packages: good, better, best", "One recommended", "Every price tied to a value assumption you can defend out loud, to Seb, first"]}]}, {"kind": "content", "time": "09:40-10:10", "mode": "Together", "title": "Say it without flinching", "blocks": [{"type": "para", "text": "State the number flat. No \u201cbut I could do a discount.\u201d No apologising for what it costs. Say it, then stop talking and let the silence sit."}, {"type": "numbered", "items": [{"title": "Say the number, then stop talking", "body": "The next person to speak loses."}, {"title": "Let the silence sit", "body": "Don't fill it, don't soften it."}, {"title": "Answer objections without apologising", "body": "\u201cIt's too expensive\u201d is a question, not a verdict."}]}, {"type": "panel", "title": "Then: round-robin", "body": "Everyone states their price out loud, once. The room fires back one real objection. You answer it, live."}]}, {"kind": "break", "time": "10:10-10:25", "title": "Break", "until": "10:25"}, {"kind": "content", "time": "10:25-11:05", "mode": "Solo", "title": "Triage and ship your top 3 fixes", "blocks": [{"type": "para", "text": "Today is not for new features: it's for making one clean route work so a real person can watch it and believe it."}, {"type": "numbered", "items": [{"title": "Triage", "body": "A ruthless three-item fix list, everything else parked or roadmapped."}, {"title": "Ship", "body": "Build the three fixes, run the demo once end to end, commit with a timestamp."}]}]}, {"kind": "content", "time": "11:05-11:30", "mode": "Solo", "title": "Write the proposal, prep the paperwork", "blocks": [{"type": "cards", "cols": 2, "items": [{"title": "Proposal", "body": "One page a named buyer can say yes to: their problem, one numeric target, a delivery window inside six weeks, one price, one next step."}, {"title": "Paperwork", "body": "An engagement letter, terms, an invoice from the correct trading entity, and a payment method that clears today. Drafts only."}]}]}, {"kind": "content", "time": "11:30-12:00", "mode": "1:1", "title": "Final rehearsal", "blocks": [{"type": "para", "text": "One last run with Seb before the real call: the price, the objections, the close. Have a qualified lawyer review any paperwork before use, these are drafts, not final legal documents."}, {"type": "bullets", "items": ["Say the price out loud until it stops wobbling", "8+ objections drilled", "Know your one next step if they say not yet"]}]}, {"kind": "break", "time": "12:00-12:45", "title": "Lunch", "until": "12:45"}, {"kind": "content", "time": "12:45-16:00", "mode": "Out", "title": "Speak to your prospect", "blocks": [{"type": "para", "text": "The sales call, working the room, closing the deal. Each meeting was booked individually yesterday, so this block runs as a window, not something the whole room shares."}, {"type": "quote", "text": "A week of work is worth nothing until someone commits, and most deals die in the last ten minutes because the founder never actually asks.", "attribution": "d5-close"}]}, {"kind": "content", "time": "16:00-16:30", "mode": "Solo", "title": "Close the deal", "blocks": [{"type": "bullets", "items": ["Record the outcome at whichever tier lands: cash, deposit, signed paid pilot, or signed LOI", "Send the paperwork the same hour, while the yes is still warm"]}]}, {"kind": "content", "time": "16:30-17:00", "mode": "Solo", "title": "Review the week", "blocks": [{"type": "para", "text": "Index every artefact from the week into one audit pack: the MVP, the pitch deck, the sales deck, the live page, the launch checklist. One honest link, not five scattered folders."}, {"type": "bullets", "items": ["Every headline number stated plainly", "Target versus what actually happened", "What it takes to keep the MVP running after this week"]}]}, {"kind": "closing", "title": "See you next time", "steps": ["State your number, whatever it happened to be", "File the audit pack before anyone leaves", "Decide together what comes next"], "line": "Say the number without flinching.", "signature": {"org": "Digital Jersey \u00b7 Founder Bootcamp", "line": "Bring the idea. We'll bring the rest. \u2014 Seb"}}];
+const DATA = [{"kind": "cover", "number": "05", "eyebrow": "Day 5 \u00b7 Friday", "title": "Sell it", "subtitle": "By tonight: your price, proposal and rehearsed pitch locked by lunchtime, then a closed deal, or a clear next step.", "stats": [{"value": "3", "label": "Price tiers"}, {"value": "09:00-17:00", "label": "Today's hours"}], "meta": "Digital Jersey Academy \u00b7 Founder Bootcamp"}, {"kind": "content", "title": "Today, start to finish", "blocks": [{"type": "timeline", "rows": [{"time": "09:00-09:10", "title": "Morning huddle", "mode": "Together"}, {"time": "09:10-09:40", "title": "Set your price", "mode": "1:1"}, {"time": "09:40-10:10", "title": "Say it without flinching, then a round-robin", "mode": "Together"}, {"time": "10:10-10:25", "title": "Break", "mode": "Break"}, {"time": "10:25-11:05", "title": "Triage and ship your top 3 fixes", "mode": "Solo"}, {"time": "11:05-11:30", "title": "Write the proposal, prep the paperwork", "mode": "Solo"}, {"time": "11:30-12:00", "title": "Final rehearsal", "mode": "1:1"}, {"time": "12:00-12:45", "title": "Lunch", "mode": "Break"}, {"time": "12:45-16:00", "title": "Speak to your prospect: the sales call", "mode": "Out"}, {"time": "16:00-16:30", "title": "Close the deal: record the win, send the paperwork", "mode": "Solo"}, {"time": "16:30-17:00", "title": "Review the week: index artefacts, build your audit pack", "mode": "Solo"}]}]}, {"kind": "content", "time": "09:00-09:10", "mode": "Together", "title": "Morning huddle", "blocks": [{"type": "para", "text": "Last one. Say today's number: your price, or the one outcome you want on the record by tonight, a signed deal or a dated next step."}]}, {"kind": "content", "time": "09:10-09:40", "mode": "1:1", "title": "Set your price", "blocks": [{"type": "quote", "text": "Founders freeze on price, and a buyer decides in seconds whether it feels fair, so we anchor on value and engineer the middle package to win.", "attribution": "d5-price-number"}, {"type": "bullets", "items": ["Three named packages: good, better, best", "One recommended", "Every price tied to a value assumption you can defend out loud, to Seb, first"]}]}, {"kind": "content", "time": "09:40-10:10", "mode": "Together", "title": "Why founders flinch", "blocks": [{"type": "para", "text": "You've spent five days making this. Of course the number feels enormous to you. It doesn't feel enormous to them, they don't know what it cost you to build."}, {"type": "label", "text": "The tell"}, {"type": "panel", "title": "Watch for this in yourself", "body": "If you say the price and immediately add a reason, a discount, or a joke, you've just told them the price is negotiable before they've said a word."}]}, {"kind": "content", "time": "09:40-10:10", "mode": "Together", "title": "The technique, step by step", "blocks": [{"type": "reveal", "hint": "Click each to unpack it", "items": [{"title": "Say the number, flat", "body": "No preamble, no \u201cso it's, um\u201d. State it like a fact, because it is one."}, {"title": "Stop talking", "body": "Whoever speaks next after the price loses. Count to five in your head if you have to."}, {"title": "Let the silence sit", "body": "Silence feels like ten minutes and is actually three seconds. Don't fill it."}, {"title": "Answer the objection, don't apologise for it", "body": "\u201cIt's too expensive\u201d is a question about value, not a verdict on you."}]}]}, {"kind": "content", "time": "09:40-10:10", "mode": "Together", "title": "Field the objection", "blocks": [{"type": "label", "text": "Click a card to see the reply"}, {"type": "flip", "cols": 2, "items": [{"front": "\u201cThat's more than I expected\u201d", "back": "\u201cCompared to what you're doing today, what would make that worth it?\u201d", "frontLabel": "They say"}, {"front": "\u201cCan you do it cheaper?\u201d", "back": "\u201cI can do less for less. What would you want to cut?\u201d", "frontLabel": "They say"}, {"front": "\u201cLet me think about it\u201d", "back": "\u201cOf course. What specifically do you need to think through?\u201d", "frontLabel": "They say"}, {"front": "\u201cWe don't have budget right now\u201d", "back": "\u201cWhen does the budget reset, and can we pencil something in for then?\u201d", "frontLabel": "They say"}]}]}, {"kind": "content", "time": "09:40-10:10", "mode": "Together", "title": "What it sounds like", "blocks": [{"type": "label", "text": "Saying it, and holding the silence"}, {"type": "transcript", "lines": [{"who": "Founder", "text": "It's GBP 2,500 a month.", "tag": "good"}, {"who": "Founder", "text": "\u2026", "tag": "good"}, {"who": "Prospect", "text": "Right. That's more than I budgeted for, honestly."}, {"who": "Founder", "text": "Compared to what you're doing today, what would make that worth it?", "tag": "good"}, {"who": "Founder, tempting, but don't", "text": "\u201cI could probably do it a bit cheaper if that helps.\u201d", "tag": "bad"}]}]}, {"kind": "content", "time": "09:40-10:10", "mode": "Together", "title": "Then: round-robin", "blocks": [{"type": "panel", "title": "Then: round-robin", "body": "Everyone states their price out loud, once. The room fires back one real objection. You answer it, live."}, {"type": "bullets", "items": ["State the number, then stop talking", "Take one objection from the room", "Answer it without apologising, then sit down"]}]}, {"kind": "break", "time": "10:10-10:25", "title": "Break", "until": "10:25"}, {"kind": "content", "time": "10:25-11:05", "mode": "Solo", "title": "Triage and ship your top 3 fixes", "blocks": [{"type": "para", "text": "Today is not for new features: it's for making one clean route work so a real person can watch it and believe it."}, {"type": "numbered", "items": [{"title": "Triage", "body": "A ruthless three-item fix list, everything else parked or roadmapped."}, {"title": "Ship", "body": "Build the three fixes, run the demo once end to end, commit with a timestamp."}]}]}, {"kind": "content", "time": "11:05-11:30", "mode": "Solo", "title": "Write the proposal, prep the paperwork", "blocks": [{"type": "cards", "cols": 2, "items": [{"title": "Proposal", "body": "One page a named buyer can say yes to: their problem, one numeric target, a delivery window inside six weeks, one price, one next step."}, {"title": "Paperwork", "body": "An engagement letter, terms, an invoice from the correct trading entity, and a payment method that clears today. Drafts only."}]}]}, {"kind": "content", "time": "11:30-12:00", "mode": "1:1", "title": "Final rehearsal", "blocks": [{"type": "para", "text": "One last run with Seb before the real call: the price, the objections, the close. Have a qualified lawyer review any paperwork before use, these are drafts, not final legal documents."}, {"type": "bullets", "items": ["Say the price out loud until it stops wobbling", "8+ objections drilled", "Know your one next step if they say not yet"]}]}, {"kind": "break", "time": "12:00-12:45", "title": "Lunch", "until": "12:45"}, {"kind": "content", "time": "12:45-16:00", "mode": "Out", "title": "Speak to your prospect", "blocks": [{"type": "para", "text": "The sales call, working the room, closing the deal. Each meeting was booked individually yesterday, so this block runs as a window, not something the whole room shares."}, {"type": "quote", "text": "A week of work is worth nothing until someone commits, and most deals die in the last ten minutes because the founder never actually asks.", "attribution": "d5-close"}]}, {"kind": "content", "time": "16:00-16:30", "mode": "Solo", "title": "Close the deal", "blocks": [{"type": "bullets", "items": ["Record the outcome at whichever tier lands: cash, deposit, signed paid pilot, or signed LOI", "Send the paperwork the same hour, while the yes is still warm"]}]}, {"kind": "content", "time": "16:30-17:00", "mode": "Solo", "title": "Review the week", "blocks": [{"type": "para", "text": "Index every artefact from the week into one audit pack: the MVP, the pitch deck, the sales deck, the live page, the launch checklist. One honest link, not five scattered folders."}, {"type": "bullets", "items": ["Every headline number stated plainly", "Target versus what actually happened", "What it takes to keep the MVP running after this week"]}]}, {"kind": "closing", "title": "See you next time", "steps": ["State your number, whatever it happened to be", "File the audit pack before anyone leaves", "Decide together what comes next"], "line": "Say the number without flinching.", "signature": {"org": "Digital Jersey \u00b7 Founder Bootcamp", "line": "Bring the idea. We'll bring the rest. \u2014 Seb"}}];
 const SIG = {"org": "Digital Jersey", "line": "digital.je"};
 const DAY_ACCENT = '#212B5B';
 
@@ -352,6 +390,46 @@ function renderBlock(b,accent){
       const p=el('div','b-panel');
       p.innerHTML=(b.title?`<h4>${esc(b.title)}</h4>`:'')+`<p>${esc(b.body)}</p>`;
       return p;
+    }
+    case 'reveal': {
+      const wrap=el('div','b-reveal');
+      if(b.hint) wrap.appendChild(el('div','reveal-hint',esc(b.hint)+' \u2192'));
+      (b.items||[]).forEach((it,i)=>{
+        const item=el('div','reveal-item');
+        const head=el('button','reveal-head');
+        head.innerHTML=`<span class="reveal-chip">${String(i+1).padStart(2,'0')}</span><span class="reveal-title">${esc(it.title)}</span><span class="reveal-chevron">+</span>`;
+        const body=el('div','reveal-body');
+        body.innerHTML=`<p>${esc(it.body)}</p>`;
+        head.addEventListener('click',()=>item.classList.toggle('open'));
+        item.appendChild(head);item.appendChild(body);
+        wrap.appendChild(item);
+      });
+      return wrap;
+    }
+    case 'flip': {
+      const wrap=el('div','b-flip');
+      wrap.style.gridTemplateColumns=`repeat(${b.cols||2},1fr)`;
+      (b.items||[]).forEach((it,i)=>{
+        const card=el('div','flip-card');
+        const c=it.color||ACCENT_ROTATION[i%ACCENT_ROTATION.length];
+        card.innerHTML=`<div class="flip-inner">
+          <div class="flip-face flip-front" style="--c:${c}"><div class="fc-label">${esc(it.frontLabel||'Click to see the fix')}</div><div class="fc-text">${esc(it.front)}</div><div class="flip-hint">tap \u21bb</div></div>
+          <div class="flip-face flip-back" style="--c:${c}"><div class="fc-label">${esc(it.backLabel||'Try instead')}</div><div class="fc-text">${esc(it.back)}</div></div>
+        </div>`;
+        card.addEventListener('click',()=>card.classList.toggle('flipped'));
+        wrap.appendChild(card);
+      });
+      return wrap;
+    }
+    case 'transcript': {
+      const wrap=el('div','b-transcript');
+      (b.lines||[]).forEach(ln=>{
+        const line=el('div','tr-line');
+        const tag=ln.tag?`<span class="tr-tag ${ln.tag}">${ln.tag==='good'?'Good move':'Avoid'}</span>`:'';
+        line.innerHTML=`<div class="tr-who">${esc(ln.who)}${tag}</div><div class="tr-text">${esc(ln.text)}</div>`;
+        wrap.appendChild(line);
+      });
+      return wrap;
     }
     case 'legend': {
       const wrap=el('div','legend');

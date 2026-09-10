@@ -158,6 +158,42 @@ h1.title,h2.title{font-size:clamp(28px,4.2vw,52px);font-weight:300;line-height:1
 .b-template .fill{font-weight:700;color:var(--accent,#5435AE);}
 .slide.gradient .b-template .fill{color:#00C4FF;}
 
+.reveal-hint{font-size:.74rem;color:var(--accent,#5435AE);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin:0 0 .6em;}
+.b-reveal{margin:0 0 1.1em;}
+.reveal-item{border:1.5px solid #ECECF2;border-radius:10px;margin-bottom:9px;overflow:hidden;background:#FCFCFE;}
+.reveal-head{width:100%;display:flex;align-items:center;gap:14px;padding:13px 18px;background:none;border:none;cursor:pointer;text-align:left;font-family:inherit;}
+.reveal-chip{flex:none;width:30px;height:30px;border-radius:50%;background:var(--accent,#5435AE);color:#fff;font-family:'Cairo',sans-serif;font-weight:700;font-size:.78rem;display:flex;align-items:center;justify-content:center;}
+.reveal-title{flex:1;font-family:'Cairo',sans-serif;font-weight:700;font-size:.98rem;color:#212B5B;}
+.reveal-chevron{font-size:1.25rem;color:#B4B4C2;transition:transform .25s ease,color .25s ease;line-height:1;}
+.reveal-item.open .reveal-chevron{transform:rotate(45deg);color:var(--accent,#5435AE);}
+.reveal-body{max-height:0;opacity:0;transition:max-height .35s ease,opacity .3s ease;}
+.reveal-item.open .reveal-body{max-height:220px;opacity:1;}
+.reveal-body p{margin:0;padding:0 18px 15px 62px;font-size:.9rem;color:#3C3C3B;line-height:1.55;}
+
+.b-flip{display:grid;gap:14px;margin:0 0 1.1em;}
+.flip-card{perspective:1200px;height:158px;cursor:pointer;}
+.flip-inner{position:relative;width:100%;height:100%;transition:transform .55s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d;}
+.flip-card.flipped .flip-inner{transform:rotateY(180deg);}
+.flip-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;justify-content:center;}
+.flip-front{background:#F5F5FA;border-top:4px solid var(--c,#5435AE);}
+.flip-back{background:var(--c,#5435AE);transform:rotateY(180deg);}
+.fc-label{font-family:'Cairo',sans-serif;font-weight:700;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;margin:0 0 .5em;}
+.flip-front .fc-label{color:#9A9AA8;}
+.flip-back .fc-label{color:rgba(255,255,255,.78);}
+.fc-text{font-size:.92rem;line-height:1.42;}
+.flip-front .fc-text{color:#212B5B;font-weight:700;}
+.flip-back .fc-text{color:#fff;}
+.flip-hint{position:absolute;bottom:8px;right:12px;font-size:.62rem;color:#C7C7D6;letter-spacing:.04em;}
+
+.b-transcript{margin:0 0 1.1em;border-radius:12px;background:#FAFAFC;border:1px solid #ECECF2;padding:18px 20px;}
+.tr-line{margin-bottom:13px;}
+.tr-line:last-child{margin-bottom:0;}
+.tr-who{font-family:'Cairo',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:#9A9AA8;margin-bottom:.25em;}
+.tr-text{font-size:.9rem;color:#212B5B;line-height:1.5;}
+.tr-tag{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:10px;font-size:.6rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;vertical-align:middle;}
+.tr-tag.good{background:rgba(0,196,255,.16);color:#212B5B;}
+.tr-tag.bad{background:rgba(159,55,187,.14);color:#5435AE;}
+
 .b-timeline{margin:.5em 0;}
 .tl-row{display:grid;grid-template-columns:112px 22px 1fr;gap:0 16px;align-items:start;}
 .tl-time{font-family:'Cairo',sans-serif;font-weight:700;font-size:.8rem;color:#212B5B;padding-top:.15em;font-variant-numeric:tabular-nums;}
@@ -201,11 +237,13 @@ h1.title,h2.title{font-size:clamp(28px,4.2vw,52px);font-weight:300;line-height:1
   .slide{padding:9vh 6vw 12vh;}
   .arrow{display:none;}
   .brand .deck-name{display:none;}
-  .b-cards,.b-grid{grid-template-columns:1fr !important;}
+  .b-cards,.b-grid,.b-flip{grid-template-columns:1fr !important;}
   .tl-row{grid-template-columns:80px 16px 1fr;}
   .cover-stats{gap:10px;}
   .stat-plate{min-width:100px;padding:12px 14px;}
   .countdown-time{font-size:clamp(44px,16vw,80px);}
+  .flip-card{height:auto;min-height:140px;}
+  .reveal-body p{padding-left:18px;}
 }
 
 </style>
@@ -226,7 +264,7 @@ h1.title,h2.title{font-size:clamp(28px,4.2vw,52px);font-weight:300;line-height:1
 const ACCENT_ROTATION = ["#9F37BB", "#5435AE", "#4EABF2", "#00C4FF", "#212B5B"];
 const MODE_COLOR = {"Together": "#5435AE", "1:1": "#212B5B", "Out": "#9F37BB", "Solo": "#9A9AA8", "Break": "#C7C7D2"};
 const MODE_CLASS = {"Together": "together", "1:1": "onetoone", "Out": "out", "Solo": "solo", "Break": "break"};
-const DATA = [{"kind": "cover", "number": "03", "eyebrow": "Day 3 \u00b7 Wednesday", "title": "Build it", "subtitle": "By tonight: a live, working slice a real prospect can click, book or pay on.", "stats": [{"value": "3", "label": "Build paths"}, {"value": "09:00-17:15", "label": "Today's hours"}], "meta": "Digital Jersey Academy \u00b7 Founder Bootcamp"}, {"kind": "content", "title": "Today, start to finish", "blocks": [{"type": "timeline", "rows": [{"time": "09:00-09:10", "title": "Morning huddle", "mode": "Together"}, {"time": "09:10-09:20", "title": "Set today's product context", "mode": "Solo"}, {"time": "09:20-09:45", "title": "Sort your requirements: Must, Should, Could, Won't", "mode": "Solo"}, {"time": "09:45-10:15", "title": "Why builds die from overscoping, then a live wall sort", "mode": "Together"}, {"time": "10:15-10:30", "title": "Break", "mode": "Break"}, {"time": "10:30-11:00", "title": "Map the story: sequence the build, define done", "mode": "Solo"}, {"time": "11:00-11:30", "title": "Build brief, blueprint, tech stack", "mode": "1:1"}, {"time": "11:30-12:45", "title": "Domain, email and GitHub set up, build begins", "mode": "Solo"}, {"time": "12:45-13:30", "title": "Lunch, staggered, the build keeps going", "mode": "Break"}, {"time": "13:30-16:15", "title": "Heads-down build", "mode": "Solo"}, {"time": "16:15-16:30", "title": "Break", "mode": "Break"}, {"time": "16:30-17:00", "title": "Landing site goes live", "mode": "Solo"}, {"time": "17:00-17:15", "title": "Rank what's left, evening close", "mode": "Together"}]}]}, {"kind": "content", "time": "09:00-09:10", "mode": "Together", "title": "Morning huddle", "blocks": [{"type": "para", "text": "Say today's number. Wednesday's is usually blunt: \u201ca live URL by 5pm\u201d, or the specific thing a stranger will be able to click, book or pay on."}]}, {"kind": "content", "time": "09:10-09:20", "mode": "Solo", "title": "Set today's product context", "blocks": [{"type": "para", "text": "Lock in your path (software, hardware or services), write what \u201clive and actionable\u201d means for it, and pin your MVP to one sentence. Five minutes of clarity now stops you building the wrong thing all afternoon."}]}, {"kind": "content", "time": "09:20-09:45", "mode": "Solo", "title": "Sort your requirements", "blocks": [{"type": "para", "text": "Sort every requirement into Must, Should, Could and Won't. Cap Musts at seven, on paper, before you waste build time defending a feature you invented this morning."}]}, {"kind": "content", "time": "09:45-10:15", "mode": "Together", "title": "Why builds die from overscoping", "blocks": [{"type": "para", "text": "Every extra Must costs a Should. By tonight you need one thing that works end to end, not five things half-built. Overscoping is the single biggest reason a five-day build never ships."}, {"type": "bullets", "items": ["A Must is something a real prospect cannot act without", "\u201cIt would be nice\u201d is a Should, every time", "If two people disagree whether it's a Must, it's a Should"]}, {"type": "panel", "title": "Then: live wall sort", "body": "Post every Must on the wall. Defend each one to the room in one sentence. Anyone can challenge it. If you can't defend it out loud, it's not a Must."}]}, {"kind": "break", "time": "10:15-10:30", "title": "Break", "until": "10:30"}, {"kind": "content", "time": "10:30-11:00", "mode": "Solo", "title": "Map the story", "blocks": [{"type": "para", "text": "A MoSCoW list says what to build, not the order or the finish line. The story map draws one line through it as the MVP slice, and writes a testable \u201cdone\u201d for every Must."}]}, {"kind": "content", "time": "11:00-11:30", "mode": "1:1", "title": "Build brief, blueprint, tech stack", "blocks": [{"type": "label", "text": "Claude drafts, you correct"}, {"type": "para", "text": "This moves fast because it's a draft-then-explain session: Claude drafts, then walks it through in plain English and asks you to poke holes with your own domain knowledge. Your corrections reshape the draft, live, with Seb in the room."}, {"type": "numbered", "items": [{"title": "Build brief", "body": "A single brief Claude Code can build from without guessing."}, {"title": "Blueprint", "body": "Diagrams: what it stores, how it fits together, what it's made of."}, {"title": "Tech stack", "body": "One chosen stack, a monthly cost, the accounts to open."}]}, {"type": "quote", "text": "Done when you could retell the document to a friend.", "attribution": "Draft, then explain back"}]}, {"kind": "content", "time": "11:30-12:45", "mode": "Solo", "title": "Domain, email and GitHub set up, build begins", "blocks": [{"type": "para", "text": "A trust officer or law-firm partner won't enquire through something.vercel.app from a personal Gmail. A real domain and a tracked repo are the cheapest credibility you'll buy this week."}, {"type": "bullets", "items": ["A domain you own, and business email on it", "A GitHub repo, with one issue per Must", "The build itself starts the moment setup is done"]}]}, {"kind": "break", "time": "12:45-13:30", "title": "Lunch", "label": "Back at 13:30, the build keeps going", "until": "13:30"}, {"kind": "content", "time": "13:30-16:15", "mode": "Solo", "title": "Heads-down build", "blocks": [{"type": "label", "text": "What ships, by path"}, {"type": "cards", "cols": 3, "items": [{"title": "Software", "body": "A deployed working slice on a public URL."}, {"title": "Hardware", "body": "A demonstrable prototype, CAD render or physical mock, plus a pre-order or waitlist page taking real payment intent."}, {"title": "Services", "body": "A productised service package, one sample deliverable, plus a bookable intake page."}]}, {"type": "panel", "title": "The shared spine", "body": "A live page a real prospect can act on. That's true whatever you're building. Facilitator circulates one to one, no group session this block."}]}, {"kind": "break", "time": "16:15-16:30", "title": "Break", "until": "16:30"}, {"kind": "content", "time": "16:30-17:00", "mode": "Solo", "title": "Landing site goes live", "blocks": [{"type": "para", "text": "This is the page every Thursday email, post and call points at. It has to look like you, capture leads where you can see them, and read cleanly on a phone."}]}, {"kind": "closing", "title": "Rank what's left, evening close", "steps": ["List every open item between you and a paying customer", "Rank them, and name the top 3 blockers", "Confirm the live URL, prototype or sample actually works end to end"], "line": "Cut scope before you cut sleep."}];
+const DATA = [{"kind": "cover", "number": "03", "eyebrow": "Day 3 \u00b7 Wednesday", "title": "Build it", "subtitle": "By tonight: a live, working slice a real prospect can click, book or pay on.", "stats": [{"value": "3", "label": "Build paths"}, {"value": "09:00-17:15", "label": "Today's hours"}], "meta": "Digital Jersey Academy \u00b7 Founder Bootcamp"}, {"kind": "content", "title": "Today, start to finish", "blocks": [{"type": "timeline", "rows": [{"time": "09:00-09:10", "title": "Morning huddle", "mode": "Together"}, {"time": "09:10-09:20", "title": "Set today's product context", "mode": "Solo"}, {"time": "09:20-09:45", "title": "Sort your requirements: Must, Should, Could, Won't", "mode": "Solo"}, {"time": "09:45-10:15", "title": "Why builds die from overscoping, then a live wall sort", "mode": "Together"}, {"time": "10:15-10:30", "title": "Break", "mode": "Break"}, {"time": "10:30-11:00", "title": "Map the story: sequence the build, define done", "mode": "Solo"}, {"time": "11:00-11:30", "title": "Build brief, blueprint, tech stack", "mode": "1:1"}, {"time": "11:30-12:45", "title": "Domain, email and GitHub set up, build begins", "mode": "Solo"}, {"time": "12:45-13:30", "title": "Lunch, staggered, the build keeps going", "mode": "Break"}, {"time": "13:30-16:15", "title": "Heads-down build", "mode": "Solo"}, {"time": "16:15-16:30", "title": "Break", "mode": "Break"}, {"time": "16:30-17:00", "title": "Landing site goes live", "mode": "Solo"}, {"time": "17:00-17:15", "title": "Rank what's left, evening close", "mode": "Together"}]}]}, {"kind": "content", "time": "09:00-09:10", "mode": "Together", "title": "Morning huddle", "blocks": [{"type": "para", "text": "Say today's number. Wednesday's is usually blunt: \u201ca live URL by 5pm\u201d, or the specific thing a stranger will be able to click, book or pay on."}]}, {"kind": "content", "time": "09:10-09:20", "mode": "Solo", "title": "Set today's product context", "blocks": [{"type": "para", "text": "Lock in your path (software, hardware or services), write what \u201clive and actionable\u201d means for it, and pin your MVP to one sentence. Five minutes of clarity now stops you building the wrong thing all afternoon."}]}, {"kind": "content", "time": "09:20-09:45", "mode": "Solo", "title": "Sort your requirements", "blocks": [{"type": "para", "text": "Sort every requirement into Must, Should, Could and Won't. Cap Musts at seven, on paper, before you waste build time defending a feature you invented this morning."}]}, {"kind": "content", "time": "09:45-10:15", "mode": "Together", "title": "Why builds die from overscoping", "blocks": [{"type": "para", "text": "Every extra Must costs a Should. By tonight you need one thing that works end to end, not five things half-built. Overscoping is the single biggest reason a five-day build never ships."}, {"type": "label", "text": "The maths"}, {"type": "panel", "title": "Do this instead", "body": "Cap Musts at seven. If you're sitting at ten, five of them are Shoulds wearing a disguise."}]}, {"kind": "content", "time": "09:45-10:15", "mode": "Together", "title": "Is it really a Must?", "blocks": [{"type": "label", "text": "Click a card to run the test"}, {"type": "flip", "cols": 2, "items": [{"front": "\u201cA prospect literally cannot act without it\u201d", "back": "That's a real Must. Keep it.", "frontLabel": "The claim"}, {"front": "\u201cIt would be nice, and users might expect it\u201d", "back": "That's a Should. Cut it from today's build."}, {"front": "\u201cTwo of us disagree whether it's essential\u201d", "back": "If it's debatable, it's not a Must. Musts are obvious."}, {"front": "\u201cI already half-built it, feels wasteful to cut\u201d", "back": "Sunk cost isn't a reason. Cut it anyway if it isn't load-bearing."}]}]}, {"kind": "content", "time": "09:45-10:15", "mode": "Together", "title": "How to run the wall sort", "blocks": [{"type": "reveal", "hint": "Click each to unpack it", "items": [{"title": "Post every Must on the wall", "body": "One sticky note, one sentence, no jargon."}, {"title": "Defend it in one sentence", "body": "\u201cA prospect cannot book a call without this\u201d is a defence. \u201cIt'll look more finished\u201d is not."}, {"title": "Anyone can challenge it", "body": "The room gets to say \u201cthat sounds like a Should\u201d, and you have to answer, out loud."}, {"title": "If you can't defend it out loud, cut it", "body": "No hard feelings, straight off the wall, into the Should column."}]}, {"type": "panel", "title": "Then: live wall sort", "body": "Post every Must on the wall now. Defend each one to the room in one sentence."}]}, {"kind": "break", "time": "10:15-10:30", "title": "Break", "until": "10:30"}, {"kind": "content", "time": "10:30-11:00", "mode": "Solo", "title": "Map the story", "blocks": [{"type": "para", "text": "A MoSCoW list says what to build, not the order or the finish line. The story map draws one line through it as the MVP slice, and writes a testable \u201cdone\u201d for every Must."}]}, {"kind": "content", "time": "11:00-11:30", "mode": "1:1", "title": "Build brief, blueprint, tech stack", "blocks": [{"type": "label", "text": "Claude drafts, you correct"}, {"type": "para", "text": "This moves fast because it's a draft-then-explain session: Claude drafts, then walks it through in plain English and asks you to poke holes with your own domain knowledge. Your corrections reshape the draft, live, with Seb in the room."}, {"type": "numbered", "items": [{"title": "Build brief", "body": "A single brief Claude Code can build from without guessing."}, {"title": "Blueprint", "body": "Diagrams: what it stores, how it fits together, what it's made of."}, {"title": "Tech stack", "body": "One chosen stack, a monthly cost, the accounts to open."}]}, {"type": "quote", "text": "Done when you could retell the document to a friend.", "attribution": "Draft, then explain back"}]}, {"kind": "content", "time": "11:30-12:45", "mode": "Solo", "title": "Domain, email and GitHub set up, build begins", "blocks": [{"type": "para", "text": "A trust officer or law-firm partner won't enquire through something.vercel.app from a personal Gmail. A real domain and a tracked repo are the cheapest credibility you'll buy this week."}, {"type": "bullets", "items": ["A domain you own, and business email on it", "A GitHub repo, with one issue per Must", "The build itself starts the moment setup is done"]}]}, {"kind": "break", "time": "12:45-13:30", "title": "Lunch", "label": "Back at 13:30, the build keeps going", "until": "13:30"}, {"kind": "content", "time": "13:30-16:15", "mode": "Solo", "title": "Heads-down build", "blocks": [{"type": "label", "text": "What ships, by path"}, {"type": "cards", "cols": 3, "items": [{"title": "Software", "body": "A deployed working slice on a public URL."}, {"title": "Hardware", "body": "A demonstrable prototype, CAD render or physical mock, plus a pre-order or waitlist page taking real payment intent."}, {"title": "Services", "body": "A productised service package, one sample deliverable, plus a bookable intake page."}]}, {"type": "panel", "title": "The shared spine", "body": "A live page a real prospect can act on. That's true whatever you're building. Facilitator circulates one to one, no group session this block."}]}, {"kind": "break", "time": "16:15-16:30", "title": "Break", "until": "16:30"}, {"kind": "content", "time": "16:30-17:00", "mode": "Solo", "title": "Landing site goes live", "blocks": [{"type": "para", "text": "This is the page every Thursday email, post and call points at. It has to look like you, capture leads where you can see them, and read cleanly on a phone."}]}, {"kind": "closing", "title": "Rank what's left, evening close", "steps": ["List every open item between you and a paying customer", "Rank them, and name the top 3 blockers", "Confirm the live URL, prototype or sample actually works end to end"], "line": "Cut scope before you cut sleep."}];
 const SIG = {"org": "Digital Jersey", "line": "digital.je"};
 const DAY_ACCENT = '#4EABF2';
 
@@ -352,6 +390,46 @@ function renderBlock(b,accent){
       const p=el('div','b-panel');
       p.innerHTML=(b.title?`<h4>${esc(b.title)}</h4>`:'')+`<p>${esc(b.body)}</p>`;
       return p;
+    }
+    case 'reveal': {
+      const wrap=el('div','b-reveal');
+      if(b.hint) wrap.appendChild(el('div','reveal-hint',esc(b.hint)+' \u2192'));
+      (b.items||[]).forEach((it,i)=>{
+        const item=el('div','reveal-item');
+        const head=el('button','reveal-head');
+        head.innerHTML=`<span class="reveal-chip">${String(i+1).padStart(2,'0')}</span><span class="reveal-title">${esc(it.title)}</span><span class="reveal-chevron">+</span>`;
+        const body=el('div','reveal-body');
+        body.innerHTML=`<p>${esc(it.body)}</p>`;
+        head.addEventListener('click',()=>item.classList.toggle('open'));
+        item.appendChild(head);item.appendChild(body);
+        wrap.appendChild(item);
+      });
+      return wrap;
+    }
+    case 'flip': {
+      const wrap=el('div','b-flip');
+      wrap.style.gridTemplateColumns=`repeat(${b.cols||2},1fr)`;
+      (b.items||[]).forEach((it,i)=>{
+        const card=el('div','flip-card');
+        const c=it.color||ACCENT_ROTATION[i%ACCENT_ROTATION.length];
+        card.innerHTML=`<div class="flip-inner">
+          <div class="flip-face flip-front" style="--c:${c}"><div class="fc-label">${esc(it.frontLabel||'Click to see the fix')}</div><div class="fc-text">${esc(it.front)}</div><div class="flip-hint">tap \u21bb</div></div>
+          <div class="flip-face flip-back" style="--c:${c}"><div class="fc-label">${esc(it.backLabel||'Try instead')}</div><div class="fc-text">${esc(it.back)}</div></div>
+        </div>`;
+        card.addEventListener('click',()=>card.classList.toggle('flipped'));
+        wrap.appendChild(card);
+      });
+      return wrap;
+    }
+    case 'transcript': {
+      const wrap=el('div','b-transcript');
+      (b.lines||[]).forEach(ln=>{
+        const line=el('div','tr-line');
+        const tag=ln.tag?`<span class="tr-tag ${ln.tag}">${ln.tag==='good'?'Good move':'Avoid'}</span>`:'';
+        line.innerHTML=`<div class="tr-who">${esc(ln.who)}${tag}</div><div class="tr-text">${esc(ln.text)}</div>`;
+        wrap.appendChild(line);
+      });
+      return wrap;
     }
     case 'legend': {
       const wrap=el('div','legend');

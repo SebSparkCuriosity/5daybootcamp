@@ -218,6 +218,42 @@ h1.title,h2.title{font-size:clamp(28px,4.2vw,52px);font-weight:300;line-height:1
 .b-template .fill{font-weight:700;color:var(--accent,__PURPLE__);}
 .slide.gradient .b-template .fill{color:__CYAN_LIGHT__;}
 
+.reveal-hint{font-size:.74rem;color:var(--accent,__PURPLE__);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin:0 0 .6em;}
+.b-reveal{margin:0 0 1.1em;}
+.reveal-item{border:1.5px solid #ECECF2;border-radius:10px;margin-bottom:9px;overflow:hidden;background:#FCFCFE;}
+.reveal-head{width:100%;display:flex;align-items:center;gap:14px;padding:13px 18px;background:none;border:none;cursor:pointer;text-align:left;font-family:inherit;}
+.reveal-chip{flex:none;width:30px;height:30px;border-radius:50%;background:var(--accent,__PURPLE__);color:#fff;font-family:'Cairo',sans-serif;font-weight:700;font-size:.78rem;display:flex;align-items:center;justify-content:center;}
+.reveal-title{flex:1;font-family:'Cairo',sans-serif;font-weight:700;font-size:.98rem;color:__NAVY__;}
+.reveal-chevron{font-size:1.25rem;color:#B4B4C2;transition:transform .25s ease,color .25s ease;line-height:1;}
+.reveal-item.open .reveal-chevron{transform:rotate(45deg);color:var(--accent,__PURPLE__);}
+.reveal-body{max-height:0;opacity:0;transition:max-height .35s ease,opacity .3s ease;}
+.reveal-item.open .reveal-body{max-height:220px;opacity:1;}
+.reveal-body p{margin:0;padding:0 18px 15px 62px;font-size:.9rem;color:__GREY__;line-height:1.55;}
+
+.b-flip{display:grid;gap:14px;margin:0 0 1.1em;}
+.flip-card{perspective:1200px;height:158px;cursor:pointer;}
+.flip-inner{position:relative;width:100%;height:100%;transition:transform .55s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d;}
+.flip-card.flipped .flip-inner{transform:rotateY(180deg);}
+.flip-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;justify-content:center;}
+.flip-front{background:#F5F5FA;border-top:4px solid var(--c,__PURPLE__);}
+.flip-back{background:var(--c,__PURPLE__);transform:rotateY(180deg);}
+.fc-label{font-family:'Cairo',sans-serif;font-weight:700;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;margin:0 0 .5em;}
+.flip-front .fc-label{color:#9A9AA8;}
+.flip-back .fc-label{color:rgba(255,255,255,.78);}
+.fc-text{font-size:.92rem;line-height:1.42;}
+.flip-front .fc-text{color:__NAVY__;font-weight:700;}
+.flip-back .fc-text{color:#fff;}
+.flip-hint{position:absolute;bottom:8px;right:12px;font-size:.62rem;color:#C7C7D6;letter-spacing:.04em;}
+
+.b-transcript{margin:0 0 1.1em;border-radius:12px;background:#FAFAFC;border:1px solid #ECECF2;padding:18px 20px;}
+.tr-line{margin-bottom:13px;}
+.tr-line:last-child{margin-bottom:0;}
+.tr-who{font-family:'Cairo',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:#9A9AA8;margin-bottom:.25em;}
+.tr-text{font-size:.9rem;color:__NAVY__;line-height:1.5;}
+.tr-tag{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:10px;font-size:.6rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;vertical-align:middle;}
+.tr-tag.good{background:rgba(0,196,255,.16);color:__NAVY__;}
+.tr-tag.bad{background:rgba(159,55,187,.14);color:__PURPLE__;}
+
 .b-timeline{margin:.5em 0;}
 .tl-row{display:grid;grid-template-columns:112px 22px 1fr;gap:0 16px;align-items:start;}
 .tl-time{font-family:'Cairo',sans-serif;font-weight:700;font-size:.8rem;color:__NAVY__;padding-top:.15em;font-variant-numeric:tabular-nums;}
@@ -261,11 +297,13 @@ h1.title,h2.title{font-size:clamp(28px,4.2vw,52px);font-weight:300;line-height:1
   .slide{padding:9vh 6vw 12vh;}
   .arrow{display:none;}
   .brand .deck-name{display:none;}
-  .b-cards,.b-grid{grid-template-columns:1fr !important;}
+  .b-cards,.b-grid,.b-flip{grid-template-columns:1fr !important;}
   .tl-row{grid-template-columns:80px 16px 1fr;}
   .cover-stats{gap:10px;}
   .stat-plate{min-width:100px;padding:12px 14px;}
   .countdown-time{font-size:clamp(44px,16vw,80px);}
+  .flip-card{height:auto;min-height:140px;}
+  .reveal-body p{padding-left:18px;}
 }
 """
 
@@ -401,6 +439,46 @@ function renderBlock(b,accent){
       const p=el('div','b-panel');
       p.innerHTML=(b.title?`<h4>${esc(b.title)}</h4>`:'')+`<p>${esc(b.body)}</p>`;
       return p;
+    }
+    case 'reveal': {
+      const wrap=el('div','b-reveal');
+      if(b.hint) wrap.appendChild(el('div','reveal-hint',esc(b.hint)+' \\u2192'));
+      (b.items||[]).forEach((it,i)=>{
+        const item=el('div','reveal-item');
+        const head=el('button','reveal-head');
+        head.innerHTML=`<span class="reveal-chip">${String(i+1).padStart(2,'0')}</span><span class="reveal-title">${esc(it.title)}</span><span class="reveal-chevron">+</span>`;
+        const body=el('div','reveal-body');
+        body.innerHTML=`<p>${esc(it.body)}</p>`;
+        head.addEventListener('click',()=>item.classList.toggle('open'));
+        item.appendChild(head);item.appendChild(body);
+        wrap.appendChild(item);
+      });
+      return wrap;
+    }
+    case 'flip': {
+      const wrap=el('div','b-flip');
+      wrap.style.gridTemplateColumns=`repeat(${b.cols||2},1fr)`;
+      (b.items||[]).forEach((it,i)=>{
+        const card=el('div','flip-card');
+        const c=it.color||ACCENT_ROTATION[i%ACCENT_ROTATION.length];
+        card.innerHTML=`<div class="flip-inner">
+          <div class="flip-face flip-front" style="--c:${c}"><div class="fc-label">${esc(it.frontLabel||'Click to see the fix')}</div><div class="fc-text">${esc(it.front)}</div><div class="flip-hint">tap \\u21bb</div></div>
+          <div class="flip-face flip-back" style="--c:${c}"><div class="fc-label">${esc(it.backLabel||'Try instead')}</div><div class="fc-text">${esc(it.back)}</div></div>
+        </div>`;
+        card.addEventListener('click',()=>card.classList.toggle('flipped'));
+        wrap.appendChild(card);
+      });
+      return wrap;
+    }
+    case 'transcript': {
+      const wrap=el('div','b-transcript');
+      (b.lines||[]).forEach(ln=>{
+        const line=el('div','tr-line');
+        const tag=ln.tag?`<span class="tr-tag ${ln.tag}">${ln.tag==='good'?'Good move':'Avoid'}</span>`:'';
+        line.innerHTML=`<div class="tr-who">${esc(ln.who)}${tag}</div><div class="tr-text">${esc(ln.text)}</div>`;
+        wrap.appendChild(line);
+      });
+      return wrap;
     }
     case 'legend': {
       const wrap=el('div','legend');
@@ -778,26 +856,56 @@ def day1_slides():
         {
             "kind": "content", "time": "12:00-12:40", "mode": "Together", "title": "The Mom Test",
             "blocks": [
-                {"type": "label", "text": "Why past behaviour beats opinion"},
-                {"type": "para", "text": "Ask about their life, not your idea. Everyone is polite, everyone wants to encourage you, and asking “would you use this?” gets you a yes from your harshest critic. Opinions about the future are worthless. Specifics about the past tell the truth."},
-                {"type": "cards", "cols": 2, "items": [
-                    {"title": "Bad: opinions and hypotheticals", "items": [
-                        "“Do you think this is a good idea?”",
-                        "“Would you pay for something like this?”",
-                        "“Would you use a tool that did X?”",
-                    ], "color": PINK},
-                    {"title": "Good: specifics about the past", "items": [
-                        "“Talk me through the last time that happened.”",
-                        "“What have you already tried?”",
-                        "“What don't you love about how you do this today?”",
-                    ], "color": CYAN_DARK},
+                {"type": "para", "text": "Ask your mum if your idea is good and she'll say yes, because she loves you and doesn't want to see you disappointed. Everyone does this. Ask a stranger a nice open question about your idea and you get the same encouragement, not the truth."},
+                {"type": "label", "text": "The fix"},
+                {"type": "para", "text": "Stop asking for opinions about the future. Ask about specifics from the past. What someone did last week is real data. What someone thinks they might do next month is fiction, even when they mean it."},
+                {"type": "panel", "title": "The one rule", "body": "If your question could be answered with a compliment, it's the wrong question."},
+            ],
+        },
+        {
+            "kind": "content", "time": "12:00-12:40", "mode": "Together", "title": "Three rules, in practice",
+            "blocks": [
+                {"type": "reveal", "hint": "Click each to unpack it", "items": [
+                    {"title": "Talk about their life, not your idea", "body": "Don't describe what you're building until the very end, if at all. Ask what a normal week looks like for them. The idea only comes up if they ask."},
+                    {"title": "Ask about specifics in the past", "body": "Not “would you”, not “do you think”. Ask what they actually did the last time this came up, and when that was."},
+                    {"title": "Talk less, listen more", "body": "Every minute you're talking is a minute you're not learning anything. Aim for 80% them, 20% you."},
                 ]},
-                {"type": "numbered", "items": [
-                    {"title": "Talk about their life, not your idea", "body": "You learn nothing from their reaction to a pitch."},
-                    {"title": "Ask about specifics in the past", "body": "Not generics, not opinions about the future."},
-                    {"title": "Talk less, listen more", "body": "Every minute you talk is a minute they aren't."},
+            ],
+        },
+        {
+            "kind": "content", "time": "12:00-12:40", "mode": "Together", "title": "Turn a bad question into a good one",
+            "blocks": [
+                {"type": "label", "text": "Click a card to see the fix"},
+                {"type": "flip", "cols": 2, "items": [
+                    {"front": "“Do you think this is a good idea?”", "back": "“What do you currently do about this?”"},
+                    {"front": "“Would you pay for something like this?”", "back": "“What have you paid for, or tried, to solve this before?”"},
+                    {"front": "“Would you use a tool that did X?”", "back": "“Talk me through the last time this happened to you.”"},
+                    {"front": "“How much would you pay for this?”", "back": "“What is this costing you today, in time or money?”"},
                 ]},
-                {"type": "panel", "title": "Then: 30-second pitch round", "body": "Everyone in the room pitches their idea in 30 seconds flat. Not to sell it, to hear how it sounds out loud before a stranger does."},
+            ],
+        },
+        {
+            "kind": "content", "time": "12:00-12:40", "mode": "Together", "title": "What it sounds like",
+            "blocks": [
+                {"type": "label", "text": "A 90-second exchange"},
+                {"type": "transcript", "lines": [
+                    {"who": "Founder", "text": "Talk me through the last time you had to chase up an overdue invoice.", "tag": "good"},
+                    {"who": "Customer", "text": "Oh, last Tuesday actually. I spent about 40 minutes on the phone, then had to email our accountant to check what we'd already sent."},
+                    {"who": "Founder", "text": "What have you tried, to make that faster?", "tag": "good"},
+                    {"who": "Customer", "text": "Honestly, nothing that's stuck. We tried a spreadsheet reminder system but nobody keeps it updated."},
+                    {"who": "Founder, tempting, but don't", "text": "“Would you use an app that automated that for you?”", "tag": "bad"},
+                ]},
+            ],
+        },
+        {
+            "kind": "content", "time": "12:00-12:40", "mode": "Together", "title": "Then: 30-second pitch round",
+            "blocks": [
+                {"type": "para", "text": "Everyone in the room pitches their idea in 30 seconds flat. Not to sell it, to hear how it sounds out loud before a stranger does."},
+                {"type": "bullets", "items": [
+                    "30 seconds, no more, no notes",
+                    "Not a sales pitch, just the idea in your own words",
+                    "The room gives one honest reaction each",
+                ]},
             ],
         },
         {"kind": "break", "time": "12:40-13:20", "title": "Lunch", "until": "13:20"},
@@ -893,11 +1001,46 @@ def day2_slides():
         {
             "kind": "content", "time": "11:25-12:00", "mode": "Together", "title": "Positioning in one sentence",
             "blocks": [
-                {"type": "label", "text": "The positioning statement"},
+                {"type": "para", "text": "Positioning is the one decision that makes every later decision easier: it tells Wednesday what to build, Thursday what to say, and Friday why a prospect pays you and not the incumbent."},
+                {"type": "label", "text": "The trap"},
+                {"type": "para", "text": "Most founders position for everyone, because narrowing feels like losing customers. It's the opposite: a founder who obviously serves someone beats a founder who vaguely serves everyone."},
+            ],
+        },
+        {
+            "kind": "content", "time": "11:25-12:00", "mode": "Together", "title": "The positioning statement",
+            "blocks": [
                 {"type": "template", "html": "For <span class=\"fill\">[target customer]</span> who <span class=\"fill\">[has this need]</span>, <span class=\"fill\">[product]</span> is a <span class=\"fill\">[market category]</span> that <span class=\"fill\">[key benefit]</span>. Unlike <span class=\"fill\">[main alternative]</span>, we <span class=\"fill\">[real difference]</span>."},
-                {"type": "label", "text": "The 2x2 map"},
-                {"type": "para", "text": "Pick two axes that matter to the buyer, not to you. Plot yourself and three or four rivals. The open corner is where you win."},
+                {"type": "label", "text": "Worked example"},
+                {"type": "quote", "text": "For Jersey trust companies drowning in manual compliance checks, Harbour is a compliance automation tool that cuts review time from days to hours. Unlike a generalist consultancy, we ship working software in the first week."},
+            ],
+        },
+        {
+            "kind": "content", "time": "11:25-12:00", "mode": "Together", "title": "The 2x2 map, step by step",
+            "blocks": [
+                {"type": "reveal", "hint": "Click each to unpack it", "items": [
+                    {"title": "Pick two axes that matter to the buyer", "body": "Not the two you're best at. The two things a buyer actually weighs up: price vs speed, generalist vs specialist, self-serve vs done-for-you."},
+                    {"title": "Plot yourself, honestly", "body": "Where you are today, not where you'll be in a year."},
+                    {"title": "Plot three or four real rivals", "body": "Including whatever your customer copes with instead of buying anything: a spreadsheet, a generalist, doing it by hand."},
+                    {"title": "Find the open corner", "body": "The quadrant with nobody in it, and a real buyer in it too. That's your corner."},
+                ]},
+            ],
+        },
+        {
+            "kind": "content", "time": "11:25-12:00", "mode": "Together", "title": "Common mistakes",
+            "blocks": [
+                {"type": "label", "text": "Click a card to see the fix"},
+                {"type": "flip", "cols": 1, "items": [
+                    {"front": "Both axes are about you: fast, cheap, easy", "back": "Pick axes the buyer already argues about among themselves."},
+                    {"front": "You're plotted in the same spot as everyone else", "back": "If you can't draw a line between you and a rival, you haven't positioned yet, you've described a category."},
+                    {"front": "The open corner has no buyers in it", "back": "An empty corner with no demand isn't a strategy, it's a warning."},
+                ]},
+            ],
+        },
+        {
+            "kind": "content", "time": "11:25-12:00", "mode": "Together", "title": "Then: wall gallery walk",
+            "blocks": [
                 {"type": "panel", "title": "Then: wall gallery walk", "body": "Pin your 2x2 on the wall. Walk the room and read everyone else's before we talk as a group."},
+                {"type": "bullets", "items": ["Five minutes to pin it up", "Silent walk, no talking, just reading", "Then: who's standing in your open corner?"]},
             ],
         },
         {"kind": "break", "time": "12:00-12:45", "title": "Lunch", "until": "12:45"},
@@ -997,12 +1140,32 @@ def day3_slides():
             "kind": "content", "time": "09:45-10:15", "mode": "Together", "title": "Why builds die from overscoping",
             "blocks": [
                 {"type": "para", "text": "Every extra Must costs a Should. By tonight you need one thing that works end to end, not five things half-built. Overscoping is the single biggest reason a five-day build never ships."},
-                {"type": "bullets", "items": [
-                    "A Must is something a real prospect cannot act without",
-                    "“It would be nice” is a Should, every time",
-                    "If two people disagree whether it's a Must, it's a Should",
+                {"type": "label", "text": "The maths"},
+                {"type": "panel", "title": "Do this instead", "body": "Cap Musts at seven. If you're sitting at ten, five of them are Shoulds wearing a disguise."},
+            ],
+        },
+        {
+            "kind": "content", "time": "09:45-10:15", "mode": "Together", "title": "Is it really a Must?",
+            "blocks": [
+                {"type": "label", "text": "Click a card to run the test"},
+                {"type": "flip", "cols": 2, "items": [
+                    {"front": "“A prospect literally cannot act without it”", "back": "That's a real Must. Keep it.", "frontLabel": "The claim"},
+                    {"front": "“It would be nice, and users might expect it”", "back": "That's a Should. Cut it from today's build."},
+                    {"front": "“Two of us disagree whether it's essential”", "back": "If it's debatable, it's not a Must. Musts are obvious."},
+                    {"front": "“I already half-built it, feels wasteful to cut”", "back": "Sunk cost isn't a reason. Cut it anyway if it isn't load-bearing."},
                 ]},
-                {"type": "panel", "title": "Then: live wall sort", "body": "Post every Must on the wall. Defend each one to the room in one sentence. Anyone can challenge it. If you can't defend it out loud, it's not a Must."},
+            ],
+        },
+        {
+            "kind": "content", "time": "09:45-10:15", "mode": "Together", "title": "How to run the wall sort",
+            "blocks": [
+                {"type": "reveal", "hint": "Click each to unpack it", "items": [
+                    {"title": "Post every Must on the wall", "body": "One sticky note, one sentence, no jargon."},
+                    {"title": "Defend it in one sentence", "body": "“A prospect cannot book a call without this” is a defence. “It'll look more finished” is not."},
+                    {"title": "Anyone can challenge it", "body": "The room gets to say “that sounds like a Should”, and you have to answer, out loud."},
+                    {"title": "If you can't defend it out loud, cut it", "body": "No hard feelings, straight off the wall, into the Should column."},
+                ]},
+                {"type": "panel", "title": "Then: live wall sort", "body": "Post every Must on the wall now. Defend each one to the room in one sentence."},
             ],
         },
         {"kind": "break", "time": "10:15-10:30", "title": "Break", "until": "10:30"},
@@ -1145,12 +1308,40 @@ def day4_slides():
             "kind": "content", "time": "15:55-16:25", "mode": "Together", "title": "Channels are a hypothesis, not a checklist",
             "blocks": [
                 {"type": "para", "text": "A channel is a bet, not a box to tick: a cost, a reach, and a conversion guess. Run the cheapest, fastest test first. Kill what shows no signal. Double down on what does."},
+                {"type": "label", "text": "Reframe"},
+                {"type": "panel", "title": "Stop asking", "body": "“Which channels should I be on?” Start asking: “Which channel can I test for GBP 20 by Monday?”"},
+            ],
+        },
+        {
+            "kind": "content", "time": "15:55-16:25", "mode": "Together", "title": "How to test a channel in a day",
+            "blocks": [
+                {"type": "reveal", "hint": "Click each to unpack it", "items": [
+                    {"title": "Write the hypothesis down", "body": "“If I post in [X community], I expect [Y] replies and [Z] worth a call.” A number, not a hope."},
+                    {"title": "Spend the smallest amount that gets a real answer", "body": "One post, one ad, one batch of ten DMs. Not a month-long campaign."},
+                    {"title": "Measure the number you wrote down", "body": "Not likes, not impressions. The number that actually predicts revenue."},
+                    {"title": "Kill it or double down", "body": "No signal after a fair test, drop it. Real signal, put the next hour into it, not a new channel."},
+                ]},
+            ],
+        },
+        {
+            "kind": "content", "time": "15:55-16:25", "mode": "Together", "title": "Worked example",
+            "blocks": [
+                {"type": "label", "text": "Click a card to see what actually happened"},
+                {"type": "flip", "cols": 2, "items": [
+                    {"front": "“LinkedIn outreach will work, everyone says so”", "back": "Tested: 40 DMs, 2 replies, 0 calls booked. Killed it.", "frontLabel": "The assumption"},
+                    {"front": "“A Jersey Facebook group is too small to bother”", "back": "Tested: 1 post, 6 replies, 3 calls booked by Thursday. Doubled down.", "frontLabel": "The assumption"},
+                ]},
+            ],
+        },
+        {
+            "kind": "content", "time": "15:55-16:25", "mode": "Together", "title": "Then: funnel wall build",
+            "blocks": [
+                {"type": "panel", "title": "Then: funnel wall build", "body": "Pin your four stages on the wall: channel, asset, number, at each one. Walk the room and defend your weakest step."},
                 {"type": "bullets", "items": [
                     "Every channel gets a number attached before you spend a day on it",
                     "A leaky step is a channel to fix or cut, not a reason to add another",
                     "One channel proven beats five half-tried",
                 ]},
-                {"type": "panel", "title": "Then: funnel wall build", "body": "Pin your four stages on the wall: channel, asset, number, at each one. Walk the room and defend your weakest step."},
             ],
         },
         {"kind": "break", "time": "16:25-16:40", "title": "Break", "until": "16:40"},
@@ -1219,15 +1410,54 @@ def day5_slides():
             ],
         },
         {
-            "kind": "content", "time": "09:40-10:10", "mode": "Together", "title": "Say it without flinching",
+            "kind": "content", "time": "09:40-10:10", "mode": "Together", "title": "Why founders flinch",
             "blocks": [
-                {"type": "para", "text": "State the number flat. No “but I could do a discount.” No apologising for what it costs. Say it, then stop talking and let the silence sit."},
-                {"type": "numbered", "items": [
-                    {"title": "Say the number, then stop talking", "body": "The next person to speak loses."},
-                    {"title": "Let the silence sit", "body": "Don't fill it, don't soften it."},
-                    {"title": "Answer objections without apologising", "body": "“It's too expensive” is a question, not a verdict."},
+                {"type": "para", "text": "You've spent five days making this. Of course the number feels enormous to you. It doesn't feel enormous to them, they don't know what it cost you to build."},
+                {"type": "label", "text": "The tell"},
+                {"type": "panel", "title": "Watch for this in yourself", "body": "If you say the price and immediately add a reason, a discount, or a joke, you've just told them the price is negotiable before they've said a word."},
+            ],
+        },
+        {
+            "kind": "content", "time": "09:40-10:10", "mode": "Together", "title": "The technique, step by step",
+            "blocks": [
+                {"type": "reveal", "hint": "Click each to unpack it", "items": [
+                    {"title": "Say the number, flat", "body": "No preamble, no “so it's, um”. State it like a fact, because it is one."},
+                    {"title": "Stop talking", "body": "Whoever speaks next after the price loses. Count to five in your head if you have to."},
+                    {"title": "Let the silence sit", "body": "Silence feels like ten minutes and is actually three seconds. Don't fill it."},
+                    {"title": "Answer the objection, don't apologise for it", "body": "“It's too expensive” is a question about value, not a verdict on you."},
                 ]},
+            ],
+        },
+        {
+            "kind": "content", "time": "09:40-10:10", "mode": "Together", "title": "Field the objection",
+            "blocks": [
+                {"type": "label", "text": "Click a card to see the reply"},
+                {"type": "flip", "cols": 2, "items": [
+                    {"front": "“That's more than I expected”", "back": "“Compared to what you're doing today, what would make that worth it?”", "frontLabel": "They say"},
+                    {"front": "“Can you do it cheaper?”", "back": "“I can do less for less. What would you want to cut?”", "frontLabel": "They say"},
+                    {"front": "“Let me think about it”", "back": "“Of course. What specifically do you need to think through?”", "frontLabel": "They say"},
+                    {"front": "“We don't have budget right now”", "back": "“When does the budget reset, and can we pencil something in for then?”", "frontLabel": "They say"},
+                ]},
+            ],
+        },
+        {
+            "kind": "content", "time": "09:40-10:10", "mode": "Together", "title": "What it sounds like",
+            "blocks": [
+                {"type": "label", "text": "Saying it, and holding the silence"},
+                {"type": "transcript", "lines": [
+                    {"who": "Founder", "text": "It's GBP 2,500 a month.", "tag": "good"},
+                    {"who": "Founder", "text": "…", "tag": "good"},
+                    {"who": "Prospect", "text": "Right. That's more than I budgeted for, honestly."},
+                    {"who": "Founder", "text": "Compared to what you're doing today, what would make that worth it?", "tag": "good"},
+                    {"who": "Founder, tempting, but don't", "text": "“I could probably do it a bit cheaper if that helps.”", "tag": "bad"},
+                ]},
+            ],
+        },
+        {
+            "kind": "content", "time": "09:40-10:10", "mode": "Together", "title": "Then: round-robin",
+            "blocks": [
                 {"type": "panel", "title": "Then: round-robin", "body": "Everyone states their price out loud, once. The room fires back one real objection. You answer it, live."},
+                {"type": "bullets", "items": ["State the number, then stop talking", "Take one objection from the room", "Answer it without apologising, then sit down"]},
             ],
         },
         {"kind": "break", "time": "10:10-10:25", "title": "Break", "until": "10:25"},
