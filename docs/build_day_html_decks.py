@@ -1023,11 +1023,11 @@ def day5_slides():
 
 
 DAYS = [
-    ("Day 1: Idea and discovery · Digital Jersey Bootcamp", "Day 1", PINK, day1_slides),
-    ("Day 2: Market and proposition · Digital Jersey Bootcamp", "Day 2", PURPLE, day2_slides),
-    ("Day 3: Product and build · Digital Jersey Bootcamp", "Day 3", CYAN_DARK, day3_slides),
-    ("Day 4: Test and go to market · Digital Jersey Bootcamp", "Day 4", CYAN_LIGHT, day4_slides),
-    ("Day 5: Tweaks and first sale · Digital Jersey Bootcamp", "Day 5", NAVY, day5_slides),
+    ("Bootcamp Day 1: Idea and discovery", "Day 1", PINK, day1_slides),
+    ("Bootcamp Day 2: Market and proposition", "Day 2", PURPLE, day2_slides),
+    ("Bootcamp Day 3: Product and build", "Day 3", CYAN_DARK, day3_slides),
+    ("Bootcamp Day 4: Test and go to market", "Day 4", CYAN_LIGHT, day4_slides),
+    ("Bootcamp Day 5: Tweaks and first sale", "Day 5", NAVY, day5_slides),
 ]
 
 
