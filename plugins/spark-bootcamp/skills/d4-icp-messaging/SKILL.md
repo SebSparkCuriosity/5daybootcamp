@@ -16,7 +16,7 @@ Read: `02-market/proposition.md` (segment, pain, promise, numeric outcome), `02-
 Describe the buyers the scorecard shows, do not invent a persona. Run the words as a short discussion (10 to 15 minutes): the founder says these sentences out loud on Friday, so they draft them with you, not receive them. Guardrail: this writes words only. Day 5 outreach goes out after your sign-off.
 
 ## Steps
-1. Read the Hot and Warm rows. Note what top scorers share: sector, size, role, pain, trigger.
+1. Read the Hot and Warm rows. Note what top scorers share: sector, size, role, pain, trigger. Also check whether one aggregator (an agency, platform or professional body) already reaches several of them at once: selling through it can be a faster route in than chasing each buyer one at a time, so name it as an alternative first move if it exists.
 2. Write the ICP as ONE sentence, exactly three checkable criteria: "A [role] at a [type and size of firm] who [observable trigger or pain]."
 3. Sanity-check: at least half your Hot rows must match all three criteria. If not, widen or swap a criterion until they fit, then stop.
 4. Write the one-liner, under 20 words: "[We help] [the ICP] [reach the outcome] [without the pain]." Lead with their outcome. Steal a Hot tester's phrase if it fits.

@@ -18,7 +18,7 @@ Read `03-product/product-context.md` and `02-market/proposition.md`. The cut is 
 2. Sort each line into one bucket. **Must**: without it the promise breaks and nobody pays. **Should**: painful to drop, promise survives, goes in v2. **Could**: cheap, only if time. **Won't**: out of scope this week, name at least three.
 3. Cap the Musts at seven. Move the weakest down until seven remain.
 4. Beside each Must, write the `proposition.md` words it delivers. No link means it is a Should. Demote it.
-5. Per Must, ask the founder "would a paying customer walk away without this on day one?" and wait for their answer. If no, it is a Should. Challenge a kind answer once, with the proposition as referee, then let their call stand.
+5. Per Must, ask the founder "would a paying customer walk away without this on day one?" and wait for their answer. If no, it is a Should. Challenge a kind answer once, with the proposition as referee, then let their call stand. Then ask the friction question: could this Must disappear into one input or one conversational turn instead of a screen? A Must that survives both questions is real; one that only survives the first is a screen you can simplify away.
 6. Write at least three explicit Won'ts. Login, dashboards, settings, integrations, mobile: usually Won't.
 7. Branch only where the Musts differ. The method is identical.
 
