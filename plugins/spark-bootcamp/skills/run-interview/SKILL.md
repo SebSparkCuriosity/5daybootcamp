@@ -1,5 +1,5 @@
 ---
-name: Run Interview
+name: run-interview
 description: Reusable interview engine. Runs a call as a live prompt sheet, then writes one record with 3+ verbatim quotes and logged consent. Modes discovery|product-test.
 when_to_use: Day 1 discovery once per interview; again Day 4 product-test once per test session.
 argument-hint: [discovery|product-test]

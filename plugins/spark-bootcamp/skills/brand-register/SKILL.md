@@ -1,5 +1,5 @@
 ---
-name: Brand Register
+name: brand-register
 description: Locks your visual identity into one canonical file. Writes .spark/brand/brand.json and a stable logo on Day 2, after d2-visual-identity.
 when_to_use: Day 2, right after d2-visual-identity. Run before any deck, brochure or proposal, which read only from here.
 ---

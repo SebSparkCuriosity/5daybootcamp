@@ -1,5 +1,5 @@
 ---
-name: Build The Brand Book
+name: d2-brand-book
 description: Assembles the locked identity into a full brand kit (logo variants, favicon, PNG exports) and an 8-section brand book as HTML and PDF. Day 2, after brand-register.
 when_to_use: Day 2, straight after brand-register locks brand.json, before the pitch deck. Triggers on "brand book", "brand kit", "logo pack", "brand guidelines".
 ---

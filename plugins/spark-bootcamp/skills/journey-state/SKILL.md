@@ -1,5 +1,5 @@
 ---
-name: Journey State
+name: journey-state
 description: Owns .spark/state.json and the one safe read-merge-write helper every skill uses, so concurrent skills never clobber each other's fields.
 when_to_use: Internal only. Any skill reading or writing journey state calls the helper here. Not run by the founder.
 user-invocable: false

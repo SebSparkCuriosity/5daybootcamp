@@ -1,5 +1,5 @@
 ---
-name: Write The Build Brief
+name: d3-prd
 description: Turn your story map and MoSCoW cut into the one build brief Claude Code builds from. Every Must a numbered requirement, one success number. Day 3.
 when_to_use: Day 3, after d3-story-map and d3-moscow, before you build the working slice.
 ---

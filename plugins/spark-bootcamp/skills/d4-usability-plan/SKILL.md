@@ -1,5 +1,5 @@
 ---
-name: Plan Usability Tests
+name: d4-usability-plan
 description: Turns your Day 1 interview into a usability and buying-signal test against the live MVP, then books 5 sessions. Day 4.
 when_to_use: Day 4 go-to-market, straight after the MVP deploys. Run before any test session happens.
 ---

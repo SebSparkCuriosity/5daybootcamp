@@ -1,5 +1,5 @@
 ---
-name: Map Client Intake
+name: d4-intake-process
 description: Turns your proposition into a 4-stage intake (proposal, engagement, kickoff, delivery), each with an owner, an SLA and one signable template. Day 4.
 when_to_use: Day 4 go-to-market, once the proposition is written and before a real prospect runs through it.
 ---

@@ -1,5 +1,5 @@
 ---
-name: Write The Proposal
+name: d5-proposal
 description: "Turns the week into a one-page offer for the named buyer: problem, one numeric target, a 1 to 6 week timeline, one price, one next step."
 when_to_use: Day 5 sale, after pricing and demo script done and the Friday buyer is named.
 argument-hint: [buyer-name]

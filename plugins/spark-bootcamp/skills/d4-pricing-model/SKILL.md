@@ -1,5 +1,5 @@
 ---
-name: Choose The Pricing Model
+name: d4-pricing-model
 description: Commit to ONE pricing model, name the value metric, and give each rejected model a one-line reason. Day 4, before the sales deck carries a price.
 when_to_use: Day 4, after d4-icp-messaging, before the sales deck. When you catch yourself saying "I'll just charge for time".
 ---

@@ -1,5 +1,5 @@
 ---
-name: Logbook
+name: logbook
 description: The one logging format every skill appends to. Internal helper for a consistent audit trail across CHANGELOG.md, DECISIONS.md and state.json.
 when_to_use: Internal only. Skills call this helper at the end of their work to log an artefact or record a decision. Not run by the founder.
 user-invocable: false

@@ -1,5 +1,5 @@
 ---
-name: MoSCoW Your Requirements
+name: d3-moscow
 description: Sorts every feature into Must, Should, Could and Won't and caps Musts at seven so you build the smallest thing that sells. Day 3.
 when_to_use: Day 3 product, after d3-product-context, with proposition.md in hand, before you scope the slice.
 ---

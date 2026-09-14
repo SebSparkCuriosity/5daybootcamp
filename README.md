@@ -41,6 +41,10 @@ the bootcamp to get you there.
 /plugin install spark-bootcamp@spark
 ```
 
+Already installed? Run `/plugin marketplace update spark` then `/plugin update spark-bootcamp@spark`
+and restart Claude Code. Anything installed before 1.2.0 is stuck on the July build, and its
+skills will not appear correctly in the `/` menu.
+
 Then, once:
 
 ```

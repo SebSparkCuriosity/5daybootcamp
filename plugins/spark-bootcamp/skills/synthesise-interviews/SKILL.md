@@ -1,5 +1,5 @@
 ---
-name: Synthesise Interviews
+name: synthesise-interviews
 description: Reads a folder of interview records and pulls out counted patterns: assumptions validated or killed, jobs, pains, gains, and warm prospects.
 when_to_use: Day 1 after run-interview, or Day 4 product-test mode to feed d4-prioritise. Takes a mode argument.
 argument-hint: [discovery|product-test]

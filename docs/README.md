@@ -6,3 +6,7 @@
   the Friday outcome).
 - `build_overview_deck.py`: regenerates the deck. Needs `python-pptx`
   (`pip install python-pptx`), then `python3 build_overview_deck.py out.pptx`.
+- `slides_to_pdf.py`: turns a day's HTML slide deck into a PDF, one slide per
+  page. The decks themselves are Claude artifacts; save one locally, then
+  `pip install playwright pillow` and
+  `python3 docs/slides_to_pdf.py day1.html bootcamp-day1.pdf`.

@@ -1,5 +1,5 @@
 ---
-name: Triage The Fixes
+name: d5-triage
 description: Sorts Day 4 feedback into Fix Now (max 3, each under 90 min), Park and Roadmap, so you ship the right three changes before you sell.
 when_to_use: Day 5, straight after Day 4 gtm feedback, before you touch the live page or sell.
 ---

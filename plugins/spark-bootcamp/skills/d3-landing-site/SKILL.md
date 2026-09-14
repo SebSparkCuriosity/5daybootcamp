@@ -1,5 +1,5 @@
 ---
-name: Launch The Landing Site
+name: d3-landing-site
 description: Put your public shopfront live on your real domain, on-brand, with working lead capture and a privacy notice. Day 3, after the MVP slice.
 when_to_use: Day 3, after d3-mvp-build and d3-domain-email. Trigger on "launch the site", "landing page", "put the shopfront live".
 argument-hint: [optional-domain]

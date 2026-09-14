@@ -1,5 +1,5 @@
 ---
-name: Regulator Check
+name: regulator-check
 description: Scans an artefact for unsupported numeric or comparative claims and rules on each before it ships to a prospect.
 when_to_use: Before any deck, landing page, proposal or email goes out, especially Day 4 outreach and Day 5 sale.
 argument-hint: [path to the file to check]

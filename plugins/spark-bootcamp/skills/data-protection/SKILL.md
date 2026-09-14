@@ -1,5 +1,5 @@
 ---
-name: Data Protection
+name: data-protection
 description: Drafts four data-protection documents a regulated firm needs in week one: privacy notice, lawful-basis note, consent wording and engagement-letter data clause.
 when_to_use: Pre-work, after the invitations go out, before the first interview. Feeds run-interview and d5-paperwork.
 ---

@@ -1,5 +1,5 @@
 ---
-name: Brand Foundations
+name: d2-brand-foundations
 description: Set your values, personality, tone and name, executable by a non-designer. Use on Day 2 after the proposition and messaging are written.
 when_to_use: Day 2, after d2-proposition and d2-messaging, before any logo, colour or landing page work.
 ---

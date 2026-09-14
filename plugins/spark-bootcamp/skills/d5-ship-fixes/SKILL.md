@@ -1,5 +1,5 @@
 ---
-name: Ship The Fixes
+name: d5-ship-fixes
 description: Ship the three triage fixes, prove the demo happy path runs end to end once, then commit with a timestamp. Day 5, after triage.
 when_to_use: Day 5, after triage, before d4-book-sale. Triggers "ship the fixes", "make the demo work", "demo-ready".
 argument-hint: [optional-commit-message]

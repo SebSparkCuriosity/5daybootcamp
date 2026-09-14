@@ -1,5 +1,5 @@
 ---
-name: Build The Sales Deck
+name: d4-sales-deck
 description: Builds the Day 4 deck that closes one named prospect: problem, solution, proof, pricing, ask, in 10 to 14 slides, proof from real tester quotes.
 when_to_use: Day 4 GTM, after d4-prioritise ranks buyers, before the Day 5 sale. The one-buyer closing deck, not the Day 2 pitch.
 argument-hint: [prospect name]

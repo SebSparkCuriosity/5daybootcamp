@@ -1,5 +1,5 @@
 ---
-name: House Style
+name: house-style
 description: The shared kit every Spark document skill reuses so deck, brochure, one-pager and landing page look like one company. Not user-invocable.
 when_to_use: When another skill builds a document, deck, brochure, one-pager or landing page and needs the Spark voice, template or deck builder.
 user-invocable: false

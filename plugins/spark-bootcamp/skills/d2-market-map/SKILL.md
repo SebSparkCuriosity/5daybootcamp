@@ -1,5 +1,5 @@
 ---
-name: Map The Market
+name: d2-market-map
 description: Name the players, value chain and substitutes for your validated problem, every incumbent sourced. Run first on Day 2.
 when_to_use: Day 2 opener, straight after d1-validated-problem writes validated-problem.md and target-segment.md.
 ---

@@ -1,5 +1,5 @@
 ---
-name: Rehearse The Sale
+name: d5-rehearse
 description: Role-play the sale until the ask feels natural. Objection handling, the money ask, the close. Day 5, before a real call.
 when_to_use: Day 5, after the proposal and messaging exist, before the live sales call.
 ---

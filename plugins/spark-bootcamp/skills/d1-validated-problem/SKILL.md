@@ -1,5 +1,5 @@
 ---
-name: Validate The Problem
+name: d1-validated-problem
 description: Make the persevere-or-pivot call from your interviews, then lock a one-sentence problem and a named segment.
 when_to_use: End of Day 1, once discovery-findings.md exists, before Day 2 market work.
 ---

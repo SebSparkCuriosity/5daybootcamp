@@ -1,5 +1,5 @@
 ---
-name: Set The Price
+name: d5-price-number
 description: Turn your pricing model into three real packages, one recommended, each traced to a value assumption, floor GBP 2,000. Day 5, before the offer.
 when_to_use: Day 5, first thing, pricing the Day 4 model. Triggers on "what do I charge", "set my price", "rate card", "good better best".
 ---

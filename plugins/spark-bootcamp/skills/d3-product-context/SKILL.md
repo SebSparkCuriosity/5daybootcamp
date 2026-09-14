@@ -1,5 +1,5 @@
 ---
-name: Set The Product Context
+name: d3-product-context
 description: Confirms your business path and boils your MVP to one sentence, so Day 3 builds the right thing. First step of Day 3.
 when_to_use: Day 3 product, first step, after Day 2 wrote proposition.md and positioning.md.
 ---

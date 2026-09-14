@@ -1,5 +1,5 @@
 ---
-name: Book The Sale
+name: d4-book-sale
 description: Turns your warmest named prospect into a confirmed Friday meeting. Day 4, after gtm-plan, before Thursday's checkpoint closes.
 when_to_use: Day 4, straight after gtm-plan. No confirmed Friday slot means Day 4 is not done.
 ---

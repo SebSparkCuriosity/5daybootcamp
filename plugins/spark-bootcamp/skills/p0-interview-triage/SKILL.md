@@ -1,5 +1,5 @@
 ---
-name: Triage Your Interviewees
+name: p0-interview-triage
 description: A short working conversation that decides who you will interview on bootcamp Monday: one segment, the exact role, 8 to 12 people, three screening questions.
 when_to_use: Pre-work, 2 to 4 weeks before the bootcamp Monday, straight after start, before building the invite list.
 ---

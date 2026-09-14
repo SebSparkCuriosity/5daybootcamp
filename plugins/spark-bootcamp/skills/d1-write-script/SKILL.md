@@ -1,5 +1,5 @@
 ---
-name: Write Your Interview Script
+name: d1-write-script
 description: Co-writes a Mom Test-proof discovery script with you (8+ non-leading, past-behaviour questions) plus a how-to-run guide, and picks a recording method.
 when_to_use: Day 1, after d1-interview-plan, before the first booked call. Last prep before the afternoon interviews.
 ---

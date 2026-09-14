@@ -1,5 +1,5 @@
 ---
-name: Craft The Proposition
+name: d2-proposition
 description: Turns customer jobs, pains and gains into one proposition under 25 words, each tagged to a real Day 1 quote, plus a numeric success metric.
 when_to_use: Day 2, after d2-positioning, once discovery-findings.md exists. Last Day 2 step before build.
 ---

@@ -1,5 +1,5 @@
 ---
-name: Coach
+name: coach
 description: Your always-on guide. Run it any time you are lost: it tells you where you are, what you have finished, and the one command to run next.
 when_to_use: Any point in the five days when you are unsure what to do next. After start, between skills, at the top of each day.
 ---
