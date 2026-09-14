@@ -41,16 +41,19 @@ the bootcamp to get you there.
 /plugin install spark-bootcamp@spark
 ```
 
-Already installed? There is no auto-update. In your terminal, not inside Claude Code, run:
+Already installed? There is no auto-update, and refreshing the marketplace on its own is not
+enough: it fetches the new version but leaves your install pointing at the old one. Inside
+Claude Code, run all three:
 
 ```
-claude plugin update spark-bootcamp@spark
+/plugin marketplace update spark
+/plugin uninstall spark-bootcamp@spark
+/plugin install spark-bootcamp@spark
 ```
 
-Then restart Claude Code, and check it took with `claude plugin list`, which should say 1.2.0.
-Anything installed before 1.2.0 is stuck on the July build and will not move on its own: a
-`/plugin marketplace update` refreshes the marketplace but leaves the installed plugin where it
-is, and most of its skills will not start from the `/` menu.
+Then restart Claude Code, or `/reload-plugins`. From a terminal, `claude plugin update
+spark-bootcamp@spark` does the same job in one command. Either way `claude plugin list` should
+read 1.2.0 afterwards. On anything older, most skills will not start from the `/` menu.
 
 Then, once:
 
