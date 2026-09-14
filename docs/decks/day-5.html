@@ -288,6 +288,37 @@ h1.title,h2.title{font-size:clamp(28px,4.2vw,52px);font-weight:300;line-height:1
   .activity-diagram{width:96px;height:76px;}
 }
 
+@media print{
+  *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;}
+  @page{size:13.333in 7.5in;margin:0;}
+  html,body{height:auto !important;overflow:visible !important;background:#212B5B;}
+  .progress,.chrome{display:none !important;}
+  .stage{position:static !important;}
+  .slide{
+    position:relative !important;opacity:1 !important;transform:none !important;
+    pointer-events:auto !important;align-items:flex-start !important;
+    padding:0.55in 0.75in !important;height:auto;
+    page-break-after:always;break-after:page;
+    page-break-inside:avoid;break-inside:avoid;
+  }
+  .slide:last-child{page-break-after:auto !important;break-after:auto !important;}
+  .slide[data-kind="break"]{padding:0.4in 0.75in;page-break-after:avoid !important;break-after:avoid !important;}
+  .slide.gradient{min-height:7.5in;}
+  .slide-inner{max-height:none !important;overflow:visible !important;padding-right:0 !important;}
+  .enter>*{animation:none !important;opacity:1 !important;transform:none !important;}
+  canvas.network{display:none !important;}
+  .slide.gradient{animation:none !important;}
+  .reveal-hint{display:none !important;}
+  .reveal-item{overflow:visible !important;}
+  .reveal-chevron{display:none !important;}
+  .reveal-body{max-height:none !important;opacity:1 !important;}
+  .flip-hint{display:none !important;}
+  .flip-card{height:auto !important;perspective:none !important;}
+  .flip-inner{position:static !important;transform:none !important;}
+  .flip-face{position:static !important;transform:none !important;backface-visibility:visible !important;margin-bottom:8px;}
+  .countdown-time{display:none !important;}
+}
+
 </style>
 </head>
 <body>
