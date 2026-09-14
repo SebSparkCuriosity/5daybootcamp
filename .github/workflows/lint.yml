@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -18,6 +20,12 @@ jobs:
 
       - name: Cross-skill contract lint
         run: python3 tools/lint_plugin.py
+
+      - name: Version must move when the plugin changes
+        run: |
+          base="origin/${{ github.base_ref || github.event.repository.default_branch }}"
+          git fetch origin --quiet || true
+          python3 tools/check_version_bump.py "$base"
 
       - name: Compile every Python helper
         run: |

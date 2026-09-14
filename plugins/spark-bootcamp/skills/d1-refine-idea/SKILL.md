@@ -1,5 +1,5 @@
 ---
-name: Develop Your Idea
+name: d1-refine-idea
 description: The deepest conversation of the week. Draws out your story, your philosophy and your idea, then shapes them into one testable problem and the assumption that could kill it.
 when_to_use: Day 1 morning, first thing, before the interview plan and script. Give it 90 minutes; the afternoon interviews test what it produces.
 ---

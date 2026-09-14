@@ -1,5 +1,5 @@
 ---
-name: Interview Method
+name: interview-method
 description: The shared craft behind every customer conversation: how to ask, what to listen for, and how to tell a buying signal from a polite compliment. Internal.
 when_to_use: Internal only. Read inside run-interview (Day 1) and synthesise-interviews (Day 4). Not run by the founder.
 user-invocable: false

@@ -1,5 +1,5 @@
 ---
-name: Build The Funnel
+name: d4-marketing-funnel
 description: Map awareness to purchase in four stages, each with a named Jersey channel, one asset and one metric. Day 4, after messaging.
 when_to_use: Day 4, after d4-icp-messaging writes messaging.md. Triggers on "funnel", "channels", "how do people find and buy".
 ---

@@ -1,5 +1,5 @@
 ---
-name: Nail The ICP
+name: d4-icp-messaging
 description: Turns your segment and proposition into one ideal customer profile, a buyer one-liner and answers to five real objections. Day 4.
 when_to_use: Day 4 GTM, after d4-prioritise ranks buyers. Decide exactly who you sell to Friday and the words you use.
 ---

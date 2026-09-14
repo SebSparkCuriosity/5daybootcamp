@@ -1,5 +1,5 @@
 ---
-name: Audit Pack
+name: audit-pack
 description: Compiles the week's changelog, decisions and logged artefacts into one regulator-ready pack, opening with target versus achieved.
 when_to_use: Day 5 review (called by d5-review), or when a regulator, investor or client asks to see what you built.
 ---

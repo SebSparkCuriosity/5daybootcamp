@@ -1,5 +1,5 @@
 ---
-name: Prepare The Paperwork
+name: d5-paperwork
 description: "Drafts the docs to take money: engagement letter with data-processing schedule, terms, invoice from the right entity, working payment method. Day 5, after the proposal."
 when_to_use: "Day 5, after d5-proposal and once RATE-CARD.md exists. Run before you send anything or ask for a penny."
 ---

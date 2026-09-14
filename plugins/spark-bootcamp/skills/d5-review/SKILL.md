@@ -1,5 +1,5 @@
 ---
-name: Review The Week
+name: d5-review
 description: Packages the whole week into one index, scores it honestly, and calls audit-pack. The last thing you run on Day 5, after the deal is closed.
 when_to_use: Day 5 final step, after d5-close wrote 05-sale/WON-DEAL.md. Hands you a launch package, a scorecard, and a keep-it-running plan.
 ---

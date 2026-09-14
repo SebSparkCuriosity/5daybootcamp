@@ -1,5 +1,5 @@
 ---
-name: Guardrails
+name: guardrails
 description: The four rules every skill checks before it sends, spends, publishes or states a number. Internal gate, no artefact.
 when_to_use: Internal only. Apply automatically inside any skill about to send, spend, publish, or assert a market or financial figure.
 user-invocable: false

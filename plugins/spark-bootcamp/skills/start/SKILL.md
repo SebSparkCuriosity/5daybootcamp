@@ -1,5 +1,5 @@
 ---
-name: Start
+name: start
 description: The front door of the sprint. Captures your name, path, one-sentence idea, bootcamp Monday and numeric weekly target, then opens the journey. Run first.
 when_to_use: Run once, 2 to 4 weeks before your bootcamp Monday, before any other skill except doctor. Initialises .spark/state.json and hands you to the coach.
 ---

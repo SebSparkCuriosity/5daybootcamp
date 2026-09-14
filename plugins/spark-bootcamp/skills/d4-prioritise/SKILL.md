@@ -1,5 +1,5 @@
 ---
-name: Prioritise The Feedback
+name: d4-prioritise
 description: Turns product-test sessions into one ranked change list and one ranked buyer list, so Friday builds the right three fixes and calls the warmest people first.
 when_to_use: Day 4 GTM, after the product-test sessions. Between synthesise-interviews (product-test) and Day 5 selling.
 ---

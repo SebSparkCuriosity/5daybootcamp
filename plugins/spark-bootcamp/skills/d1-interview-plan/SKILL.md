@@ -1,5 +1,5 @@
 ---
-name: Plan The Interview Day
+name: d1-interview-plan
 description: Turns your booked schedule and developed idea into this afternoon's run plan: who you meet, when, what each conversation must test, and the day's number.
 when_to_use: Day 1 mid-morning, after d1-refine-idea, before the script. The interviews were booked in pre-work; this plans how to run them.
 ---

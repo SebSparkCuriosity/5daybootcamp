@@ -1,5 +1,5 @@
 ---
-name: Business Profile
+name: business-profile
 description: The single source of truth for how the three business paths differ each day. Build and ship skills read it to branch consistently.
 when_to_use: Read internally by any Day 1 to Day 5 skill that branches on business_type. Not run by the founder.
 user-invocable: false

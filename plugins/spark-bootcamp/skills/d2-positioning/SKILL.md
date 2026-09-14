@@ -1,5 +1,5 @@
 ---
-name: Fix Your Positioning
+name: d2-positioning
 description: Fix the corner of the market you own with a Moore statement, a 2x2 map and one USP no rival can claim. Day 2, after the competitor scan.
 when_to_use: "Day 2, after d2-competitor-scan. Triggers: how do I position this, what's my USP, where do I win, positioning map."
 ---

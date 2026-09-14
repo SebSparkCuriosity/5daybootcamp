@@ -141,13 +141,13 @@ Every skill is `plugins/spark-bootcamp/skills/<skill-id>/SKILL.md` with this fro
 
 ```markdown
 ---
-name: Title Case Name
+name: skill-id
 description: Trigger sentence in Spark voice. Lead with what it does and when to use it. Under ~200 chars.
 when_to_use: Extra trigger phrases and where in the week this sits.
 argument-hint: [optional]
 ---
 
-# Title
+# Title Case Name
 
 **What this does.** One line.
 **Why it matters.** One or two plain-English sentences: the purpose, before the how.
@@ -172,6 +172,10 @@ Append to CHANGELOG.md and update .spark/state.json.
 The fallback, where one is needed.
 ```
 
+- `name` must be the skill's own folder name, lowercase and hyphenated, and nothing else. Claude Code
+  builds the `/` menu entry from this field, and its command parser stops at the first character
+  outside `[a-zA-Z0-9:_-]`, so a space here makes the skill unreachable from the menu. The human
+  title belongs in the `# Heading` underneath.
 - Keep SKILL.md under ~500 lines. Long templates and reference material go in `references/`,
   helper scripts in `scripts/`, reached via `${CLAUDE_SKILL_DIR}`.
 - Hidden knowledge skills (used by Claude, not run by the founder) set `user-invocable: false`.

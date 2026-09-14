@@ -1,5 +1,5 @@
 ---
-name: Map The Story
+name: d3-story-map
 description: Sequences your Musts into one end-to-end MVP slice and defines "done" for each. Day 3, after requirements-moscow.md exists.
 when_to_use: Day 3 product, straight after d3-moscow, before you build or ship.
 ---

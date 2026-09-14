@@ -1,5 +1,5 @@
 ---
-name: Blueprint The Build
+name: d3-blueprint
 description: Diagram the structure once so the build is mechanical. Software gets a data model and system diagram, hardware a diagram and BOM, services a blueprint. Day 3.
 when_to_use: Day 3, straight after d3-prd, before you write code, render CAD or draft the sample deliverable.
 argument-hint: [path to blueprint.md, optional]

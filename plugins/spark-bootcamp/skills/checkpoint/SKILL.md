@@ -1,5 +1,5 @@
 ---
-name: Checkpoint
+name: checkpoint
 description: Bookends each day with a number. "checkpoint open" sets today's one target; "checkpoint close" records the outcome and marks the day done.
 when_to_use: Twice daily. Open each morning to commit to one number; close at night to record what happened and unlock tomorrow.
 argument-hint: [open|close]

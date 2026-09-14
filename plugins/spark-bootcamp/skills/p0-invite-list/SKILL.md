@@ -1,5 +1,5 @@
 ---
-name: Build Your Invite List
+name: p0-invite-list
 description: Turns your target spec into 20+ named, reachable people, each with a channel and warmth rating, ready to invite to bootcamp Monday interviews.
 when_to_use: Pre-work, straight after p0-interview-triage, before you write the invitations.
 ---

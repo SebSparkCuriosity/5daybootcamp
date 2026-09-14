@@ -1,5 +1,5 @@
 ---
-name: Doctor
+name: doctor
 description: Verifies your machine, builds the project skeleton, and writes the pre-work checklist. Run once, first, right after installing.
 when_to_use: The very first command, before /spark-bootcamp:start. Re-run any time a later day says a tool is missing.
 ---

@@ -1,5 +1,5 @@
 ---
-name: Build The Onboarding Pack
+name: d4-onboarding-pack
 description: Builds a 6-section onboarding pack with a week-1 timeline and named contact, exported to PDF. Use on Day 4 after intake is mapped.
 when_to_use: Day 4, after d4-intake-process, when prospects can book but you have nothing to hand them once they say yes.
 ---

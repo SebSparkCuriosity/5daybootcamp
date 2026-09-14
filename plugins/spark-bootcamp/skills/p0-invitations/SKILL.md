@@ -1,5 +1,5 @@
 ---
-name: Write Your Invitations
+name: p0-invitations
 description: Drafts the messages (email, WhatsApp or LinkedIn) that book interviews for bootcamp Monday, weeks in advance. Personalised per contact, nothing sent without your yes.
 when_to_use: Pre-work, straight after the invite list, 2 to 4 weeks before the bootcamp Monday.
 ---

@@ -1,5 +1,5 @@
 ---
-name: Go-To-Market Plan
+name: d4-gtm-plan
 description: Ranks your first 10 named customers by warmth, gives each one next action, hands #1 to Day 5. Use on Day 4 once buying signals and landing captures exist.
 when_to_use: "Day 4 GTM, after landing page live and scorecard exists. Trigger: who do I sell to first, build my prospect list."
 ---

@@ -1,5 +1,5 @@
 ---
-name: Domain And Email
+name: d3-domain-email
 description: Registers a real domain (about GBP 10) and business email, so regulated buyers will enquire. Day 3, before the landing site goes live.
 when_to_use: Day 3 product build, after d2-brand-foundations, before d3-landing-site. When still on a free subdomain and a gmail.
 argument-hint: [domain]

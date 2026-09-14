@@ -1,5 +1,5 @@
 ---
-name: Close The Deal
+name: d5-close
 description: Turn the Friday conversation into a committed yes, record the win at the highest tier that lands, send letter and invoice, book kickoff.
 when_to_use: Day 5, final step, straight after the Friday meeting once price is on the table.
 ---

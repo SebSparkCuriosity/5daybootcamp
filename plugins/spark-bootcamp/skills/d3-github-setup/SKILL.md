@@ -1,5 +1,5 @@
 ---
-name: Set Up GitHub
+name: d3-github-setup
 description: Creates a GitHub repo, a five-line README, and one open issue per Must from your MoSCoW list. Use on Day 3, before you write code.
 when_to_use: Day 3, after d3-moscow and d3-tech-stack, before the first line of code.
 ---

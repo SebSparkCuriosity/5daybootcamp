@@ -1,5 +1,5 @@
 ---
-name: Build The Pitch Deck
+name: d2-pitch-deck
 description: Assembles Day 2 into a branded 12-slide pitch deck. Every claim traces to a Day 1 quote or a sourced figure. Run once the market work is done.
 when_to_use: Day 2, last thing, after market map, sizing, competitors, positioning, pricing and brand.json exist.
 ---

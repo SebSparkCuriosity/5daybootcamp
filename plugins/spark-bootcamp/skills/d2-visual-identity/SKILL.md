@@ -1,5 +1,5 @@
 ---
-name: Visual Identity
+name: d2-visual-identity
 description: Choose your whole look with the founder: 3 logo concepts to pick from, a font pairing, an AA-safe palette. Day 2, after brand-foundations, before brand-register.
 when_to_use: Day 2, after d2-brand-foundations, before brand-register and the brand book. The skill where the founder chooses logo, colours and fonts.
 ---

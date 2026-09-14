@@ -1,5 +1,5 @@
 ---
-name: Track Your Interview Schedule
+name: p0-schedule
 description: Turns replies into a booked Monday interview schedule. Run it whenever replies land: it logs each yes, assigns a slot, queues the chase, and counts you to 8.
 when_to_use: Pre-work, after invitations go out. Re-run each time replies arrive, until 8 to 12 interviews are booked and pre-work closes.
 ---

@@ -1,5 +1,5 @@
 ---
-name: Write Your Messaging
+name: d2-messaging
 description: Turn your proposition into words: a one-liner under 12 words, three proof-backed messages, and a 60-word pitch. Day 2, after the proposition.
 when_to_use: Day 2, straight after d2-proposition, before the landing page and any outreach.
 ---

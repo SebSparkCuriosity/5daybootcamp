@@ -1,5 +1,5 @@
 ---
-name: Size The Market
+name: d2-market-sizing
 description: Sizes TAM, SAM and SOM two ways, top-down and bottom-up, then triangulates and sources every assumption. Day 2, after the market map.
 when_to_use: Day 2, straight after d2-market-map writes market-map.md, before you position or price.
 ---

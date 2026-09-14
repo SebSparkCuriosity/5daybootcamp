@@ -21,11 +21,18 @@ What it checks:
      p0-*/d[1-5]-* token must be a real skill folder.
   4. Routing. Every skill id in coach-route.py's tables must exist.
   5. Voice. No em dashes anywhere in a SKILL.md or reference.
-  6. Frontmatter. name and description present; description length warned
+  6. Frontmatter. name and description present; name is exactly the skill's
+     folder id, lowercase and hyphenated (Claude Code builds the / menu entry
+     from this field and its command parser stops at the first space, so a
+     Title Case name makes the skill unreachable); description length warned
      over 200 characters.
   7. Body length. Warn (not fail) when a SKILL.md body exceeds 60 lines.
+  8. Version. plugin.json and the marketplace entry must declare the same
+     version. Claude Code caches installs per version string, so a release
+     that does not bump it never reaches a founder who already installed.
 """
 
+import json
 import os
 import re
 import sys
@@ -33,6 +40,9 @@ import sys
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SKILLS_DIR = os.path.join(REPO, "plugins", "spark-bootcamp", "skills")
 COACH_ROUTE = os.path.join(SKILLS_DIR, "coach", "scripts", "coach-route.py")
+PLUGIN_JSON = os.path.join(
+    REPO, "plugins", "spark-bootcamp", ".claude-plugin", "plugin.json")
+MARKETPLACE_JSON = os.path.join(REPO, ".claude-plugin", "marketplace.json")
 
 # Paths that infrastructure (doctor, start, helpers) creates rather than a
 # day skill's artefact section. Consumed references to these are fine.
@@ -53,6 +63,10 @@ SKILL_FILE_RE = re.compile(
 PLUGIN_FILE_RE = re.compile(
     r"\$\{CLAUDE_PLUGIN_ROOT\}/skills/([A-Za-z0-9_./\-]+)")
 CMD_ID_RE = re.compile(r"/spark-bootcamp:([a-z0-9\-]+)")
+# A skill name must survive Claude Code's slash-command parser, which matches
+# [a-zA-Z0-9:_-] and stops at anything else. We hold a tighter line than that:
+# lowercase and hyphens only, so the menu, the model and the docs all agree.
+NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 TICKED_ID_RE = re.compile(r"`((?:p0|d[1-5])-[a-z][a-z\-]+)`")
 
 
@@ -169,6 +183,20 @@ def main():
             front = fm.group(1)
             if "name:" not in front or "description:" not in front:
                 fails.append(f"{loc}: frontmatter missing name or description")
+            nm = re.search(r"^name:\s*(.+?)\s*$", front, re.MULTILINE)
+            if nm:
+                name = nm.group(1)
+                if not NAME_RE.match(name):
+                    fails.append(
+                        f"{loc}: name `{name}` must be lowercase and hyphenated. "
+                        f"Claude Code builds the / menu entry from this field and its "
+                        f"command parser stops at the first space, so this skill would "
+                        f"be unreachable from the menu. Put the human title in the "
+                        f"`# Heading` instead.")
+                elif name != sid:
+                    fails.append(
+                        f"{loc}: name `{name}` does not match the folder `{sid}`. "
+                        f"The / menu would show one name and the model another.")
             dm = re.search(r"description:\s*(.+)", front)
             if dm and len(dm.group(1)) > 200:
                 warns.append(f"{loc}: description is {len(dm.group(1))} chars (aim under 200)")
@@ -222,6 +250,27 @@ def main():
     for rid in sorted(routed_ids):
         if rid not in skill_ids:
             fails.append(f"coach-route.py: routes to `{rid}` which is not a skill folder")
+
+    # 8. The two manifests must declare the same version.
+    try:
+        with open(PLUGIN_JSON, encoding="utf-8") as fh:
+            plugin_version = json.load(fh).get("version")
+        with open(MARKETPLACE_JSON, encoding="utf-8") as fh:
+            entries = json.load(fh).get("plugins", [])
+        entry = next(
+            (e for e in entries if e.get("name") == "spark-bootcamp"), None)
+        market_version = entry.get("version") if entry else None
+    except (OSError, ValueError) as exc:
+        fails.append(f"manifests: cannot read plugin.json or marketplace.json ({exc})")
+    else:
+        if plugin_version is None:
+            fails.append("plugin.json: no version declared")
+        elif market_version is None:
+            fails.append("marketplace.json: no version for spark-bootcamp")
+        elif plugin_version != market_version:
+            fails.append(
+                f"manifests disagree: plugin.json says {plugin_version}, "
+                f"marketplace.json says {market_version}")
 
     # ---- Report -------------------------------------------------------------
     for w in sorted(set(warns)):

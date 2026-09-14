@@ -1,5 +1,5 @@
 ---
-name: Choose The Stack
+name: d3-tech-stack
 description: "Pick one stack with a monthly cost, not a menu. Software default: Next.js, Supabase, Vercel. Day 3, after the blueprint."
 when_to_use: "Day 3, straight after the blueprint, before you scaffold. Decide what to build on and what it costs per month."
 ---

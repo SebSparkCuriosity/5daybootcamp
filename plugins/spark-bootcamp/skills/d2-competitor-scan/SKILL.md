@@ -1,5 +1,5 @@
 ---
-name: Scan The Competition
+name: d2-competitor-scan
 description: Puts your rivals side by side, scores them on what buyers care about, and names the one gap you own. Day 2, after the market map.
 when_to_use: Day 2, after d2-market-map, before the proposition. "who are my competitors", "how do I stand out", "find the gap".
 ---

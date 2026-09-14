@@ -1,5 +1,5 @@
 ---
-name: Build The MVP
+name: d3-mvp-build
 description: Build the thin slice live, one issue at a time, until a real prospect can act on it. Day 3, after the blueprint.
 when_to_use: Day 3, after d3-blueprint and d3-tech-stack. Triggers on "build it", "ship the MVP", "make it live".
 argument-hint: [optional-issue-number]
